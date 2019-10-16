@@ -8,7 +8,12 @@ git:
   depth: false
 services:
   - docker
+env:
+  COMPOSE_VERSION: 1.24.1
 before_install:
+    - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+    - chmod +x docker-compose
+    - sudo mv docker-compose /usr/local/bin
     - git clone https://github.com/pulumi/scripts ${GOPATH}/src/github.com/pulumi/scripts
     - source ${GOPATH}/src/github.com/pulumi/scripts/ci/prepare-environment.sh
     - source ${PULUMI_SCRIPTS}/ci/keep-failed-tests.sh
@@ -19,6 +24,7 @@ install:
 before_script:
     - ${PULUMI_SCRIPTS}/ci/ensure-dependencies
 script:
+    - docker-compose up -d
     - make travis_${TRAVIS_EVENT_TYPE}
 after_failure:
     - ${PULUMI_SCRIPTS}/ci/upload-failed-tests
