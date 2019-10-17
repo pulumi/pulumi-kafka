@@ -67,7 +67,17 @@ func Provider() tfbridge.ProviderInfo {
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"kafka_acl":   {Tok: makeResource(mainMod, "Acl")},
+			"kafka_acl": {
+				Tok: makeResource(mainMod, "Acl"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"resource_name": {
+						Name: "aclResourceName",
+					},
+					"resource_type": {
+						Name: "aclResourceType",
+					},
+				},
+			},
 			"kafka_topic": {Tok: makeResource(mainMod, "Topic")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},

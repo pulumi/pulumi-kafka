@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  *     aclOperation: "Write",
  *     aclPermissionType: "Deny",
  *     aclPrincipal: "User:Alice",
- *     resourceName: "syslog",
- *     resourceType: "Topic",
+ *     aclResourceName: "syslog",
+ *     aclResourceType: "Topic",
  * });
  * ```
  *
@@ -75,7 +75,7 @@ export class Acl extends pulumi.CustomResource {
     /**
      * The name of the resource.
      */
-    public readonly resourceName!: pulumi.Output<string>;
+    public readonly aclResourceName!: pulumi.Output<string>;
     /**
      * The pattern filter. Valid values
      * are `Prefixed`, `Any`, `Match`, `Literal`.
@@ -85,7 +85,7 @@ export class Acl extends pulumi.CustomResource {
      * The type of resource. Valid values are `Unknown`,
      * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
      */
-    public readonly resourceType!: pulumi.Output<string>;
+    public readonly aclResourceType!: pulumi.Output<string>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -103,9 +103,9 @@ export class Acl extends pulumi.CustomResource {
             inputs["aclOperation"] = state ? state.aclOperation : undefined;
             inputs["aclPermissionType"] = state ? state.aclPermissionType : undefined;
             inputs["aclPrincipal"] = state ? state.aclPrincipal : undefined;
-            inputs["resourceName"] = state ? state.resourceName : undefined;
+            inputs["aclResourceName"] = state ? state.aclResourceName : undefined;
             inputs["resourcePatternTypeFilter"] = state ? state.resourcePatternTypeFilter : undefined;
-            inputs["resourceType"] = state ? state.resourceType : undefined;
+            inputs["aclResourceType"] = state ? state.aclResourceType : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
             if (!args || args.aclHost === undefined) {
@@ -120,19 +120,19 @@ export class Acl extends pulumi.CustomResource {
             if (!args || args.aclPrincipal === undefined) {
                 throw new Error("Missing required property 'aclPrincipal'");
             }
-            if (!args || args.resourceName === undefined) {
-                throw new Error("Missing required property 'resourceName'");
+            if (!args || args.aclResourceName === undefined) {
+                throw new Error("Missing required property 'aclResourceName'");
             }
-            if (!args || args.resourceType === undefined) {
-                throw new Error("Missing required property 'resourceType'");
+            if (!args || args.aclResourceType === undefined) {
+                throw new Error("Missing required property 'aclResourceType'");
             }
             inputs["aclHost"] = args ? args.aclHost : undefined;
             inputs["aclOperation"] = args ? args.aclOperation : undefined;
             inputs["aclPermissionType"] = args ? args.aclPermissionType : undefined;
             inputs["aclPrincipal"] = args ? args.aclPrincipal : undefined;
-            inputs["resourceName"] = args ? args.resourceName : undefined;
+            inputs["aclResourceName"] = args ? args.aclResourceName : undefined;
             inputs["resourcePatternTypeFilter"] = args ? args.resourcePatternTypeFilter : undefined;
-            inputs["resourceType"] = args ? args.resourceType : undefined;
+            inputs["aclResourceType"] = args ? args.aclResourceType : undefined;
         }
         if (!opts) {
             opts = {}
@@ -172,7 +172,7 @@ export interface AclState {
     /**
      * The name of the resource.
      */
-    readonly resourceName?: pulumi.Input<string>;
+    readonly aclResourceName?: pulumi.Input<string>;
     /**
      * The pattern filter. Valid values
      * are `Prefixed`, `Any`, `Match`, `Literal`.
@@ -182,7 +182,7 @@ export interface AclState {
      * The type of resource. Valid values are `Unknown`,
      * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
      */
-    readonly resourceType?: pulumi.Input<string>;
+    readonly aclResourceType?: pulumi.Input<string>;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface AclArgs {
     /**
      * The name of the resource.
      */
-    readonly resourceName: pulumi.Input<string>;
+    readonly aclResourceName: pulumi.Input<string>;
     /**
      * The pattern filter. Valid values
      * are `Prefixed`, `Any`, `Match`, `Literal`.
@@ -222,5 +222,5 @@ export interface AclArgs {
      * The type of resource. Valid values are `Unknown`,
      * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
      */
-    readonly resourceType: pulumi.Input<string>;
+    readonly aclResourceType: pulumi.Input<string>;
 }

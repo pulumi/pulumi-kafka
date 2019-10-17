@@ -30,11 +30,11 @@ func NewAcl(ctx *pulumi.Context,
 	if args == nil || args.AclPrincipal == nil {
 		return nil, errors.New("missing required argument 'AclPrincipal'")
 	}
-	if args == nil || args.ResourceName == nil {
-		return nil, errors.New("missing required argument 'ResourceName'")
+	if args == nil || args.AclResourceName == nil {
+		return nil, errors.New("missing required argument 'AclResourceName'")
 	}
-	if args == nil || args.ResourceType == nil {
-		return nil, errors.New("missing required argument 'ResourceType'")
+	if args == nil || args.AclResourceType == nil {
+		return nil, errors.New("missing required argument 'AclResourceType'")
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
@@ -42,17 +42,17 @@ func NewAcl(ctx *pulumi.Context,
 		inputs["aclOperation"] = nil
 		inputs["aclPermissionType"] = nil
 		inputs["aclPrincipal"] = nil
-		inputs["resourceName"] = nil
+		inputs["aclResourceName"] = nil
 		inputs["resourcePatternTypeFilter"] = nil
-		inputs["resourceType"] = nil
+		inputs["aclResourceType"] = nil
 	} else {
 		inputs["aclHost"] = args.AclHost
 		inputs["aclOperation"] = args.AclOperation
 		inputs["aclPermissionType"] = args.AclPermissionType
 		inputs["aclPrincipal"] = args.AclPrincipal
-		inputs["resourceName"] = args.ResourceName
+		inputs["aclResourceName"] = args.AclResourceName
 		inputs["resourcePatternTypeFilter"] = args.ResourcePatternTypeFilter
-		inputs["resourceType"] = args.ResourceType
+		inputs["aclResourceType"] = args.AclResourceType
 	}
 	s, err := ctx.RegisterResource("kafka:index/acl:Acl", name, true, inputs, opts...)
 	if err != nil {
@@ -71,9 +71,9 @@ func GetAcl(ctx *pulumi.Context,
 		inputs["aclOperation"] = state.AclOperation
 		inputs["aclPermissionType"] = state.AclPermissionType
 		inputs["aclPrincipal"] = state.AclPrincipal
-		inputs["resourceName"] = state.ResourceName
+		inputs["aclResourceName"] = state.AclResourceName
 		inputs["resourcePatternTypeFilter"] = state.ResourcePatternTypeFilter
-		inputs["resourceType"] = state.ResourceType
+		inputs["aclResourceType"] = state.AclResourceType
 	}
 	s, err := ctx.ReadResource("kafka:index/acl:Acl", name, id, inputs, opts...)
 	if err != nil {
@@ -117,8 +117,8 @@ func (r *Acl) AclPrincipal() *pulumi.StringOutput {
 }
 
 // The name of the resource.
-func (r *Acl) ResourceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["resourceName"])
+func (r *Acl) AclResourceName() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["aclResourceName"])
 }
 
 // The pattern filter. Valid values
@@ -129,8 +129,8 @@ func (r *Acl) ResourcePatternTypeFilter() *pulumi.StringOutput {
 
 // The type of resource. Valid values are `Unknown`,
 // `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-func (r *Acl) ResourceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["resourceType"])
+func (r *Acl) AclResourceType() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["aclResourceType"])
 }
 
 // Input properties used for looking up and filtering Acl resources.
@@ -148,13 +148,13 @@ type AclState struct {
 	// Principal that is being allowed or denied.
 	AclPrincipal interface{}
 	// The name of the resource.
-	ResourceName interface{}
+	AclResourceName interface{}
 	// The pattern filter. Valid values
 	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter interface{}
 	// The type of resource. Valid values are `Unknown`,
 	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-	ResourceType interface{}
+	AclResourceType interface{}
 }
 
 // The set of arguments for constructing a Acl resource.
@@ -172,11 +172,11 @@ type AclArgs struct {
 	// Principal that is being allowed or denied.
 	AclPrincipal interface{}
 	// The name of the resource.
-	ResourceName interface{}
+	AclResourceName interface{}
 	// The pattern filter. Valid values
 	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter interface{}
 	// The type of resource. Valid values are `Unknown`,
 	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-	ResourceType interface{}
+	AclResourceType interface{}
 }
