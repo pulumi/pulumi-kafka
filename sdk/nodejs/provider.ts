@@ -41,8 +41,14 @@ export class Provider extends pulumi.ProviderResource {
             if (!args || args.bootstrapServers === undefined) {
                 throw new Error("Missing required property 'bootstrapServers'");
             }
+            if (!args || args.clientCert === undefined) {
+                throw new Error("Missing required property 'clientCert'");
+            }
             if (!args || args.clientCertFile === undefined) {
                 throw new Error("Missing required property 'clientCertFile'");
+            }
+            if (!args || args.clientKey === undefined) {
+                throw new Error("Missing required property 'clientKey'");
             }
             if (!args || args.clientKeyFile === undefined) {
                 throw new Error("Missing required property 'clientKeyFile'");
@@ -54,8 +60,11 @@ export class Provider extends pulumi.ProviderResource {
                 throw new Error("Missing required property 'saslUsername'");
             }
             inputs["bootstrapServers"] = pulumi.output(args ? args.bootstrapServers : undefined).apply(JSON.stringify);
+            inputs["caCert"] = args ? args.caCert : undefined;
             inputs["caCertFile"] = args ? args.caCertFile : undefined;
+            inputs["clientCert"] = args ? args.clientCert : undefined;
             inputs["clientCertFile"] = args ? args.clientCertFile : undefined;
+            inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
             inputs["saslMechanism"] = args ? args.saslMechanism : undefined;
             inputs["saslPassword"] = args ? args.saslPassword : undefined;
@@ -84,13 +93,25 @@ export interface ProviderArgs {
      */
     readonly bootstrapServers: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * CA certificate file to validate the server's certificate.
+     */
+    readonly caCert?: pulumi.Input<string>;
+    /**
      * Path to a CA certificate file to validate the server's certificate.
      */
     readonly caCertFile?: pulumi.Input<string>;
     /**
+     * The client certificate.
+     */
+    readonly clientCert: pulumi.Input<string>;
+    /**
      * Path to a file containing the client certificate.
      */
     readonly clientCertFile: pulumi.Input<string>;
+    /**
+     * The private key that the certificate was issued for.
+     */
+    readonly clientKey: pulumi.Input<string>;
     /**
      * Path to a file containing the private key that the certificate was issued for.
      */

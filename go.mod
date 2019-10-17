@@ -7,7 +7,7 @@ require (
 	github.com/Azure/go-autorest/autorest/azure/auth v0.4.0 // indirect
 	github.com/Azure/go-autorest/autorest/to v0.3.0 // indirect
 	github.com/Azure/go-autorest/autorest/validation v0.2.0 // indirect
-	github.com/Mongey/terraform-provider-kafka v0.2.2
+	github.com/Mongey/terraform-provider-kafka v0.2.3-0.20191017121936-5e7910ec5835
 	github.com/hashicorp/terraform v0.12.10
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.3.0

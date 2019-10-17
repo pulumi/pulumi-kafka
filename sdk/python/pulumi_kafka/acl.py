@@ -11,18 +11,60 @@ from . import utilities, tables
 
 class Acl(pulumi.CustomResource):
     acl_host: pulumi.Output[str]
+    """
+    Host from which principal listed in `acl_principal`
+    will have access.
+    """
     acl_operation: pulumi.Output[str]
+    """
+    Operation that is being allowed or denied. Valid
+    values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+    `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+    """
     acl_permission_type: pulumi.Output[str]
+    """
+    Type of permission. Valid values are `Unknown`,
+    `Any`, `Allow`, `Deny`.
+    """
     acl_principal: pulumi.Output[str]
+    """
+    Principal that is being allowed or denied.
+    """
     resource_name: pulumi.Output[str]
+    """
+    The name of the resource.
+    """
     resource_pattern_type_filter: pulumi.Output[str]
+    """
+    The pattern filter. Valid values
+    are `Prefixed`, `Any`, `Match`, `Literal`.
+    """
     resource_type: pulumi.Output[str]
+    """
+    The type of resource. Valid values are `Unknown`,
+    `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+    """
     def __init__(__self__, resource_name, opts=None, acl_host=None, acl_operation=None, acl_permission_type=None, acl_principal=None, resource_name=None, resource_pattern_type_filter=None, resource_type=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Acl resource with the given unique name, props, and options.
+        A resource for managing Kafka ACLs.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_host: Host from which principal listed in `acl_principal`
+               will have access.
+        :param pulumi.Input[str] acl_operation: Operation that is being allowed or denied. Valid
+               values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+               `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+        :param pulumi.Input[str] acl_permission_type: Type of permission. Valid values are `Unknown`,
+               `Any`, `Allow`, `Deny`.
+        :param pulumi.Input[str] acl_principal: Principal that is being allowed or denied.
+        :param pulumi.Input[str] resource_name: The name of the resource.
+        :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
+               are `Prefixed`, `Any`, `Match`, `Literal`.
+        :param pulumi.Input[str] resource_type: The type of resource. Valid values are `Unknown`,
+               `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,6 +117,21 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] acl_host: Host from which principal listed in `acl_principal`
+               will have access.
+        :param pulumi.Input[str] acl_operation: Operation that is being allowed or denied. Valid
+               values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+               `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+        :param pulumi.Input[str] acl_permission_type: Type of permission. Valid values are `Unknown`,
+               `Any`, `Allow`, `Deny`.
+        :param pulumi.Input[str] acl_principal: Principal that is being allowed or denied.
+        :param pulumi.Input[str] resource_name: The name of the resource.
+        :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
+               are `Prefixed`, `Any`, `Match`, `Literal`.
+        :param pulumi.Input[str] resource_type: The type of resource. Valid values are `Unknown`,
+               `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

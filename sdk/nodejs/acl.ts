@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * A resource for managing Kafka ACLs.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ * 
+ * const test = new kafka.Acl("test", {
+ *     aclHost: "*",
+ *     aclOperation: "Write",
+ *     aclPermissionType: "Deny",
+ *     aclPrincipal: "User:Alice",
+ *     resourceName: "syslog",
+ *     resourceType: "Topic",
+ * });
+ * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
+ */
 export class Acl extends pulumi.CustomResource {
     /**
      * Get an existing Acl resource's state with the given name, ID, and optional extra
@@ -31,15 +52,39 @@ export class Acl extends pulumi.CustomResource {
         return obj['__pulumiType'] === Acl.__pulumiType;
     }
 
+    /**
+     * Host from which principal listed in `aclPrincipal`
+     * will have access.
+     */
     public readonly aclHost!: pulumi.Output<string>;
+    /**
+     * Operation that is being allowed or denied. Valid
+     * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+     * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+     */
     public readonly aclOperation!: pulumi.Output<string>;
+    /**
+     * Type of permission. Valid values are `Unknown`,
+     * `Any`, `Allow`, `Deny`.
+     */
     public readonly aclPermissionType!: pulumi.Output<string>;
+    /**
+     * Principal that is being allowed or denied.
+     */
     public readonly aclPrincipal!: pulumi.Output<string>;
     /**
-     * The name of the resouce
+     * The name of the resource.
      */
     public readonly resourceName!: pulumi.Output<string>;
+    /**
+     * The pattern filter. Valid values
+     * are `Prefixed`, `Any`, `Match`, `Literal`.
+     */
     public readonly resourcePatternTypeFilter!: pulumi.Output<string | undefined>;
+    /**
+     * The type of resource. Valid values are `Unknown`,
+     * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+     */
     public readonly resourceType!: pulumi.Output<string>;
 
     /**
@@ -104,15 +149,39 @@ export class Acl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Acl resources.
  */
 export interface AclState {
+    /**
+     * Host from which principal listed in `aclPrincipal`
+     * will have access.
+     */
     readonly aclHost?: pulumi.Input<string>;
+    /**
+     * Operation that is being allowed or denied. Valid
+     * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+     * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+     */
     readonly aclOperation?: pulumi.Input<string>;
+    /**
+     * Type of permission. Valid values are `Unknown`,
+     * `Any`, `Allow`, `Deny`.
+     */
     readonly aclPermissionType?: pulumi.Input<string>;
+    /**
+     * Principal that is being allowed or denied.
+     */
     readonly aclPrincipal?: pulumi.Input<string>;
     /**
-     * The name of the resouce
+     * The name of the resource.
      */
     readonly resourceName?: pulumi.Input<string>;
+    /**
+     * The pattern filter. Valid values
+     * are `Prefixed`, `Any`, `Match`, `Literal`.
+     */
     readonly resourcePatternTypeFilter?: pulumi.Input<string>;
+    /**
+     * The type of resource. Valid values are `Unknown`,
+     * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+     */
     readonly resourceType?: pulumi.Input<string>;
 }
 
@@ -120,14 +189,38 @@ export interface AclState {
  * The set of arguments for constructing a Acl resource.
  */
 export interface AclArgs {
+    /**
+     * Host from which principal listed in `aclPrincipal`
+     * will have access.
+     */
     readonly aclHost: pulumi.Input<string>;
+    /**
+     * Operation that is being allowed or denied. Valid
+     * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+     * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+     */
     readonly aclOperation: pulumi.Input<string>;
+    /**
+     * Type of permission. Valid values are `Unknown`,
+     * `Any`, `Allow`, `Deny`.
+     */
     readonly aclPermissionType: pulumi.Input<string>;
+    /**
+     * Principal that is being allowed or denied.
+     */
     readonly aclPrincipal: pulumi.Input<string>;
     /**
-     * The name of the resouce
+     * The name of the resource.
      */
     readonly resourceName: pulumi.Input<string>;
+    /**
+     * The pattern filter. Valid values
+     * are `Prefixed`, `Any`, `Match`, `Literal`.
+     */
     readonly resourcePatternTypeFilter?: pulumi.Input<string>;
+    /**
+     * The type of resource. Valid values are `Unknown`,
+     * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+     */
     readonly resourceType: pulumi.Input<string>;
 }

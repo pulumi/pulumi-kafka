@@ -13,14 +13,29 @@ func GetBootstrapServers(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:bootstrapServers")
 }
 
+// CA certificate file to validate the server's certificate.
+func GetCaCert(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:caCert")
+}
+
 // Path to a CA certificate file to validate the server's certificate.
 func GetCaCertFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:caCertFile")
 }
 
+// The client certificate.
+func GetClientCert(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:clientCert")
+}
+
 // Path to a file containing the client certificate.
 func GetClientCertFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:clientCertFile")
+}
+
+// The private key that the certificate was issued for.
+func GetClientKey(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:clientKey")
 }
 
 // Path to a file containing the private key that the certificate was issued for.

@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A resource for managing Kafka topics. Increases partition count without destroying the topic.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
 type Topic struct {
 	s *pulumi.ResourceState
 }
@@ -78,12 +81,12 @@ func (r *Topic) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Number of partitions.
+// The number of partitions the topic should have.
 func (r *Topic) Partitions() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["partitions"])
 }
 
-// Number of replicas.
+// The number of replicas the topic should have.
 func (r *Topic) ReplicationFactor() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["replicationFactor"])
 }
@@ -94,9 +97,9 @@ type TopicState struct {
 	Config interface{}
 	// The name of the topic.
 	Name interface{}
-	// Number of partitions.
+	// The number of partitions the topic should have.
 	Partitions interface{}
-	// Number of replicas.
+	// The number of replicas the topic should have.
 	ReplicationFactor interface{}
 }
 
@@ -106,8 +109,8 @@ type TopicArgs struct {
 	Config interface{}
 	// The name of the topic.
 	Name interface{}
-	// Number of partitions.
+	// The number of partitions the topic should have.
 	Partitions interface{}
-	// Number of replicas.
+	// The number of replicas the topic should have.
 	ReplicationFactor interface{}
 }

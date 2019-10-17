@@ -11,13 +11,25 @@ let __config = new pulumi.Config("kafka");
  */
 export let bootstrapServers: string[] | undefined = __config.getObject<string[]>("bootstrapServers");
 /**
+ * CA certificate file to validate the server's certificate.
+ */
+export let caCert: string | undefined = __config.get("caCert");
+/**
  * Path to a CA certificate file to validate the server's certificate.
  */
 export let caCertFile: string | undefined = __config.get("caCertFile");
 /**
+ * The client certificate.
+ */
+export let clientCert: string | undefined = __config.get("clientCert");
+/**
  * Path to a file containing the client certificate.
  */
 export let clientCertFile: string | undefined = __config.get("clientCertFile");
+/**
+ * The private key that the certificate was issued for.
+ */
+export let clientKey: string | undefined = __config.get("clientKey");
 /**
  * Path to a file containing the private key that the certificate was issued for.
  */

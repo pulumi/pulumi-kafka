@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, bootstrap_servers=None, ca_cert_file=None, client_cert_file=None, client_key_file=None, sasl_mechanism=None, sasl_password=None, sasl_username=None, skip_tls_verify=None, timeout=None, tls_enabled=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bootstrap_servers=None, ca_cert=None, ca_cert_file=None, client_cert=None, client_cert_file=None, client_key=None, client_key_file=None, sasl_mechanism=None, sasl_password=None, sasl_username=None, skip_tls_verify=None, timeout=None, tls_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the kafka package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -42,10 +42,17 @@ class Provider(pulumi.ProviderResource):
             if bootstrap_servers is None:
                 raise TypeError("Missing required property 'bootstrap_servers'")
             __props__['bootstrap_servers'] = pulumi.Output.from_input(bootstrap_servers).apply(json.dumps) if bootstrap_servers is not None else None
+            __props__['ca_cert'] = ca_cert
             __props__['ca_cert_file'] = ca_cert_file
+            if client_cert is None:
+                raise TypeError("Missing required property 'client_cert'")
+            __props__['client_cert'] = client_cert
             if client_cert_file is None:
                 raise TypeError("Missing required property 'client_cert_file'")
             __props__['client_cert_file'] = client_cert_file
+            if client_key is None:
+                raise TypeError("Missing required property 'client_key'")
+            __props__['client_key'] = client_key
             if client_key_file is None:
                 raise TypeError("Missing required property 'client_key_file'")
             __props__['client_key_file'] = client_key_file

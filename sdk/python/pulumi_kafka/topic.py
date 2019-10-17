@@ -11,15 +11,33 @@ from . import utilities, tables
 
 class Topic(pulumi.CustomResource):
     config: pulumi.Output[dict]
+    """
+    A map of string k/v attributes.
+    """
     name: pulumi.Output[str]
+    """
+    The name of the topic.
+    """
     partitions: pulumi.Output[float]
+    """
+    The number of partitions the topic should have.
+    """
     replication_factor: pulumi.Output[float]
+    """
+    The number of replicas the topic should have.
+    """
     def __init__(__self__, resource_name, opts=None, config=None, name=None, partitions=None, replication_factor=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Topic resource with the given unique name, props, and options.
+        A resource for managing Kafka topics. Increases partition count without destroying the topic.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] config: A map of string k/v attributes.
+        :param pulumi.Input[str] name: The name of the topic.
+        :param pulumi.Input[float] partitions: The number of partitions the topic should have.
+        :param pulumi.Input[float] replication_factor: The number of replicas the topic should have.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -61,6 +79,12 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] config: A map of string k/v attributes.
+        :param pulumi.Input[str] name: The name of the topic.
+        :param pulumi.Input[float] partitions: The number of partitions the topic should have.
+        :param pulumi.Input[float] replication_factor: The number of replicas the topic should have.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

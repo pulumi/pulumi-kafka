@@ -83,8 +83,8 @@ github.com/GoogleCloudPlatform/cloudsql-proxy v0.0.0-20190418212003-6ac0b49e7197
 github.com/Jeffail/gabs v1.1.1/go.mod h1:6xMvQMK4k33lb7GUUpaAPh6nKMmemQeg5d4gn7/bOXc=
 github.com/Masterminds/semver v1.4.2/go.mod h1:MB6lktGJrhw8PrUyiEoblNEGEQ+RzHPF078ddwwvV3Y=
 github.com/Microsoft/go-winio v0.4.12/go.mod h1:VhR8bwka0BXejwEJY73c50VrPtXAaKcyvVC4A4RozmA=
-github.com/Mongey/terraform-provider-kafka v0.2.2 h1:BlMpBMpm7NT1O+aY1xCqqNq7OwFMXhpOuxFfSnKiuJk=
-github.com/Mongey/terraform-provider-kafka v0.2.2/go.mod h1:5b/UAd82z6QJJ0YHx8fixQ3OYzc4U4SvmkZPQB93CeM=
+github.com/Mongey/terraform-provider-kafka v0.2.3-0.20191017121936-5e7910ec5835 h1:HEZ8zMJ+1RvxyWzSoOAr4pHJiA6Fimu1ooXn4r0dBE8=
+github.com/Mongey/terraform-provider-kafka v0.2.3-0.20191017121936-5e7910ec5835/go.mod h1:5b/UAd82z6QJJ0YHx8fixQ3OYzc4U4SvmkZPQB93CeM=
 github.com/NYTimes/gziphandler v1.1.1/go.mod h1:n/CVRwUEOgIxrgPvAQhUUr9oeUtvrhMomdKFjzJNB0c=
 github.com/Nvveen/Gotty v0.0.0-20120604004816-cd527374f1e5/go.mod h1:lmUJ/7eu/Q8D7ML55dXQrVaamCz2vxCfdQBasLZfHKk=
 github.com/SAP/go-hdb v0.14.1/go.mod h1:7fdQLVC2lER3urZLjZCm0AuMQfApof92n3aylBPEkMo=

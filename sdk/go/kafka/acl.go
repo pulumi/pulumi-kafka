@@ -8,6 +8,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
+// A resource for managing Kafka ACLs.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
 type Acl struct {
 	s *pulumi.ResourceState
 }
@@ -89,55 +92,91 @@ func (r *Acl) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Host from which principal listed in `aclPrincipal`
+// will have access.
 func (r *Acl) AclHost() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["aclHost"])
 }
 
+// Operation that is being allowed or denied. Valid
+// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 func (r *Acl) AclOperation() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["aclOperation"])
 }
 
+// Type of permission. Valid values are `Unknown`,
+// `Any`, `Allow`, `Deny`.
 func (r *Acl) AclPermissionType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["aclPermissionType"])
 }
 
+// Principal that is being allowed or denied.
 func (r *Acl) AclPrincipal() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["aclPrincipal"])
 }
 
-// The name of the resouce
+// The name of the resource.
 func (r *Acl) ResourceName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["resourceName"])
 }
 
+// The pattern filter. Valid values
+// are `Prefixed`, `Any`, `Match`, `Literal`.
 func (r *Acl) ResourcePatternTypeFilter() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["resourcePatternTypeFilter"])
 }
 
+// The type of resource. Valid values are `Unknown`,
+// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 func (r *Acl) ResourceType() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["resourceType"])
 }
 
 // Input properties used for looking up and filtering Acl resources.
 type AclState struct {
+	// Host from which principal listed in `aclPrincipal`
+	// will have access.
 	AclHost interface{}
+	// Operation that is being allowed or denied. Valid
+	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 	AclOperation interface{}
+	// Type of permission. Valid values are `Unknown`,
+	// `Any`, `Allow`, `Deny`.
 	AclPermissionType interface{}
+	// Principal that is being allowed or denied.
 	AclPrincipal interface{}
-	// The name of the resouce
+	// The name of the resource.
 	ResourceName interface{}
+	// The pattern filter. Valid values
+	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter interface{}
+	// The type of resource. Valid values are `Unknown`,
+	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	ResourceType interface{}
 }
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
+	// Host from which principal listed in `aclPrincipal`
+	// will have access.
 	AclHost interface{}
+	// Operation that is being allowed or denied. Valid
+	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 	AclOperation interface{}
+	// Type of permission. Valid values are `Unknown`,
+	// `Any`, `Allow`, `Deny`.
 	AclPermissionType interface{}
+	// Principal that is being allowed or denied.
 	AclPrincipal interface{}
-	// The name of the resouce
+	// The name of the resource.
 	ResourceName interface{}
+	// The pattern filter. Valid values
+	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter interface{}
+	// The type of resource. Valid values are `Unknown`,
+	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	ResourceType interface{}
 }

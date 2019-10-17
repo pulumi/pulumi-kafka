@@ -16,14 +16,29 @@ bootstrap_servers = __config__.get('bootstrapServers')
 A list of kafka brokers
 """
 
+ca_cert = __config__.get('caCert')
+"""
+CA certificate file to validate the server's certificate.
+"""
+
 ca_cert_file = __config__.get('caCertFile')
 """
 Path to a CA certificate file to validate the server's certificate.
 """
 
+client_cert = __config__.get('clientCert')
+"""
+The client certificate.
+"""
+
 client_cert_file = __config__.get('clientCertFile')
 """
 Path to a file containing the client certificate.
+"""
+
+client_key = __config__.get('clientKey')
+"""
+The private key that the certificate was issued for.
 """
 
 client_key_file = __config__.get('clientKeyFile')
