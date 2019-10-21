@@ -52,6 +52,10 @@ func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig
 	return nil
 }
 
+func tfLicenseTypeRef(license tfbridge.TFProviderLicense) *tfbridge.TFProviderLicense {
+	return &license
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
 	p := kafka.Provider().(*schema.Provider)
@@ -64,6 +68,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:              "Apache-2.0",
 		Homepage:             "https://pulumi.io",
 		Repository:           "https://github.com/pulumi/pulumi-kafka",
+		TFProviderLicense:    tfLicenseTypeRef(tfbridge.MITLicenseType),
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
