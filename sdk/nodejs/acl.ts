@@ -6,24 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * A resource for managing Kafka ACLs.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as kafka from "@pulumi/kafka";
- * 
- * const test = new kafka.Acl("test", {
- *     aclHost: "*",
- *     aclOperation: "Write",
- *     aclPermissionType: "Deny",
- *     aclPrincipal: "User:Alice",
- *     aclResourceName: "syslog",
- *     aclResourceType: "Topic",
- * });
- * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
+ * > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
  */
 export class Acl extends pulumi.CustomResource {
     /**

@@ -10,7 +10,7 @@ import (
 
 // A resource for managing Kafka ACLs.
 //
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
+// > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
 type Acl struct {
 	s *pulumi.ResourceState
 }
