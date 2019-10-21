@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 1.1.1 (2019-10-21)
+* Attribute upstream Terraform provider to Mongey Github Organisation
+
 ## 1.1.0 (2019-10-21)
 * Upgrade to pulumi-terraform-bridge@2018d3659d
 
