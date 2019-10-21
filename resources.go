@@ -18,10 +18,10 @@ import (
 	"unicode"
 
 	"github.com/Mongey/terraform-provider-kafka/kafka"
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/hashicorp/terraform/terraform"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/resource"
 	"github.com/pulumi/pulumi/pkg/tokens"
 )

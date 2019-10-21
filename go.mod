@@ -3,20 +3,12 @@ module github.com/pulumi/pulumi-kafka
 go 1.12
 
 require (
-	cloud.google.com/go/logging v1.0.0 // indirect
-	github.com/Azure/go-autorest/autorest/azure/auth v0.4.0 // indirect
-	github.com/Azure/go-autorest/autorest/to v0.3.0 // indirect
-	github.com/Azure/go-autorest/autorest/validation v0.2.0 // indirect
-	github.com/Mongey/terraform-provider-kafka v0.2.3-0.20191017121936-5e7910ec5835
-	github.com/hashicorp/terraform v0.12.10
+	github.com/Mongey/terraform-provider-kafka v0.2.3-0.20191020203511-f188c53e3581
+	github.com/apparentlymart/go-dump v0.0.0-20190214190832-042adf3cf4a0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk v1.1.1
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.3.0
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190905205929-ed0b5c29edd1
-	github.com/stretchr/testify v1.4.0 // indirect
-	github.com/ulikunitz/xz v0.5.6 // indirect
-)
-
-replace (
-	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
+	github.com/pulumi/pulumi v1.3.4
+	github.com/pulumi/pulumi-terraform-bridge v1.0.1-0.20191017100050-d20316fac53d
+	github.com/vmihailenco/msgpack v4.0.1+incompatible // indirect
+	github.com/xanzy/ssh-agent v0.2.1 // indirect
 )

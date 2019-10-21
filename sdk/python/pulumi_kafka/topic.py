@@ -37,7 +37,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[float] partitions: The number of partitions the topic should have.
         :param pulumi.Input[float] replication_factor: The number of replicas the topic should have.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
+        > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,7 +84,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[float] partitions: The number of partitions the topic should have.
         :param pulumi.Input[float] replication_factor: The number of replicas the topic should have.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
+        > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -10,7 +10,7 @@ import (
 
 // A resource for managing Kafka topics. Increases partition count without destroying the topic.
 //
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
+// > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
 type Topic struct {
 	s *pulumi.ResourceState
 }

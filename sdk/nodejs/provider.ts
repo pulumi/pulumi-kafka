@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * construction to achieve fine-grained programmatic control over provider settings. See the
  * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/index.html.markdown.
+ * > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/index.html.markdown.
  */
 export class Provider extends pulumi.ProviderResource {
     /** @internal */

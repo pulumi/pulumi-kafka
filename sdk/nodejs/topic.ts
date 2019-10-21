@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
+ * > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
  */
 export class Topic extends pulumi.CustomResource {
     /**
