@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Add support for DotNet SDK Generation
+_(none)_
 
 ---
+
+## 1.2.0 (2019-11-15)
+* Add support for DotNet SDK Generation
 
 ## 1.1.1 (2019-10-21)
 * Attribute upstream Terraform provider to Mongey Github Organisation
