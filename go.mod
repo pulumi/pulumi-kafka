@@ -11,4 +11,5 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge v1.2.1-0.20191030115615-68f8d85120cb
 	github.com/vmihailenco/msgpack v4.0.1+incompatible // indirect
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
+	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 )
