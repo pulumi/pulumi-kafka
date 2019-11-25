@@ -62,33 +62,33 @@ func GetTopic(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Topic) URN() *pulumi.URNOutput {
+func (r *Topic) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Topic) ID() *pulumi.IDOutput {
+func (r *Topic) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A map of string k/v attributes.
-func (r *Topic) Config() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["config"])
+func (r *Topic) Config() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["config"])
 }
 
 // The name of the topic.
-func (r *Topic) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Topic) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The number of partitions the topic should have.
-func (r *Topic) Partitions() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["partitions"])
+func (r *Topic) Partitions() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["partitions"])
 }
 
 // The number of replicas the topic should have.
-func (r *Topic) ReplicationFactor() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["replicationFactor"])
+func (r *Topic) ReplicationFactor() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["replicationFactor"])
 }
 
 // Input properties used for looking up and filtering Topic resources.
