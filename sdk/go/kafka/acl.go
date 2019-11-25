@@ -83,54 +83,54 @@ func GetAcl(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Acl) URN() *pulumi.URNOutput {
+func (r *Acl) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Acl) ID() *pulumi.IDOutput {
+func (r *Acl) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Host from which principal listed in `aclPrincipal`
 // will have access.
-func (r *Acl) AclHost() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclHost"])
+func (r *Acl) AclHost() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclHost"])
 }
 
 // Operation that is being allowed or denied. Valid
 // values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
 // `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-func (r *Acl) AclOperation() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclOperation"])
+func (r *Acl) AclOperation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclOperation"])
 }
 
 // Type of permission. Valid values are `Unknown`,
 // `Any`, `Allow`, `Deny`.
-func (r *Acl) AclPermissionType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclPermissionType"])
+func (r *Acl) AclPermissionType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclPermissionType"])
 }
 
 // Principal that is being allowed or denied.
-func (r *Acl) AclPrincipal() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclPrincipal"])
+func (r *Acl) AclPrincipal() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclPrincipal"])
 }
 
 // The name of the resource.
-func (r *Acl) AclResourceName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclResourceName"])
+func (r *Acl) AclResourceName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclResourceName"])
 }
 
 // The pattern filter. Valid values
 // are `Prefixed`, `Any`, `Match`, `Literal`.
-func (r *Acl) ResourcePatternTypeFilter() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["resourcePatternTypeFilter"])
+func (r *Acl) ResourcePatternTypeFilter() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["resourcePatternTypeFilter"])
 }
 
 // The type of resource. Valid values are `Unknown`,
 // `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-func (r *Acl) AclResourceType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aclResourceType"])
+func (r *Acl) AclResourceType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aclResourceType"])
 }
 
 // Input properties used for looking up and filtering Acl resources.

@@ -7,9 +7,10 @@ require (
 	github.com/apparentlymart/go-dump v0.0.0-20190214190832-042adf3cf4a0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.1.1
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.3.4
-	github.com/pulumi/pulumi-terraform-bridge v1.2.1-0.20191030115615-68f8d85120cb
+	github.com/pulumi/pulumi v1.6.0
+	github.com/pulumi/pulumi-terraform-bridge v1.4.2
 	github.com/vmihailenco/msgpack v4.0.1+incompatible // indirect
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
-	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 )
+
+replace github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible

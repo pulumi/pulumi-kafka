@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Kafka.Config
+namespace Pulumi.Kafka
 {
     public static class Config
     {
