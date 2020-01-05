@@ -41,24 +41,6 @@ export class Provider extends pulumi.ProviderResource {
             if (!args || args.bootstrapServers === undefined) {
                 throw new Error("Missing required property 'bootstrapServers'");
             }
-            if (!args || args.clientCert === undefined) {
-                throw new Error("Missing required property 'clientCert'");
-            }
-            if (!args || args.clientCertFile === undefined) {
-                throw new Error("Missing required property 'clientCertFile'");
-            }
-            if (!args || args.clientKey === undefined) {
-                throw new Error("Missing required property 'clientKey'");
-            }
-            if (!args || args.clientKeyFile === undefined) {
-                throw new Error("Missing required property 'clientKeyFile'");
-            }
-            if (!args || args.saslPassword === undefined) {
-                throw new Error("Missing required property 'saslPassword'");
-            }
-            if (!args || args.saslUsername === undefined) {
-                throw new Error("Missing required property 'saslUsername'");
-            }
             inputs["bootstrapServers"] = pulumi.output(args ? args.bootstrapServers : undefined).apply(JSON.stringify);
             inputs["caCert"] = args ? args.caCert : undefined;
             inputs["caCertFile"] = args ? args.caCertFile : undefined;
@@ -103,19 +85,19 @@ export interface ProviderArgs {
     /**
      * The client certificate.
      */
-    readonly clientCert: pulumi.Input<string>;
+    readonly clientCert?: pulumi.Input<string>;
     /**
      * Path to a file containing the client certificate.
      */
-    readonly clientCertFile: pulumi.Input<string>;
+    readonly clientCertFile?: pulumi.Input<string>;
     /**
      * The private key that the certificate was issued for.
      */
-    readonly clientKey: pulumi.Input<string>;
+    readonly clientKey?: pulumi.Input<string>;
     /**
      * Path to a file containing the private key that the certificate was issued for.
      */
-    readonly clientKeyFile: pulumi.Input<string>;
+    readonly clientKeyFile?: pulumi.Input<string>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256
      */
@@ -123,11 +105,11 @@ export interface ProviderArgs {
     /**
      * Password for SASL authentication.
      */
-    readonly saslPassword: pulumi.Input<string>;
+    readonly saslPassword?: pulumi.Input<string>;
     /**
      * Username for SASL authentication.
      */
-    readonly saslUsername: pulumi.Input<string>;
+    readonly saslUsername?: pulumi.Input<string>;
     /**
      * Set this to true only if the target Kafka server is an insecure development instance.
      */

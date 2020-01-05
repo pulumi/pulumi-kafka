@@ -72,26 +72,26 @@ namespace Pulumi.Kafka
         /// <summary>
         /// The client certificate.
         /// </summary>
-        [Input("clientCert", required: true)]
-        public Input<string> ClientCert { get; set; } = null!;
+        [Input("clientCert")]
+        public Input<string>? ClientCert { get; set; }
 
         /// <summary>
         /// Path to a file containing the client certificate.
         /// </summary>
-        [Input("clientCertFile", required: true)]
-        public Input<string> ClientCertFile { get; set; } = null!;
+        [Input("clientCertFile")]
+        public Input<string>? ClientCertFile { get; set; }
 
         /// <summary>
         /// The private key that the certificate was issued for.
         /// </summary>
-        [Input("clientKey", required: true)]
-        public Input<string> ClientKey { get; set; } = null!;
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
 
         /// <summary>
         /// Path to a file containing the private key that the certificate was issued for.
         /// </summary>
-        [Input("clientKeyFile", required: true)]
-        public Input<string> ClientKeyFile { get; set; } = null!;
+        [Input("clientKeyFile")]
+        public Input<string>? ClientKeyFile { get; set; }
 
         /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256
@@ -102,14 +102,14 @@ namespace Pulumi.Kafka
         /// <summary>
         /// Password for SASL authentication.
         /// </summary>
-        [Input("saslPassword", required: true)]
-        public Input<string> SaslPassword { get; set; } = null!;
+        [Input("saslPassword")]
+        public Input<string>? SaslPassword { get; set; }
 
         /// <summary>
         /// Username for SASL authentication.
         /// </summary>
-        [Input("saslUsername", required: true)]
-        public Input<string> SaslUsername { get; set; } = null!;
+        [Input("saslUsername")]
+        public Input<string>? SaslUsername { get; set; }
 
         /// <summary>
         /// Set this to true only if the target Kafka server is an insecure development instance.

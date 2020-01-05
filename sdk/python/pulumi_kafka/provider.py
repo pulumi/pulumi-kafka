@@ -44,24 +44,12 @@ class Provider(pulumi.ProviderResource):
             __props__['bootstrap_servers'] = pulumi.Output.from_input(bootstrap_servers).apply(json.dumps) if bootstrap_servers is not None else None
             __props__['ca_cert'] = ca_cert
             __props__['ca_cert_file'] = ca_cert_file
-            if client_cert is None:
-                raise TypeError("Missing required property 'client_cert'")
             __props__['client_cert'] = client_cert
-            if client_cert_file is None:
-                raise TypeError("Missing required property 'client_cert_file'")
             __props__['client_cert_file'] = client_cert_file
-            if client_key is None:
-                raise TypeError("Missing required property 'client_key'")
             __props__['client_key'] = client_key
-            if client_key_file is None:
-                raise TypeError("Missing required property 'client_key_file'")
             __props__['client_key_file'] = client_key_file
             __props__['sasl_mechanism'] = sasl_mechanism
-            if sasl_password is None:
-                raise TypeError("Missing required property 'sasl_password'")
             __props__['sasl_password'] = sasl_password
-            if sasl_username is None:
-                raise TypeError("Missing required property 'sasl_username'")
             __props__['sasl_username'] = sasl_username
             __props__['skip_tls_verify'] = pulumi.Output.from_input(skip_tls_verify).apply(json.dumps) if skip_tls_verify is not None else None
             __props__['timeout'] = pulumi.Output.from_input(timeout).apply(json.dumps) if timeout is not None else None
