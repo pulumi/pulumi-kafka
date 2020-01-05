@@ -42,17 +42,33 @@ class Provider(pulumi.ProviderResource):
             if bootstrap_servers is None:
                 raise TypeError("Missing required property 'bootstrap_servers'")
             __props__['bootstrap_servers'] = pulumi.Output.from_input(bootstrap_servers).apply(json.dumps) if bootstrap_servers is not None else None
+            if ca_cert is None:
+                ca_cert = utilities.get_env('KAFKA_CA_CERT')
             __props__['ca_cert'] = ca_cert
             __props__['ca_cert_file'] = ca_cert_file
+            if client_cert is None:
+                client_cert = utilities.get_env('KAFKA_CLIENT_CERT')
             __props__['client_cert'] = client_cert
             __props__['client_cert_file'] = client_cert_file
+            if client_key is None:
+                client_key = utilities.get_env('KAFKA_CLIENT_KEY')
             __props__['client_key'] = client_key
             __props__['client_key_file'] = client_key_file
+            if sasl_mechanism is None:
+                sasl_mechanism = (utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
             __props__['sasl_mechanism'] = sasl_mechanism
+            if sasl_password is None:
+                sasl_password = utilities.get_env('KAFKA_SASL_PASSWORD')
             __props__['sasl_password'] = sasl_password
+            if sasl_username is None:
+                sasl_username = utilities.get_env('KAFKA_SASL_USERNAME')
             __props__['sasl_username'] = sasl_username
+            if skip_tls_verify is None:
+                skip_tls_verify = (utilities.get_env_bool('KAFKA_SKIP_VERIFY') or False)
             __props__['skip_tls_verify'] = pulumi.Output.from_input(skip_tls_verify).apply(json.dumps) if skip_tls_verify is not None else None
             __props__['timeout'] = pulumi.Output.from_input(timeout).apply(json.dumps) if timeout is not None else None
+            if tls_enabled is None:
+                tls_enabled = (utilities.get_env_bool('KAFKA_ENABLE_TLS') or True)
             __props__['tls_enabled'] = pulumi.Output.from_input(tls_enabled).apply(json.dumps) if tls_enabled is not None else None
         super(Provider, __self__).__init__(
             'kafka',

@@ -37,6 +37,7 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	baseJS := base.With(integration.ProgramTestOptions{
 		Config: map[string]string{
 			"kafka:bootstrapServers": "[\"localhost:9092\"]",
+			"kafka:tlsEnabled": "false",
 		},
 		Dependencies: []string{
 			"@pulumi/kafka",

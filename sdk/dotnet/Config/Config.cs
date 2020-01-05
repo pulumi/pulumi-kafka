@@ -17,7 +17,7 @@ namespace Pulumi.Kafka
         /// <summary>
         /// CA certificate file to validate the server's certificate.
         /// </summary>
-        public static string? CaCert { get; set; } = __config.Get("caCert");
+        public static string? CaCert { get; set; } = __config.Get("caCert") ?? Utilities.GetEnv("KAFKA_CA_CERT");
 
         /// <summary>
         /// Path to a CA certificate file to validate the server's certificate.
@@ -27,7 +27,7 @@ namespace Pulumi.Kafka
         /// <summary>
         /// The client certificate.
         /// </summary>
-        public static string? ClientCert { get; set; } = __config.Get("clientCert");
+        public static string? ClientCert { get; set; } = __config.Get("clientCert") ?? Utilities.GetEnv("KAFKA_CLIENT_CERT");
 
         /// <summary>
         /// Path to a file containing the client certificate.
@@ -37,7 +37,7 @@ namespace Pulumi.Kafka
         /// <summary>
         /// The private key that the certificate was issued for.
         /// </summary>
-        public static string? ClientKey { get; set; } = __config.Get("clientKey");
+        public static string? ClientKey { get; set; } = __config.Get("clientKey") ?? Utilities.GetEnv("KAFKA_CLIENT_KEY");
 
         /// <summary>
         /// Path to a file containing the private key that the certificate was issued for.
@@ -47,22 +47,22 @@ namespace Pulumi.Kafka
         /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256
         /// </summary>
-        public static string? SaslMechanism { get; set; } = __config.Get("saslMechanism");
+        public static string? SaslMechanism { get; set; } = __config.Get("saslMechanism") ?? Utilities.GetEnv("KAFKA_SASL_MECHANISM") ?? "plain";
 
         /// <summary>
         /// Password for SASL authentication.
         /// </summary>
-        public static string? SaslPassword { get; set; } = __config.Get("saslPassword");
+        public static string? SaslPassword { get; set; } = __config.Get("saslPassword") ?? Utilities.GetEnv("KAFKA_SASL_PASSWORD");
 
         /// <summary>
         /// Username for SASL authentication.
         /// </summary>
-        public static string? SaslUsername { get; set; } = __config.Get("saslUsername");
+        public static string? SaslUsername { get; set; } = __config.Get("saslUsername") ?? Utilities.GetEnv("KAFKA_SASL_USERNAME");
 
         /// <summary>
         /// Set this to true only if the target Kafka server is an insecure development instance.
         /// </summary>
-        public static bool? SkipTlsVerify { get; set; } = __config.GetBoolean("skipTlsVerify");
+        public static bool? SkipTlsVerify { get; set; } = __config.GetBoolean("skipTlsVerify") ?? Utilities.GetEnvBoolean("KAFKA_SKIP_VERIFY") ?? false;
 
         /// <summary>
         /// Timeout in seconds
@@ -72,7 +72,7 @@ namespace Pulumi.Kafka
         /// <summary>
         /// Enable communication with the Kafka Cluster over TLS.
         /// </summary>
-        public static bool? TlsEnabled { get; set; } = __config.GetBoolean("tlsEnabled");
+        public static bool? TlsEnabled { get; set; } = __config.GetBoolean("tlsEnabled") ?? Utilities.GetEnvBoolean("KAFKA_ENABLE_TLS") ?? true;
 
     }
     namespace ConfigTypes

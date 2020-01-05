@@ -43,7 +43,8 @@ The following configuration points are available:
 * kafka:tlsEnabled - (Optional) Enable communication with the Kafka Cluster over TLS. Default `false`.
 * kafka:saslUsername - (Optional) Username for SASL authentication.
 * kafka:saslPassword - (Optional) Password for SASL authentication.
-* kafka:saslMechanism - (Optional) Mechanism for SASL authentication. Allowed values are `plain`, `scram-sha512` and `scram-sha256`. Default `false`.
+* kafka:saslMechanism - (Optional) Mechanism for SASL authentication. Allowed values are `plain`, `scram-sha512` and `scram-sha256`. Default `plain`.
+* kafka:timeout - (Optional) Timeout in seconds. Default `120`.
 
 ## Reference
 
