@@ -60,16 +60,76 @@ func tfLicenseTypeRef(license tfbridge.TFProviderLicense) *tfbridge.TFProviderLi
 func Provider() tfbridge.ProviderInfo {
 	p := kafka.Provider().(*schema.Provider)
 	prov := tfbridge.ProviderInfo{
-		P:                    p,
-		Name:                 "kafka",
-		GitHubOrg:            "Mongey",
-		Description:          "A Pulumi package for creating and managing Kafka.",
-		Keywords:             []string{"pulumi", "kafka"},
-		License:              "Apache-2.0",
-		Homepage:             "https://pulumi.io",
-		Repository:           "https://github.com/pulumi/pulumi-kafka",
-		TFProviderLicense:    tfLicenseTypeRef(tfbridge.MITLicenseType),
-		Config:               map[string]*tfbridge.SchemaInfo{},
+		P:                 p,
+		Name:              "kafka",
+		GitHubOrg:         "Mongey",
+		Description:       "A Pulumi package for creating and managing Kafka.",
+		Keywords:          []string{"pulumi", "kafka"},
+		License:           "Apache-2.0",
+		Homepage:          "https://pulumi.io",
+		Repository:        "https://github.com/pulumi/pulumi-kafka",
+		TFProviderLicense: tfLicenseTypeRef(tfbridge.MITLicenseType),
+		Config: map[string]*tfbridge.SchemaInfo{
+			"ca_cert": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_CA_CERT",
+					},
+				},
+			},
+			"client_cert": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_CLIENT_CERT",
+					},
+				},
+			},
+			"client_key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_CLIENT_KEY",
+					},
+				},
+			},
+			"sasl_username": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_SASL_USERNAME",
+					},
+				},
+			},
+			"sasl_password": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_SASL_PASSWORD",
+					},
+				},
+			},
+			"sasl_mechanism": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_SASL_MECHANISM",
+					},
+					Value: "plain",
+				},
+			},
+			"skip_tls_verify": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_SKIP_VERIFY",
+					},
+					Value: false,
+				},
+			},
+			"tls_enabled": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_ENABLE_TLS",
+					},
+					Value: true,
+				},
+			},
+		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"kafka_acl": {
@@ -102,7 +162,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.5.0-*",
+				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

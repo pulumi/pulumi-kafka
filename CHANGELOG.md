@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to pulumi-terraform-bridge v1.5.2
+* Upgrade to v0.2.3 of the Kafka Terraform Provider
 
 ---
 

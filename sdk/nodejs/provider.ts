@@ -41,37 +41,19 @@ export class Provider extends pulumi.ProviderResource {
             if (!args || args.bootstrapServers === undefined) {
                 throw new Error("Missing required property 'bootstrapServers'");
             }
-            if (!args || args.clientCert === undefined) {
-                throw new Error("Missing required property 'clientCert'");
-            }
-            if (!args || args.clientCertFile === undefined) {
-                throw new Error("Missing required property 'clientCertFile'");
-            }
-            if (!args || args.clientKey === undefined) {
-                throw new Error("Missing required property 'clientKey'");
-            }
-            if (!args || args.clientKeyFile === undefined) {
-                throw new Error("Missing required property 'clientKeyFile'");
-            }
-            if (!args || args.saslPassword === undefined) {
-                throw new Error("Missing required property 'saslPassword'");
-            }
-            if (!args || args.saslUsername === undefined) {
-                throw new Error("Missing required property 'saslUsername'");
-            }
             inputs["bootstrapServers"] = pulumi.output(args ? args.bootstrapServers : undefined).apply(JSON.stringify);
-            inputs["caCert"] = args ? args.caCert : undefined;
+            inputs["caCert"] = (args ? args.caCert : undefined) || utilities.getEnv("KAFKA_CA_CERT");
             inputs["caCertFile"] = args ? args.caCertFile : undefined;
-            inputs["clientCert"] = args ? args.clientCert : undefined;
+            inputs["clientCert"] = (args ? args.clientCert : undefined) || utilities.getEnv("KAFKA_CLIENT_CERT");
             inputs["clientCertFile"] = args ? args.clientCertFile : undefined;
-            inputs["clientKey"] = args ? args.clientKey : undefined;
+            inputs["clientKey"] = (args ? args.clientKey : undefined) || utilities.getEnv("KAFKA_CLIENT_KEY");
             inputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
-            inputs["saslMechanism"] = args ? args.saslMechanism : undefined;
-            inputs["saslPassword"] = args ? args.saslPassword : undefined;
-            inputs["saslUsername"] = args ? args.saslUsername : undefined;
-            inputs["skipTlsVerify"] = pulumi.output(args ? args.skipTlsVerify : undefined).apply(JSON.stringify);
+            inputs["saslMechanism"] = (args ? args.saslMechanism : undefined) || (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
+            inputs["saslPassword"] = (args ? args.saslPassword : undefined) || utilities.getEnv("KAFKA_SASL_PASSWORD");
+            inputs["saslUsername"] = (args ? args.saslUsername : undefined) || utilities.getEnv("KAFKA_SASL_USERNAME");
+            inputs["skipTlsVerify"] = pulumi.output((args ? args.skipTlsVerify : undefined) || (utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false)).apply(JSON.stringify);
             inputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
-            inputs["tlsEnabled"] = pulumi.output(args ? args.tlsEnabled : undefined).apply(JSON.stringify);
+            inputs["tlsEnabled"] = pulumi.output((args ? args.tlsEnabled : undefined) || (utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true)).apply(JSON.stringify);
         }
         if (!opts) {
             opts = {}
@@ -103,19 +85,19 @@ export interface ProviderArgs {
     /**
      * The client certificate.
      */
-    readonly clientCert: pulumi.Input<string>;
+    readonly clientCert?: pulumi.Input<string>;
     /**
      * Path to a file containing the client certificate.
      */
-    readonly clientCertFile: pulumi.Input<string>;
+    readonly clientCertFile?: pulumi.Input<string>;
     /**
      * The private key that the certificate was issued for.
      */
-    readonly clientKey: pulumi.Input<string>;
+    readonly clientKey?: pulumi.Input<string>;
     /**
      * Path to a file containing the private key that the certificate was issued for.
      */
-    readonly clientKeyFile: pulumi.Input<string>;
+    readonly clientKeyFile?: pulumi.Input<string>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256
      */
@@ -123,11 +105,11 @@ export interface ProviderArgs {
     /**
      * Password for SASL authentication.
      */
-    readonly saslPassword: pulumi.Input<string>;
+    readonly saslPassword?: pulumi.Input<string>;
     /**
      * Username for SASL authentication.
      */
-    readonly saslUsername: pulumi.Input<string>;
+    readonly saslUsername?: pulumi.Input<string>;
     /**
      * Set this to true only if the target Kafka server is an insecure development instance.
      */
