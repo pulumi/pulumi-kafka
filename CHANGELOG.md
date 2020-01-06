@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v1.5.2
-* Upgrade to v0.2.3 of the Kafka Terraform Provider
+_(none)_
 
 ---
+
+## 1.4.0 (2020-01-06)
+* Upgrade to pulumi-terraform-bridge v1.5.2
+* Upgrade to v0.2.3 of the Kafka Terraform Provider
 
 ## 1.3.0 (2019-12-04)
 * Upgrade to support go 1.13.x
