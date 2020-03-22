@@ -11,60 +11,21 @@ from . import utilities, tables
 
 class Acl(pulumi.CustomResource):
     acl_host: pulumi.Output[str]
-    """
-    Host from which principal listed in `acl_principal`
-    will have access.
-    """
     acl_operation: pulumi.Output[str]
-    """
-    Operation that is being allowed or denied. Valid
-    values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-    `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-    """
     acl_permission_type: pulumi.Output[str]
-    """
-    Type of permission. Valid values are `Unknown`,
-    `Any`, `Allow`, `Deny`.
-    """
     acl_principal: pulumi.Output[str]
-    """
-    Principal that is being allowed or denied.
-    """
     acl_resource_name: pulumi.Output[str]
     """
-    The name of the resource.
-    """
-    resource_pattern_type_filter: pulumi.Output[str]
-    """
-    The pattern filter. Valid values
-    are `Prefixed`, `Any`, `Match`, `Literal`.
+    The name of the resouce
     """
     acl_resource_type: pulumi.Output[str]
-    """
-    The type of resource. Valid values are `Unknown`,
-    `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-    """
-    def __init__(__self__, resource_name, opts=None, acl_host=None, acl_operation=None, acl_permission_type=None, acl_principal=None, acl_resource_name=None, resource_pattern_type_filter=None, acl_resource_type=None, __props__=None, __name__=None, __opts__=None):
+    resource_pattern_type_filter: pulumi.Output[str]
+    def __init__(__self__, resource_name, opts=None, acl_host=None, acl_operation=None, acl_permission_type=None, acl_principal=None, acl_resource_name=None, acl_resource_type=None, resource_pattern_type_filter=None, __props__=None, __name__=None, __opts__=None):
         """
-        A resource for managing Kafka ACLs.
-        
+        Create a Acl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_host: Host from which principal listed in `acl_principal`
-               will have access.
-        :param pulumi.Input[str] acl_operation: Operation that is being allowed or denied. Valid
-               values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-               `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-        :param pulumi.Input[str] acl_permission_type: Type of permission. Valid values are `Unknown`,
-               `Any`, `Allow`, `Deny`.
-        :param pulumi.Input[str] acl_principal: Principal that is being allowed or denied.
-        :param pulumi.Input[str] acl_resource_name: The name of the resource.
-        :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
-               are `Prefixed`, `Any`, `Match`, `Literal`.
-        :param pulumi.Input[str] acl_resource_type: The type of resource. Valid values are `Unknown`,
-               `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-
-        > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
+        :param pulumi.Input[str] acl_resource_name: The name of the resouce
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,10 +59,10 @@ class Acl(pulumi.CustomResource):
             if acl_resource_name is None:
                 raise TypeError("Missing required property 'acl_resource_name'")
             __props__['acl_resource_name'] = acl_resource_name
-            __props__['resource_pattern_type_filter'] = resource_pattern_type_filter
             if acl_resource_type is None:
                 raise TypeError("Missing required property 'acl_resource_type'")
             __props__['acl_resource_type'] = acl_resource_type
+            __props__['resource_pattern_type_filter'] = resource_pattern_type_filter
         super(Acl, __self__).__init__(
             'kafka:index/acl:Acl',
             resource_name,
@@ -109,40 +70,27 @@ class Acl(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl_host=None, acl_operation=None, acl_permission_type=None, acl_principal=None, acl_resource_name=None, resource_pattern_type_filter=None, acl_resource_type=None):
+    def get(resource_name, id, opts=None, acl_host=None, acl_operation=None, acl_permission_type=None, acl_principal=None, acl_resource_name=None, acl_resource_type=None, resource_pattern_type_filter=None):
         """
         Get an existing Acl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_host: Host from which principal listed in `acl_principal`
-               will have access.
-        :param pulumi.Input[str] acl_operation: Operation that is being allowed or denied. Valid
-               values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-               `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-        :param pulumi.Input[str] acl_permission_type: Type of permission. Valid values are `Unknown`,
-               `Any`, `Allow`, `Deny`.
-        :param pulumi.Input[str] acl_principal: Principal that is being allowed or denied.
-        :param pulumi.Input[str] acl_resource_name: The name of the resource.
-        :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
-               are `Prefixed`, `Any`, `Match`, `Literal`.
-        :param pulumi.Input[str] acl_resource_type: The type of resource. Valid values are `Unknown`,
-               `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-
-        > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
+        :param pulumi.Input[str] acl_resource_name: The name of the resouce
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["acl_host"] = acl_host
         __props__["acl_operation"] = acl_operation
         __props__["acl_permission_type"] = acl_permission_type
         __props__["acl_principal"] = acl_principal
         __props__["acl_resource_name"] = acl_resource_name
-        __props__["resource_pattern_type_filter"] = resource_pattern_type_filter
         __props__["acl_resource_type"] = acl_resource_type
+        __props__["resource_pattern_type_filter"] = resource_pattern_type_filter
         return Acl(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

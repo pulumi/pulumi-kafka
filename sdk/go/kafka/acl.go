@@ -11,31 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A resource for managing Kafka ACLs.
-// 
-// > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/acl.html.markdown.
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
 	AclHost pulumi.StringOutput `pulumi:"aclHost"`
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 	AclOperation pulumi.StringOutput `pulumi:"aclOperation"`
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
 	AclPermissionType pulumi.StringOutput `pulumi:"aclPermissionType"`
-	// Principal that is being allowed or denied.
 	AclPrincipal pulumi.StringOutput `pulumi:"aclPrincipal"`
-	// The name of the resource.
+	// The name of the resouce
 	AclResourceName pulumi.StringOutput `pulumi:"aclResourceName"`
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType pulumi.StringOutput `pulumi:"aclResourceType"`
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter pulumi.StringPtrOutput `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -85,48 +70,24 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
 	AclHost *string `pulumi:"aclHost"`
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 	AclOperation *string `pulumi:"aclOperation"`
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
 	AclPermissionType *string `pulumi:"aclPermissionType"`
-	// Principal that is being allowed or denied.
 	AclPrincipal *string `pulumi:"aclPrincipal"`
-	// The name of the resource.
+	// The name of the resouce
 	AclResourceName *string `pulumi:"aclResourceName"`
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType *string `pulumi:"aclResourceType"`
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
 type AclState struct {
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
 	AclHost pulumi.StringPtrInput
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 	AclOperation pulumi.StringPtrInput
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
 	AclPermissionType pulumi.StringPtrInput
-	// Principal that is being allowed or denied.
 	AclPrincipal pulumi.StringPtrInput
-	// The name of the resource.
+	// The name of the resouce
 	AclResourceName pulumi.StringPtrInput
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType pulumi.StringPtrInput
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
@@ -135,49 +96,25 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
 	AclHost string `pulumi:"aclHost"`
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 	AclOperation string `pulumi:"aclOperation"`
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
 	AclPermissionType string `pulumi:"aclPermissionType"`
-	// Principal that is being allowed or denied.
 	AclPrincipal string `pulumi:"aclPrincipal"`
-	// The name of the resource.
+	// The name of the resouce
 	AclResourceName string `pulumi:"aclResourceName"`
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType string `pulumi:"aclResourceType"`
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
 	AclHost pulumi.StringInput
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 	AclOperation pulumi.StringInput
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
 	AclPermissionType pulumi.StringInput
-	// Principal that is being allowed or denied.
 	AclPrincipal pulumi.StringInput
-	// The name of the resource.
+	// The name of the resouce
 	AclResourceName pulumi.StringInput
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType pulumi.StringInput
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
