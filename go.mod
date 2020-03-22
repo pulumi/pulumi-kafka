@@ -7,8 +7,8 @@ require (
 	github.com/apparentlymart/go-dump v0.0.0-20190214190832-042adf3cf4a0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.1.1
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.9.1
-	github.com/pulumi/pulumi-terraform-bridge v1.6.4
+	github.com/pulumi/pulumi v1.12.2-0.20200313044354-8111d33438b9
+	github.com/pulumi/pulumi-terraform-bridge v1.8.2
 	github.com/vmihailenco/msgpack v4.0.1+incompatible // indirect
 	github.com/xanzy/ssh-agent v0.2.1 // indirect
 )
