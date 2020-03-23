@@ -11,5 +11,5 @@ for pkg in __all__:
 
 # Export this package's modules as members:
 from .acl import *
-from .topic import *
 from .provider import *
+from .topic import *

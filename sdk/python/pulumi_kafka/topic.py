@@ -20,24 +20,21 @@ class Topic(pulumi.CustomResource):
     """
     partitions: pulumi.Output[float]
     """
-    The number of partitions the topic should have.
+    Number of partitions.
     """
     replication_factor: pulumi.Output[float]
     """
-    The number of replicas the topic should have.
+    Number of replicas.
     """
     def __init__(__self__, resource_name, opts=None, config=None, name=None, partitions=None, replication_factor=None, __props__=None, __name__=None, __opts__=None):
         """
-        A resource for managing Kafka topics. Increases partition count without destroying the topic.
-        
+        Create a Topic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
-        :param pulumi.Input[float] partitions: The number of partitions the topic should have.
-        :param pulumi.Input[float] replication_factor: The number of replicas the topic should have.
-
-        > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
+        :param pulumi.Input[float] partitions: Number of partitions.
+        :param pulumi.Input[float] replication_factor: Number of replicas.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,20 +72,19 @@ class Topic(pulumi.CustomResource):
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
-        :param pulumi.Input[float] partitions: The number of partitions the topic should have.
-        :param pulumi.Input[float] replication_factor: The number of replicas the topic should have.
-
-        > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
+        :param pulumi.Input[float] partitions: Number of partitions.
+        :param pulumi.Input[float] replication_factor: Number of replicas.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["config"] = config
         __props__["name"] = name
         __props__["partitions"] = partitions

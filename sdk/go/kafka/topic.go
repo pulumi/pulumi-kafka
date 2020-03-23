@@ -11,9 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// A resource for managing Kafka topics. Increases partition count without destroying the topic.
-// 
-// > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/r/topic.html.markdown.
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -21,9 +18,9 @@ type Topic struct {
 	Config pulumi.MapOutput `pulumi:"config"`
 	// The name of the topic.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 }
 
@@ -65,9 +62,9 @@ type topicState struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions *int `pulumi:"partitions"`
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 }
 
@@ -76,9 +73,9 @@ type TopicState struct {
 	Config pulumi.MapInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions pulumi.IntPtrInput
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor pulumi.IntPtrInput
 }
 
@@ -91,9 +88,9 @@ type topicArgs struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions int `pulumi:"partitions"`
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor int `pulumi:"replicationFactor"`
 }
 
@@ -103,9 +100,9 @@ type TopicArgs struct {
 	Config pulumi.MapInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions pulumi.IntInput
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor pulumi.IntInput
 }
 

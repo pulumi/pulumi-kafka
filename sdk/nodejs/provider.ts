@@ -80,6 +80,8 @@ export interface ProviderArgs {
     readonly caCert?: pulumi.Input<string>;
     /**
      * Path to a CA certificate file to validate the server's certificate.
+     * 
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
      */
     readonly caCertFile?: pulumi.Input<string>;
     /**
@@ -88,6 +90,8 @@ export interface ProviderArgs {
     readonly clientCert?: pulumi.Input<string>;
     /**
      * Path to a file containing the client certificate.
+     * 
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
      */
     readonly clientCertFile?: pulumi.Input<string>;
     /**
@@ -96,6 +100,8 @@ export interface ProviderArgs {
     readonly clientKey?: pulumi.Input<string>;
     /**
      * Path to a file containing the private key that the certificate was issued for.
+     * 
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
      */
     readonly clientKeyFile?: pulumi.Input<string>;
     /**

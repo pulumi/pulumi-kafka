@@ -16,11 +16,24 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
-        
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
 
         > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/index.html.markdown.
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] bootstrap_servers: A list of kafka brokers
+        :param pulumi.Input[str] ca_cert: CA certificate file to validate the server's certificate.
+        :param pulumi.Input[str] ca_cert_file: Path to a CA certificate file to validate the server's certificate.
+        :param pulumi.Input[str] client_cert: The client certificate.
+        :param pulumi.Input[str] client_cert_file: Path to a file containing the client certificate.
+        :param pulumi.Input[str] client_key: The private key that the certificate was issued for.
+        :param pulumi.Input[str] client_key_file: Path to a file containing the private key that the certificate was issued for.
+        :param pulumi.Input[str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256
+        :param pulumi.Input[str] sasl_password: Password for SASL authentication.
+        :param pulumi.Input[str] sasl_username: Username for SASL authentication.
+        :param pulumi.Input[bool] skip_tls_verify: Set this to true only if the target Kafka server is an insecure development instance.
+        :param pulumi.Input[float] timeout: Timeout in seconds
+        :param pulumi.Input[bool] tls_enabled: Enable communication with the Kafka Cluster over TLS.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,22 +89,6 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
-    @staticmethod
-    def get(resource_name, id, opts=None):
-        """
-        Get an existing Provider resource's state with the given name, id, and optional extra
-        properties used to qualify the lookup.
-        
-        :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-
-        > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/index.html.markdown.
-        """
-        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
-
-        __props__ = dict()
-        return Provider(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
