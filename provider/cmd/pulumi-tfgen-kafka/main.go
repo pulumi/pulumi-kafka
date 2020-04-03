@@ -12,18 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//go:generate go run ./generate.go
-
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
 
-	kafka "github.com/pulumi/pulumi-kafka"
-	"github.com/pulumi/pulumi-kafka/pkg/version"
+	kafka "github.com/pulumi/pulumi-kafka/provider"
+	"github.com/pulumi/pulumi-kafka/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("kafka", version.Version, kafka.Provider(), pulumiSchema)
+	tfgen.Main("kafka", version.Version, kafka.Provider())
 }
