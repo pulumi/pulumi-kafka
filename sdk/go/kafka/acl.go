@@ -14,13 +14,13 @@ import (
 type Acl struct {
 	pulumi.CustomResourceState
 
-	AclHost pulumi.StringOutput `pulumi:"aclHost"`
-	AclOperation pulumi.StringOutput `pulumi:"aclOperation"`
+	AclHost           pulumi.StringOutput `pulumi:"aclHost"`
+	AclOperation      pulumi.StringOutput `pulumi:"aclOperation"`
 	AclPermissionType pulumi.StringOutput `pulumi:"aclPermissionType"`
-	AclPrincipal pulumi.StringOutput `pulumi:"aclPrincipal"`
+	AclPrincipal      pulumi.StringOutput `pulumi:"aclPrincipal"`
 	// The name of the resouce
-	AclResourceName pulumi.StringOutput `pulumi:"aclResourceName"`
-	AclResourceType pulumi.StringOutput `pulumi:"aclResourceType"`
+	AclResourceName           pulumi.StringOutput    `pulumi:"aclResourceName"`
+	AclResourceType           pulumi.StringOutput    `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter pulumi.StringPtrOutput `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -70,24 +70,24 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	AclHost *string `pulumi:"aclHost"`
-	AclOperation *string `pulumi:"aclOperation"`
+	AclHost           *string `pulumi:"aclHost"`
+	AclOperation      *string `pulumi:"aclOperation"`
 	AclPermissionType *string `pulumi:"aclPermissionType"`
-	AclPrincipal *string `pulumi:"aclPrincipal"`
+	AclPrincipal      *string `pulumi:"aclPrincipal"`
 	// The name of the resouce
-	AclResourceName *string `pulumi:"aclResourceName"`
-	AclResourceType *string `pulumi:"aclResourceType"`
+	AclResourceName           *string `pulumi:"aclResourceName"`
+	AclResourceType           *string `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
 type AclState struct {
-	AclHost pulumi.StringPtrInput
-	AclOperation pulumi.StringPtrInput
+	AclHost           pulumi.StringPtrInput
+	AclOperation      pulumi.StringPtrInput
 	AclPermissionType pulumi.StringPtrInput
-	AclPrincipal pulumi.StringPtrInput
+	AclPrincipal      pulumi.StringPtrInput
 	// The name of the resouce
-	AclResourceName pulumi.StringPtrInput
-	AclResourceType pulumi.StringPtrInput
+	AclResourceName           pulumi.StringPtrInput
+	AclResourceType           pulumi.StringPtrInput
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
@@ -96,29 +96,28 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	AclHost string `pulumi:"aclHost"`
-	AclOperation string `pulumi:"aclOperation"`
+	AclHost           string `pulumi:"aclHost"`
+	AclOperation      string `pulumi:"aclOperation"`
 	AclPermissionType string `pulumi:"aclPermissionType"`
-	AclPrincipal string `pulumi:"aclPrincipal"`
+	AclPrincipal      string `pulumi:"aclPrincipal"`
 	// The name of the resouce
-	AclResourceName string `pulumi:"aclResourceName"`
-	AclResourceType string `pulumi:"aclResourceType"`
+	AclResourceName           string  `pulumi:"aclResourceName"`
+	AclResourceType           string  `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	AclHost pulumi.StringInput
-	AclOperation pulumi.StringInput
+	AclHost           pulumi.StringInput
+	AclOperation      pulumi.StringInput
 	AclPermissionType pulumi.StringInput
-	AclPrincipal pulumi.StringInput
+	AclPrincipal      pulumi.StringInput
 	// The name of the resouce
-	AclResourceName pulumi.StringInput
-	AclResourceType pulumi.StringInput
+	AclResourceName           pulumi.StringInput
+	AclResourceType           pulumi.StringInput
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
 func (AclArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclArgs)(nil)).Elem()
 }
-
