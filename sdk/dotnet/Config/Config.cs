@@ -8,7 +8,6 @@ namespace Pulumi.Kafka
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("kafka");
-
         /// <summary>
         /// A list of kafka brokers
         /// </summary>
@@ -74,8 +73,5 @@ namespace Pulumi.Kafka
         /// </summary>
         public static bool? TlsEnabled { get; set; } = __config.GetBoolean("tlsEnabled") ?? Utilities.GetEnvBoolean("KAFKA_ENABLE_TLS") ?? true;
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

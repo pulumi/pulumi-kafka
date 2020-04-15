@@ -44,7 +44,7 @@ namespace Pulumi.Kafka
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Topic(string name, TopicArgs args, CustomResourceOptions? options = null)
-            : base("kafka:index/topic:Topic", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("kafka:index/topic:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
         {
         }
 

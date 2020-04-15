@@ -29,11 +29,11 @@ namespace Pulumi.Kafka
         [Output("aclResourceName")]
         public Output<string> AclResourceName { get; private set; } = null!;
 
-        [Output("resourcePatternTypeFilter")]
-        public Output<string?> ResourcePatternTypeFilter { get; private set; } = null!;
-
         [Output("aclResourceType")]
         public Output<string> AclResourceType { get; private set; } = null!;
+
+        [Output("resourcePatternTypeFilter")]
+        public Output<string?> ResourcePatternTypeFilter { get; private set; } = null!;
 
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Pulumi.Kafka
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Acl(string name, AclArgs args, CustomResourceOptions? options = null)
-            : base("kafka:index/acl:Acl", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("kafka:index/acl:Acl", name, args ?? new AclArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -99,11 +99,11 @@ namespace Pulumi.Kafka
         [Input("aclResourceName", required: true)]
         public Input<string> AclResourceName { get; set; } = null!;
 
-        [Input("resourcePatternTypeFilter")]
-        public Input<string>? ResourcePatternTypeFilter { get; set; }
-
         [Input("aclResourceType", required: true)]
         public Input<string> AclResourceType { get; set; } = null!;
+
+        [Input("resourcePatternTypeFilter")]
+        public Input<string>? ResourcePatternTypeFilter { get; set; }
 
         public AclArgs()
         {
@@ -130,11 +130,11 @@ namespace Pulumi.Kafka
         [Input("aclResourceName")]
         public Input<string>? AclResourceName { get; set; }
 
-        [Input("resourcePatternTypeFilter")]
-        public Input<string>? ResourcePatternTypeFilter { get; set; }
-
         [Input("aclResourceType")]
         public Input<string>? AclResourceType { get; set; }
+
+        [Input("resourcePatternTypeFilter")]
+        public Input<string>? ResourcePatternTypeFilter { get; set; }
 
         public AclState()
         {
