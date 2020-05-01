@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.2.5 of the Kafka Terraform Provider
+_(none)_
 
 ---
+
+## 2.1.1 (2020-05-01)
+* Upgrade to v0.2.5 of the Kafka Terraform Provider
 
 ## 2.1.0 (2020-04-28)
 * Upgrade to pulumi-terraform-bridge v2.1.0
