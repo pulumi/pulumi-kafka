@@ -16,7 +16,7 @@ class Acl(pulumi.CustomResource):
     acl_principal: pulumi.Output[str]
     acl_resource_name: pulumi.Output[str]
     """
-    The name of the resouce
+    The name of the resource
     """
     acl_resource_type: pulumi.Output[str]
     resource_pattern_type_filter: pulumi.Output[str]
@@ -25,7 +25,7 @@ class Acl(pulumi.CustomResource):
         Create a Acl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_resource_name: The name of the resouce
+        :param pulumi.Input[str] acl_resource_name: The name of the resource
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -78,7 +78,7 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_resource_name: The name of the resouce
+        :param pulumi.Input[str] acl_resource_name: The name of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -36,7 +36,7 @@ export class Acl extends pulumi.CustomResource {
     public readonly aclPermissionType!: pulumi.Output<string>;
     public readonly aclPrincipal!: pulumi.Output<string>;
     /**
-     * The name of the resouce
+     * The name of the resource
      */
     public readonly aclResourceName!: pulumi.Output<string>;
     public readonly resourcePatternTypeFilter!: pulumi.Output<string | undefined>;
@@ -109,7 +109,7 @@ export interface AclState {
     readonly aclPermissionType?: pulumi.Input<string>;
     readonly aclPrincipal?: pulumi.Input<string>;
     /**
-     * The name of the resouce
+     * The name of the resource
      */
     readonly aclResourceName?: pulumi.Input<string>;
     readonly resourcePatternTypeFilter?: pulumi.Input<string>;
@@ -125,7 +125,7 @@ export interface AclArgs {
     readonly aclPermissionType: pulumi.Input<string>;
     readonly aclPrincipal: pulumi.Input<string>;
     /**
-     * The name of the resouce
+     * The name of the resource
      */
     readonly aclResourceName: pulumi.Input<string>;
     readonly resourcePatternTypeFilter?: pulumi.Input<string>;
