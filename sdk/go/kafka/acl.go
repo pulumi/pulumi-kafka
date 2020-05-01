@@ -17,7 +17,7 @@ type Acl struct {
 	AclOperation      pulumi.StringOutput `pulumi:"aclOperation"`
 	AclPermissionType pulumi.StringOutput `pulumi:"aclPermissionType"`
 	AclPrincipal      pulumi.StringOutput `pulumi:"aclPrincipal"`
-	// The name of the resouce
+	// The name of the resource
 	AclResourceName           pulumi.StringOutput    `pulumi:"aclResourceName"`
 	AclResourceType           pulumi.StringOutput    `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter pulumi.StringPtrOutput `pulumi:"resourcePatternTypeFilter"`
@@ -73,7 +73,7 @@ type aclState struct {
 	AclOperation      *string `pulumi:"aclOperation"`
 	AclPermissionType *string `pulumi:"aclPermissionType"`
 	AclPrincipal      *string `pulumi:"aclPrincipal"`
-	// The name of the resouce
+	// The name of the resource
 	AclResourceName           *string `pulumi:"aclResourceName"`
 	AclResourceType           *string `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
@@ -84,7 +84,7 @@ type AclState struct {
 	AclOperation      pulumi.StringPtrInput
 	AclPermissionType pulumi.StringPtrInput
 	AclPrincipal      pulumi.StringPtrInput
-	// The name of the resouce
+	// The name of the resource
 	AclResourceName           pulumi.StringPtrInput
 	AclResourceType           pulumi.StringPtrInput
 	ResourcePatternTypeFilter pulumi.StringPtrInput
@@ -99,7 +99,7 @@ type aclArgs struct {
 	AclOperation      string `pulumi:"aclOperation"`
 	AclPermissionType string `pulumi:"aclPermissionType"`
 	AclPrincipal      string `pulumi:"aclPrincipal"`
-	// The name of the resouce
+	// The name of the resource
 	AclResourceName           string  `pulumi:"aclResourceName"`
 	AclResourceType           string  `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
@@ -111,7 +111,7 @@ type AclArgs struct {
 	AclOperation      pulumi.StringInput
 	AclPermissionType pulumi.StringInput
 	AclPrincipal      pulumi.StringInput
-	// The name of the resouce
+	// The name of the resource
 	AclResourceName           pulumi.StringInput
 	AclResourceType           pulumi.StringInput
 	ResourcePatternTypeFilter pulumi.StringPtrInput

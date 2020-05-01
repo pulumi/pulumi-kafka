@@ -24,7 +24,7 @@ namespace Pulumi.Kafka
         public Output<string> AclPrincipal { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resouce
+        /// The name of the resource
         /// </summary>
         [Output("aclResourceName")]
         public Output<string> AclResourceName { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Kafka
         public Input<string> AclPrincipal { get; set; } = null!;
 
         /// <summary>
-        /// The name of the resouce
+        /// The name of the resource
         /// </summary>
         [Input("aclResourceName", required: true)]
         public Input<string> AclResourceName { get; set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.Kafka
         public Input<string>? AclPrincipal { get; set; }
 
         /// <summary>
-        /// The name of the resouce
+        /// The name of the resource
         /// </summary>
         [Input("aclResourceName")]
         public Input<string>? AclResourceName { get; set; }
