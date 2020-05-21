@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
  * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
- *
- * > This content is derived from https://github.com/Mongey/terraform-provider-kafka/blob/master/website/docs/index.html.markdown.
  */
 export class Provider extends pulumi.ProviderResource {
     /** @internal */
@@ -79,8 +77,18 @@ export interface ProviderArgs {
      */
     readonly caCert?: pulumi.Input<string>;
     /**
-     * Path to a CA certificate file to validate the server's certificate.
-     * 
+     * Path     * 
+ to     * 
+ a     * 
+ CA     * 
+ certificate     * 
+ file     * 
+ to     * 
+ validate     * 
+ the     * 
+ server's     * 
+ certificate.     * 
+
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
      */
     readonly caCertFile?: pulumi.Input<string>;
@@ -89,8 +97,15 @@ export interface ProviderArgs {
      */
     readonly clientCert?: pulumi.Input<string>;
     /**
-     * Path to a file containing the client certificate.
-     * 
+     * Path     * 
+ to     * 
+ a     * 
+ file     * 
+ containing     * 
+ the     * 
+ client     * 
+ certificate.     * 
+
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
      */
     readonly clientCertFile?: pulumi.Input<string>;
@@ -99,8 +114,21 @@ export interface ProviderArgs {
      */
     readonly clientKey?: pulumi.Input<string>;
     /**
-     * Path to a file containing the private key that the certificate was issued for.
-     * 
+     * Path     * 
+ to     * 
+ a     * 
+ file     * 
+ containing     * 
+ the     * 
+ private     * 
+ key     * 
+ that     * 
+ the     * 
+ certificate     * 
+ was     * 
+ issued     * 
+ for.     * 
+
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
      */
     readonly clientKeyFile?: pulumi.Input<string>;
