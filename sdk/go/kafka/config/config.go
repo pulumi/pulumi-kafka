@@ -23,6 +23,8 @@ func GetCaCert(ctx *pulumi.Context) string {
 }
 
 // Path to a CA certificate file to validate the server's certificate.
+//
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
 func GetCaCertFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:caCertFile")
 }
@@ -37,6 +39,8 @@ func GetClientCert(ctx *pulumi.Context) string {
 }
 
 // Path to a file containing the client certificate.
+//
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
 func GetClientCertFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:clientCertFile")
 }
@@ -51,6 +55,8 @@ func GetClientKey(ctx *pulumi.Context) string {
 }
 
 // Path to a file containing the private key that the certificate was issued for.
+//
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
 func GetClientKeyFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:clientKeyFile")
 }

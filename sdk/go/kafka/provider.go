@@ -65,14 +65,20 @@ type providerArgs struct {
 	// CA certificate file to validate the server's certificate.
 	CaCert *string `pulumi:"caCert"`
 	// Path to a CA certificate file to validate the server's certificate.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
 	CaCertFile *string `pulumi:"caCertFile"`
 	// The client certificate.
 	ClientCert *string `pulumi:"clientCert"`
 	// Path to a file containing the client certificate.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
 	ClientCertFile *string `pulumi:"clientCertFile"`
 	// The private key that the certificate was issued for.
 	ClientKey *string `pulumi:"clientKey"`
 	// Path to a file containing the private key that the certificate was issued for.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
 	ClientKeyFile *string `pulumi:"clientKeyFile"`
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256
 	SaslMechanism *string `pulumi:"saslMechanism"`
@@ -95,14 +101,20 @@ type ProviderArgs struct {
 	// CA certificate file to validate the server's certificate.
 	CaCert pulumi.StringPtrInput
 	// Path to a CA certificate file to validate the server's certificate.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
 	CaCertFile pulumi.StringPtrInput
 	// The client certificate.
 	ClientCert pulumi.StringPtrInput
 	// Path to a file containing the client certificate.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
 	ClientCertFile pulumi.StringPtrInput
 	// The private key that the certificate was issued for.
 	ClientKey pulumi.StringPtrInput
 	// Path to a file containing the private key that the certificate was issued for.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
 	ClientKeyFile pulumi.StringPtrInput
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256
 	SaslMechanism pulumi.StringPtrInput
