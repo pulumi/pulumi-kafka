@@ -2,9 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.2.6 of the Kafka Terraform Provider
+_(none)_
 
 ---
+
+## 2.2.0 (2020-06-11)
+* Upgrade to v0.2.6 of the Kafka Terraform Provider
+* Switch to GitHub actions for build
 
 ## 2.1.3 (2020-05-28)
 * Upgrade to Pulumi v2.3.0
