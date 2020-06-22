@@ -93,6 +93,12 @@ namespace Pulumi.Kafka
         public Input<string>? ClientKeyFile { get; set; }
 
         /// <summary>
+        /// The passphrase for the private key that the certificate was issued for.
+        /// </summary>
+        [Input("clientKeyPassphrase")]
+        public Input<string>? ClientKeyPassphrase { get; set; }
+
+        /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256
         /// </summary>
         [Input("saslMechanism")]

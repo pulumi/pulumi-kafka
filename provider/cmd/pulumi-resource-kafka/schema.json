@@ -63,6 +63,10 @@
                 "description": "Path to a file containing the private key that the certificate was issued for.\n",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_key` instead."
             },
+            "clientKeyPassphrase": {
+                "type": "string",
+                "description": "The passphrase for the private key that the certificate was issued for.\n"
+            },
             "saslMechanism": {
                 "type": "string",
                 "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256\n",
@@ -171,6 +175,10 @@
                 "type": "string",
                 "description": "Path to a file containing the private key that the certificate was issued for.\n",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_key` instead."
+            },
+            "clientKeyPassphrase": {
+                "type": "string",
+                "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
             "saslMechanism": {
                 "type": "string",

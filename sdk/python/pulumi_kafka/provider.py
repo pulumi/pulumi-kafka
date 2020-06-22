@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, bootstrap_servers=None, ca_cert=None, ca_cert_file=None, client_cert=None, client_cert_file=None, client_key=None, client_key_file=None, sasl_mechanism=None, sasl_password=None, sasl_username=None, skip_tls_verify=None, timeout=None, tls_enabled=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, bootstrap_servers=None, ca_cert=None, ca_cert_file=None, client_cert=None, client_cert_file=None, client_key=None, client_key_file=None, client_key_passphrase=None, sasl_mechanism=None, sasl_password=None, sasl_username=None, skip_tls_verify=None, timeout=None, tls_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the kafka package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -26,6 +26,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_cert_file: Path to a file containing the client certificate.
         :param pulumi.Input[str] client_key: The private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_file: Path to a file containing the private key that the certificate was issued for.
+        :param pulumi.Input[str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
         :param pulumi.Input[str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256
         :param pulumi.Input[str] sasl_password: Password for SASL authentication.
         :param pulumi.Input[str] sasl_username: Username for SASL authentication.
@@ -65,6 +66,7 @@ class Provider(pulumi.ProviderResource):
                 client_key = utilities.get_env('KAFKA_CLIENT_KEY')
             __props__['client_key'] = client_key
             __props__['client_key_file'] = client_key_file
+            __props__['client_key_passphrase'] = client_key_passphrase
             if sasl_mechanism is None:
                 sasl_mechanism = (utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
             __props__['sasl_mechanism'] = sasl_mechanism
