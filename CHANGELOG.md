@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.2.6 of the Kafka Terraform Provider
+_(none)_
 
 ---
+
+## 2.2.1 (2020-06-23)
+* Upgrade to v0.2.7 of the Kafka Terraform Provider
 
 ## 2.2.0 (2020-06-11)
 * Upgrade to v0.2.6 of the Kafka Terraform Provider
