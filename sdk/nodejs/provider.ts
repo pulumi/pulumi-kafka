@@ -46,6 +46,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["clientCertFile"] = args ? args.clientCertFile : undefined;
             inputs["clientKey"] = (args ? args.clientKey : undefined) || utilities.getEnv("KAFKA_CLIENT_KEY");
             inputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
+            inputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
             inputs["saslMechanism"] = (args ? args.saslMechanism : undefined) || (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
             inputs["saslPassword"] = (args ? args.saslPassword : undefined) || utilities.getEnv("KAFKA_SASL_PASSWORD");
             inputs["saslUsername"] = (args ? args.saslUsername : undefined) || utilities.getEnv("KAFKA_SASL_USERNAME");
@@ -132,6 +133,10 @@ export interface ProviderArgs {
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
      */
     readonly clientKeyFile?: pulumi.Input<string>;
+    /**
+     * The passphrase for the private key that the certificate was issued for.
+     */
+    readonly clientKeyPassphrase?: pulumi.Input<string>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256
      */

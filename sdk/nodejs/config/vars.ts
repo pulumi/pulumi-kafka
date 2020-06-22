@@ -35,6 +35,10 @@ export let clientKey: string | undefined = __config.get("clientKey") || utilitie
  */
 export let clientKeyFile: string | undefined = __config.get("clientKeyFile");
 /**
+ * The passphrase for the private key that the certificate was issued for.
+ */
+export let clientKeyPassphrase: string | undefined = __config.get("clientKeyPassphrase");
+/**
  * SASL mechanism, can be plain, scram-sha512, scram-sha256
  */
 export let saslMechanism: string | undefined = __config.get("saslMechanism") || (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");

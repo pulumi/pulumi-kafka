@@ -80,6 +80,8 @@ type providerArgs struct {
 	//
 	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
 	ClientKeyFile *string `pulumi:"clientKeyFile"`
+	// The passphrase for the private key that the certificate was issued for.
+	ClientKeyPassphrase *string `pulumi:"clientKeyPassphrase"`
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256
 	SaslMechanism *string `pulumi:"saslMechanism"`
 	// Password for SASL authentication.
@@ -116,6 +118,8 @@ type ProviderArgs struct {
 	//
 	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
 	ClientKeyFile pulumi.StringPtrInput
+	// The passphrase for the private key that the certificate was issued for.
+	ClientKeyPassphrase pulumi.StringPtrInput
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256
 	SaslMechanism pulumi.StringPtrInput
 	// Password for SASL authentication.

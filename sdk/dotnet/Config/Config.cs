@@ -44,6 +44,11 @@ namespace Pulumi.Kafka
         public static string? ClientKeyFile { get; set; } = __config.Get("clientKeyFile");
 
         /// <summary>
+        /// The passphrase for the private key that the certificate was issued for.
+        /// </summary>
+        public static string? ClientKeyPassphrase { get; set; } = __config.Get("clientKeyPassphrase");
+
+        /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256
         /// </summary>
         public static string? SaslMechanism { get; set; } = __config.Get("saslMechanism") ?? Utilities.GetEnv("KAFKA_SASL_MECHANISM") ?? "plain";

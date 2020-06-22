@@ -46,6 +46,11 @@ client_key_file = __config__.get('clientKeyFile')
 Path to a file containing the private key that the certificate was issued for.
 """
 
+client_key_passphrase = __config__.get('clientKeyPassphrase')
+"""
+The passphrase for the private key that the certificate was issued for.
+"""
+
 sasl_mechanism = __config__.get('saslMechanism') or (utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
 """
 SASL mechanism, can be plain, scram-sha512, scram-sha256

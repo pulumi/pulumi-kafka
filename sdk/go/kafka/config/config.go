@@ -61,6 +61,11 @@ func GetClientKeyFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:clientKeyFile")
 }
 
+// The passphrase for the private key that the certificate was issued for.
+func GetClientKeyPassphrase(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:clientKeyPassphrase")
+}
+
 // SASL mechanism, can be plain, scram-sha512, scram-sha256
 func GetSaslMechanism(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "kafka:saslMechanism")
