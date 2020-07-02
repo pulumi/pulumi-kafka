@@ -7,5 +7,5 @@ export * from "./provider";
 export * from "./topic";
 
 // Export sub-modules:
-import * as config from "./config/index";
+import * as config from "./config";
 export {config};

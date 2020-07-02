@@ -53,7 +53,7 @@ export let saslUsername: string | undefined = __config.get("saslUsername") || ut
 /**
  * Set this to true only if the target Kafka server is an insecure development instance.
  */
-export let skipTlsVerify: boolean | undefined = __config.getObject<boolean>("skipTlsVerify") || (utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false);
+export let skipTlsVerify: boolean | undefined = __config.getObject<boolean>("skipTlsVerify") || (<any>utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false);
 /**
  * Timeout in seconds
  */
@@ -61,4 +61,4 @@ export let timeout: number | undefined = __config.getObject<number>("timeout");
 /**
  * Enable communication with the Kafka Cluster over TLS.
  */
-export let tlsEnabled: boolean | undefined = __config.getObject<boolean>("tlsEnabled") || (utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true);
+export let tlsEnabled: boolean | undefined = __config.getObject<boolean>("tlsEnabled") || (<any>utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true);
