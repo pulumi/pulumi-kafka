@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+
 class Provider(pulumi.ProviderResource):
     def __init__(__self__, resource_name, opts=None, bootstrap_servers=None, ca_cert=None, ca_cert_file=None, client_cert=None, client_cert_file=None, client_key=None, client_key_file=None, client_key_passphrase=None, sasl_mechanism=None, sasl_password=None, sasl_username=None, skip_tls_verify=None, timeout=None, tls_enabled=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -57,14 +58,23 @@ class Provider(pulumi.ProviderResource):
             if ca_cert is None:
                 ca_cert = utilities.get_env('KAFKA_CA_CERT')
             __props__['ca_cert'] = ca_cert
+            if ca_cert_file is not None:
+                warnings.warn("This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.", DeprecationWarning)
+                pulumi.log.warn("ca_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.")
             __props__['ca_cert_file'] = ca_cert_file
             if client_cert is None:
                 client_cert = utilities.get_env('KAFKA_CLIENT_CERT')
             __props__['client_cert'] = client_cert
+            if client_cert_file is not None:
+                warnings.warn("This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.", DeprecationWarning)
+                pulumi.log.warn("client_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.")
             __props__['client_cert_file'] = client_cert_file
             if client_key is None:
                 client_key = utilities.get_env('KAFKA_CLIENT_KEY')
             __props__['client_key'] = client_key
+            if client_key_file is not None:
+                warnings.warn("This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.", DeprecationWarning)
+                pulumi.log.warn("client_key_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.")
             __props__['client_key_file'] = client_key_file
             __props__['client_key_passphrase'] = client_key_passphrase
             if sasl_mechanism is None:
@@ -94,4 +104,3 @@ class Provider(pulumi.ProviderResource):
 
     def translate_input_property(self, prop):
         return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
-
