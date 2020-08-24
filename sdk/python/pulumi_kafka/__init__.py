@@ -6,3 +6,8 @@
 from .acl import *
 from .provider import *
 from .topic import *
+
+# Make subpackages available:
+from . import (
+    config,
+)
