@@ -5,33 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Topic']
 
 
 class Topic(pulumi.CustomResource):
-    config: pulumi.Output[dict]
-    """
-    A map of string k/v attributes.
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the topic.
-    """
-    partitions: pulumi.Output[float]
-    """
-    Number of partitions.
-    """
-    replication_factor: pulumi.Output[float]
-    """
-    Number of replicas.
-    """
-    def __init__(__self__, resource_name, opts=None, config=None, name=None, partitions=None, replication_factor=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 partitions: Optional[pulumi.Input[float]] = None,
+                 replication_factor: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a Topic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[float] partitions: Number of partitions.
         :param pulumi.Input[float] replication_factor: Number of replicas.
@@ -47,7 +42,7 @@ class Topic(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -68,15 +63,21 @@ class Topic(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, config=None, name=None, partitions=None, replication_factor=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            partitions: Optional[pulumi.Input[float]] = None,
+            replication_factor: Optional[pulumi.Input[float]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[float] partitions: Number of partitions.
         :param pulumi.Input[float] replication_factor: Number of replicas.
@@ -91,8 +92,41 @@ class Topic(pulumi.CustomResource):
         __props__["replication_factor"] = replication_factor
         return Topic(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[Mapping[str, Any]]:
+        """
+        A map of string k/v attributes.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the topic.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> float:
+        """
+        Number of partitions.
+        """
+        return pulumi.get(self, "partitions")
+
+    @property
+    @pulumi.getter(name="replicationFactor")
+    def replication_factor(self) -> float:
+        """
+        Number of replicas.
+        """
+        return pulumi.get(self, "replication_factor")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

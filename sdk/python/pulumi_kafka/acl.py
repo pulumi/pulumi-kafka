@@ -5,22 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Acl']
 
 
 class Acl(pulumi.CustomResource):
-    acl_host: pulumi.Output[str]
-    acl_operation: pulumi.Output[str]
-    acl_permission_type: pulumi.Output[str]
-    acl_principal: pulumi.Output[str]
-    acl_resource_name: pulumi.Output[str]
-    """
-    The name of the resource
-    """
-    acl_resource_type: pulumi.Output[str]
-    resource_pattern_type_filter: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, acl_host=None, acl_operation=None, acl_permission_type=None, acl_principal=None, acl_resource_name=None, acl_resource_type=None, resource_pattern_type_filter=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_host: Optional[pulumi.Input[str]] = None,
+                 acl_operation: Optional[pulumi.Input[str]] = None,
+                 acl_permission_type: Optional[pulumi.Input[str]] = None,
+                 acl_principal: Optional[pulumi.Input[str]] = None,
+                 acl_resource_name: Optional[pulumi.Input[str]] = None,
+                 acl_resource_type: Optional[pulumi.Input[str]] = None,
+                 resource_pattern_type_filter: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Create a Acl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
@@ -38,7 +42,7 @@ class Acl(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -70,13 +74,22 @@ class Acl(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, acl_host=None, acl_operation=None, acl_permission_type=None, acl_principal=None, acl_resource_name=None, acl_resource_type=None, resource_pattern_type_filter=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_host: Optional[pulumi.Input[str]] = None,
+            acl_operation: Optional[pulumi.Input[str]] = None,
+            acl_permission_type: Optional[pulumi.Input[str]] = None,
+            acl_principal: Optional[pulumi.Input[str]] = None,
+            acl_resource_name: Optional[pulumi.Input[str]] = None,
+            acl_resource_type: Optional[pulumi.Input[str]] = None,
+            resource_pattern_type_filter: Optional[pulumi.Input[str]] = None) -> 'Acl':
         """
         Get an existing Acl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_resource_name: The name of the resource
         """
@@ -93,8 +106,47 @@ class Acl(pulumi.CustomResource):
         __props__["resource_pattern_type_filter"] = resource_pattern_type_filter
         return Acl(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="aclHost")
+    def acl_host(self) -> str:
+        return pulumi.get(self, "acl_host")
+
+    @property
+    @pulumi.getter(name="aclOperation")
+    def acl_operation(self) -> str:
+        return pulumi.get(self, "acl_operation")
+
+    @property
+    @pulumi.getter(name="aclPermissionType")
+    def acl_permission_type(self) -> str:
+        return pulumi.get(self, "acl_permission_type")
+
+    @property
+    @pulumi.getter(name="aclPrincipal")
+    def acl_principal(self) -> str:
+        return pulumi.get(self, "acl_principal")
+
+    @property
+    @pulumi.getter(name="aclResourceName")
+    def acl_resource_name(self) -> str:
+        """
+        The name of the resource
+        """
+        return pulumi.get(self, "acl_resource_name")
+
+    @property
+    @pulumi.getter(name="aclResourceType")
+    def acl_resource_type(self) -> str:
+        return pulumi.get(self, "acl_resource_type")
+
+    @property
+    @pulumi.getter(name="resourcePatternTypeFilter")
+    def resource_pattern_type_filter(self) -> Optional[str]:
+        return pulumi.get(self, "resource_pattern_type_filter")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

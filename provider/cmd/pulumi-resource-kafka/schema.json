@@ -438,8 +438,9 @@
         "python": {
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-kafka)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-kafka` repo](https://github.com/pulumi/pulumi-kafka/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`Mongey/terraform-provider-kafka` repo](https://github.com/Mongey/terraform-provider-kafka/issues).",
             "requires": {
-                "pulumi": "\u003e=2.0.0,\u003c3.0.0"
-            }
+                "pulumi": "\u003e=2.9.0,\u003c3.0.0"
+            },
+            "usesIOClasses": true
         }
     }
 }
