@@ -14,7 +14,7 @@ __all__ = ['Provider']
 
 class Provider(pulumi.ProviderResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bootstrap_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  ca_cert: Optional[pulumi.Input[str]] = None,
