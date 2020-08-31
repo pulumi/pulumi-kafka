@@ -13,7 +13,7 @@ __all__ = ['Topic']
 
 class Topic(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[Mapping[str, Any]]:
+    def config(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         A map of string k/v attributes.
         """
@@ -102,7 +102,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the topic.
         """
@@ -110,7 +110,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def partitions(self) -> float:
+    def partitions(self) -> pulumi.Output[float]:
         """
         Number of partitions.
         """
@@ -118,7 +118,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicationFactor")
-    def replication_factor(self) -> float:
+    def replication_factor(self) -> pulumi.Output[float]:
         """
         Number of replicas.
         """

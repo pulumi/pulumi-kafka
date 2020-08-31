@@ -13,7 +13,7 @@ __all__ = ['Acl']
 
 class Acl(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_host: Optional[pulumi.Input[str]] = None,
                  acl_operation: Optional[pulumi.Input[str]] = None,
@@ -108,27 +108,27 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclHost")
-    def acl_host(self) -> str:
+    def acl_host(self) -> pulumi.Output[str]:
         return pulumi.get(self, "acl_host")
 
     @property
     @pulumi.getter(name="aclOperation")
-    def acl_operation(self) -> str:
+    def acl_operation(self) -> pulumi.Output[str]:
         return pulumi.get(self, "acl_operation")
 
     @property
     @pulumi.getter(name="aclPermissionType")
-    def acl_permission_type(self) -> str:
+    def acl_permission_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "acl_permission_type")
 
     @property
     @pulumi.getter(name="aclPrincipal")
-    def acl_principal(self) -> str:
+    def acl_principal(self) -> pulumi.Output[str]:
         return pulumi.get(self, "acl_principal")
 
     @property
     @pulumi.getter(name="aclResourceName")
-    def acl_resource_name(self) -> str:
+    def acl_resource_name(self) -> pulumi.Output[str]:
         """
         The name of the resource
         """
@@ -136,12 +136,12 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclResourceType")
-    def acl_resource_type(self) -> str:
+    def acl_resource_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "acl_resource_type")
 
     @property
     @pulumi.getter(name="resourcePatternTypeFilter")
-    def resource_pattern_type_filter(self) -> Optional[str]:
+    def resource_pattern_type_filter(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "resource_pattern_type_filter")
 
     def translate_output_property(self, prop):
