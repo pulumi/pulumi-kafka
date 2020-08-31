@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.7.3
-* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
+_(none)_
 
 ---
+
+## 2.3.0 (2020-08-31)
+* Upgrade to pulumi-terraform-bridge v2.7.3
+* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
 
 ## 2.2.3 (2020-08-14)
 * Upgrade to v0.2.10 of the Kafka Terraform Provider
