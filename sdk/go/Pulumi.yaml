@@ -1,3 +1,0 @@
-name: kafka
-description: A Pulumi resource provider for kafka.
-language: go
