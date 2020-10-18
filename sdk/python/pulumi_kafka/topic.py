@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Topic']
@@ -17,8 +17,8 @@ class Topic(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 partitions: Optional[pulumi.Input[float]] = None,
-                 replication_factor: Optional[pulumi.Input[float]] = None,
+                 partitions: Optional[pulumi.Input[int]] = None,
+                 replication_factor: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -28,8 +28,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
-        :param pulumi.Input[float] partitions: Number of partitions.
-        :param pulumi.Input[float] replication_factor: Number of replicas.
+        :param pulumi.Input[int] partitions: Number of partitions.
+        :param pulumi.Input[int] replication_factor: Number of replicas.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -68,8 +68,8 @@ class Topic(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            partitions: Optional[pulumi.Input[float]] = None,
-            replication_factor: Optional[pulumi.Input[float]] = None) -> 'Topic':
+            partitions: Optional[pulumi.Input[int]] = None,
+            replication_factor: Optional[pulumi.Input[int]] = None) -> 'Topic':
         """
         Get an existing Topic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -79,8 +79,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
-        :param pulumi.Input[float] partitions: Number of partitions.
-        :param pulumi.Input[float] replication_factor: Number of replicas.
+        :param pulumi.Input[int] partitions: Number of partitions.
+        :param pulumi.Input[int] replication_factor: Number of replicas.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -110,7 +110,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def partitions(self) -> pulumi.Output[float]:
+    def partitions(self) -> pulumi.Output[int]:
         """
         Number of partitions.
         """
@@ -118,7 +118,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replicationFactor")
-    def replication_factor(self) -> pulumi.Output[float]:
+    def replication_factor(self) -> pulumi.Output[int]:
         """
         Number of replicas.
         """
