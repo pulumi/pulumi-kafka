@@ -4,6 +4,7 @@
 package kafka
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -119,4 +120,43 @@ type AclArgs struct {
 
 func (AclArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclArgs)(nil)).Elem()
+}
+
+type AclInput interface {
+	pulumi.Input
+
+	ToAclOutput() AclOutput
+	ToAclOutputWithContext(ctx context.Context) AclOutput
+}
+
+func (Acl) ElementType() reflect.Type {
+	return reflect.TypeOf((*Acl)(nil)).Elem()
+}
+
+func (i Acl) ToAclOutput() AclOutput {
+	return i.ToAclOutputWithContext(context.Background())
+}
+
+func (i Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AclOutput)
+}
+
+type AclOutput struct {
+	*pulumi.OutputState
+}
+
+func (AclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AclOutput)(nil)).Elem()
+}
+
+func (o AclOutput) ToAclOutput() AclOutput {
+	return o
+}
+
+func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AclOutput{})
 }
