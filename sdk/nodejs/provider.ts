@@ -36,7 +36,7 @@ export class Provider extends pulumi.ProviderResource {
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            if (!args || args.bootstrapServers === undefined) {
+            if ((!args || args.bootstrapServers === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bootstrapServers'");
             }
             inputs["bootstrapServers"] = pulumi.output(args ? args.bootstrapServers : undefined).apply(JSON.stringify);
