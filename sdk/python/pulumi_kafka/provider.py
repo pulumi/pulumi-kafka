@@ -72,27 +72,27 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bootstrap_servers is None:
+            if bootstrap_servers is None and not opts.urn:
                 raise TypeError("Missing required property 'bootstrap_servers'")
             __props__['bootstrap_servers'] = pulumi.Output.from_input(bootstrap_servers).apply(pulumi.runtime.to_json) if bootstrap_servers is not None else None
             if ca_cert is None:
                 ca_cert = _utilities.get_env('KAFKA_CA_CERT')
             __props__['ca_cert'] = ca_cert
-            if ca_cert_file is not None:
+            if ca_cert_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""", DeprecationWarning)
                 pulumi.log.warn("ca_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.")
             __props__['ca_cert_file'] = ca_cert_file
             if client_cert is None:
                 client_cert = _utilities.get_env('KAFKA_CLIENT_CERT')
             __props__['client_cert'] = client_cert
-            if client_cert_file is not None:
+            if client_cert_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""", DeprecationWarning)
                 pulumi.log.warn("client_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.")
             __props__['client_cert_file'] = client_cert_file
             if client_key is None:
                 client_key = _utilities.get_env('KAFKA_CLIENT_KEY')
             __props__['client_key'] = client_key
-            if client_key_file is not None:
+            if client_key_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""", DeprecationWarning)
                 pulumi.log.warn("client_key_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.")
             __props__['client_key_file'] = client_key_file

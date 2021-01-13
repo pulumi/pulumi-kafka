@@ -4,6 +4,33 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * A resource for managing Kafka topics. Increases partition count without destroying the topic.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const logs = new kafka.Topic("logs", {
+ *     config: {
+ *         "cleanup.policy": "compact",
+ *         "segment.ms": "20000",
+ *     },
+ *     partitions: 100,
+ *     replicationFactor: 2,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Topics can be imported using their ARN, e.g.
+ *
+ * ```sh
+ *  $ pulumi import kafka:index/topic:Topic logs systemd_logs
+ * ```
+ */
 export class Topic extends pulumi.CustomResource {
     /**
      * Get an existing Topic resource's state with the given name, ID, and optional extra
@@ -41,11 +68,11 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Number of partitions.
+     * The number of partitions the topic should have.
      */
     public readonly partitions!: pulumi.Output<number>;
     /**
-     * Number of replicas.
+     * The number of replicas the topic should have.
      */
     public readonly replicationFactor!: pulumi.Output<number>;
 
@@ -67,10 +94,10 @@ export class Topic extends pulumi.CustomResource {
             inputs["replicationFactor"] = state ? state.replicationFactor : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if (!args || args.partitions === undefined) {
+            if ((!args || args.partitions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'partitions'");
             }
-            if (!args || args.replicationFactor === undefined) {
+            if ((!args || args.replicationFactor === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'replicationFactor'");
             }
             inputs["config"] = args ? args.config : undefined;
@@ -102,11 +129,11 @@ export interface TopicState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Number of partitions.
+     * The number of partitions the topic should have.
      */
     readonly partitions?: pulumi.Input<number>;
     /**
-     * Number of replicas.
+     * The number of replicas the topic should have.
      */
     readonly replicationFactor?: pulumi.Input<number>;
 }
@@ -124,11 +151,11 @@ export interface TopicArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Number of partitions.
+     * The number of partitions the topic should have.
      */
     readonly partitions: pulumi.Input<number>;
     /**
-     * Number of replicas.
+     * The number of replicas the topic should have.
      */
     readonly replicationFactor: pulumi.Input<number>;
 }

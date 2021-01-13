@@ -26,10 +26,38 @@ class Acl(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Acl resource with the given unique name, props, and options.
+        A resource for managing Kafka ACLs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        test = kafka.Acl("test",
+            acl_resource_name="syslog",
+            acl_resource_type="Topic",
+            acl_principal="User:Alice",
+            acl_host="*",
+            acl_operation="Write",
+            acl_permission_type="Deny")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_resource_name: The name of the resource
+        :param pulumi.Input[str] acl_host: Host from which principal listed in `acl_principal`
+               will have access.
+        :param pulumi.Input[str] acl_operation: Operation that is being allowed or denied. Valid
+               values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+               `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+        :param pulumi.Input[str] acl_permission_type: Type of permission. Valid values are `Unknown`,
+               `Any`, `Allow`, `Deny`.
+        :param pulumi.Input[str] acl_principal: Principal that is being allowed or denied.
+        :param pulumi.Input[str] acl_resource_name: The name of the resource.
+        :param pulumi.Input[str] acl_resource_type: The type of resource. Valid values are `Unknown`,
+               `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+        :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
+               are `Prefixed`, `Any`, `Match`, `Literal`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -48,22 +76,22 @@ class Acl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if acl_host is None:
+            if acl_host is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_host'")
             __props__['acl_host'] = acl_host
-            if acl_operation is None:
+            if acl_operation is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_operation'")
             __props__['acl_operation'] = acl_operation
-            if acl_permission_type is None:
+            if acl_permission_type is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_permission_type'")
             __props__['acl_permission_type'] = acl_permission_type
-            if acl_principal is None:
+            if acl_principal is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_principal'")
             __props__['acl_principal'] = acl_principal
-            if acl_resource_name is None:
+            if acl_resource_name is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_resource_name'")
             __props__['acl_resource_name'] = acl_resource_name
-            if acl_resource_type is None:
+            if acl_resource_type is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_resource_type'")
             __props__['acl_resource_type'] = acl_resource_type
             __props__['resource_pattern_type_filter'] = resource_pattern_type_filter
@@ -91,7 +119,19 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] acl_resource_name: The name of the resource
+        :param pulumi.Input[str] acl_host: Host from which principal listed in `acl_principal`
+               will have access.
+        :param pulumi.Input[str] acl_operation: Operation that is being allowed or denied. Valid
+               values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+               `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+        :param pulumi.Input[str] acl_permission_type: Type of permission. Valid values are `Unknown`,
+               `Any`, `Allow`, `Deny`.
+        :param pulumi.Input[str] acl_principal: Principal that is being allowed or denied.
+        :param pulumi.Input[str] acl_resource_name: The name of the resource.
+        :param pulumi.Input[str] acl_resource_type: The type of resource. Valid values are `Unknown`,
+               `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+        :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
+               are `Prefixed`, `Any`, `Match`, `Literal`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -109,39 +149,63 @@ class Acl(pulumi.CustomResource):
     @property
     @pulumi.getter(name="aclHost")
     def acl_host(self) -> pulumi.Output[str]:
+        """
+        Host from which principal listed in `acl_principal`
+        will have access.
+        """
         return pulumi.get(self, "acl_host")
 
     @property
     @pulumi.getter(name="aclOperation")
     def acl_operation(self) -> pulumi.Output[str]:
+        """
+        Operation that is being allowed or denied. Valid
+        values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+        `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+        """
         return pulumi.get(self, "acl_operation")
 
     @property
     @pulumi.getter(name="aclPermissionType")
     def acl_permission_type(self) -> pulumi.Output[str]:
+        """
+        Type of permission. Valid values are `Unknown`,
+        `Any`, `Allow`, `Deny`.
+        """
         return pulumi.get(self, "acl_permission_type")
 
     @property
     @pulumi.getter(name="aclPrincipal")
     def acl_principal(self) -> pulumi.Output[str]:
+        """
+        Principal that is being allowed or denied.
+        """
         return pulumi.get(self, "acl_principal")
 
     @property
     @pulumi.getter(name="aclResourceName")
     def acl_resource_name(self) -> pulumi.Output[str]:
         """
-        The name of the resource
+        The name of the resource.
         """
         return pulumi.get(self, "acl_resource_name")
 
     @property
     @pulumi.getter(name="aclResourceType")
     def acl_resource_type(self) -> pulumi.Output[str]:
+        """
+        The type of resource. Valid values are `Unknown`,
+        `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+        """
         return pulumi.get(self, "acl_resource_type")
 
     @property
     @pulumi.getter(name="resourcePatternTypeFilter")
     def resource_pattern_type_filter(self) -> pulumi.Output[Optional[str]]:
+        """
+        The pattern filter. Valid values
+        are `Prefixed`, `Any`, `Match`, `Literal`.
+        """
         return pulumi.get(self, "resource_pattern_type_filter")
 
     def translate_output_property(self, prop):

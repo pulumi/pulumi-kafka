@@ -22,11 +22,12 @@ type Provider struct {
 // NewProvider registers a new resource with the given unique name, arguments, and options.
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
-	if args == nil || args.BootstrapServers == nil {
-		return nil, errors.New("missing required argument 'BootstrapServers'")
-	}
 	if args == nil {
-		args = &ProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BootstrapServers == nil {
+		return nil, errors.New("invalid value for required argument 'BootstrapServers'")
 	}
 	if args.CaCert == nil {
 		args.CaCert = pulumi.StringPtr(getEnvOrDefault("", nil, "KAFKA_CA_CERT").(string))

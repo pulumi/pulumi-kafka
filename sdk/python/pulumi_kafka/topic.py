@@ -23,13 +23,37 @@ class Topic(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Topic resource with the given unique name, props, and options.
+        A resource for managing Kafka topics. Increases partition count without destroying the topic.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        logs = kafka.Topic("logs",
+            config={
+                "cleanup.policy": "compact",
+                "segment.ms": "20000",
+            },
+            partitions=100,
+            replication_factor=2)
+        ```
+
+        ## Import
+
+        Topics can be imported using their ARN, e.g.
+
+        ```sh
+         $ pulumi import kafka:index/topic:Topic logs systemd_logs
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
-        :param pulumi.Input[int] partitions: Number of partitions.
-        :param pulumi.Input[int] replication_factor: Number of replicas.
+        :param pulumi.Input[int] partitions: The number of partitions the topic should have.
+        :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -50,10 +74,10 @@ class Topic(pulumi.CustomResource):
 
             __props__['config'] = config
             __props__['name'] = name
-            if partitions is None:
+            if partitions is None and not opts.urn:
                 raise TypeError("Missing required property 'partitions'")
             __props__['partitions'] = partitions
-            if replication_factor is None:
+            if replication_factor is None and not opts.urn:
                 raise TypeError("Missing required property 'replication_factor'")
             __props__['replication_factor'] = replication_factor
         super(Topic, __self__).__init__(
@@ -79,8 +103,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
-        :param pulumi.Input[int] partitions: Number of partitions.
-        :param pulumi.Input[int] replication_factor: Number of replicas.
+        :param pulumi.Input[int] partitions: The number of partitions the topic should have.
+        :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -112,7 +136,7 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter
     def partitions(self) -> pulumi.Output[int]:
         """
-        Number of partitions.
+        The number of partitions the topic should have.
         """
         return pulumi.get(self, "partitions")
 
@@ -120,7 +144,7 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> pulumi.Output[int]:
         """
-        Number of replicas.
+        The number of replicas the topic should have.
         """
         return pulumi.get(self, "replication_factor")
 
