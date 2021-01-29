@@ -48,7 +48,7 @@ setup(name='pulumi_kafka',
       packages=find_packages(),
       package_data={
           'pulumi_kafka': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[
