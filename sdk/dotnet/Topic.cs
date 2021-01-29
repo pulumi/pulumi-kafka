@@ -45,6 +45,7 @@ namespace Pulumi.Kafka
     ///  $ pulumi import kafka:index/topic:Topic logs systemd_logs
     /// ```
     /// </summary>
+    [KafkaResourceType("kafka:index/topic:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>

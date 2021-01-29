@@ -77,4 +77,11 @@ namespace Pulumi.Kafka
             }
         }
     }
+
+    internal sealed class KafkaResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public KafkaResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

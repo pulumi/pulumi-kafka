@@ -36,6 +36,7 @@ namespace Pulumi.Kafka
     /// }
     /// ```
     /// </summary>
+    [KafkaResourceType("kafka:index/acl:Acl")]
     public partial class Acl : Pulumi.CustomResource
     {
         /// <summary>
