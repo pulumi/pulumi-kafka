@@ -35,31 +35,28 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            if ((!args || args.bootstrapServers === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bootstrapServers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bootstrapServers'");
             }
             inputs["bootstrapServers"] = pulumi.output(args ? args.bootstrapServers : undefined).apply(JSON.stringify);
-            inputs["caCert"] = (args ? args.caCert : undefined) || utilities.getEnv("KAFKA_CA_CERT");
+            inputs["caCert"] = args ? args.caCert : undefined;
             inputs["caCertFile"] = args ? args.caCertFile : undefined;
-            inputs["clientCert"] = (args ? args.clientCert : undefined) || utilities.getEnv("KAFKA_CLIENT_CERT");
+            inputs["clientCert"] = args ? args.clientCert : undefined;
             inputs["clientCertFile"] = args ? args.clientCertFile : undefined;
-            inputs["clientKey"] = (args ? args.clientKey : undefined) || utilities.getEnv("KAFKA_CLIENT_KEY");
+            inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
             inputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
             inputs["saslMechanism"] = (args ? args.saslMechanism : undefined) || (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
-            inputs["saslPassword"] = (args ? args.saslPassword : undefined) || utilities.getEnv("KAFKA_SASL_PASSWORD");
-            inputs["saslUsername"] = (args ? args.saslUsername : undefined) || utilities.getEnv("KAFKA_SASL_USERNAME");
+            inputs["saslPassword"] = args ? args.saslPassword : undefined;
+            inputs["saslUsername"] = args ? args.saslUsername : undefined;
             inputs["skipTlsVerify"] = pulumi.output((args ? args.skipTlsVerify : undefined) || (<any>utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false)).apply(JSON.stringify);
             inputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
             inputs["tlsEnabled"] = pulumi.output((args ? args.tlsEnabled : undefined) || (<any>utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true)).apply(JSON.stringify);
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

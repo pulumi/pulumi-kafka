@@ -15,11 +15,7 @@ func GetBootstrapServers(ctx *pulumi.Context) string {
 
 // CA certificate file to validate the server's certificate.
 func GetCaCert(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "kafka:caCert")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "KAFKA_CA_CERT").(string)
+	return config.Get(ctx, "kafka:caCert")
 }
 
 // Path to a CA certificate file to validate the server's certificate.
@@ -31,11 +27,7 @@ func GetCaCertFile(ctx *pulumi.Context) string {
 
 // The client certificate.
 func GetClientCert(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "kafka:clientCert")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "KAFKA_CLIENT_CERT").(string)
+	return config.Get(ctx, "kafka:clientCert")
 }
 
 // Path to a file containing the client certificate.
@@ -47,11 +39,7 @@ func GetClientCertFile(ctx *pulumi.Context) string {
 
 // The private key that the certificate was issued for.
 func GetClientKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "kafka:clientKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "KAFKA_CLIENT_KEY").(string)
+	return config.Get(ctx, "kafka:clientKey")
 }
 
 // Path to a file containing the private key that the certificate was issued for.
@@ -77,20 +65,12 @@ func GetSaslMechanism(ctx *pulumi.Context) string {
 
 // Password for SASL authentication.
 func GetSaslPassword(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "kafka:saslPassword")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "KAFKA_SASL_PASSWORD").(string)
+	return config.Get(ctx, "kafka:saslPassword")
 }
 
 // Username for SASL authentication.
 func GetSaslUsername(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "kafka:saslUsername")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "KAFKA_SASL_USERNAME").(string)
+	return config.Get(ctx, "kafka:saslUsername")
 }
 
 // Set this to true only if the target Kafka server is an insecure development instance.

@@ -96,7 +96,8 @@ export class Acl extends pulumi.CustomResource {
     constructor(name: string, args: AclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclArgs | AclState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AclState | undefined;
             inputs["aclHost"] = state ? state.aclHost : undefined;
             inputs["aclOperation"] = state ? state.aclOperation : undefined;
@@ -107,22 +108,22 @@ export class Acl extends pulumi.CustomResource {
             inputs["resourcePatternTypeFilter"] = state ? state.resourcePatternTypeFilter : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            if ((!args || args.aclHost === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclHost === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclHost'");
             }
-            if ((!args || args.aclOperation === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclOperation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclOperation'");
             }
-            if ((!args || args.aclPermissionType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclPermissionType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclPermissionType'");
             }
-            if ((!args || args.aclPrincipal === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclPrincipal === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclPrincipal'");
             }
-            if ((!args || args.aclResourceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclResourceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclResourceName'");
             }
-            if ((!args || args.aclResourceType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.aclResourceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclResourceType'");
             }
             inputs["aclHost"] = args ? args.aclHost : undefined;
@@ -133,12 +134,8 @@ export class Acl extends pulumi.CustomResource {
             inputs["aclResourceType"] = args ? args.aclResourceType : undefined;
             inputs["resourcePatternTypeFilter"] = args ? args.resourcePatternTypeFilter : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Acl.__pulumiType, name, inputs, opts);
     }

@@ -86,7 +86,8 @@ export class Topic extends pulumi.CustomResource {
     constructor(name: string, args: TopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicArgs | TopicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TopicState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -94,10 +95,10 @@ export class Topic extends pulumi.CustomResource {
             inputs["replicationFactor"] = state ? state.replicationFactor : undefined;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.partitions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.partitions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'partitions'");
             }
-            if ((!args || args.replicationFactor === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.replicationFactor === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replicationFactor'");
             }
             inputs["config"] = args ? args.config : undefined;
@@ -105,12 +106,8 @@ export class Topic extends pulumi.CustomResource {
             inputs["partitions"] = args ? args.partitions : undefined;
             inputs["replicationFactor"] = args ? args.replicationFactor : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Topic.__pulumiType, name, inputs, opts);
     }

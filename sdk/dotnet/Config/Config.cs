@@ -16,7 +16,7 @@ namespace Pulumi.Kafka
         /// <summary>
         /// CA certificate file to validate the server's certificate.
         /// </summary>
-        public static string? CaCert { get; set; } = __config.Get("caCert") ?? Utilities.GetEnv("KAFKA_CA_CERT");
+        public static string? CaCert { get; set; } = __config.Get("caCert");
 
         /// <summary>
         /// Path to a CA certificate file to validate the server's certificate.
@@ -26,7 +26,7 @@ namespace Pulumi.Kafka
         /// <summary>
         /// The client certificate.
         /// </summary>
-        public static string? ClientCert { get; set; } = __config.Get("clientCert") ?? Utilities.GetEnv("KAFKA_CLIENT_CERT");
+        public static string? ClientCert { get; set; } = __config.Get("clientCert");
 
         /// <summary>
         /// Path to a file containing the client certificate.
@@ -36,7 +36,7 @@ namespace Pulumi.Kafka
         /// <summary>
         /// The private key that the certificate was issued for.
         /// </summary>
-        public static string? ClientKey { get; set; } = __config.Get("clientKey") ?? Utilities.GetEnv("KAFKA_CLIENT_KEY");
+        public static string? ClientKey { get; set; } = __config.Get("clientKey");
 
         /// <summary>
         /// Path to a file containing the private key that the certificate was issued for.
@@ -56,12 +56,12 @@ namespace Pulumi.Kafka
         /// <summary>
         /// Password for SASL authentication.
         /// </summary>
-        public static string? SaslPassword { get; set; } = __config.Get("saslPassword") ?? Utilities.GetEnv("KAFKA_SASL_PASSWORD");
+        public static string? SaslPassword { get; set; } = __config.Get("saslPassword");
 
         /// <summary>
         /// Username for SASL authentication.
         /// </summary>
-        public static string? SaslUsername { get; set; } = __config.Get("saslUsername") ?? Utilities.GetEnv("KAFKA_SASL_USERNAME");
+        public static string? SaslUsername { get; set; } = __config.Get("saslUsername");
 
         /// <summary>
         /// Set this to true only if the target Kafka server is an insecure development instance.
