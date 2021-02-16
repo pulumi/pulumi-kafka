@@ -29,23 +29,8 @@ func NewProvider(ctx *pulumi.Context,
 	if args.BootstrapServers == nil {
 		return nil, errors.New("invalid value for required argument 'BootstrapServers'")
 	}
-	if args.CaCert == nil {
-		args.CaCert = pulumi.StringPtr(getEnvOrDefault("", nil, "KAFKA_CA_CERT").(string))
-	}
-	if args.ClientCert == nil {
-		args.ClientCert = pulumi.StringPtr(getEnvOrDefault("", nil, "KAFKA_CLIENT_CERT").(string))
-	}
-	if args.ClientKey == nil {
-		args.ClientKey = pulumi.StringPtr(getEnvOrDefault("", nil, "KAFKA_CLIENT_KEY").(string))
-	}
 	if args.SaslMechanism == nil {
 		args.SaslMechanism = pulumi.StringPtr(getEnvOrDefault("plain", nil, "KAFKA_SASL_MECHANISM").(string))
-	}
-	if args.SaslPassword == nil {
-		args.SaslPassword = pulumi.StringPtr(getEnvOrDefault("", nil, "KAFKA_SASL_PASSWORD").(string))
-	}
-	if args.SaslUsername == nil {
-		args.SaslUsername = pulumi.StringPtr(getEnvOrDefault("", nil, "KAFKA_SASL_USERNAME").(string))
 	}
 	if args.SkipTlsVerify == nil {
 		args.SkipTlsVerify = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "KAFKA_SKIP_VERIFY").(bool))
@@ -159,6 +144,35 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i *Provider) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *Provider) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
+type ProviderPtrInput interface {
+	pulumi.Input
+
+	ToProviderPtrOutput() ProviderPtrOutput
+	ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput
+}
+
+type providerPtrType ProviderArgs
+
+func (*providerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (i *providerPtrType) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
 type ProviderOutput struct {
 	*pulumi.OutputState
 }
@@ -175,6 +189,33 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o.ApplyT(func(v Provider) *Provider {
+		return &v
+	}).(ProviderPtrOutput)
+}
+
+type ProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

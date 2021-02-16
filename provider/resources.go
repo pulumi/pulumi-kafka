@@ -73,41 +73,6 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:        "https://github.com/pulumi/pulumi-kafka",
 		TFProviderLicense: tfLicenseTypeRef(tfbridge.MITLicenseType),
 		Config: map[string]*tfbridge.SchemaInfo{
-			"ca_cert": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"KAFKA_CA_CERT",
-					},
-				},
-			},
-			"client_cert": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"KAFKA_CLIENT_CERT",
-					},
-				},
-			},
-			"client_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"KAFKA_CLIENT_KEY",
-					},
-				},
-			},
-			"sasl_username": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"KAFKA_SASL_USERNAME",
-					},
-				},
-			},
-			"sasl_password": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"KAFKA_SASL_PASSWORD",
-					},
-				},
-			},
 			"sasl_mechanism": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{

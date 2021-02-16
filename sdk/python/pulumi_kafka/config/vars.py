@@ -32,7 +32,7 @@ bootstrap_servers = __config__.get('bootstrapServers')
 A list of kafka brokers
 """
 
-ca_cert = __config__.get('caCert') or _utilities.get_env('KAFKA_CA_CERT')
+ca_cert = __config__.get('caCert')
 """
 CA certificate file to validate the server's certificate.
 """
@@ -42,7 +42,7 @@ ca_cert_file = __config__.get('caCertFile')
 Path to a CA certificate file to validate the server's certificate.
 """
 
-client_cert = __config__.get('clientCert') or _utilities.get_env('KAFKA_CLIENT_CERT')
+client_cert = __config__.get('clientCert')
 """
 The client certificate.
 """
@@ -52,7 +52,7 @@ client_cert_file = __config__.get('clientCertFile')
 Path to a file containing the client certificate.
 """
 
-client_key = __config__.get('clientKey') or _utilities.get_env('KAFKA_CLIENT_KEY')
+client_key = __config__.get('clientKey')
 """
 The private key that the certificate was issued for.
 """
@@ -72,12 +72,12 @@ sasl_mechanism = __config__.get('saslMechanism') or (_utilities.get_env('KAFKA_S
 SASL mechanism, can be plain, scram-sha512, scram-sha256
 """
 
-sasl_password = __config__.get('saslPassword') or _utilities.get_env('KAFKA_SASL_PASSWORD')
+sasl_password = __config__.get('saslPassword')
 """
 Password for SASL authentication.
 """
 
-sasl_username = __config__.get('saslUsername') or _utilities.get_env('KAFKA_SASL_USERNAME')
+sasl_username = __config__.get('saslUsername')
 """
 Username for SASL authentication.
 """

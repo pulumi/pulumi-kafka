@@ -137,12 +137,7 @@ namespace Pulumi.Kafka
 
         public ProviderArgs()
         {
-            CaCert = Utilities.GetEnv("KAFKA_CA_CERT");
-            ClientCert = Utilities.GetEnv("KAFKA_CLIENT_CERT");
-            ClientKey = Utilities.GetEnv("KAFKA_CLIENT_KEY");
             SaslMechanism = Utilities.GetEnv("KAFKA_SASL_MECHANISM") ?? "plain";
-            SaslPassword = Utilities.GetEnv("KAFKA_SASL_PASSWORD");
-            SaslUsername = Utilities.GetEnv("KAFKA_SASL_USERNAME");
             SkipTlsVerify = Utilities.GetEnvBoolean("KAFKA_SKIP_VERIFY") ?? false;
             TlsEnabled = Utilities.GetEnvBoolean("KAFKA_ENABLE_TLS") ?? true;
         }
