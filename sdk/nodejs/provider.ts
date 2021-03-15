@@ -48,12 +48,12 @@ export class Provider extends pulumi.ProviderResource {
             inputs["clientKey"] = args ? args.clientKey : undefined;
             inputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
             inputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
-            inputs["saslMechanism"] = (args ? args.saslMechanism : undefined) || (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
+            inputs["saslMechanism"] = (args ? args.saslMechanism : undefined) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
             inputs["saslPassword"] = args ? args.saslPassword : undefined;
             inputs["saslUsername"] = args ? args.saslUsername : undefined;
-            inputs["skipTlsVerify"] = pulumi.output((args ? args.skipTlsVerify : undefined) || (<any>utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false)).apply(JSON.stringify);
+            inputs["skipTlsVerify"] = pulumi.output((args ? args.skipTlsVerify : undefined) ?? (<any>utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false)).apply(JSON.stringify);
             inputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
-            inputs["tlsEnabled"] = pulumi.output((args ? args.tlsEnabled : undefined) || (<any>utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true)).apply(JSON.stringify);
+            inputs["tlsEnabled"] = pulumi.output((args ? args.tlsEnabled : undefined) ?? (<any>utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true)).apply(JSON.stringify);
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
