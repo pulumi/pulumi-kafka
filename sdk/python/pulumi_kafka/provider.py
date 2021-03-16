@@ -78,17 +78,17 @@ class Provider(pulumi.ProviderResource):
             __props__['ca_cert'] = ca_cert
             if ca_cert_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""", DeprecationWarning)
-                pulumi.log.warn("ca_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.")
+                pulumi.log.warn("""ca_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""")
             __props__['ca_cert_file'] = ca_cert_file
             __props__['client_cert'] = client_cert
             if client_cert_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""", DeprecationWarning)
-                pulumi.log.warn("client_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.")
+                pulumi.log.warn("""client_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""")
             __props__['client_cert_file'] = client_cert_file
             __props__['client_key'] = client_key
             if client_key_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""", DeprecationWarning)
-                pulumi.log.warn("client_key_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.")
+                pulumi.log.warn("""client_key_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""")
             __props__['client_key_file'] = client_key_file
             __props__['client_key_passphrase'] = client_key_passphrase
             if sasl_mechanism is None:
