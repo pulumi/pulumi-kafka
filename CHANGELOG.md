@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v0.3.0 of the Kafka Terraform Provider
+* Upgrade to pulumi-terraform-bridge v2.22.1  
+  **Please Note:** This includes a bug fix to the refresh operation regarding arrays
 
 ---
 
