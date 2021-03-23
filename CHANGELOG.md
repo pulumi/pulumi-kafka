@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.6.1 (2021-03-23)
 * Upgrade to v0.3.0 of the Kafka Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.22.1  
   **Please Note:** This includes a bug fix to the refresh operation regarding arrays
-
----
 
 ## 2.6.0 (2021-03-16)
 * Upgrade to pulumi-terraform-bridge v2.21.0
