@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Topic']
+__all__ = ['TopicArgs', 'Topic']
+
+@pulumi.input_type
+class TopicArgs:
+    def __init__(__self__, *,
+                 partitions: pulumi.Input[int],
+                 replication_factor: pulumi.Input[int],
+                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Topic resource.
+        :param pulumi.Input[int] partitions: The number of partitions the topic should have.
+        :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
+        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[str] name: The name of the topic.
+        """
+        pulumi.set(__self__, "partitions", partitions)
+        pulumi.set(__self__, "replication_factor", replication_factor)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> pulumi.Input[int]:
+        """
+        The number of partitions the topic should have.
+        """
+        return pulumi.get(self, "partitions")
+
+    @partitions.setter
+    def partitions(self, value: pulumi.Input[int]):
+        pulumi.set(self, "partitions", value)
+
+    @property
+    @pulumi.getter(name="replicationFactor")
+    def replication_factor(self) -> pulumi.Input[int]:
+        """
+        The number of replicas the topic should have.
+        """
+        return pulumi.get(self, "replication_factor")
+
+    @replication_factor.setter
+    def replication_factor(self, value: pulumi.Input[int]):
+        pulumi.set(self, "replication_factor", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of string k/v attributes.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the topic.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Topic(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +125,60 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[int] partitions: The number of partitions the topic should have.
         :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TopicArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A resource for managing Kafka topics. Increases partition count without destroying the topic.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        logs = kafka.Topic("logs",
+            config={
+                "cleanup.policy": "compact",
+                "segment.ms": "20000",
+            },
+            partitions=100,
+            replication_factor=2)
+        ```
+
+        ## Import
+
+        Topics can be imported using their ARN, e.g.
+
+        ```sh
+         $ pulumi import kafka:index/topic:Topic logs systemd_logs
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TopicArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TopicArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 partitions: Optional[pulumi.Input[int]] = None,
+                 replication_factor: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
