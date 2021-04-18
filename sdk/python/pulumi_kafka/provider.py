@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -360,48 +360,42 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
             if bootstrap_servers is None and not opts.urn:
                 raise TypeError("Missing required property 'bootstrap_servers'")
-            __props__['bootstrap_servers'] = pulumi.Output.from_input(bootstrap_servers).apply(pulumi.runtime.to_json) if bootstrap_servers is not None else None
-            __props__['ca_cert'] = ca_cert
+            __props__.__dict__["bootstrap_servers"] = pulumi.Output.from_input(bootstrap_servers).apply(pulumi.runtime.to_json) if bootstrap_servers is not None else None
+            __props__.__dict__["ca_cert"] = ca_cert
             if ca_cert_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""", DeprecationWarning)
                 pulumi.log.warn("""ca_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""")
-            __props__['ca_cert_file'] = ca_cert_file
-            __props__['client_cert'] = client_cert
+            __props__.__dict__["ca_cert_file"] = ca_cert_file
+            __props__.__dict__["client_cert"] = client_cert
             if client_cert_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""", DeprecationWarning)
                 pulumi.log.warn("""client_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""")
-            __props__['client_cert_file'] = client_cert_file
-            __props__['client_key'] = client_key
+            __props__.__dict__["client_cert_file"] = client_cert_file
+            __props__.__dict__["client_key"] = client_key
             if client_key_file is not None and not opts.urn:
                 warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""", DeprecationWarning)
                 pulumi.log.warn("""client_key_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""")
-            __props__['client_key_file'] = client_key_file
-            __props__['client_key_passphrase'] = client_key_passphrase
+            __props__.__dict__["client_key_file"] = client_key_file
+            __props__.__dict__["client_key_passphrase"] = client_key_passphrase
             if sasl_mechanism is None:
                 sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
-            __props__['sasl_mechanism'] = sasl_mechanism
-            __props__['sasl_password'] = sasl_password
-            __props__['sasl_username'] = sasl_username
+            __props__.__dict__["sasl_mechanism"] = sasl_mechanism
+            __props__.__dict__["sasl_password"] = sasl_password
+            __props__.__dict__["sasl_username"] = sasl_username
             if skip_tls_verify is None:
                 skip_tls_verify = (_utilities.get_env_bool('KAFKA_SKIP_VERIFY') or False)
-            __props__['skip_tls_verify'] = pulumi.Output.from_input(skip_tls_verify).apply(pulumi.runtime.to_json) if skip_tls_verify is not None else None
-            __props__['timeout'] = pulumi.Output.from_input(timeout).apply(pulumi.runtime.to_json) if timeout is not None else None
+            __props__.__dict__["skip_tls_verify"] = pulumi.Output.from_input(skip_tls_verify).apply(pulumi.runtime.to_json) if skip_tls_verify is not None else None
+            __props__.__dict__["timeout"] = pulumi.Output.from_input(timeout).apply(pulumi.runtime.to_json) if timeout is not None else None
             if tls_enabled is None:
                 tls_enabled = (_utilities.get_env_bool('KAFKA_ENABLE_TLS') or True)
-            __props__['tls_enabled'] = pulumi.Output.from_input(tls_enabled).apply(pulumi.runtime.to_json) if tls_enabled is not None else None
+            __props__.__dict__["tls_enabled"] = pulumi.Output.from_input(tls_enabled).apply(pulumi.runtime.to_json) if tls_enabled is not None else None
         super(Provider, __self__).__init__(
             'kafka',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

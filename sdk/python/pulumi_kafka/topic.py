@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
 
@@ -78,6 +78,78 @@ class TopicArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _TopicState:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 partitions: Optional[pulumi.Input[int]] = None,
+                 replication_factor: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering Topic resources.
+        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[str] name: The name of the topic.
+        :param pulumi.Input[int] partitions: The number of partitions the topic should have.
+        :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if partitions is not None:
+            pulumi.set(__self__, "partitions", partitions)
+        if replication_factor is not None:
+            pulumi.set(__self__, "replication_factor", replication_factor)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of string k/v attributes.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the topic.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def partitions(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of partitions the topic should have.
+        """
+        return pulumi.get(self, "partitions")
+
+    @partitions.setter
+    def partitions(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "partitions", value)
+
+    @property
+    @pulumi.getter(name="replicationFactor")
+    def replication_factor(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of replicas the topic should have.
+        """
+        return pulumi.get(self, "replication_factor")
+
+    @replication_factor.setter
+    def replication_factor(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "replication_factor", value)
 
 
 class Topic(pulumi.CustomResource):
@@ -194,16 +266,16 @@ class Topic(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TopicArgs.__new__(TopicArgs)
 
-            __props__['config'] = config
-            __props__['name'] = name
+            __props__.__dict__["config"] = config
+            __props__.__dict__["name"] = name
             if partitions is None and not opts.urn:
                 raise TypeError("Missing required property 'partitions'")
-            __props__['partitions'] = partitions
+            __props__.__dict__["partitions"] = partitions
             if replication_factor is None and not opts.urn:
                 raise TypeError("Missing required property 'replication_factor'")
-            __props__['replication_factor'] = replication_factor
+            __props__.__dict__["replication_factor"] = replication_factor
         super(Topic, __self__).__init__(
             'kafka:index/topic:Topic',
             resource_name,
@@ -232,12 +304,12 @@ class Topic(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TopicState.__new__(_TopicState)
 
-        __props__["config"] = config
-        __props__["name"] = name
-        __props__["partitions"] = partitions
-        __props__["replication_factor"] = replication_factor
+        __props__.__dict__["config"] = config
+        __props__.__dict__["name"] = name
+        __props__.__dict__["partitions"] = partitions
+        __props__.__dict__["replication_factor"] = replication_factor
         return Topic(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -271,10 +343,4 @@ class Topic(pulumi.CustomResource):
         The number of replicas the topic should have.
         """
         return pulumi.get(self, "replication_factor")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
