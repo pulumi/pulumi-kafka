@@ -116,6 +116,8 @@ github.com/Microsoft/go-winio v0.4.14 h1:+hMXMk01us9KgxGb7ftKQt2Xpf5hH/yky+TDA+q
 github.com/Microsoft/go-winio v0.4.14/go.mod h1:qXqCSQ3Xa7+6tgxaGTIe4Kpcdsi+P8jBhyzoq1bpyYA=
 github.com/Mongey/terraform-provider-kafka v0.3.0 h1:jS1KXkofzqnRIjBClmux5XS3EIkQOWcBnjWb1GRTN9w=
 github.com/Mongey/terraform-provider-kafka v0.3.0/go.mod h1:zOUTQATCSB8wCTqPH8N/9aiTWcpXrm2e0pRiRuXHNk8=
+github.com/Mongey/terraform-provider-kafka v0.3.2 h1:anMS7mjQPteGYRlWd3tVV6BbAMdUq301MaeQkH2Ap/o=
+github.com/Mongey/terraform-provider-kafka v0.3.2/go.mod h1:vRBpvAEgr8dhWrtECuxC1vAsYvOMXdBAyTGmSPIDPDM=
 github.com/Netflix/go-expect v0.0.0-20180615182759-c93bf25de8e8 h1:xzYJEypr/85nBpB11F9br+3HUrpgb+fcm5iADzXXYEw=
 github.com/Netflix/go-expect v0.0.0-20180615182759-c93bf25de8e8/go.mod h1:oX5x61PbNXchhh0oikYAH+4Pcfw5LKv21+Jnpr6r6Pc=
 github.com/OneOfOne/xxhash v1.2.2 h1:KMrpdQIwFcEqXDklaen+P1axHaj9BSKzvpUUfnHldSE=
