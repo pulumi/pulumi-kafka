@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.3.2 of the Kafka Terraform Provider
+* Upgrade to v0.3.3 of the Kafka Terraform Provider
 
 ---
 
