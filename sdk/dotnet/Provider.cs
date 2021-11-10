@@ -19,6 +19,67 @@ namespace Pulumi.Kafka
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// CA certificate file to validate the server's certificate.
+        /// </summary>
+        [Output("caCert")]
+        public Output<string?> CaCert { get; private set; } = null!;
+
+        /// <summary>
+        /// Path to a CA certificate file to validate the server's certificate.
+        /// </summary>
+        [Output("caCertFile")]
+        public Output<string?> CaCertFile { get; private set; } = null!;
+
+        /// <summary>
+        /// The client certificate.
+        /// </summary>
+        [Output("clientCert")]
+        public Output<string?> ClientCert { get; private set; } = null!;
+
+        /// <summary>
+        /// Path to a file containing the client certificate.
+        /// </summary>
+        [Output("clientCertFile")]
+        public Output<string?> ClientCertFile { get; private set; } = null!;
+
+        /// <summary>
+        /// The private key that the certificate was issued for.
+        /// </summary>
+        [Output("clientKey")]
+        public Output<string?> ClientKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Path to a file containing the private key that the certificate was issued for.
+        /// </summary>
+        [Output("clientKeyFile")]
+        public Output<string?> ClientKeyFile { get; private set; } = null!;
+
+        /// <summary>
+        /// The passphrase for the private key that the certificate was issued for.
+        /// </summary>
+        [Output("clientKeyPassphrase")]
+        public Output<string?> ClientKeyPassphrase { get; private set; } = null!;
+
+        /// <summary>
+        /// SASL mechanism, can be plain, scram-sha512, scram-sha256
+        /// </summary>
+        [Output("saslMechanism")]
+        public Output<string?> SaslMechanism { get; private set; } = null!;
+
+        /// <summary>
+        /// Password for SASL authentication.
+        /// </summary>
+        [Output("saslPassword")]
+        public Output<string?> SaslPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// Username for SASL authentication.
+        /// </summary>
+        [Output("saslUsername")]
+        public Output<string?> SaslUsername { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

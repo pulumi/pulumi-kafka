@@ -4,61 +4,160 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("kafka");
+declare var exports: any;
+const __config = new pulumi.Config("kafka");
 
 /**
  * A list of kafka brokers
  */
-export let bootstrapServers: string[] | undefined = __config.getObject<string[]>("bootstrapServers");
+export declare const bootstrapServers: string[] | undefined;
+Object.defineProperty(exports, "bootstrapServers", {
+    get() {
+        return __config.getObject<string[]>("bootstrapServers");
+    },
+    enumerable: true,
+});
+
 /**
  * CA certificate file to validate the server's certificate.
  */
-export let caCert: string | undefined = __config.get("caCert");
+export declare const caCert: string | undefined;
+Object.defineProperty(exports, "caCert", {
+    get() {
+        return __config.get("caCert");
+    },
+    enumerable: true,
+});
+
 /**
  * Path to a CA certificate file to validate the server's certificate.
  */
-export let caCertFile: string | undefined = __config.get("caCertFile");
+export declare const caCertFile: string | undefined;
+Object.defineProperty(exports, "caCertFile", {
+    get() {
+        return __config.get("caCertFile");
+    },
+    enumerable: true,
+});
+
 /**
  * The client certificate.
  */
-export let clientCert: string | undefined = __config.get("clientCert");
+export declare const clientCert: string | undefined;
+Object.defineProperty(exports, "clientCert", {
+    get() {
+        return __config.get("clientCert");
+    },
+    enumerable: true,
+});
+
 /**
  * Path to a file containing the client certificate.
  */
-export let clientCertFile: string | undefined = __config.get("clientCertFile");
+export declare const clientCertFile: string | undefined;
+Object.defineProperty(exports, "clientCertFile", {
+    get() {
+        return __config.get("clientCertFile");
+    },
+    enumerable: true,
+});
+
 /**
  * The private key that the certificate was issued for.
  */
-export let clientKey: string | undefined = __config.get("clientKey");
+export declare const clientKey: string | undefined;
+Object.defineProperty(exports, "clientKey", {
+    get() {
+        return __config.get("clientKey");
+    },
+    enumerable: true,
+});
+
 /**
  * Path to a file containing the private key that the certificate was issued for.
  */
-export let clientKeyFile: string | undefined = __config.get("clientKeyFile");
+export declare const clientKeyFile: string | undefined;
+Object.defineProperty(exports, "clientKeyFile", {
+    get() {
+        return __config.get("clientKeyFile");
+    },
+    enumerable: true,
+});
+
 /**
  * The passphrase for the private key that the certificate was issued for.
  */
-export let clientKeyPassphrase: string | undefined = __config.get("clientKeyPassphrase");
+export declare const clientKeyPassphrase: string | undefined;
+Object.defineProperty(exports, "clientKeyPassphrase", {
+    get() {
+        return __config.get("clientKeyPassphrase");
+    },
+    enumerable: true,
+});
+
 /**
  * SASL mechanism, can be plain, scram-sha512, scram-sha256
  */
-export let saslMechanism: string | undefined = __config.get("saslMechanism") || (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
+export declare const saslMechanism: string;
+Object.defineProperty(exports, "saslMechanism", {
+    get() {
+        return __config.get("saslMechanism") ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
+    },
+    enumerable: true,
+});
+
 /**
  * Password for SASL authentication.
  */
-export let saslPassword: string | undefined = __config.get("saslPassword");
+export declare const saslPassword: string | undefined;
+Object.defineProperty(exports, "saslPassword", {
+    get() {
+        return __config.get("saslPassword");
+    },
+    enumerable: true,
+});
+
 /**
  * Username for SASL authentication.
  */
-export let saslUsername: string | undefined = __config.get("saslUsername");
+export declare const saslUsername: string | undefined;
+Object.defineProperty(exports, "saslUsername", {
+    get() {
+        return __config.get("saslUsername");
+    },
+    enumerable: true,
+});
+
 /**
  * Set this to true only if the target Kafka server is an insecure development instance.
  */
-export let skipTlsVerify: boolean | undefined = __config.getObject<boolean>("skipTlsVerify") || (<any>utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false);
+export declare const skipTlsVerify: boolean;
+Object.defineProperty(exports, "skipTlsVerify", {
+    get() {
+        return __config.getObject<boolean>("skipTlsVerify") ?? (<any>utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false);
+    },
+    enumerable: true,
+});
+
 /**
  * Timeout in seconds
  */
-export let timeout: number | undefined = __config.getObject<number>("timeout");
+export declare const timeout: number | undefined;
+Object.defineProperty(exports, "timeout", {
+    get() {
+        return __config.getObject<number>("timeout");
+    },
+    enumerable: true,
+});
+
 /**
  * Enable communication with the Kafka Cluster over TLS.
  */
-export let tlsEnabled: boolean | undefined = __config.getObject<boolean>("tlsEnabled") || (<any>utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true);
+export declare const tlsEnabled: boolean;
+Object.defineProperty(exports, "tlsEnabled", {
+    get() {
+        return __config.getObject<boolean>("tlsEnabled") ?? (<any>utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true);
+    },
+    enumerable: true,
+});
+

@@ -120,19 +120,19 @@ export interface TopicState {
     /**
      * A map of string k/v attributes.
      */
-    readonly config?: pulumi.Input<{[key: string]: any}>;
+    config?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the topic.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The number of partitions the topic should have.
      */
-    readonly partitions?: pulumi.Input<number>;
+    partitions?: pulumi.Input<number>;
     /**
      * The number of replicas the topic should have.
      */
-    readonly replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number>;
 }
 
 /**
@@ -142,17 +142,17 @@ export interface TopicArgs {
     /**
      * A map of string k/v attributes.
      */
-    readonly config?: pulumi.Input<{[key: string]: any}>;
+    config?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the topic.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The number of partitions the topic should have.
      */
-    readonly partitions: pulumi.Input<number>;
+    partitions: pulumi.Input<number>;
     /**
      * The number of replicas the topic should have.
      */
-    readonly replicationFactor: pulumi.Input<number>;
+    replicationFactor: pulumi.Input<number>;
 }
