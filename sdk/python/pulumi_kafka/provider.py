@@ -389,3 +389,83 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> pulumi.Output[Optional[str]]:
+        """
+        CA certificate file to validate the server's certificate.
+        """
+        return pulumi.get(self, "ca_cert")
+
+    @property
+    @pulumi.getter(name="caCertFile")
+    def ca_cert_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path to a CA certificate file to validate the server's certificate.
+        """
+        return pulumi.get(self, "ca_cert_file")
+
+    @property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> pulumi.Output[Optional[str]]:
+        """
+        The client certificate.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @property
+    @pulumi.getter(name="clientCertFile")
+    def client_cert_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path to a file containing the client certificate.
+        """
+        return pulumi.get(self, "client_cert_file")
+
+    @property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The private key that the certificate was issued for.
+        """
+        return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter(name="clientKeyFile")
+    def client_key_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path to a file containing the private key that the certificate was issued for.
+        """
+        return pulumi.get(self, "client_key_file")
+
+    @property
+    @pulumi.getter(name="clientKeyPassphrase")
+    def client_key_passphrase(self) -> pulumi.Output[Optional[str]]:
+        """
+        The passphrase for the private key that the certificate was issued for.
+        """
+        return pulumi.get(self, "client_key_passphrase")
+
+    @property
+    @pulumi.getter(name="saslMechanism")
+    def sasl_mechanism(self) -> pulumi.Output[Optional[str]]:
+        """
+        SASL mechanism, can be plain, scram-sha512, scram-sha256
+        """
+        return pulumi.get(self, "sasl_mechanism")
+
+    @property
+    @pulumi.getter(name="saslPassword")
+    def sasl_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        Password for SASL authentication.
+        """
+        return pulumi.get(self, "sasl_password")
+
+    @property
+    @pulumi.getter(name="saslUsername")
+    def sasl_username(self) -> pulumi.Output[Optional[str]]:
+        """
+        Username for SASL authentication.
+        """
+        return pulumi.get(self, "sasl_username")
+

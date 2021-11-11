@@ -101,6 +101,73 @@
     },
     "provider": {
         "description": "The provider type for the kafka package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "bootstrapServers": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "A list of kafka brokers\n"
+            },
+            "caCert": {
+                "type": "string",
+                "description": "CA certificate file to validate the server's certificate.\n"
+            },
+            "caCertFile": {
+                "type": "string",
+                "description": "Path to a CA certificate file to validate the server's certificate.\n",
+                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead."
+            },
+            "clientCert": {
+                "type": "string",
+                "description": "The client certificate.\n"
+            },
+            "clientCertFile": {
+                "type": "string",
+                "description": "Path to a file containing the client certificate.\n",
+                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead."
+            },
+            "clientKey": {
+                "type": "string",
+                "description": "The private key that the certificate was issued for.\n"
+            },
+            "clientKeyFile": {
+                "type": "string",
+                "description": "Path to a file containing the private key that the certificate was issued for.\n",
+                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_key` instead."
+            },
+            "clientKeyPassphrase": {
+                "type": "string",
+                "description": "The passphrase for the private key that the certificate was issued for.\n"
+            },
+            "saslMechanism": {
+                "type": "string",
+                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256\n"
+            },
+            "saslPassword": {
+                "type": "string",
+                "description": "Password for SASL authentication.\n"
+            },
+            "saslUsername": {
+                "type": "string",
+                "description": "Username for SASL authentication.\n"
+            },
+            "skipTlsVerify": {
+                "type": "boolean",
+                "description": "Set this to true only if the target Kafka server is an insecure development instance.\n"
+            },
+            "timeout": {
+                "type": "integer",
+                "description": "Timeout in seconds\n"
+            },
+            "tlsEnabled": {
+                "type": "boolean",
+                "description": "Enable communication with the Kafka Cluster over TLS.\n"
+            }
+        },
+        "required": [
+            "bootstrapServers"
+        ],
         "inputProperties": {
             "bootstrapServers": {
                 "type": "array",
@@ -302,7 +369,7 @@
             }
         },
         "kafka:index/topic:Topic": {
-            "description": "A resource for managing Kafka topics. Increases partition count without destroying the topic.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst logs = new kafka.Topic(\"logs\", {\n    config: {\n        \"cleanup.policy\": \"compact\",\n        \"segment.ms\": \"20000\",\n    },\n    partitions: 100,\n    replicationFactor: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nlogs = kafka.Topic(\"logs\",\n    config={\n        \"cleanup.policy\": \"compact\",\n        \"segment.ms\": \"20000\",\n    },\n    partitions=100,\n    replication_factor=2)\n```\n```csharp\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var logs = new Kafka.Topic(\"logs\", new Kafka.TopicArgs\n        {\n            Config = \n            {\n                { \"cleanup.policy\", \"compact\" },\n                { \"segment.ms\", \"20000\" },\n            },\n            Partitions = 100,\n            ReplicationFactor = 2,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"logs\", \u0026kafka.TopicArgs{\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"cleanup.policy\": pulumi.String(\"compact\"),\n\t\t\t\t\"segment.ms\":     pulumi.String(\"20000\"),\n\t\t\t},\n\t\t\tPartitions:        pulumi.Int(100),\n\t\t\tReplicationFactor: pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTopics can be imported using their ARN, e.g.\n\n```sh\n $ pulumi import kafka:index/topic:Topic logs systemd_logs\n```\n\n ",
+            "description": "A resource for managing Kafka topics. Increases partition count without destroying the topic.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst logs = new kafka.Topic(\"logs\", {\n    config: {\n        \"cleanup.policy\": \"compact\",\n        \"segment.ms\": \"20000\",\n    },\n    partitions: 100,\n    replicationFactor: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nlogs = kafka.Topic(\"logs\",\n    config={\n        \"cleanup.policy\": \"compact\",\n        \"segment.ms\": \"20000\",\n    },\n    partitions=100,\n    replication_factor=2)\n```\n```csharp\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var logs = new Kafka.Topic(\"logs\", new Kafka.TopicArgs\n        {\n            Config = \n            {\n                { \"cleanup.policy\", \"compact\" },\n                { \"segment.ms\", \"20000\" },\n            },\n            Partitions = 100,\n            ReplicationFactor = 2,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"logs\", \u0026kafka.TopicArgs{\n\t\t\tConfig: pulumi.AnyMap{\n\t\t\t\t\"cleanup.policy\": pulumi.Any(\"compact\"),\n\t\t\t\t\"segment.ms\":     pulumi.Any(\"20000\"),\n\t\t\t},\n\t\t\tPartitions:        pulumi.Int(100),\n\t\t\tReplicationFactor: pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTopics can be imported using their ARN, e.g.\n\n```sh\n $ pulumi import kafka:index/topic:Topic logs systemd_logs\n```\n\n ",
             "properties": {
                 "config": {
                     "type": "object",
@@ -388,8 +455,7 @@
                 "kafka": "Kafka"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {

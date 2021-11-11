@@ -17,6 +17,33 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// CA certificate file to validate the server's certificate.
+	CaCert pulumi.StringPtrOutput `pulumi:"caCert"`
+	// Path to a CA certificate file to validate the server's certificate.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+	CaCertFile pulumi.StringPtrOutput `pulumi:"caCertFile"`
+	// The client certificate.
+	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
+	// Path to a file containing the client certificate.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+	ClientCertFile pulumi.StringPtrOutput `pulumi:"clientCertFile"`
+	// The private key that the certificate was issued for.
+	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
+	// Path to a file containing the private key that the certificate was issued for.
+	//
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+	ClientKeyFile pulumi.StringPtrOutput `pulumi:"clientKeyFile"`
+	// The passphrase for the private key that the certificate was issued for.
+	ClientKeyPassphrase pulumi.StringPtrOutput `pulumi:"clientKeyPassphrase"`
+	// SASL mechanism, can be plain, scram-sha512, scram-sha256
+	SaslMechanism pulumi.StringPtrOutput `pulumi:"saslMechanism"`
+	// Password for SASL authentication.
+	SaslPassword pulumi.StringPtrOutput `pulumi:"saslPassword"`
+	// Username for SASL authentication.
+	SaslUsername pulumi.StringPtrOutput `pulumi:"saslUsername"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -173,9 +200,7 @@ func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
 }
 
-type ProviderOutput struct {
-	*pulumi.OutputState
-}
+type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Provider)(nil))
@@ -194,14 +219,12 @@ func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
 }
 
 func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
-	return o.ApplyT(func(v Provider) *Provider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Provider) *Provider {
 		return &v
 	}).(ProviderPtrOutput)
 }
 
-type ProviderPtrOutput struct {
-	*pulumi.OutputState
-}
+type ProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (ProviderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Provider)(nil))
@@ -215,7 +238,19 @@ func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ProviderPtrOutput) Elem() ProviderOutput {
+	return o.ApplyT(func(v *Provider) Provider {
+		if v != nil {
+			return *v
+		}
+		var ret Provider
+		return ret
+	}).(ProviderOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProviderPtrInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})
 	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

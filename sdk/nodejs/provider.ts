@@ -25,6 +25,52 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * CA certificate file to validate the server's certificate.
+     */
+    public readonly caCert!: pulumi.Output<string | undefined>;
+    /**
+     * Path to a CA certificate file to validate the server's certificate.
+     *
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+     */
+    public readonly caCertFile!: pulumi.Output<string | undefined>;
+    /**
+     * The client certificate.
+     */
+    public readonly clientCert!: pulumi.Output<string | undefined>;
+    /**
+     * Path to a file containing the client certificate.
+     *
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+     */
+    public readonly clientCertFile!: pulumi.Output<string | undefined>;
+    /**
+     * The private key that the certificate was issued for.
+     */
+    public readonly clientKey!: pulumi.Output<string | undefined>;
+    /**
+     * Path to a file containing the private key that the certificate was issued for.
+     *
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+     */
+    public readonly clientKeyFile!: pulumi.Output<string | undefined>;
+    /**
+     * The passphrase for the private key that the certificate was issued for.
+     */
+    public readonly clientKeyPassphrase!: pulumi.Output<string | undefined>;
+    /**
+     * SASL mechanism, can be plain, scram-sha512, scram-sha256
+     */
+    public readonly saslMechanism!: pulumi.Output<string | undefined>;
+    /**
+     * Password for SASL authentication.
+     */
+    public readonly saslPassword!: pulumi.Output<string | undefined>;
+    /**
+     * Username for SASL authentication.
+     */
+    public readonly saslUsername!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -69,63 +115,63 @@ export interface ProviderArgs {
     /**
      * A list of kafka brokers
      */
-    readonly bootstrapServers: pulumi.Input<pulumi.Input<string>[]>;
+    bootstrapServers: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * CA certificate file to validate the server's certificate.
      */
-    readonly caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string>;
     /**
      * Path to a CA certificate file to validate the server's certificate.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
      */
-    readonly caCertFile?: pulumi.Input<string>;
+    caCertFile?: pulumi.Input<string>;
     /**
      * The client certificate.
      */
-    readonly clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string>;
     /**
      * Path to a file containing the client certificate.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
      */
-    readonly clientCertFile?: pulumi.Input<string>;
+    clientCertFile?: pulumi.Input<string>;
     /**
      * The private key that the certificate was issued for.
      */
-    readonly clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string>;
     /**
      * Path to a file containing the private key that the certificate was issued for.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
      */
-    readonly clientKeyFile?: pulumi.Input<string>;
+    clientKeyFile?: pulumi.Input<string>;
     /**
      * The passphrase for the private key that the certificate was issued for.
      */
-    readonly clientKeyPassphrase?: pulumi.Input<string>;
+    clientKeyPassphrase?: pulumi.Input<string>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256
      */
-    readonly saslMechanism?: pulumi.Input<string>;
+    saslMechanism?: pulumi.Input<string>;
     /**
      * Password for SASL authentication.
      */
-    readonly saslPassword?: pulumi.Input<string>;
+    saslPassword?: pulumi.Input<string>;
     /**
      * Username for SASL authentication.
      */
-    readonly saslUsername?: pulumi.Input<string>;
+    saslUsername?: pulumi.Input<string>;
     /**
      * Set this to true only if the target Kafka server is an insecure development instance.
      */
-    readonly skipTlsVerify?: pulumi.Input<boolean>;
+    skipTlsVerify?: pulumi.Input<boolean>;
     /**
      * Timeout in seconds
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * Enable communication with the Kafka Cluster over TLS.
      */
-    readonly tlsEnabled?: pulumi.Input<boolean>;
+    tlsEnabled?: pulumi.Input<boolean>;
 }

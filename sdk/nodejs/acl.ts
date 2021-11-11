@@ -149,36 +149,36 @@ export interface AclState {
      * Host from which principal listed in `aclPrincipal`
      * will have access.
      */
-    readonly aclHost?: pulumi.Input<string>;
+    aclHost?: pulumi.Input<string>;
     /**
      * Operation that is being allowed or denied. Valid
      * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
      * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
      */
-    readonly aclOperation?: pulumi.Input<string>;
+    aclOperation?: pulumi.Input<string>;
     /**
      * Type of permission. Valid values are `Unknown`,
      * `Any`, `Allow`, `Deny`.
      */
-    readonly aclPermissionType?: pulumi.Input<string>;
+    aclPermissionType?: pulumi.Input<string>;
     /**
      * Principal that is being allowed or denied.
      */
-    readonly aclPrincipal?: pulumi.Input<string>;
+    aclPrincipal?: pulumi.Input<string>;
     /**
      * The name of the resource.
      */
-    readonly aclResourceName?: pulumi.Input<string>;
+    aclResourceName?: pulumi.Input<string>;
     /**
      * The type of resource. Valid values are `Unknown`,
      * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
      */
-    readonly aclResourceType?: pulumi.Input<string>;
+    aclResourceType?: pulumi.Input<string>;
     /**
      * The pattern filter. Valid values
      * are `Prefixed`, `Any`, `Match`, `Literal`.
      */
-    readonly resourcePatternTypeFilter?: pulumi.Input<string>;
+    resourcePatternTypeFilter?: pulumi.Input<string>;
 }
 
 /**
@@ -189,34 +189,34 @@ export interface AclArgs {
      * Host from which principal listed in `aclPrincipal`
      * will have access.
      */
-    readonly aclHost: pulumi.Input<string>;
+    aclHost: pulumi.Input<string>;
     /**
      * Operation that is being allowed or denied. Valid
      * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
      * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
      */
-    readonly aclOperation: pulumi.Input<string>;
+    aclOperation: pulumi.Input<string>;
     /**
      * Type of permission. Valid values are `Unknown`,
      * `Any`, `Allow`, `Deny`.
      */
-    readonly aclPermissionType: pulumi.Input<string>;
+    aclPermissionType: pulumi.Input<string>;
     /**
      * Principal that is being allowed or denied.
      */
-    readonly aclPrincipal: pulumi.Input<string>;
+    aclPrincipal: pulumi.Input<string>;
     /**
      * The name of the resource.
      */
-    readonly aclResourceName: pulumi.Input<string>;
+    aclResourceName: pulumi.Input<string>;
     /**
      * The type of resource. Valid values are `Unknown`,
      * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
      */
-    readonly aclResourceType: pulumi.Input<string>;
+    aclResourceType: pulumi.Input<string>;
     /**
      * The pattern filter. Valid values
      * are `Prefixed`, `Any`, `Match`, `Literal`.
      */
-    readonly resourcePatternTypeFilter?: pulumi.Input<string>;
+    resourcePatternTypeFilter?: pulumi.Input<string>;
 }
