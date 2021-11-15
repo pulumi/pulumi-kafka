@@ -448,6 +448,54 @@
             }
         }
     },
+    "functions": {
+        "kafka:index:getTopic": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getTopic.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTopic.\n",
+                "properties": {
+                    "config": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "partitions": {
+                        "type": "integer"
+                    },
+                    "replicationFactor": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "config",
+                    "name",
+                    "partitions",
+                    "replicationFactor",
+                    "id"
+                ]
+            }
+        }
+    },
     "language": {
         "csharp": {
             "compatibility": "tfbridge20",

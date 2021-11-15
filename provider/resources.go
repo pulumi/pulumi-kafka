@@ -20,10 +20,9 @@ import (
 	"unicode"
 
 	"github.com/Mongey/terraform-provider-kafka/kafka"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-kafka/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -44,9 +43,9 @@ func makeType(mod string, typ string) tokens.Type {
 	return tokens.Type(makeMember(mod, typ))
 }
 
-//func makeDataSource(mod string, res string) tokens.ModuleMember {
-//	return makeMember(mod, res)
-//}
+func makeDataSource(mod string, res string) tokens.ModuleMember {
+	return makeMember(mod, res)
+}
 
 func makeResource(mod string, res string) tokens.Type {
 	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
@@ -59,7 +58,7 @@ func tfLicenseTypeRef(license tfbridge.TFProviderLicense) *tfbridge.TFProviderLi
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(kafka.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(kafka.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:                 p,
 		Name:              "kafka",
@@ -110,7 +109,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"kafka_topic": {Tok: makeResource(mainMod, "Topic")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"kafka_topic": {Tok: makeDataSource(mainMod, "getTopic")},
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",

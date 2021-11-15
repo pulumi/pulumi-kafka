@@ -16,6 +16,7 @@
         "acl.ts",
         "config/index.ts",
         "config/vars.ts",
+        "getTopic.ts",
         "index.ts",
         "provider.ts",
         "topic.ts",
