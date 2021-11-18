@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./acl";
+export * from "./getTopic";
 export * from "./provider";
 export * from "./topic";
 

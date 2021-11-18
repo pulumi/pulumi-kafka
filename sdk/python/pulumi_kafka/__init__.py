@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .acl import *
+from .get_topic import *
 from .provider import *
 from .topic import *
 
