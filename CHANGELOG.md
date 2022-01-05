@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade terraform-provider-kafka to v0.4.2
 
 ---
 
