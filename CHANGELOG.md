@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade terraform-provider-kafka to v0.4.2
+_(none)_
 
 ---
+
+## 3.1.2 (2022-01-05)
+* Upgrade terraform-provider-kafka to v0.4.2
 
 ## 3.1.1 (2021-11-18)
 * Upgrade to v0.4.1 of the Kafka Terraform Provider
