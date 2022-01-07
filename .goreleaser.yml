@@ -28,7 +28,8 @@ builds:
   - -X github.com/pulumi/pulumi-kafka/provider/v3/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-kafka/
 changelog:
-  skip: true
+  use: git
+  sort: asc
 release:
   disable: false
 snapshot:
