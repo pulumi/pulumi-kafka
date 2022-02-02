@@ -134,7 +134,7 @@ Object.defineProperty(exports, "saslUsername", {
 export declare const skipTlsVerify: boolean;
 Object.defineProperty(exports, "skipTlsVerify", {
     get() {
-        return __config.getObject<boolean>("skipTlsVerify") ?? (<any>utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false);
+        return __config.getObject<boolean>("skipTlsVerify") ?? (utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false);
     },
     enumerable: true,
 });
@@ -156,7 +156,7 @@ Object.defineProperty(exports, "timeout", {
 export declare const tlsEnabled: boolean;
 Object.defineProperty(exports, "tlsEnabled", {
     get() {
-        return __config.getObject<boolean>("tlsEnabled") ?? (<any>utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true);
+        return __config.getObject<boolean>("tlsEnabled") ?? (utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true);
     },
     enumerable: true,
 });
