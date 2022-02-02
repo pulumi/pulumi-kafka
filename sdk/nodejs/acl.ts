@@ -95,17 +95,17 @@ export class Acl extends pulumi.CustomResource {
      */
     constructor(name: string, args: AclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclArgs | AclState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            inputs["aclHost"] = state ? state.aclHost : undefined;
-            inputs["aclOperation"] = state ? state.aclOperation : undefined;
-            inputs["aclPermissionType"] = state ? state.aclPermissionType : undefined;
-            inputs["aclPrincipal"] = state ? state.aclPrincipal : undefined;
-            inputs["aclResourceName"] = state ? state.aclResourceName : undefined;
-            inputs["aclResourceType"] = state ? state.aclResourceType : undefined;
-            inputs["resourcePatternTypeFilter"] = state ? state.resourcePatternTypeFilter : undefined;
+            resourceInputs["aclHost"] = state ? state.aclHost : undefined;
+            resourceInputs["aclOperation"] = state ? state.aclOperation : undefined;
+            resourceInputs["aclPermissionType"] = state ? state.aclPermissionType : undefined;
+            resourceInputs["aclPrincipal"] = state ? state.aclPrincipal : undefined;
+            resourceInputs["aclResourceName"] = state ? state.aclResourceName : undefined;
+            resourceInputs["aclResourceType"] = state ? state.aclResourceType : undefined;
+            resourceInputs["resourcePatternTypeFilter"] = state ? state.resourcePatternTypeFilter : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
             if ((!args || args.aclHost === undefined) && !opts.urn) {
@@ -126,18 +126,16 @@ export class Acl extends pulumi.CustomResource {
             if ((!args || args.aclResourceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'aclResourceType'");
             }
-            inputs["aclHost"] = args ? args.aclHost : undefined;
-            inputs["aclOperation"] = args ? args.aclOperation : undefined;
-            inputs["aclPermissionType"] = args ? args.aclPermissionType : undefined;
-            inputs["aclPrincipal"] = args ? args.aclPrincipal : undefined;
-            inputs["aclResourceName"] = args ? args.aclResourceName : undefined;
-            inputs["aclResourceType"] = args ? args.aclResourceType : undefined;
-            inputs["resourcePatternTypeFilter"] = args ? args.resourcePatternTypeFilter : undefined;
+            resourceInputs["aclHost"] = args ? args.aclHost : undefined;
+            resourceInputs["aclOperation"] = args ? args.aclOperation : undefined;
+            resourceInputs["aclPermissionType"] = args ? args.aclPermissionType : undefined;
+            resourceInputs["aclPrincipal"] = args ? args.aclPrincipal : undefined;
+            resourceInputs["aclResourceName"] = args ? args.aclResourceName : undefined;
+            resourceInputs["aclResourceType"] = args ? args.aclResourceType : undefined;
+            resourceInputs["resourcePatternTypeFilter"] = args ? args.resourcePatternTypeFilter : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Acl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Acl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

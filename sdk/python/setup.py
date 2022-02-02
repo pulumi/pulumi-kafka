@@ -55,6 +55,7 @@ setup(name='pulumi_kafka',
       package_data={
           'pulumi_kafka': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[
