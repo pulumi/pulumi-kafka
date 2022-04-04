@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 export * from "./acl";
 export * from "./getTopic";
 export * from "./provider";
+export * from "./quota";
 export * from "./topic";
 
 // Export sub-modules:
@@ -19,6 +20,7 @@ export {
 
 // Import resources to register:
 import { Acl } from "./acl";
+import { Quota } from "./quota";
 import { Topic } from "./topic";
 
 const _module = {
@@ -27,6 +29,8 @@ const _module = {
         switch (type) {
             case "kafka:index/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
+            case "kafka:index/quota:Quota":
+                return new Quota(name, <any>undefined, { urn })
             case "kafka:index/topic:Topic":
                 return new Topic(name, <any>undefined, { urn })
             default:
@@ -35,6 +39,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("kafka", "index/acl", _module)
+pulumi.runtime.registerResourceModule("kafka", "index/quota", _module)
 pulumi.runtime.registerResourceModule("kafka", "index/topic", _module)
 
 import { Provider } from "./provider";

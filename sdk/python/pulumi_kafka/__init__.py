@@ -8,6 +8,7 @@ import typing
 from .acl import *
 from .get_topic import *
 from .provider import *
+from .quota import *
 from .topic import *
 
 # Make subpackages available:
@@ -26,6 +27,14 @@ _utilities.register(
   "fqn": "pulumi_kafka",
   "classes": {
    "kafka:index/acl:Acl": "Acl"
+  }
+ },
+ {
+  "pkg": "kafka",
+  "mod": "index/quota",
+  "fqn": "pulumi_kafka",
+  "classes": {
+   "kafka:index/quota:Quota": "Quota"
   }
  },
  {

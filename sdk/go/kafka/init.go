@@ -22,6 +22,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "kafka:index/acl:Acl":
 		r = &Acl{}
+	case "kafka:index/quota:Quota":
+		r = &Quota{}
 	case "kafka:index/topic:Topic":
 		r = &Topic{}
 	default:
@@ -58,6 +60,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"kafka",
 		"index/acl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"kafka",
+		"index/quota",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

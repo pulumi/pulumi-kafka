@@ -19,6 +19,7 @@
         "getTopic.ts",
         "index.ts",
         "provider.ts",
+        "quota.ts",
         "topic.ts",
         "utilities.ts"
     ]
