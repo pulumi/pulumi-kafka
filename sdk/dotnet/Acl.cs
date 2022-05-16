@@ -35,6 +35,20 @@ namespace Pulumi.Kafka
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ACLs can be imported using the following pattern
+    /// 
+    /// ```sh
+    ///  $ pulumi import kafka:index/acl:Acl test "acl_principal|acl_host|acl_operation|acl_permission_type|resource_type|resource_name|resource_pattern_type_filter"
+    /// ```
+    /// 
+    ///  e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import kafka:index/acl:Acl test "User:Alice|*|Write|Deny|Topic|syslog|Prefixed"
+    /// ```
     /// </summary>
     [KafkaResourceType("kafka:index/acl:Acl")]
     public partial class Acl : Pulumi.CustomResource
@@ -82,7 +96,7 @@ namespace Pulumi.Kafka
 
         /// <summary>
         /// The pattern filter. Valid values
-        /// are `Prefixed`, `Any`, `Match`, `Literal`.
+        /// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         /// </summary>
         [Output("resourcePatternTypeFilter")]
         public Output<string?> ResourcePatternTypeFilter { get; private set; } = null!;
@@ -176,7 +190,7 @@ namespace Pulumi.Kafka
 
         /// <summary>
         /// The pattern filter. Valid values
-        /// are `Prefixed`, `Any`, `Match`, `Literal`.
+        /// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         /// </summary>
         [Input("resourcePatternTypeFilter")]
         public Input<string>? ResourcePatternTypeFilter { get; set; }
@@ -231,7 +245,7 @@ namespace Pulumi.Kafka
 
         /// <summary>
         /// The pattern filter. Valid values
-        /// are `Prefixed`, `Any`, `Match`, `Literal`.
+        /// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         /// </summary>
         [Input("resourcePatternTypeFilter")]
         public Input<string>? ResourcePatternTypeFilter { get; set; }

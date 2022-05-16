@@ -34,7 +34,7 @@ class AclArgs:
         :param pulumi.Input[str] acl_resource_type: The type of resource. Valid values are `Unknown`,
                `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
         :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
-               are `Prefixed`, `Any`, `Match`, `Literal`.
+               are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         """
         pulumi.set(__self__, "acl_host", acl_host)
         pulumi.set(__self__, "acl_operation", acl_operation)
@@ -127,7 +127,7 @@ class AclArgs:
     def resource_pattern_type_filter(self) -> Optional[pulumi.Input[str]]:
         """
         The pattern filter. Valid values
-        are `Prefixed`, `Any`, `Match`, `Literal`.
+        are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         """
         return pulumi.get(self, "resource_pattern_type_filter")
 
@@ -160,7 +160,7 @@ class _AclState:
         :param pulumi.Input[str] acl_resource_type: The type of resource. Valid values are `Unknown`,
                `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
         :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
-               are `Prefixed`, `Any`, `Match`, `Literal`.
+               are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         """
         if acl_host is not None:
             pulumi.set(__self__, "acl_host", acl_host)
@@ -259,7 +259,7 @@ class _AclState:
     def resource_pattern_type_filter(self) -> Optional[pulumi.Input[str]]:
         """
         The pattern filter. Valid values
-        are `Prefixed`, `Any`, `Match`, `Literal`.
+        are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         """
         return pulumi.get(self, "resource_pattern_type_filter")
 
@@ -299,6 +299,20 @@ class Acl(pulumi.CustomResource):
             acl_permission_type="Deny")
         ```
 
+        ## Import
+
+        ACLs can be imported using the following pattern
+
+        ```sh
+         $ pulumi import kafka:index/acl:Acl test "acl_principal|acl_host|acl_operation|acl_permission_type|resource_type|resource_name|resource_pattern_type_filter"
+        ```
+
+         e.g.
+
+        ```sh
+         $ pulumi import kafka:index/acl:Acl test "User:Alice|*|Write|Deny|Topic|syslog|Prefixed"
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl_host: Host from which principal listed in `acl_principal`
@@ -313,7 +327,7 @@ class Acl(pulumi.CustomResource):
         :param pulumi.Input[str] acl_resource_type: The type of resource. Valid values are `Unknown`,
                `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
         :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
-               are `Prefixed`, `Any`, `Match`, `Literal`.
+               are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         """
         ...
     @overload
@@ -337,6 +351,20 @@ class Acl(pulumi.CustomResource):
             acl_host="*",
             acl_operation="Write",
             acl_permission_type="Deny")
+        ```
+
+        ## Import
+
+        ACLs can be imported using the following pattern
+
+        ```sh
+         $ pulumi import kafka:index/acl:Acl test "acl_principal|acl_host|acl_operation|acl_permission_type|resource_type|resource_name|resource_pattern_type_filter"
+        ```
+
+         e.g.
+
+        ```sh
+         $ pulumi import kafka:index/acl:Acl test "User:Alice|*|Write|Deny|Topic|syslog|Prefixed"
         ```
 
         :param str resource_name: The name of the resource.
@@ -428,7 +456,7 @@ class Acl(pulumi.CustomResource):
         :param pulumi.Input[str] acl_resource_type: The type of resource. Valid values are `Unknown`,
                `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
         :param pulumi.Input[str] resource_pattern_type_filter: The pattern filter. Valid values
-               are `Prefixed`, `Any`, `Match`, `Literal`.
+               are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -501,7 +529,7 @@ class Acl(pulumi.CustomResource):
     def resource_pattern_type_filter(self) -> pulumi.Output[Optional[str]]:
         """
         The pattern filter. Valid values
-        are `Prefixed`, `Any`, `Match`, `Literal`.
+        are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
         """
         return pulumi.get(self, "resource_pattern_type_filter")
 
