@@ -40,6 +40,20 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ACLs can be imported using the following pattern
+//
+// ```sh
+//  $ pulumi import kafka:index/acl:Acl test "acl_principal|acl_host|acl_operation|acl_permission_type|resource_type|resource_name|resource_pattern_type_filter"
+// ```
+//
+//  e.g.
+//
+// ```sh
+//  $ pulumi import kafka:index/acl:Acl test "User:Alice|*|Write|Deny|Topic|syslog|Prefixed"
+// ```
 type Acl struct {
 	pulumi.CustomResourceState
 
@@ -61,7 +75,7 @@ type Acl struct {
 	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType pulumi.StringOutput `pulumi:"aclResourceType"`
 	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
+	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
 	ResourcePatternTypeFilter pulumi.StringPtrOutput `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -130,7 +144,7 @@ type aclState struct {
 	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType *string `pulumi:"aclResourceType"`
 	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
+	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -153,7 +167,7 @@ type AclState struct {
 	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType pulumi.StringPtrInput
 	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
+	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
@@ -180,7 +194,7 @@ type aclArgs struct {
 	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType string `pulumi:"aclResourceType"`
 	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
+	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -204,7 +218,7 @@ type AclArgs struct {
 	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 	AclResourceType pulumi.StringInput
 	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`.
+	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 

@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-kafka/provider/v3
 go 1.16
 
 require (
-	github.com/Mongey/terraform-provider-kafka v0.4.3
+	github.com/Mongey/terraform-provider-kafka v0.5.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.21.0
 	github.com/pulumi/pulumi/sdk/v3 v3.30.0
 )
