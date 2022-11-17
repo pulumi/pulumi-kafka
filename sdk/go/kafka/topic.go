@@ -19,26 +19,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kafka.NewTopic(ctx, "logs", &kafka.TopicArgs{
-// 			Config: pulumi.AnyMap{
-// 				"cleanup.policy": pulumi.Any("compact"),
-// 				"segment.ms":     pulumi.Any("20000"),
-// 			},
-// 			Partitions:        pulumi.Int(100),
-// 			ReplicationFactor: pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewTopic(ctx, "logs", &kafka.TopicArgs{
+//				Config: pulumi.AnyMap{
+//					"cleanup.policy": pulumi.Any("compact"),
+//					"segment.ms":     pulumi.Any("20000"),
+//				},
+//				Partitions:        pulumi.Int(100),
+//				ReplicationFactor: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Topics can be imported using their ARN, e.g.
 //
 // ```sh
-//  $ pulumi import kafka:index/topic:Topic logs systemd_logs
+//
+//	$ pulumi import kafka:index/topic:Topic logs systemd_logs
+//
 // ```
 type Topic struct {
 	pulumi.CustomResourceState
@@ -170,7 +175,7 @@ func (i *Topic) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 // TopicArrayInput is an input type that accepts TopicArray and TopicArrayOutput values.
 // You can construct a concrete instance of `TopicArrayInput` via:
 //
-//          TopicArray{ TopicArgs{...} }
+//	TopicArray{ TopicArgs{...} }
 type TopicArrayInput interface {
 	pulumi.Input
 
@@ -195,7 +200,7 @@ func (i TopicArray) ToTopicArrayOutputWithContext(ctx context.Context) TopicArra
 // TopicMapInput is an input type that accepts TopicMap and TopicMapOutput values.
 // You can construct a concrete instance of `TopicMapInput` via:
 //
-//          TopicMap{ "key": TopicArgs{...} }
+//	TopicMap{ "key": TopicArgs{...} }
 type TopicMapInput interface {
 	pulumi.Input
 
