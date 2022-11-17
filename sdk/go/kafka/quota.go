@@ -19,26 +19,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kafka.NewQuota(ctx, "quota", &kafka.QuotaArgs{
-// 			Config: pulumi.AnyMap{
-// 				"consumer_byte_rate": pulumi.Any("5000000"),
-// 				"producer_byte_rate": pulumi.Any("2500000"),
-// 			},
-// 			EntityName: pulumi.String("app_consumer"),
-// 			EntityType: pulumi.String("client-id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewQuota(ctx, "quota", &kafka.QuotaArgs{
+//				Config: pulumi.AnyMap{
+//					"consumer_byte_rate": pulumi.Any("5000000"),
+//					"producer_byte_rate": pulumi.Any("2500000"),
+//				},
+//				EntityName: pulumi.String("app_consumer"),
+//				EntityType: pulumi.String("client-id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Quota struct {
 	pulumi.CustomResourceState
@@ -152,7 +155,7 @@ func (i *Quota) ToQuotaOutputWithContext(ctx context.Context) QuotaOutput {
 // QuotaArrayInput is an input type that accepts QuotaArray and QuotaArrayOutput values.
 // You can construct a concrete instance of `QuotaArrayInput` via:
 //
-//          QuotaArray{ QuotaArgs{...} }
+//	QuotaArray{ QuotaArgs{...} }
 type QuotaArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +180,7 @@ func (i QuotaArray) ToQuotaArrayOutputWithContext(ctx context.Context) QuotaArra
 // QuotaMapInput is an input type that accepts QuotaMap and QuotaMapOutput values.
 // You can construct a concrete instance of `QuotaMapInput` via:
 //
-//          QuotaMap{ "key": QuotaArgs{...} }
+//	QuotaMap{ "key": QuotaArgs{...} }
 type QuotaMapInput interface {
 	pulumi.Input
 

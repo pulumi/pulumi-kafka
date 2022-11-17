@@ -19,40 +19,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := kafka.NewAcl(ctx, "test", &kafka.AclArgs{
-// 			AclResourceName:   pulumi.String("syslog"),
-// 			AclResourceType:   pulumi.String("Topic"),
-// 			AclPrincipal:      pulumi.String("User:Alice"),
-// 			AclHost:           pulumi.String("*"),
-// 			AclOperation:      pulumi.String("Write"),
-// 			AclPermissionType: pulumi.String("Deny"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewAcl(ctx, "test", &kafka.AclArgs{
+//				AclResourceName:   pulumi.String("syslog"),
+//				AclResourceType:   pulumi.String("Topic"),
+//				AclPrincipal:      pulumi.String("User:Alice"),
+//				AclHost:           pulumi.String("*"),
+//				AclOperation:      pulumi.String("Write"),
+//				AclPermissionType: pulumi.String("Deny"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// ACLs can be imported using the following pattern
+// # ACLs can be imported using the following pattern
 //
 // ```sh
-//  $ pulumi import kafka:index/acl:Acl test "acl_principal|acl_host|acl_operation|acl_permission_type|resource_type|resource_name|resource_pattern_type_filter"
+//
+//	$ pulumi import kafka:index/acl:Acl test "acl_principal|acl_host|acl_operation|acl_permission_type|resource_type|resource_name|resource_pattern_type_filter"
+//
 // ```
 //
-//  e.g.
+//	e.g.
 //
 // ```sh
-//  $ pulumi import kafka:index/acl:Acl test "User:Alice|*|Write|Deny|Topic|syslog|Prefixed"
+//
+//	$ pulumi import kafka:index/acl:Acl test "User:Alice|*|Write|Deny|Topic|syslog|Prefixed"
+//
 // ```
 type Acl struct {
 	pulumi.CustomResourceState
@@ -248,7 +255,7 @@ func (i *Acl) ToAclOutputWithContext(ctx context.Context) AclOutput {
 // AclArrayInput is an input type that accepts AclArray and AclArrayOutput values.
 // You can construct a concrete instance of `AclArrayInput` via:
 //
-//          AclArray{ AclArgs{...} }
+//	AclArray{ AclArgs{...} }
 type AclArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +280,7 @@ func (i AclArray) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutpu
 // AclMapInput is an input type that accepts AclMap and AclMapOutput values.
 // You can construct a concrete instance of `AclMapInput` via:
 //
-//          AclMap{ "key": AclArgs{...} }
+//	AclMap{ "key": AclArgs{...} }
 type AclMapInput interface {
 	pulumi.Input
 
