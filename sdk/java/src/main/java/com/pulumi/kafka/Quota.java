@@ -20,6 +20,39 @@ import javax.annotation.Nullable;
  * A resource for managing Kafka quotas.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Quota;
+ * import com.pulumi.kafka.QuotaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var quota = new Quota(&#34;quota&#34;, QuotaArgs.builder()        
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;consumer_byte_rate&#34;, &#34;5000000&#34;),
+ *                 Map.entry(&#34;producer_byte_rate&#34;, &#34;2500000&#34;)
+ *             ))
+ *             .entityName(&#34;app_consumer&#34;)
+ *             .entityType(&#34;client-id&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="kafka:index/quota:Quota")

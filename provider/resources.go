@@ -111,7 +111,12 @@ func Provider() tfbridge.ProviderInfo {
 			"kafka_quota": {Tok: makeResource(mainMod, "Quota")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"kafka_topic": {Tok: makeDataSource(mainMod, "getTopic")},
+			"kafka_topic": {
+				Tok: makeDataSource(mainMod, "getTopic"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

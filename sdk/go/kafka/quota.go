@@ -216,6 +216,21 @@ func (o QuotaOutput) ToQuotaOutputWithContext(ctx context.Context) QuotaOutput {
 	return o
 }
 
+// A map of string k/v attributes.
+func (o QuotaOutput) Config() pulumi.MapOutput {
+	return o.ApplyT(func(v *Quota) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
+}
+
+// The name of the entity to target.
+func (o QuotaOutput) EntityName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Quota) pulumi.StringOutput { return v.EntityName }).(pulumi.StringOutput)
+}
+
+// The type of entity. Valid values are `client-id`, `user`, `ip`.
+func (o QuotaOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Quota) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
+}
+
 type QuotaArrayOutput struct{ *pulumi.OutputState }
 
 func (QuotaArrayOutput) ElementType() reflect.Type {

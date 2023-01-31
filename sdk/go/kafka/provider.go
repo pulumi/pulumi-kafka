@@ -185,6 +185,62 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// CA certificate file to validate the server's certificate.
+func (o ProviderOutput) CaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaCert }).(pulumi.StringPtrOutput)
+}
+
+// Path to a CA certificate file to validate the server's certificate.
+//
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+func (o ProviderOutput) CaCertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaCertFile }).(pulumi.StringPtrOutput)
+}
+
+// The client certificate.
+func (o ProviderOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// Path to a file containing the client certificate.
+//
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+func (o ProviderOutput) ClientCertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCertFile }).(pulumi.StringPtrOutput)
+}
+
+// The private key that the certificate was issued for.
+func (o ProviderOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Path to a file containing the private key that the certificate was issued for.
+//
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+func (o ProviderOutput) ClientKeyFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKeyFile }).(pulumi.StringPtrOutput)
+}
+
+// The passphrase for the private key that the certificate was issued for.
+func (o ProviderOutput) ClientKeyPassphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKeyPassphrase }).(pulumi.StringPtrOutput)
+}
+
+// SASL mechanism, can be plain, scram-sha512, scram-sha256
+func (o ProviderOutput) SaslMechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslMechanism }).(pulumi.StringPtrOutput)
+}
+
+// Password for SASL authentication.
+func (o ProviderOutput) SaslPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslPassword }).(pulumi.StringPtrOutput)
+}
+
+// Username for SASL authentication.
+func (o ProviderOutput) SaslUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslUsername }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

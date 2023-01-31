@@ -316,6 +316,47 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
+// Host from which principal listed in `aclPrincipal`
+// will have access.
+func (o AclOutput) AclHost() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclHost }).(pulumi.StringOutput)
+}
+
+// Operation that is being allowed or denied. Valid
+// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
+// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
+func (o AclOutput) AclOperation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclOperation }).(pulumi.StringOutput)
+}
+
+// Type of permission. Valid values are `Unknown`,
+// `Any`, `Allow`, `Deny`.
+func (o AclOutput) AclPermissionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclPermissionType }).(pulumi.StringOutput)
+}
+
+// Principal that is being allowed or denied.
+func (o AclOutput) AclPrincipal() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclPrincipal }).(pulumi.StringOutput)
+}
+
+// The name of the resource.
+func (o AclOutput) AclResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclResourceName }).(pulumi.StringOutput)
+}
+
+// The type of resource. Valid values are `Unknown`,
+// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
+func (o AclOutput) AclResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclResourceType }).(pulumi.StringOutput)
+}
+
+// The pattern filter. Valid values
+// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
+func (o AclOutput) ResourcePatternTypeFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringPtrOutput { return v.ResourcePatternTypeFilter }).(pulumi.StringPtrOutput)
+}
+
 type AclArrayOutput struct{ *pulumi.OutputState }
 
 func (AclArrayOutput) ElementType() reflect.Type {

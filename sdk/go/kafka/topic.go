@@ -236,6 +236,26 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// A map of string k/v attributes.
+func (o TopicOutput) Config() pulumi.MapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
+}
+
+// The name of the topic.
+func (o TopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of partitions the topic should have.
+func (o TopicOutput) Partitions() pulumi.IntOutput {
+	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
+}
+
+// The number of replicas the topic should have.
+func (o TopicOutput) ReplicationFactor() pulumi.IntOutput {
+	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.ReplicationFactor }).(pulumi.IntOutput)
+}
+
 type TopicArrayOutput struct{ *pulumi.OutputState }
 
 func (TopicArrayOutput) ElementType() reflect.Type {

@@ -18,6 +18,39 @@ import javax.annotation.Nullable;
  * A resource for managing Kafka ACLs.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Acl;
+ * import com.pulumi.kafka.AclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Acl(&#34;test&#34;, AclArgs.builder()        
+ *             .aclResourceName(&#34;syslog&#34;)
+ *             .aclResourceType(&#34;Topic&#34;)
+ *             .aclPrincipal(&#34;User:Alice&#34;)
+ *             .aclHost(&#34;*&#34;)
+ *             .aclOperation(&#34;Write&#34;)
+ *             .aclPermissionType(&#34;Deny&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
