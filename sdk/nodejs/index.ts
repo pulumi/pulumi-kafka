@@ -5,11 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./acl";
-export * from "./getTopic";
-export * from "./provider";
-export * from "./quota";
-export * from "./topic";
+export { AclArgs, AclState } from "./acl";
+export type Acl = import("./acl").Acl;
+export const Acl: typeof import("./acl").Acl = null as any;
+utilities.lazyLoad(exports, ["Acl"], () => require("./acl"));
+
+export { GetTopicArgs, GetTopicResult, GetTopicOutputArgs } from "./getTopic";
+export const getTopic: typeof import("./getTopic").getTopic = null as any;
+export const getTopicOutput: typeof import("./getTopic").getTopicOutput = null as any;
+utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { QuotaArgs, QuotaState } from "./quota";
+export type Quota = import("./quota").Quota;
+export const Quota: typeof import("./quota").Quota = null as any;
+utilities.lazyLoad(exports, ["Quota"], () => require("./quota"));
+
+export { TopicArgs, TopicState } from "./topic";
+export type Topic = import("./topic").Topic;
+export const Topic: typeof import("./topic").Topic = null as any;
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -17,11 +37,6 @@ import * as config from "./config";
 export {
     config,
 };
-
-// Import resources to register:
-import { Acl } from "./acl";
-import { Quota } from "./quota";
-import { Topic } from "./topic";
 
 const _module = {
     version: utilities.getVersion(),
@@ -41,9 +56,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("kafka", "index/acl", _module)
 pulumi.runtime.registerResourceModule("kafka", "index/quota", _module)
 pulumi.runtime.registerResourceModule("kafka", "index/topic", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("kafka", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

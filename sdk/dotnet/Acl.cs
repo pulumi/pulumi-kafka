@@ -15,25 +15,23 @@ namespace Pulumi.Kafka
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Kafka = Pulumi.Kafka;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new Kafka.Acl("test", new()
     ///     {
-    ///         var test = new Kafka.Acl("test", new Kafka.AclArgs
-    ///         {
-    ///             AclResourceName = "syslog",
-    ///             AclResourceType = "Topic",
-    ///             AclPrincipal = "User:Alice",
-    ///             AclHost = "*",
-    ///             AclOperation = "Write",
-    ///             AclPermissionType = "Deny",
-    ///         });
-    ///     }
+    ///         AclResourceName = "syslog",
+    ///         AclResourceType = "Topic",
+    ///         AclPrincipal = "User:Alice",
+    ///         AclHost = "*",
+    ///         AclOperation = "Write",
+    ///         AclPermissionType = "Deny",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.Kafka
     /// ```
     /// </summary>
     [KafkaResourceType("kafka:index/acl:Acl")]
-    public partial class Acl : Pulumi.CustomResource
+    public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Host from which principal listed in `acl_principal`
@@ -145,7 +143,7 @@ namespace Pulumi.Kafka
         }
     }
 
-    public sealed class AclArgs : Pulumi.ResourceArgs
+    public sealed class AclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Host from which principal listed in `acl_principal`
@@ -198,9 +196,10 @@ namespace Pulumi.Kafka
         public AclArgs()
         {
         }
+        public static new AclArgs Empty => new AclArgs();
     }
 
-    public sealed class AclState : Pulumi.ResourceArgs
+    public sealed class AclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Host from which principal listed in `acl_principal`
@@ -253,5 +252,6 @@ namespace Pulumi.Kafka
         public AclState()
         {
         }
+        public static new AclState Empty => new AclState();
     }
 }

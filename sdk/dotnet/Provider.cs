@@ -16,7 +16,7 @@ namespace Pulumi.Kafka
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [KafkaResourceType("pulumi:providers:kafka")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// CA certificate file to validate the server's certificate.
@@ -104,7 +104,7 @@ namespace Pulumi.Kafka
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("bootstrapServers", required: true, json: true)]
         private InputList<string>? _bootstrapServers;
@@ -202,5 +202,6 @@ namespace Pulumi.Kafka
             SkipTlsVerify = Utilities.GetEnvBoolean("KAFKA_SKIP_VERIFY") ?? false;
             TlsEnabled = Utilities.GetEnvBoolean("KAFKA_ENABLE_TLS") ?? true;
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

@@ -15,26 +15,24 @@ namespace Pulumi.Kafka
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Kafka = Pulumi.Kafka;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var logs = new Kafka.Topic("logs", new()
     ///     {
-    ///         var logs = new Kafka.Topic("logs", new Kafka.TopicArgs
+    ///         Config = 
     ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "cleanup.policy", "compact" },
-    ///                 { "segment.ms", "20000" },
-    ///             },
-    ///             Partitions = 100,
-    ///             ReplicationFactor = 2,
-    ///         });
-    ///     }
+    ///             { "cleanup.policy", "compact" },
+    ///             { "segment.ms", "20000" },
+    ///         },
+    ///         Partitions = 100,
+    ///         ReplicationFactor = 2,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.Kafka
     /// ```
     /// </summary>
     [KafkaResourceType("kafka:index/topic:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A map of string k/v attributes.
@@ -116,7 +114,7 @@ namespace Pulumi.Kafka
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<object>? _config;
@@ -151,9 +149,10 @@ namespace Pulumi.Kafka
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 
-    public sealed class TopicState : Pulumi.ResourceArgs
+    public sealed class TopicState : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<object>? _config;
@@ -188,5 +187,6 @@ namespace Pulumi.Kafka
         public TopicState()
         {
         }
+        public static new TopicState Empty => new TopicState();
     }
 }

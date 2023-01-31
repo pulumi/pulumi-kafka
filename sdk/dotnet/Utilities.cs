@@ -74,7 +74,7 @@ namespace Pulumi.Kafka
         }
     }
 
-    internal sealed class KafkaResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class KafkaResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public KafkaResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

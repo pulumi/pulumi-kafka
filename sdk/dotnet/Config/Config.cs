@@ -30,7 +30,7 @@ namespace Pulumi.Kafka
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("kafka");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("kafka");
 
         private static readonly __Value<ImmutableArray<string>> _bootstrapServers = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("bootstrapServers"));
         /// <summary>

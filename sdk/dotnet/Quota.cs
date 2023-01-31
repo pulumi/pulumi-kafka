@@ -15,30 +15,28 @@ namespace Pulumi.Kafka
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Kafka = Pulumi.Kafka;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var quota = new Kafka.Quota("quota", new()
     ///     {
-    ///         var quota = new Kafka.Quota("quota", new Kafka.QuotaArgs
+    ///         Config = 
     ///         {
-    ///             Config = 
-    ///             {
-    ///                 { "consumer_byte_rate", "5000000" },
-    ///                 { "producer_byte_rate", "2500000" },
-    ///             },
-    ///             EntityName = "app_consumer",
-    ///             EntityType = "client-id",
-    ///         });
-    ///     }
+    ///             { "consumer_byte_rate", "5000000" },
+    ///             { "producer_byte_rate", "2500000" },
+    ///         },
+    ///         EntityName = "app_consumer",
+    ///         EntityType = "client-id",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [KafkaResourceType("kafka:index/quota:Quota")]
-    public partial class Quota : Pulumi.CustomResource
+    public partial class Quota : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A map of string k/v attributes.
@@ -102,7 +100,7 @@ namespace Pulumi.Kafka
         }
     }
 
-    public sealed class QuotaArgs : Pulumi.ResourceArgs
+    public sealed class QuotaArgs : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<object>? _config;
@@ -131,9 +129,10 @@ namespace Pulumi.Kafka
         public QuotaArgs()
         {
         }
+        public static new QuotaArgs Empty => new QuotaArgs();
     }
 
-    public sealed class QuotaState : Pulumi.ResourceArgs
+    public sealed class QuotaState : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<object>? _config;
@@ -162,5 +161,6 @@ namespace Pulumi.Kafka
         public QuotaState()
         {
         }
+        public static new QuotaState Empty => new QuotaState();
     }
 }
