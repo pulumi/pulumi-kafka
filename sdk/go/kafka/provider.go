@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,13 +56,13 @@ func NewProvider(ctx *pulumi.Context,
 	if args.BootstrapServers == nil {
 		return nil, errors.New("invalid value for required argument 'BootstrapServers'")
 	}
-	if isZero(args.SaslMechanism) {
+	if args.SaslMechanism == nil {
 		args.SaslMechanism = pulumi.StringPtr(getEnvOrDefault("plain", nil, "KAFKA_SASL_MECHANISM").(string))
 	}
-	if isZero(args.SkipTlsVerify) {
+	if args.SkipTlsVerify == nil {
 		args.SkipTlsVerify = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "KAFKA_SKIP_VERIFY").(bool))
 	}
-	if isZero(args.TlsEnabled) {
+	if args.TlsEnabled == nil {
 		args.TlsEnabled = pulumi.BoolPtr(getEnvOrDefault(true, parseEnvBool, "KAFKA_ENABLE_TLS").(bool))
 	}
 	var resource Provider
