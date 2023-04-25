@@ -179,4 +179,5 @@ func Provider() tfbridge.ProviderInfo {
 	return prov
 }
 
+//go:embed cmd/pulumi-resource-kafka/bridge-metadata.json
 var metadata []byte
