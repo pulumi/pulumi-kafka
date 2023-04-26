@@ -354,8 +354,7 @@ jobs:
     needs: publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - id: pulumi-pkg-publisher
+      - name: pulumi-pkg-publisher
         uses: pulumi/pulumi-package-publisher@v0.0.5
   test:
     name: test
