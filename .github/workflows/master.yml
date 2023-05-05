@@ -355,7 +355,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@v0.0.5
+      uses: pulumi/pulumi-package-publisher@cd11c932911a722a0ed2f8f4479be60dd3812125
   test:
     name: test
     needs: build_sdk
