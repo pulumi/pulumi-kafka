@@ -21,6 +21,7 @@
         "provider.ts",
         "quota.ts",
         "topic.ts",
+        "userScramCredential.ts",
         "utilities.ts"
     ]
 }
