@@ -16,14 +16,18 @@ package kafka
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 	"unicode"
 
 	"github.com/Mongey/terraform-provider-kafka/kafka"
 	"github.com/pulumi/pulumi-kafka/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -109,6 +113,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"kafka_topic": {Tok: makeResource(mainMod, "Topic")},
 			"kafka_quota": {Tok: makeResource(mainMod, "Quota")},
+			"kafka_user_scram_credential": {
+				Tok:  makeResource(mainMod, "UserScramCredential"),
+				Docs: &tfbridge.DocInfo{Markdown: []byte{' '}},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"kafka_topic": {
@@ -148,10 +156,19 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: map[string]string{
 				mainPkg: "Kafka",
 			},
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
+
+	err := x.ComputeDefaults(&prov, x.TokensSingleModule("kafka_", mainMod,
+		x.MakeStandardToken(mainPkg)))
+	contract.AssertNoErrorf(err, "failed to compute defaults")
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-kafka/bridge-metadata.json
+var metadata []byte
