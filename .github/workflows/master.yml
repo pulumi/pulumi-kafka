@@ -361,7 +361,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@fb2f899abacb76a0b9f43e373abc7fd4b7245a7b
+      uses: pulumi/pulumi-package-publisher@4a1a0140489be1a5b6a926693ab16b79a247408a
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - env:
