@@ -107,8 +107,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"kafka_topic": {Tok: makeResource(mainMod, "Topic")},
-			"kafka_quota": {Tok: makeResource(mainMod, "Quota")},
+			"kafka_topic":                 {Tok: makeResource(mainMod, "Topic")},
+			"kafka_quota":                 {Tok: makeResource(mainMod, "Quota")},
+			"kafka_user_scram_credential": {Tok: makeResource(mainMod, "UserScramCredential")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"kafka_topic": {
