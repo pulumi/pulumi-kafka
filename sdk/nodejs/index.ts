@@ -30,6 +30,11 @@ export type Topic = import("./topic").Topic;
 export const Topic: typeof import("./topic").Topic = null as any;
 utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
 
+export { UserScramCredentialArgs, UserScramCredentialState } from "./userScramCredential";
+export type UserScramCredential = import("./userScramCredential").UserScramCredential;
+export const UserScramCredential: typeof import("./userScramCredential").UserScramCredential = null as any;
+utilities.lazyLoad(exports, ["UserScramCredential"], () => require("./userScramCredential"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -48,6 +53,8 @@ const _module = {
                 return new Quota(name, <any>undefined, { urn })
             case "kafka:index/topic:Topic":
                 return new Topic(name, <any>undefined, { urn })
+            case "kafka:index/userScramCredential:UserScramCredential":
+                return new UserScramCredential(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -56,6 +63,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("kafka", "index/acl", _module)
 pulumi.runtime.registerResourceModule("kafka", "index/quota", _module)
 pulumi.runtime.registerResourceModule("kafka", "index/topic", _module)
+pulumi.runtime.registerResourceModule("kafka", "index/userScramCredential", _module)
 pulumi.runtime.registerResourcePackage("kafka", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

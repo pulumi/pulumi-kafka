@@ -91,11 +91,11 @@ def get_topic(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('kafka:index:getTopic', __args__, opts=opts, typ=GetTopicResult).value
 
     return AwaitableGetTopicResult(
-        config=__ret__.config,
-        id=__ret__.id,
-        name=__ret__.name,
-        partitions=__ret__.partitions,
-        replication_factor=__ret__.replication_factor)
+        config=pulumi.get(__ret__, 'config'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        partitions=pulumi.get(__ret__, 'partitions'),
+        replication_factor=pulumi.get(__ret__, 'replication_factor'))
 
 
 @_utilities.lift_output_func(get_topic)

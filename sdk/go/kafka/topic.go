@@ -7,52 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A resource for managing Kafka topics. Increases partition count without destroying the topic.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kafka.NewTopic(ctx, "logs", &kafka.TopicArgs{
-//				Config: pulumi.AnyMap{
-//					"cleanup.policy": pulumi.Any("compact"),
-//					"segment.ms":     pulumi.Any("20000"),
-//				},
-//				Partitions:        pulumi.Int(100),
-//				ReplicationFactor: pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Topics can be imported using their ARN, e.g.
-//
-// ```sh
-//
-//	$ pulumi import kafka:index/topic:Topic logs systemd_logs
-//
-// ```
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -60,9 +19,9 @@ type Topic struct {
 	Config pulumi.MapOutput `pulumi:"config"`
 	// The name of the topic.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 }
 
@@ -79,6 +38,7 @@ func NewTopic(ctx *pulumi.Context,
 	if args.ReplicationFactor == nil {
 		return nil, errors.New("invalid value for required argument 'ReplicationFactor'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Topic
 	err := ctx.RegisterResource("kafka:index/topic:Topic", name, args, &resource, opts...)
 	if err != nil {
@@ -105,9 +65,9 @@ type topicState struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions *int `pulumi:"partitions"`
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 }
 
@@ -116,9 +76,9 @@ type TopicState struct {
 	Config pulumi.MapInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions pulumi.IntPtrInput
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor pulumi.IntPtrInput
 }
 
@@ -131,9 +91,9 @@ type topicArgs struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions int `pulumi:"partitions"`
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor int `pulumi:"replicationFactor"`
 }
 
@@ -143,9 +103,9 @@ type TopicArgs struct {
 	Config pulumi.MapInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
-	// The number of partitions the topic should have.
+	// Number of partitions.
 	Partitions pulumi.IntInput
-	// The number of replicas the topic should have.
+	// Number of replicas.
 	ReplicationFactor pulumi.IntInput
 }
 
@@ -246,12 +206,12 @@ func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The number of partitions the topic should have.
+// Number of partitions.
 func (o TopicOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
 }
 
-// The number of replicas the topic should have.
+// Number of replicas.
 func (o TopicOutput) ReplicationFactor() pulumi.IntOutput {
 	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.ReplicationFactor }).(pulumi.IntOutput)
 }

@@ -118,6 +118,9 @@ class ProviderArgs:
         """
         Path to a CA certificate file to validate the server's certificate.
         """
+        warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ca_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""")
+
         return pulumi.get(self, "ca_cert_file")
 
     @ca_cert_file.setter
@@ -142,6 +145,9 @@ class ProviderArgs:
         """
         Path to a file containing the client certificate.
         """
+        warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""", DeprecationWarning)
+        pulumi.log.warn("""client_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""")
+
         return pulumi.get(self, "client_cert_file")
 
     @client_cert_file.setter
@@ -166,6 +172,9 @@ class ProviderArgs:
         """
         Path to a file containing the private key that the certificate was issued for.
         """
+        warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""", DeprecationWarning)
+        pulumi.log.warn("""client_key_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""")
+
         return pulumi.get(self, "client_key_file")
 
     @client_key_file.setter
@@ -401,6 +410,9 @@ class Provider(pulumi.ProviderResource):
         """
         Path to a CA certificate file to validate the server's certificate.
         """
+        warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ca_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""")
+
         return pulumi.get(self, "ca_cert_file")
 
     @property
@@ -417,6 +429,9 @@ class Provider(pulumi.ProviderResource):
         """
         Path to a file containing the client certificate.
         """
+        warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""", DeprecationWarning)
+        pulumi.log.warn("""client_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""")
+
         return pulumi.get(self, "client_cert_file")
 
     @property
@@ -433,6 +448,9 @@ class Provider(pulumi.ProviderResource):
         """
         Path to a file containing the private key that the certificate was issued for.
         """
+        warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""", DeprecationWarning)
+        pulumi.log.warn("""client_key_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""")
+
         return pulumi.get(self, "client_key_file")
 
     @property

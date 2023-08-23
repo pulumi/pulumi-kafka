@@ -7,6 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
+	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Quota{}
 	case "kafka:index/topic:Topic":
 		r = &Topic{}
+	case "kafka:index/userScramCredential:UserScramCredential":
+		r = &UserScramCredential{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,7 +56,10 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 }
 
 func init() {
-	version, _ := PkgVersion()
+	version, err := internal.PkgVersion()
+	if err != nil {
+		version = semver.Version{Major: 1}
+	}
 	pulumi.RegisterResourceModule(
 		"kafka",
 		"index/acl",
@@ -67,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"kafka",
 		"index/topic",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"kafka",
+		"index/userScramCredential",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(
