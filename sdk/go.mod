@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-kafka/sdk/v3
 
-go 1.19
+go 1.20
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
