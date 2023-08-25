@@ -22,8 +22,10 @@ import (
 	"github.com/Mongey/terraform-provider-kafka/kafka"
 	"github.com/pulumi/pulumi-kafka/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -107,9 +109,8 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"kafka_topic":                 {Tok: makeResource(mainMod, "Topic")},
-			"kafka_quota":                 {Tok: makeResource(mainMod, "Quota")},
-			"kafka_user_scram_credential": {Tok: makeResource(mainMod, "UserScramCredential")},
+			"kafka_topic": {Tok: makeResource(mainMod, "Topic")},
+			"kafka_quota": {Tok: makeResource(mainMod, "Quota")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"kafka_topic": {
@@ -151,6 +152,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	err := prov.ComputeTokens(tfbridgetokens.SingleModule("kafka", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+	contract.AssertNoErrorf(err, "failed to compute default modules")
 
 	prov.SetAutonaming(255, "-")
 
