@@ -14,21 +14,22 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
             "namespaces": {
                 "kafka": "Kafka"
             },
-            "packageReferences": {
-                "Pulumi": "3.*"
-            }
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+            "generateExtraInputTypes": true
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageDescription": "A Pulumi package for creating and managing Kafka.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-kafka)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-kafka` repo](https://github.com/pulumi/pulumi-kafka/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-kafka` repo](https://github.com/Mongey/terraform-provider-kafka/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -36,18 +37,16 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing Kafka.",
-            "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-kafka)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-kafka` repo](https://github.com/pulumi/pulumi-kafka/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-kafka` repo](https://github.com/Mongey/terraform-provider-kafka/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-kafka)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-kafka` repo](https://github.com/pulumi/pulumi-kafka/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-kafka` repo](https://github.com/Mongey/terraform-provider-kafka/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-kafka)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-kafka` repo](https://github.com/pulumi/pulumi-kafka/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-kafka` repo](https://github.com/Mongey/terraform-provider-kafka/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -294,35 +293,28 @@
     },
     "resources": {
         "kafka:index/acl:Acl": {
-            "description": "A resource for managing Kafka ACLs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst test = new kafka.Acl(\"test\", {\n    aclResourceName: \"syslog\",\n    aclResourceType: \"Topic\",\n    aclPrincipal: \"User:Alice\",\n    aclHost: \"*\",\n    aclOperation: \"Write\",\n    aclPermissionType: \"Deny\",\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\ntest = kafka.Acl(\"test\",\n    acl_resource_name=\"syslog\",\n    acl_resource_type=\"Topic\",\n    acl_principal=\"User:Alice\",\n    acl_host=\"*\",\n    acl_operation=\"Write\",\n    acl_permission_type=\"Deny\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = new Kafka.Acl(\"test\", new()\n    {\n        AclResourceName = \"syslog\",\n        AclResourceType = \"Topic\",\n        AclPrincipal = \"User:Alice\",\n        AclHost = \"*\",\n        AclOperation = \"Write\",\n        AclPermissionType = \"Deny\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewAcl(ctx, \"test\", \u0026kafka.AclArgs{\n\t\t\tAclResourceName:   pulumi.String(\"syslog\"),\n\t\t\tAclResourceType:   pulumi.String(\"Topic\"),\n\t\t\tAclPrincipal:      pulumi.String(\"User:Alice\"),\n\t\t\tAclHost:           pulumi.String(\"*\"),\n\t\t\tAclOperation:      pulumi.String(\"Write\"),\n\t\t\tAclPermissionType: pulumi.String(\"Deny\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Acl;\nimport com.pulumi.kafka.AclArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new Acl(\"test\", AclArgs.builder()        \n            .aclResourceName(\"syslog\")\n            .aclResourceType(\"Topic\")\n            .aclPrincipal(\"User:Alice\")\n            .aclHost(\"*\")\n            .aclOperation(\"Write\")\n            .aclPermissionType(\"Deny\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: kafka:Acl\n    properties:\n      aclResourceName: syslog\n      aclResourceType: Topic\n      aclPrincipal: User:Alice\n      aclHost: '*'\n      aclOperation: Write\n      aclPermissionType: Deny\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nACLs can be imported using the following pattern\n\n```sh\n $ pulumi import kafka:index/acl:Acl test \"acl_principal|acl_host|acl_operation|acl_permission_type|resource_type|resource_name|resource_pattern_type_filter\"\n```\n\n e.g.\n\n```sh\n $ pulumi import kafka:index/acl:Acl test \"User:Alice|*|Write|Deny|Topic|syslog|Prefixed\"\n```\n\n ",
             "properties": {
                 "aclHost": {
-                    "type": "string",
-                    "description": "Host from which principal listed in `acl_principal`\nwill have access.\n"
+                    "type": "string"
                 },
                 "aclOperation": {
-                    "type": "string",
-                    "description": "Operation that is being allowed or denied. Valid\nvalues are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,\n`Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.\n"
+                    "type": "string"
                 },
                 "aclPermissionType": {
-                    "type": "string",
-                    "description": "Type of permission. Valid values are `Unknown`,\n`Any`, `Allow`, `Deny`.\n"
+                    "type": "string"
                 },
                 "aclPrincipal": {
-                    "type": "string",
-                    "description": "Principal that is being allowed or denied.\n"
+                    "type": "string"
                 },
                 "aclResourceName": {
                     "type": "string",
-                    "description": "The name of the resource.\n"
+                    "description": "The name of the resource\n"
                 },
                 "aclResourceType": {
-                    "type": "string",
-                    "description": "The type of resource. Valid values are `Unknown`,\n`Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.\n"
+                    "type": "string"
                 },
                 "resourcePatternTypeFilter": {
-                    "type": "string",
-                    "description": "The pattern filter. Valid values\nare `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.\n"
+                    "type": "string"
                 }
             },
             "required": [
@@ -336,37 +328,31 @@
             "inputProperties": {
                 "aclHost": {
                     "type": "string",
-                    "description": "Host from which principal listed in `acl_principal`\nwill have access.\n",
                     "willReplaceOnChanges": true
                 },
                 "aclOperation": {
                     "type": "string",
-                    "description": "Operation that is being allowed or denied. Valid\nvalues are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,\n`Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.\n",
                     "willReplaceOnChanges": true
                 },
                 "aclPermissionType": {
                     "type": "string",
-                    "description": "Type of permission. Valid values are `Unknown`,\n`Any`, `Allow`, `Deny`.\n",
                     "willReplaceOnChanges": true
                 },
                 "aclPrincipal": {
                     "type": "string",
-                    "description": "Principal that is being allowed or denied.\n",
                     "willReplaceOnChanges": true
                 },
                 "aclResourceName": {
                     "type": "string",
-                    "description": "The name of the resource.\n",
+                    "description": "The name of the resource\n",
                     "willReplaceOnChanges": true
                 },
                 "aclResourceType": {
                     "type": "string",
-                    "description": "The type of resource. Valid values are `Unknown`,\n`Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.\n",
                     "willReplaceOnChanges": true
                 },
                 "resourcePatternTypeFilter": {
                     "type": "string",
-                    "description": "The pattern filter. Valid values\nare `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -383,37 +369,31 @@
                 "properties": {
                     "aclHost": {
                         "type": "string",
-                        "description": "Host from which principal listed in `acl_principal`\nwill have access.\n",
                         "willReplaceOnChanges": true
                     },
                     "aclOperation": {
                         "type": "string",
-                        "description": "Operation that is being allowed or denied. Valid\nvalues are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,\n`Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.\n",
                         "willReplaceOnChanges": true
                     },
                     "aclPermissionType": {
                         "type": "string",
-                        "description": "Type of permission. Valid values are `Unknown`,\n`Any`, `Allow`, `Deny`.\n",
                         "willReplaceOnChanges": true
                     },
                     "aclPrincipal": {
                         "type": "string",
-                        "description": "Principal that is being allowed or denied.\n",
                         "willReplaceOnChanges": true
                     },
                     "aclResourceName": {
                         "type": "string",
-                        "description": "The name of the resource.\n",
+                        "description": "The name of the resource\n",
                         "willReplaceOnChanges": true
                     },
                     "aclResourceType": {
                         "type": "string",
-                        "description": "The type of resource. Valid values are `Unknown`,\n`Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.\n",
                         "willReplaceOnChanges": true
                     },
                     "resourcePatternTypeFilter": {
                         "type": "string",
-                        "description": "The pattern filter. Valid values\nare `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -421,22 +401,21 @@
             }
         },
         "kafka:index/quota:Quota": {
-            "description": "A resource for managing Kafka quotas.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst quota = new kafka.Quota(\"quota\", {\n    config: {\n        consumer_byte_rate: \"5000000\",\n        producer_byte_rate: \"2500000\",\n    },\n    entityName: \"app_consumer\",\n    entityType: \"client-id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nquota = kafka.Quota(\"quota\",\n    config={\n        \"consumer_byte_rate\": \"5000000\",\n        \"producer_byte_rate\": \"2500000\",\n    },\n    entity_name=\"app_consumer\",\n    entity_type=\"client-id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var quota = new Kafka.Quota(\"quota\", new()\n    {\n        Config = \n        {\n            { \"consumer_byte_rate\", \"5000000\" },\n            { \"producer_byte_rate\", \"2500000\" },\n        },\n        EntityName = \"app_consumer\",\n        EntityType = \"client-id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewQuota(ctx, \"quota\", \u0026kafka.QuotaArgs{\n\t\t\tConfig: pulumi.AnyMap{\n\t\t\t\t\"consumer_byte_rate\": pulumi.Any(\"5000000\"),\n\t\t\t\t\"producer_byte_rate\": pulumi.Any(\"2500000\"),\n\t\t\t},\n\t\t\tEntityName: pulumi.String(\"app_consumer\"),\n\t\t\tEntityType: pulumi.String(\"client-id\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Quota;\nimport com.pulumi.kafka.QuotaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var quota = new Quota(\"quota\", QuotaArgs.builder()        \n            .config(Map.ofEntries(\n                Map.entry(\"consumer_byte_rate\", \"5000000\"),\n                Map.entry(\"producer_byte_rate\", \"2500000\")\n            ))\n            .entityName(\"app_consumer\")\n            .entityType(\"client-id\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  quota:\n    type: kafka:Quota\n    properties:\n      config:\n        consumer_byte_rate: '5000000'\n        producer_byte_rate: '2500000'\n      entityName: app_consumer\n      entityType: client-id\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "config": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "A map of string k/v attributes.\n"
+                    "description": "A map of string k/v properties.\n"
                 },
                 "entityName": {
                     "type": "string",
-                    "description": "The name of the entity to target.\n"
+                    "description": "The name of the entity\n"
                 },
                 "entityType": {
                     "type": "string",
-                    "description": "The type of entity. Valid values are `client-id`, `user`, `ip`.\n"
+                    "description": "The type of the entity (client-id, user, ip)\n"
                 }
             },
             "required": [
@@ -449,17 +428,17 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "A map of string k/v attributes.\n",
+                    "description": "A map of string k/v properties.\n",
                     "willReplaceOnChanges": true
                 },
                 "entityName": {
                     "type": "string",
-                    "description": "The name of the entity to target.\n",
+                    "description": "The name of the entity\n",
                     "willReplaceOnChanges": true
                 },
                 "entityType": {
                     "type": "string",
-                    "description": "The type of entity. Valid values are `client-id`, `user`, `ip`.\n",
+                    "description": "The type of the entity (client-id, user, ip)\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -475,17 +454,17 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "A map of string k/v attributes.\n",
+                        "description": "A map of string k/v properties.\n",
                         "willReplaceOnChanges": true
                     },
                     "entityName": {
                         "type": "string",
-                        "description": "The name of the entity to target.\n",
+                        "description": "The name of the entity\n",
                         "willReplaceOnChanges": true
                     },
                     "entityType": {
                         "type": "string",
-                        "description": "The type of entity. Valid values are `client-id`, `user`, `ip`.\n",
+                        "description": "The type of the entity (client-id, user, ip)\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -493,7 +472,6 @@
             }
         },
         "kafka:index/topic:Topic": {
-            "description": "A resource for managing Kafka topics. Increases partition count without destroying the topic.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst logs = new kafka.Topic(\"logs\", {\n    config: {\n        \"cleanup.policy\": \"compact\",\n        \"segment.ms\": \"20000\",\n    },\n    partitions: 100,\n    replicationFactor: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nlogs = kafka.Topic(\"logs\",\n    config={\n        \"cleanup.policy\": \"compact\",\n        \"segment.ms\": \"20000\",\n    },\n    partitions=100,\n    replication_factor=2)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var logs = new Kafka.Topic(\"logs\", new()\n    {\n        Config = \n        {\n            { \"cleanup.policy\", \"compact\" },\n            { \"segment.ms\", \"20000\" },\n        },\n        Partitions = 100,\n        ReplicationFactor = 2,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"logs\", \u0026kafka.TopicArgs{\n\t\t\tConfig: pulumi.AnyMap{\n\t\t\t\t\"cleanup.policy\": pulumi.Any(\"compact\"),\n\t\t\t\t\"segment.ms\":     pulumi.Any(\"20000\"),\n\t\t\t},\n\t\t\tPartitions:        pulumi.Int(100),\n\t\t\tReplicationFactor: pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var logs = new Topic(\"logs\", TopicArgs.builder()        \n            .config(Map.ofEntries(\n                Map.entry(\"cleanup.policy\", \"compact\"),\n                Map.entry(\"segment.ms\", \"20000\")\n            ))\n            .partitions(100)\n            .replicationFactor(2)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  logs:\n    type: kafka:Topic\n    properties:\n      config:\n        cleanup.policy: compact\n        segment.ms: '20000'\n      partitions: 100\n      replicationFactor: 2\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTopics can be imported using their ARN, e.g.\n\n```sh\n $ pulumi import kafka:index/topic:Topic logs systemd_logs\n```\n\n ",
             "properties": {
                 "config": {
                     "type": "object",
@@ -508,11 +486,11 @@
                 },
                 "partitions": {
                     "type": "integer",
-                    "description": "The number of partitions the topic should have.\n"
+                    "description": "Number of partitions.\n"
                 },
                 "replicationFactor": {
                     "type": "integer",
-                    "description": "The number of replicas the topic should have.\n"
+                    "description": "Number of replicas.\n"
                 }
             },
             "required": [
@@ -535,11 +513,11 @@
                 },
                 "partitions": {
                     "type": "integer",
-                    "description": "The number of partitions the topic should have.\n"
+                    "description": "Number of partitions.\n"
                 },
                 "replicationFactor": {
                     "type": "integer",
-                    "description": "The number of replicas the topic should have.\n"
+                    "description": "Number of replicas.\n"
                 }
             },
             "requiredInputs": [
@@ -563,11 +541,88 @@
                     },
                     "partitions": {
                         "type": "integer",
-                        "description": "The number of partitions the topic should have.\n"
+                        "description": "Number of partitions.\n"
                     },
                     "replicationFactor": {
                         "type": "integer",
-                        "description": "The number of replicas the topic should have.\n"
+                        "description": "Number of replicas.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "kafka:index/userScramCredential:UserScramCredential": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "The password of the credential\n",
+                    "secret": true
+                },
+                "scramIterations": {
+                    "type": "integer",
+                    "description": "The number of SCRAM iterations used when generating the credential\n"
+                },
+                "scramMechanism": {
+                    "type": "string",
+                    "description": "The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The name of the credential\n"
+                }
+            },
+            "required": [
+                "password",
+                "scramMechanism",
+                "username"
+            ],
+            "inputProperties": {
+                "password": {
+                    "type": "string",
+                    "description": "The password of the credential\n",
+                    "secret": true
+                },
+                "scramIterations": {
+                    "type": "integer",
+                    "description": "The number of SCRAM iterations used when generating the credential\n"
+                },
+                "scramMechanism": {
+                    "type": "string",
+                    "description": "The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)\n",
+                    "willReplaceOnChanges": true
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The name of the credential\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "password",
+                "scramMechanism",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserScramCredential resources.\n",
+                "properties": {
+                    "password": {
+                        "type": "string",
+                        "description": "The password of the credential\n",
+                        "secret": true
+                    },
+                    "scramIterations": {
+                        "type": "integer",
+                        "description": "The number of SCRAM iterations used when generating the credential\n"
+                    },
+                    "scramMechanism": {
+                        "type": "string",
+                        "description": "The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The name of the credential\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"

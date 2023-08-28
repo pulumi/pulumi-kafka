@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // A list of kafka brokers
 func GetBootstrapServers(ctx *pulumi.Context) string {
@@ -60,7 +63,11 @@ func GetSaslMechanism(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("plain", nil, "KAFKA_SASL_MECHANISM").(string)
+	var value string
+	if d := internal.GetEnvOrDefault("plain", nil, "KAFKA_SASL_MECHANISM"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // Password for SASL authentication.
@@ -79,7 +86,11 @@ func GetSkipTlsVerify(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "KAFKA_SKIP_VERIFY").(bool)
+	var value bool
+	if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "KAFKA_SKIP_VERIFY"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // Timeout in seconds
@@ -93,5 +104,9 @@ func GetTlsEnabled(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(true, parseEnvBool, "KAFKA_ENABLE_TLS").(bool)
+	var value bool
+	if d := internal.GetEnvOrDefault(true, internal.ParseEnvBool, "KAFKA_ENABLE_TLS"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }

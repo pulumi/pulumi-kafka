@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * A resource for managing Kafka topics. Increases partition count without destroying the topic.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as kafka from "@pulumi/kafka";
- *
- * const logs = new kafka.Topic("logs", {
- *     config: {
- *         "cleanup.policy": "compact",
- *         "segment.ms": "20000",
- *     },
- *     partitions: 100,
- *     replicationFactor: 2,
- * });
- * ```
- *
- * ## Import
- *
- * Topics can be imported using their ARN, e.g.
- *
- * ```sh
- *  $ pulumi import kafka:index/topic:Topic logs systemd_logs
- * ```
- */
 export class Topic extends pulumi.CustomResource {
     /**
      * Get an existing Topic resource's state with the given name, ID, and optional extra
@@ -68,11 +41,11 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The number of partitions the topic should have.
+     * Number of partitions.
      */
     public readonly partitions!: pulumi.Output<number>;
     /**
-     * The number of replicas the topic should have.
+     * Number of replicas.
      */
     public readonly replicationFactor!: pulumi.Output<number>;
 
@@ -124,11 +97,11 @@ export interface TopicState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The number of partitions the topic should have.
+     * Number of partitions.
      */
     partitions?: pulumi.Input<number>;
     /**
-     * The number of replicas the topic should have.
+     * Number of replicas.
      */
     replicationFactor?: pulumi.Input<number>;
 }
@@ -146,11 +119,11 @@ export interface TopicArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The number of partitions the topic should have.
+     * Number of partitions.
      */
     partitions: pulumi.Input<number>;
     /**
-     * The number of replicas the topic should have.
+     * Number of replicas.
      */
     replicationFactor: pulumi.Input<number>;
 }

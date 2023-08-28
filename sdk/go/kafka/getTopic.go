@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTopicResult
 	err := ctx.Invoke("kafka:index:getTopic", args, &rv, opts...)
 	if err != nil {

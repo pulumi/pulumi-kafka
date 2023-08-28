@@ -9,40 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Kafka
 {
-    /// <summary>
-    /// A resource for managing Kafka topics. Increases partition count without destroying the topic.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Kafka = Pulumi.Kafka;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var logs = new Kafka.Topic("logs", new()
-    ///     {
-    ///         Config = 
-    ///         {
-    ///             { "cleanup.policy", "compact" },
-    ///             { "segment.ms", "20000" },
-    ///         },
-    ///         Partitions = 100,
-    ///         ReplicationFactor = 2,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Topics can be imported using their ARN, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import kafka:index/topic:Topic logs systemd_logs
-    /// ```
-    /// </summary>
     [KafkaResourceType("kafka:index/topic:Topic")]
     public partial class Topic : global::Pulumi.CustomResource
     {
@@ -59,13 +25,13 @@ namespace Pulumi.Kafka
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The number of partitions the topic should have.
+        /// Number of partitions.
         /// </summary>
         [Output("partitions")]
         public Output<int> Partitions { get; private set; } = null!;
 
         /// <summary>
-        /// The number of replicas the topic should have.
+        /// Number of replicas.
         /// </summary>
         [Output("replicationFactor")]
         public Output<int> ReplicationFactor { get; private set; } = null!;
@@ -135,13 +101,13 @@ namespace Pulumi.Kafka
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The number of partitions the topic should have.
+        /// Number of partitions.
         /// </summary>
         [Input("partitions", required: true)]
         public Input<int> Partitions { get; set; } = null!;
 
         /// <summary>
-        /// The number of replicas the topic should have.
+        /// Number of replicas.
         /// </summary>
         [Input("replicationFactor", required: true)]
         public Input<int> ReplicationFactor { get; set; } = null!;
@@ -173,13 +139,13 @@ namespace Pulumi.Kafka
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The number of partitions the topic should have.
+        /// Number of partitions.
         /// </summary>
         [Input("partitions")]
         public Input<int>? Partitions { get; set; }
 
         /// <summary>
-        /// The number of replicas the topic should have.
+        /// Number of replicas.
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }

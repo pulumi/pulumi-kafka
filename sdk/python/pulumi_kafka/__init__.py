@@ -10,6 +10,7 @@ from .get_topic import *
 from .provider import *
 from .quota import *
 from .topic import *
+from .user_scram_credential import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
@@ -43,6 +44,14 @@ _utilities.register(
   "fqn": "pulumi_kafka",
   "classes": {
    "kafka:index/topic:Topic": "Topic"
+  }
+ },
+ {
+  "pkg": "kafka",
+  "mod": "index/userScramCredential",
+  "fqn": "pulumi_kafka",
+  "classes": {
+   "kafka:index/userScramCredential:UserScramCredential": "UserScramCredential"
   }
  }
 ]

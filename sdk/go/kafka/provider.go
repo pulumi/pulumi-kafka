@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -56,15 +57,22 @@ func NewProvider(ctx *pulumi.Context,
 	if args.BootstrapServers == nil {
 		return nil, errors.New("invalid value for required argument 'BootstrapServers'")
 	}
-	if isZero(args.SaslMechanism) {
-		args.SaslMechanism = pulumi.StringPtr(getEnvOrDefault("plain", nil, "KAFKA_SASL_MECHANISM").(string))
+	if args.SaslMechanism == nil {
+		if d := internal.GetEnvOrDefault("plain", nil, "KAFKA_SASL_MECHANISM"); d != nil {
+			args.SaslMechanism = pulumi.StringPtr(d.(string))
+		}
 	}
-	if isZero(args.SkipTlsVerify) {
-		args.SkipTlsVerify = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "KAFKA_SKIP_VERIFY").(bool))
+	if args.SkipTlsVerify == nil {
+		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "KAFKA_SKIP_VERIFY"); d != nil {
+			args.SkipTlsVerify = pulumi.BoolPtr(d.(bool))
+		}
 	}
-	if isZero(args.TlsEnabled) {
-		args.TlsEnabled = pulumi.BoolPtr(getEnvOrDefault(true, parseEnvBool, "KAFKA_ENABLE_TLS").(bool))
+	if args.TlsEnabled == nil {
+		if d := internal.GetEnvOrDefault(true, internal.ParseEnvBool, "KAFKA_ENABLE_TLS"); d != nil {
+			args.TlsEnabled = pulumi.BoolPtr(d.(bool))
+		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:kafka", name, args, &resource, opts...)
 	if err != nil {
