@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-kafka/provider/v3
 
-go 1.20
+go 1.21
 
 require (
 	github.com/Mongey/terraform-provider-kafka v0.5.4
