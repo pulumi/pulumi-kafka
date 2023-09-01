@@ -17,15 +17,17 @@ package kafka
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 	"unicode"
+
+	// Allow embedding bridge metadata
+	_ "embed"
 
 	"github.com/Mongey/terraform-provider-kafka/kafka"
 	"github.com/pulumi/pulumi-kafka/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 // all of the token components used below.
@@ -37,26 +39,10 @@ const (
 	mainMod = "index"
 )
 
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
+func ref[T any](t T) *T { return &t }
 
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
-func makeDataSource(mod string, res string) tokens.ModuleMember {
-	return makeMember(mod, res)
-}
-
-func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
-}
-
-func tfLicenseTypeRef(license tfbridge.TFProviderLicense) *tfbridge.TFProviderLicense {
-	return &license
-}
+//go:embed cmd/pulumi-resource-kafka/bridge-metadata.json
+var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
@@ -70,7 +56,9 @@ func Provider() tfbridge.ProviderInfo {
 		License:           "Apache-2.0",
 		Homepage:          "https://pulumi.io",
 		Repository:        "https://github.com/pulumi/pulumi-kafka",
-		TFProviderLicense: tfLicenseTypeRef(tfbridge.MITLicenseType),
+		Version:           version.Version,
+		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
+		TFProviderLicense: ref(tfbridge.MITLicenseType),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"sasl_mechanism": {
 				Default: &tfbridge.DefaultInfo{
@@ -99,7 +87,6 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"kafka_acl": {
-				Tok: makeResource(mainMod, "Acl"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"resource_name": {
 						Name: "aclResourceName",
@@ -109,16 +96,9 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"kafka_topic": {Tok: makeResource(mainMod, "Topic")},
-			"kafka_quota": {Tok: makeResource(mainMod, "Quota")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"kafka_topic": {
-				Tok: makeDataSource(mainMod, "getTopic"),
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
-			},
+			"kafka_topic": {Docs: noDocs},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -153,11 +133,30 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	err := prov.ComputeTokens(tfbridgetokens.SingleModule("kafka", mainMod,
-		tfbridgetokens.MakeStandard(mainPkg)))
-	contract.AssertNoErrorf(err, "failed to compute default modules")
+	prov.MustComputeTokens(tks.SingleModule("kafka", mainMod,
+		// kafka doesn't apply tf's normal submodule naming for functions.
+		//
+		// Function token:
+		//
+		//	kafka:index:getTopic
+		//
+		// Resource token:
+		//
+		//	kafka:index/topic:Topic
+		func(module, name string) (string, error) {
+			if !strings.HasPrefix(name, "get") {
+				module += "/" + string(unicode.ToLower(rune(name[0]))) + name[1:]
+			}
+			return fmt.Sprintf("kafka:%s:%s", module, name), nil
+		}))
 
 	prov.SetAutonaming(255, "-")
 
+	prov.MustApplyAutoAliases()
+
 	return prov
+}
+
+var noDocs = &tfbridge.DocInfo{
+	Markdown: []byte{' '},
 }

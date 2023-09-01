@@ -23,7 +23,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * A map of string k/v attributes.
      * 
      */
-    @Export(name="config", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="config", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> config;
 
     /**
@@ -37,7 +37,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The name of the topic.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -51,7 +51,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Number of partitions.
      * 
      */
-    @Export(name="partitions", type=Integer.class, parameters={})
+    @Export(name="partitions", refs={Integer.class}, tree="[0]")
     private Output<Integer> partitions;
 
     /**
@@ -65,7 +65,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Number of replicas.
      * 
      */
-    @Export(name="replicationFactor", type=Integer.class, parameters={})
+    @Export(name="replicationFactor", refs={Integer.class}, tree="[0]")
     private Output<Integer> replicationFactor;
 
     /**

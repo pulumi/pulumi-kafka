@@ -26,7 +26,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * CA certificate file to validate the server&#39;s certificate.
      * 
      */
-    @Export(name="caCert", type=String.class, parameters={})
+    @Export(name="caCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caCert;
 
     /**
@@ -44,7 +44,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead. */
-    @Export(name="caCertFile", type=String.class, parameters={})
+    @Export(name="caCertFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caCertFile;
 
     /**
@@ -58,7 +58,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The client certificate.
      * 
      */
-    @Export(name="clientCert", type=String.class, parameters={})
+    @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCert;
 
     /**
@@ -76,7 +76,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead. */
-    @Export(name="clientCertFile", type=String.class, parameters={})
+    @Export(name="clientCertFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertFile;
 
     /**
@@ -90,7 +90,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The private key that the certificate was issued for.
      * 
      */
-    @Export(name="clientKey", type=String.class, parameters={})
+    @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
@@ -108,7 +108,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_key` instead. */
-    @Export(name="clientKeyFile", type=String.class, parameters={})
+    @Export(name="clientKeyFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKeyFile;
 
     /**
@@ -122,7 +122,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The passphrase for the private key that the certificate was issued for.
      * 
      */
-    @Export(name="clientKeyPassphrase", type=String.class, parameters={})
+    @Export(name="clientKeyPassphrase", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKeyPassphrase;
 
     /**
@@ -136,7 +136,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * SASL mechanism, can be plain, scram-sha512, scram-sha256
      * 
      */
-    @Export(name="saslMechanism", type=String.class, parameters={})
+    @Export(name="saslMechanism", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> saslMechanism;
 
     /**
@@ -150,7 +150,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Password for SASL authentication.
      * 
      */
-    @Export(name="saslPassword", type=String.class, parameters={})
+    @Export(name="saslPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> saslPassword;
 
     /**
@@ -164,7 +164,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Username for SASL authentication.
      * 
      */
-    @Export(name="saslUsername", type=String.class, parameters={})
+    @Export(name="saslUsername", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> saslUsername;
 
     /**

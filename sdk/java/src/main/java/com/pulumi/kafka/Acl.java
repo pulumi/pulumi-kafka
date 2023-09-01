@@ -16,25 +16,25 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="kafka:index/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
-    @Export(name="aclHost", type=String.class, parameters={})
+    @Export(name="aclHost", refs={String.class}, tree="[0]")
     private Output<String> aclHost;
 
     public Output<String> aclHost() {
         return this.aclHost;
     }
-    @Export(name="aclOperation", type=String.class, parameters={})
+    @Export(name="aclOperation", refs={String.class}, tree="[0]")
     private Output<String> aclOperation;
 
     public Output<String> aclOperation() {
         return this.aclOperation;
     }
-    @Export(name="aclPermissionType", type=String.class, parameters={})
+    @Export(name="aclPermissionType", refs={String.class}, tree="[0]")
     private Output<String> aclPermissionType;
 
     public Output<String> aclPermissionType() {
         return this.aclPermissionType;
     }
-    @Export(name="aclPrincipal", type=String.class, parameters={})
+    @Export(name="aclPrincipal", refs={String.class}, tree="[0]")
     private Output<String> aclPrincipal;
 
     public Output<String> aclPrincipal() {
@@ -44,7 +44,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * The name of the resource
      * 
      */
-    @Export(name="aclResourceName", type=String.class, parameters={})
+    @Export(name="aclResourceName", refs={String.class}, tree="[0]")
     private Output<String> aclResourceName;
 
     /**
@@ -54,13 +54,13 @@ public class Acl extends com.pulumi.resources.CustomResource {
     public Output<String> aclResourceName() {
         return this.aclResourceName;
     }
-    @Export(name="aclResourceType", type=String.class, parameters={})
+    @Export(name="aclResourceType", refs={String.class}, tree="[0]")
     private Output<String> aclResourceType;
 
     public Output<String> aclResourceType() {
         return this.aclResourceType;
     }
-    @Export(name="resourcePatternTypeFilter", type=String.class, parameters={})
+    @Export(name="resourcePatternTypeFilter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourcePatternTypeFilter;
 
     public Output<Optional<String>> resourcePatternTypeFilter() {
