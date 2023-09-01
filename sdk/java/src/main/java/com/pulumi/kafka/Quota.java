@@ -22,7 +22,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * A map of string k/v properties.
      * 
      */
-    @Export(name="config", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="config", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> config;
 
     /**
@@ -36,7 +36,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * The name of the entity
      * 
      */
-    @Export(name="entityName", type=String.class, parameters={})
+    @Export(name="entityName", refs={String.class}, tree="[0]")
     private Output<String> entityName;
 
     /**
@@ -50,7 +50,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * The type of the entity (client-id, user, ip)
      * 
      */
-    @Export(name="entityType", type=String.class, parameters={})
+    @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**

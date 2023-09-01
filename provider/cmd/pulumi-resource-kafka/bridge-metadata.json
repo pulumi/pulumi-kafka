@@ -1,0 +1,94 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "kafka_acl": {
+                "current": "kafka:index/acl:Acl",
+                "majorVersion": 3
+            },
+            "kafka_quota": {
+                "current": "kafka:index/quota:Quota",
+                "majorVersion": 3
+            },
+            "kafka_topic": {
+                "current": "kafka:index/topic:Topic",
+                "majorVersion": 3
+            },
+            "kafka_user_scram_credential": {
+                "current": "kafka:index/userScramCredential:UserScramCredential",
+                "majorVersion": 3
+            }
+        },
+        "datasources": {
+            "kafka_topic": {
+                "current": "kafka:index:getTopic",
+                "majorVersion": 3
+            }
+        }
+    },
+    "renames": {
+        "resources": {
+            "kafka:index/acl:Acl": "kafka_acl",
+            "kafka:index/quota:Quota": "kafka_quota",
+            "kafka:index/topic:Topic": "kafka_topic",
+            "kafka:index/userScramCredential:UserScramCredential": "kafka_user_scram_credential"
+        },
+        "functions": {
+            "kafka:index:getTopic": "kafka_topic"
+        },
+        "renamedProperties": {
+            "kafka:index/acl:Acl": {
+                "aclHost": "acl_host",
+                "aclOperation": "acl_operation",
+                "aclPermissionType": "acl_permission_type",
+                "aclPrincipal": "acl_principal",
+                "aclResourceName": "resource_name",
+                "aclResourceType": "resource_type",
+                "resourcePatternTypeFilter": "resource_pattern_type_filter"
+            },
+            "kafka:index/quota:Quota": {
+                "entityName": "entity_name",
+                "entityType": "entity_type"
+            },
+            "kafka:index/topic:Topic": {
+                "replicationFactor": "replication_factor"
+            },
+            "kafka:index/userScramCredential:UserScramCredential": {
+                "scramIterations": "scram_iterations",
+                "scramMechanism": "scram_mechanism"
+            },
+            "kafka:index:Provider": {
+                "bootstrapServers": "bootstrap_servers",
+                "caCert": "ca_cert",
+                "caCertFile": "ca_cert_file",
+                "clientCert": "client_cert",
+                "clientCertFile": "client_cert_file",
+                "clientKey": "client_key",
+                "clientKeyFile": "client_key_file",
+                "clientKeyPassphrase": "client_key_passphrase",
+                "saslMechanism": "sasl_mechanism",
+                "saslPassword": "sasl_password",
+                "saslUsername": "sasl_username",
+                "skipTlsVerify": "skip_tls_verify",
+                "tlsEnabled": "tls_enabled"
+            },
+            "kafka:index:getTopic": {
+                "replicationFactor": "replication_factor"
+            }
+        },
+        "renamedConfigProperties": {
+            "bootstrapServers": "bootstrap_servers",
+            "caCert": "ca_cert",
+            "caCertFile": "ca_cert_file",
+            "clientCert": "client_cert",
+            "clientCertFile": "client_cert_file",
+            "clientKey": "client_key",
+            "clientKeyFile": "client_key_file",
+            "clientKeyPassphrase": "client_key_passphrase",
+            "saslMechanism": "sasl_mechanism",
+            "saslPassword": "sasl_password",
+            "saslUsername": "sasl_username",
+            "skipTlsVerify": "skip_tls_verify",
+            "tlsEnabled": "tls_enabled"
+        }
+    }
+}

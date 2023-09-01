@@ -22,7 +22,7 @@ public class UserScramCredential extends com.pulumi.resources.CustomResource {
      * The password of the credential
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -36,7 +36,7 @@ public class UserScramCredential extends com.pulumi.resources.CustomResource {
      * The number of SCRAM iterations used when generating the credential
      * 
      */
-    @Export(name="scramIterations", type=Integer.class, parameters={})
+    @Export(name="scramIterations", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> scramIterations;
 
     /**
@@ -50,7 +50,7 @@ public class UserScramCredential extends com.pulumi.resources.CustomResource {
      * The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
      * 
      */
-    @Export(name="scramMechanism", type=String.class, parameters={})
+    @Export(name="scramMechanism", refs={String.class}, tree="[0]")
     private Output<String> scramMechanism;
 
     /**
@@ -64,7 +64,7 @@ public class UserScramCredential extends com.pulumi.resources.CustomResource {
      * The name of the credential
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
