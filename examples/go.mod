@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-kafka/examples/v3
 
-go 1.21
+go 1.20
 
 require github.com/pulumi/pulumi/pkg/v3 v3.17.0
 
