@@ -7,7 +7,7 @@ env:
       6.0.x
       3.1.301
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GOVERSION: 1.20.1
+  GOVERSION: 1.21.x
   JAVAVERSION: "11"
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NODEVERSION: 16.x
@@ -51,7 +51,7 @@ jobs:
       with:
         cache-dependency-path: |
             sdk/go.sum
-        go-version: 1.20.1
+        go-version: 1.21.x
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -143,7 +143,7 @@ jobs:
         repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
   lint:
-    container: golangci/golangci-lint:v1.51
+    container: golangci/golangci-lint:v1.54.1
     if: github.event_name == 'repository_dispatch' ||
       github.event.pull_request.head.repo.full_name == github.repository
     name: lint
@@ -167,7 +167,7 @@ jobs:
       with:
         cache-dependency-path: |
             sdk/go.sum
-        go-version: 1.20.1
+        go-version: 1.21.x
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -204,7 +204,7 @@ jobs:
       with:
         cache-dependency-path: |
             sdk/go.sum
-        go-version: 1.20.1
+        go-version: 1.21.x
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -323,7 +323,7 @@ jobs:
       with:
         cache-dependency-path: |
             sdk/go.sum
-        go-version: 1.20.1
+        go-version: 1.21.x
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
