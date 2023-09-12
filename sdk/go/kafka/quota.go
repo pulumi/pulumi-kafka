@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Quota struct {
@@ -122,6 +123,12 @@ func (i *Quota) ToQuotaOutputWithContext(ctx context.Context) QuotaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaOutput)
 }
 
+func (i *Quota) ToOutput(ctx context.Context) pulumix.Output[*Quota] {
+	return pulumix.Output[*Quota]{
+		OutputState: i.ToQuotaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // QuotaArrayInput is an input type that accepts QuotaArray and QuotaArrayOutput values.
 // You can construct a concrete instance of `QuotaArrayInput` via:
 //
@@ -145,6 +152,12 @@ func (i QuotaArray) ToQuotaArrayOutput() QuotaArrayOutput {
 
 func (i QuotaArray) ToQuotaArrayOutputWithContext(ctx context.Context) QuotaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaArrayOutput)
+}
+
+func (i QuotaArray) ToOutput(ctx context.Context) pulumix.Output[[]*Quota] {
+	return pulumix.Output[[]*Quota]{
+		OutputState: i.ToQuotaArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // QuotaMapInput is an input type that accepts QuotaMap and QuotaMapOutput values.
@@ -172,6 +185,12 @@ func (i QuotaMap) ToQuotaMapOutputWithContext(ctx context.Context) QuotaMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaMapOutput)
 }
 
+func (i QuotaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Quota] {
+	return pulumix.Output[map[string]*Quota]{
+		OutputState: i.ToQuotaMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QuotaOutput struct{ *pulumi.OutputState }
 
 func (QuotaOutput) ElementType() reflect.Type {
@@ -184,6 +203,12 @@ func (o QuotaOutput) ToQuotaOutput() QuotaOutput {
 
 func (o QuotaOutput) ToQuotaOutputWithContext(ctx context.Context) QuotaOutput {
 	return o
+}
+
+func (o QuotaOutput) ToOutput(ctx context.Context) pulumix.Output[*Quota] {
+	return pulumix.Output[*Quota]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A map of string k/v properties.
@@ -215,6 +240,12 @@ func (o QuotaArrayOutput) ToQuotaArrayOutputWithContext(ctx context.Context) Quo
 	return o
 }
 
+func (o QuotaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Quota] {
+	return pulumix.Output[[]*Quota]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QuotaArrayOutput) Index(i pulumi.IntInput) QuotaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Quota {
 		return vs[0].([]*Quota)[vs[1].(int)]
@@ -233,6 +264,12 @@ func (o QuotaMapOutput) ToQuotaMapOutput() QuotaMapOutput {
 
 func (o QuotaMapOutput) ToQuotaMapOutputWithContext(ctx context.Context) QuotaMapOutput {
 	return o
+}
+
+func (o QuotaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Quota] {
+	return pulumix.Output[map[string]*Quota]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QuotaMapOutput) MapIndex(k pulumi.StringInput) QuotaOutput {
