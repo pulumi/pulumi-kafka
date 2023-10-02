@@ -28,3 +28,6 @@ sdk/java/gradlew
 sdk/java/gradlew.bat
 
 schema-embed.json
+
+
+sdk/python/venv
