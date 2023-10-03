@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AclArgs', 'Acl']
@@ -25,14 +25,35 @@ class AclArgs:
         The set of arguments for constructing a Acl resource.
         :param pulumi.Input[str] acl_resource_name: The name of the resource
         """
-        pulumi.set(__self__, "acl_host", acl_host)
-        pulumi.set(__self__, "acl_operation", acl_operation)
-        pulumi.set(__self__, "acl_permission_type", acl_permission_type)
-        pulumi.set(__self__, "acl_principal", acl_principal)
-        pulumi.set(__self__, "acl_resource_name", acl_resource_name)
-        pulumi.set(__self__, "acl_resource_type", acl_resource_type)
+        AclArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_host=acl_host,
+            acl_operation=acl_operation,
+            acl_permission_type=acl_permission_type,
+            acl_principal=acl_principal,
+            acl_resource_name=acl_resource_name,
+            acl_resource_type=acl_resource_type,
+            resource_pattern_type_filter=resource_pattern_type_filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_host: pulumi.Input[str],
+             acl_operation: pulumi.Input[str],
+             acl_permission_type: pulumi.Input[str],
+             acl_principal: pulumi.Input[str],
+             acl_resource_name: pulumi.Input[str],
+             acl_resource_type: pulumi.Input[str],
+             resource_pattern_type_filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_host", acl_host)
+        _setter("acl_operation", acl_operation)
+        _setter("acl_permission_type", acl_permission_type)
+        _setter("acl_principal", acl_principal)
+        _setter("acl_resource_name", acl_resource_name)
+        _setter("acl_resource_type", acl_resource_type)
         if resource_pattern_type_filter is not None:
-            pulumi.set(__self__, "resource_pattern_type_filter", resource_pattern_type_filter)
+            _setter("resource_pattern_type_filter", resource_pattern_type_filter)
 
     @property
     @pulumi.getter(name="aclHost")
@@ -115,20 +136,41 @@ class _AclState:
         Input properties used for looking up and filtering Acl resources.
         :param pulumi.Input[str] acl_resource_name: The name of the resource
         """
+        _AclState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_host=acl_host,
+            acl_operation=acl_operation,
+            acl_permission_type=acl_permission_type,
+            acl_principal=acl_principal,
+            acl_resource_name=acl_resource_name,
+            acl_resource_type=acl_resource_type,
+            resource_pattern_type_filter=resource_pattern_type_filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_host: Optional[pulumi.Input[str]] = None,
+             acl_operation: Optional[pulumi.Input[str]] = None,
+             acl_permission_type: Optional[pulumi.Input[str]] = None,
+             acl_principal: Optional[pulumi.Input[str]] = None,
+             acl_resource_name: Optional[pulumi.Input[str]] = None,
+             acl_resource_type: Optional[pulumi.Input[str]] = None,
+             resource_pattern_type_filter: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acl_host is not None:
-            pulumi.set(__self__, "acl_host", acl_host)
+            _setter("acl_host", acl_host)
         if acl_operation is not None:
-            pulumi.set(__self__, "acl_operation", acl_operation)
+            _setter("acl_operation", acl_operation)
         if acl_permission_type is not None:
-            pulumi.set(__self__, "acl_permission_type", acl_permission_type)
+            _setter("acl_permission_type", acl_permission_type)
         if acl_principal is not None:
-            pulumi.set(__self__, "acl_principal", acl_principal)
+            _setter("acl_principal", acl_principal)
         if acl_resource_name is not None:
-            pulumi.set(__self__, "acl_resource_name", acl_resource_name)
+            _setter("acl_resource_name", acl_resource_name)
         if acl_resource_type is not None:
-            pulumi.set(__self__, "acl_resource_type", acl_resource_type)
+            _setter("acl_resource_type", acl_resource_type)
         if resource_pattern_type_filter is not None:
-            pulumi.set(__self__, "resource_pattern_type_filter", resource_pattern_type_filter)
+            _setter("resource_pattern_type_filter", resource_pattern_type_filter)
 
     @property
     @pulumi.getter(name="aclHost")
@@ -234,6 +276,10 @@ class Acl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AclArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
