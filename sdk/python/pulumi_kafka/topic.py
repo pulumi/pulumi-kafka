@@ -35,11 +35,19 @@ class TopicArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             partitions: pulumi.Input[int],
-             replication_factor: pulumi.Input[int],
+             partitions: Optional[pulumi.Input[int]] = None,
+             replication_factor: Optional[pulumi.Input[int]] = None,
              config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if partitions is None:
+            raise TypeError("Missing 'partitions' argument")
+        if replication_factor is None and 'replicationFactor' in kwargs:
+            replication_factor = kwargs['replicationFactor']
+        if replication_factor is None:
+            raise TypeError("Missing 'replication_factor' argument")
+
         _setter("partitions", partitions)
         _setter("replication_factor", replication_factor)
         if config is not None:
@@ -124,7 +132,11 @@ class _TopicState:
              name: Optional[pulumi.Input[str]] = None,
              partitions: Optional[pulumi.Input[int]] = None,
              replication_factor: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if replication_factor is None and 'replicationFactor' in kwargs:
+            replication_factor = kwargs['replicationFactor']
+
         if config is not None:
             _setter("config", config)
         if name is not None:

@@ -35,11 +35,23 @@ class UserScramCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             password: pulumi.Input[str],
-             scram_mechanism: pulumi.Input[str],
-             username: pulumi.Input[str],
+             password: Optional[pulumi.Input[str]] = None,
+             scram_mechanism: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              scram_iterations: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if scram_mechanism is None and 'scramMechanism' in kwargs:
+            scram_mechanism = kwargs['scramMechanism']
+        if scram_mechanism is None:
+            raise TypeError("Missing 'scram_mechanism' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if scram_iterations is None and 'scramIterations' in kwargs:
+            scram_iterations = kwargs['scramIterations']
+
         _setter("password", password)
         _setter("scram_mechanism", scram_mechanism)
         _setter("username", username)
@@ -123,7 +135,13 @@ class _UserScramCredentialState:
              scram_iterations: Optional[pulumi.Input[int]] = None,
              scram_mechanism: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if scram_iterations is None and 'scramIterations' in kwargs:
+            scram_iterations = kwargs['scramIterations']
+        if scram_mechanism is None and 'scramMechanism' in kwargs:
+            scram_mechanism = kwargs['scramMechanism']
+
         if password is not None:
             _setter("password", password)
         if scram_iterations is not None:
