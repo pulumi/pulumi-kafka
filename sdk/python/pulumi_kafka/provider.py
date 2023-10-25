@@ -65,7 +65,7 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bootstrap_servers: pulumi.Input[Sequence[pulumi.Input[str]]],
+             bootstrap_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ca_cert: Optional[pulumi.Input[str]] = None,
              ca_cert_file: Optional[pulumi.Input[str]] = None,
              client_cert: Optional[pulumi.Input[str]] = None,
@@ -79,7 +79,37 @@ class ProviderArgs:
              skip_tls_verify: Optional[pulumi.Input[bool]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              tls_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bootstrap_servers is None and 'bootstrapServers' in kwargs:
+            bootstrap_servers = kwargs['bootstrapServers']
+        if bootstrap_servers is None:
+            raise TypeError("Missing 'bootstrap_servers' argument")
+        if ca_cert is None and 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if ca_cert_file is None and 'caCertFile' in kwargs:
+            ca_cert_file = kwargs['caCertFile']
+        if client_cert is None and 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if client_cert_file is None and 'clientCertFile' in kwargs:
+            client_cert_file = kwargs['clientCertFile']
+        if client_key is None and 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if client_key_file is None and 'clientKeyFile' in kwargs:
+            client_key_file = kwargs['clientKeyFile']
+        if client_key_passphrase is None and 'clientKeyPassphrase' in kwargs:
+            client_key_passphrase = kwargs['clientKeyPassphrase']
+        if sasl_mechanism is None and 'saslMechanism' in kwargs:
+            sasl_mechanism = kwargs['saslMechanism']
+        if sasl_password is None and 'saslPassword' in kwargs:
+            sasl_password = kwargs['saslPassword']
+        if sasl_username is None and 'saslUsername' in kwargs:
+            sasl_username = kwargs['saslUsername']
+        if skip_tls_verify is None and 'skipTlsVerify' in kwargs:
+            skip_tls_verify = kwargs['skipTlsVerify']
+        if tls_enabled is None and 'tlsEnabled' in kwargs:
+            tls_enabled = kwargs['tlsEnabled']
+
         _setter("bootstrap_servers", bootstrap_servers)
         if ca_cert is not None:
             _setter("ca_cert", ca_cert)

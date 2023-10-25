@@ -32,10 +32,20 @@ class QuotaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_name: pulumi.Input[str],
-             entity_type: pulumi.Input[str],
+             entity_name: Optional[pulumi.Input[str]] = None,
+             entity_type: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_name is None and 'entityName' in kwargs:
+            entity_name = kwargs['entityName']
+        if entity_name is None:
+            raise TypeError("Missing 'entity_name' argument")
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+
         _setter("entity_name", entity_name)
         _setter("entity_type", entity_type)
         if config is not None:
@@ -102,7 +112,13 @@ class _QuotaState:
              config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              entity_name: Optional[pulumi.Input[str]] = None,
              entity_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_name is None and 'entityName' in kwargs:
+            entity_name = kwargs['entityName']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+
         if config is not None:
             _setter("config", config)
         if entity_name is not None:

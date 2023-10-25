@@ -38,14 +38,42 @@ class AclArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             acl_host: pulumi.Input[str],
-             acl_operation: pulumi.Input[str],
-             acl_permission_type: pulumi.Input[str],
-             acl_principal: pulumi.Input[str],
-             acl_resource_name: pulumi.Input[str],
-             acl_resource_type: pulumi.Input[str],
+             acl_host: Optional[pulumi.Input[str]] = None,
+             acl_operation: Optional[pulumi.Input[str]] = None,
+             acl_permission_type: Optional[pulumi.Input[str]] = None,
+             acl_principal: Optional[pulumi.Input[str]] = None,
+             acl_resource_name: Optional[pulumi.Input[str]] = None,
+             acl_resource_type: Optional[pulumi.Input[str]] = None,
              resource_pattern_type_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if acl_host is None and 'aclHost' in kwargs:
+            acl_host = kwargs['aclHost']
+        if acl_host is None:
+            raise TypeError("Missing 'acl_host' argument")
+        if acl_operation is None and 'aclOperation' in kwargs:
+            acl_operation = kwargs['aclOperation']
+        if acl_operation is None:
+            raise TypeError("Missing 'acl_operation' argument")
+        if acl_permission_type is None and 'aclPermissionType' in kwargs:
+            acl_permission_type = kwargs['aclPermissionType']
+        if acl_permission_type is None:
+            raise TypeError("Missing 'acl_permission_type' argument")
+        if acl_principal is None and 'aclPrincipal' in kwargs:
+            acl_principal = kwargs['aclPrincipal']
+        if acl_principal is None:
+            raise TypeError("Missing 'acl_principal' argument")
+        if acl_resource_name is None and 'aclResourceName' in kwargs:
+            acl_resource_name = kwargs['aclResourceName']
+        if acl_resource_name is None:
+            raise TypeError("Missing 'acl_resource_name' argument")
+        if acl_resource_type is None and 'aclResourceType' in kwargs:
+            acl_resource_type = kwargs['aclResourceType']
+        if acl_resource_type is None:
+            raise TypeError("Missing 'acl_resource_type' argument")
+        if resource_pattern_type_filter is None and 'resourcePatternTypeFilter' in kwargs:
+            resource_pattern_type_filter = kwargs['resourcePatternTypeFilter']
+
         _setter("acl_host", acl_host)
         _setter("acl_operation", acl_operation)
         _setter("acl_permission_type", acl_permission_type)
@@ -156,7 +184,23 @@ class _AclState:
              acl_resource_name: Optional[pulumi.Input[str]] = None,
              acl_resource_type: Optional[pulumi.Input[str]] = None,
              resource_pattern_type_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if acl_host is None and 'aclHost' in kwargs:
+            acl_host = kwargs['aclHost']
+        if acl_operation is None and 'aclOperation' in kwargs:
+            acl_operation = kwargs['aclOperation']
+        if acl_permission_type is None and 'aclPermissionType' in kwargs:
+            acl_permission_type = kwargs['aclPermissionType']
+        if acl_principal is None and 'aclPrincipal' in kwargs:
+            acl_principal = kwargs['aclPrincipal']
+        if acl_resource_name is None and 'aclResourceName' in kwargs:
+            acl_resource_name = kwargs['aclResourceName']
+        if acl_resource_type is None and 'aclResourceType' in kwargs:
+            acl_resource_type = kwargs['aclResourceType']
+        if resource_pattern_type_filter is None and 'resourcePatternTypeFilter' in kwargs:
+            resource_pattern_type_filter = kwargs['resourcePatternTypeFilter']
+
         if acl_host is not None:
             _setter("acl_host", acl_host)
         if acl_operation is not None:
