@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserScramCredentialArgs', 'UserScramCredential']
@@ -25,38 +25,11 @@ class UserScramCredentialArgs:
         :param pulumi.Input[str] username: The name of the credential
         :param pulumi.Input[int] scram_iterations: The number of SCRAM iterations used when generating the credential
         """
-        UserScramCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            password=password,
-            scram_mechanism=scram_mechanism,
-            username=username,
-            scram_iterations=scram_iterations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             password: Optional[pulumi.Input[str]] = None,
-             scram_mechanism: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             scram_iterations: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if scram_mechanism is None and 'scramMechanism' in kwargs:
-            scram_mechanism = kwargs['scramMechanism']
-        if scram_mechanism is None:
-            raise TypeError("Missing 'scram_mechanism' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-        if scram_iterations is None and 'scramIterations' in kwargs:
-            scram_iterations = kwargs['scramIterations']
-
-        _setter("password", password)
-        _setter("scram_mechanism", scram_mechanism)
-        _setter("username", username)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "scram_mechanism", scram_mechanism)
+        pulumi.set(__self__, "username", username)
         if scram_iterations is not None:
-            _setter("scram_iterations", scram_iterations)
+            pulumi.set(__self__, "scram_iterations", scram_iterations)
 
     @property
     @pulumi.getter
@@ -121,35 +94,14 @@ class _UserScramCredentialState:
         :param pulumi.Input[str] scram_mechanism: The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
         :param pulumi.Input[str] username: The name of the credential
         """
-        _UserScramCredentialState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            password=password,
-            scram_iterations=scram_iterations,
-            scram_mechanism=scram_mechanism,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             password: Optional[pulumi.Input[str]] = None,
-             scram_iterations: Optional[pulumi.Input[int]] = None,
-             scram_mechanism: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if scram_iterations is None and 'scramIterations' in kwargs:
-            scram_iterations = kwargs['scramIterations']
-        if scram_mechanism is None and 'scramMechanism' in kwargs:
-            scram_mechanism = kwargs['scramMechanism']
-
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if scram_iterations is not None:
-            _setter("scram_iterations", scram_iterations)
+            pulumi.set(__self__, "scram_iterations", scram_iterations)
         if scram_mechanism is not None:
-            _setter("scram_mechanism", scram_mechanism)
+            pulumi.set(__self__, "scram_mechanism", scram_mechanism)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -237,10 +189,6 @@ class UserScramCredential(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserScramCredentialArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

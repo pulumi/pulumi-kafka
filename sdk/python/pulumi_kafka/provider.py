@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -45,113 +45,48 @@ class ProviderArgs:
         :param pulumi.Input[int] timeout: Timeout in seconds
         :param pulumi.Input[bool] tls_enabled: Enable communication with the Kafka Cluster over TLS.
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            bootstrap_servers=bootstrap_servers,
-            ca_cert=ca_cert,
-            ca_cert_file=ca_cert_file,
-            client_cert=client_cert,
-            client_cert_file=client_cert_file,
-            client_key=client_key,
-            client_key_file=client_key_file,
-            client_key_passphrase=client_key_passphrase,
-            sasl_mechanism=sasl_mechanism,
-            sasl_password=sasl_password,
-            sasl_username=sasl_username,
-            skip_tls_verify=skip_tls_verify,
-            timeout=timeout,
-            tls_enabled=tls_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             bootstrap_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ca_cert: Optional[pulumi.Input[str]] = None,
-             ca_cert_file: Optional[pulumi.Input[str]] = None,
-             client_cert: Optional[pulumi.Input[str]] = None,
-             client_cert_file: Optional[pulumi.Input[str]] = None,
-             client_key: Optional[pulumi.Input[str]] = None,
-             client_key_file: Optional[pulumi.Input[str]] = None,
-             client_key_passphrase: Optional[pulumi.Input[str]] = None,
-             sasl_mechanism: Optional[pulumi.Input[str]] = None,
-             sasl_password: Optional[pulumi.Input[str]] = None,
-             sasl_username: Optional[pulumi.Input[str]] = None,
-             skip_tls_verify: Optional[pulumi.Input[bool]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             tls_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if bootstrap_servers is None and 'bootstrapServers' in kwargs:
-            bootstrap_servers = kwargs['bootstrapServers']
-        if bootstrap_servers is None:
-            raise TypeError("Missing 'bootstrap_servers' argument")
-        if ca_cert is None and 'caCert' in kwargs:
-            ca_cert = kwargs['caCert']
-        if ca_cert_file is None and 'caCertFile' in kwargs:
-            ca_cert_file = kwargs['caCertFile']
-        if client_cert is None and 'clientCert' in kwargs:
-            client_cert = kwargs['clientCert']
-        if client_cert_file is None and 'clientCertFile' in kwargs:
-            client_cert_file = kwargs['clientCertFile']
-        if client_key is None and 'clientKey' in kwargs:
-            client_key = kwargs['clientKey']
-        if client_key_file is None and 'clientKeyFile' in kwargs:
-            client_key_file = kwargs['clientKeyFile']
-        if client_key_passphrase is None and 'clientKeyPassphrase' in kwargs:
-            client_key_passphrase = kwargs['clientKeyPassphrase']
-        if sasl_mechanism is None and 'saslMechanism' in kwargs:
-            sasl_mechanism = kwargs['saslMechanism']
-        if sasl_password is None and 'saslPassword' in kwargs:
-            sasl_password = kwargs['saslPassword']
-        if sasl_username is None and 'saslUsername' in kwargs:
-            sasl_username = kwargs['saslUsername']
-        if skip_tls_verify is None and 'skipTlsVerify' in kwargs:
-            skip_tls_verify = kwargs['skipTlsVerify']
-        if tls_enabled is None and 'tlsEnabled' in kwargs:
-            tls_enabled = kwargs['tlsEnabled']
-
-        _setter("bootstrap_servers", bootstrap_servers)
+        pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         if ca_cert is not None:
-            _setter("ca_cert", ca_cert)
+            pulumi.set(__self__, "ca_cert", ca_cert)
         if ca_cert_file is not None:
             warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""", DeprecationWarning)
             pulumi.log.warn("""ca_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""")
         if ca_cert_file is not None:
-            _setter("ca_cert_file", ca_cert_file)
+            pulumi.set(__self__, "ca_cert_file", ca_cert_file)
         if client_cert is not None:
-            _setter("client_cert", client_cert)
+            pulumi.set(__self__, "client_cert", client_cert)
         if client_cert_file is not None:
             warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""", DeprecationWarning)
             pulumi.log.warn("""client_cert_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""")
         if client_cert_file is not None:
-            _setter("client_cert_file", client_cert_file)
+            pulumi.set(__self__, "client_cert_file", client_cert_file)
         if client_key is not None:
-            _setter("client_key", client_key)
+            pulumi.set(__self__, "client_key", client_key)
         if client_key_file is not None:
             warnings.warn("""This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""", DeprecationWarning)
             pulumi.log.warn("""client_key_file is deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""")
         if client_key_file is not None:
-            _setter("client_key_file", client_key_file)
+            pulumi.set(__self__, "client_key_file", client_key_file)
         if client_key_passphrase is not None:
-            _setter("client_key_passphrase", client_key_passphrase)
+            pulumi.set(__self__, "client_key_passphrase", client_key_passphrase)
         if sasl_mechanism is None:
             sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
         if sasl_mechanism is not None:
-            _setter("sasl_mechanism", sasl_mechanism)
+            pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
         if sasl_password is not None:
-            _setter("sasl_password", sasl_password)
+            pulumi.set(__self__, "sasl_password", sasl_password)
         if sasl_username is not None:
-            _setter("sasl_username", sasl_username)
+            pulumi.set(__self__, "sasl_username", sasl_username)
         if skip_tls_verify is None:
             skip_tls_verify = (_utilities.get_env_bool('KAFKA_SKIP_VERIFY') or False)
         if skip_tls_verify is not None:
-            _setter("skip_tls_verify", skip_tls_verify)
+            pulumi.set(__self__, "skip_tls_verify", skip_tls_verify)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if tls_enabled is None:
             tls_enabled = (_utilities.get_env_bool('KAFKA_ENABLE_TLS') or True)
         if tls_enabled is not None:
-            _setter("tls_enabled", tls_enabled)
+            pulumi.set(__self__, "tls_enabled", tls_enabled)
 
     @property
     @pulumi.getter(name="bootstrapServers")
@@ -396,10 +331,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
