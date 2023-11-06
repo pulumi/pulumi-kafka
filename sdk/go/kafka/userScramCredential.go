@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type UserScramCredential struct {
@@ -143,12 +142,6 @@ func (i *UserScramCredential) ToUserScramCredentialOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(UserScramCredentialOutput)
 }
 
-func (i *UserScramCredential) ToOutput(ctx context.Context) pulumix.Output[*UserScramCredential] {
-	return pulumix.Output[*UserScramCredential]{
-		OutputState: i.ToUserScramCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserScramCredentialArrayInput is an input type that accepts UserScramCredentialArray and UserScramCredentialArrayOutput values.
 // You can construct a concrete instance of `UserScramCredentialArrayInput` via:
 //
@@ -172,12 +165,6 @@ func (i UserScramCredentialArray) ToUserScramCredentialArrayOutput() UserScramCr
 
 func (i UserScramCredentialArray) ToUserScramCredentialArrayOutputWithContext(ctx context.Context) UserScramCredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserScramCredentialArrayOutput)
-}
-
-func (i UserScramCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserScramCredential] {
-	return pulumix.Output[[]*UserScramCredential]{
-		OutputState: i.ToUserScramCredentialArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserScramCredentialMapInput is an input type that accepts UserScramCredentialMap and UserScramCredentialMapOutput values.
@@ -205,12 +192,6 @@ func (i UserScramCredentialMap) ToUserScramCredentialMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserScramCredentialMapOutput)
 }
 
-func (i UserScramCredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserScramCredential] {
-	return pulumix.Output[map[string]*UserScramCredential]{
-		OutputState: i.ToUserScramCredentialMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserScramCredentialOutput struct{ *pulumi.OutputState }
 
 func (UserScramCredentialOutput) ElementType() reflect.Type {
@@ -223,12 +204,6 @@ func (o UserScramCredentialOutput) ToUserScramCredentialOutput() UserScramCreden
 
 func (o UserScramCredentialOutput) ToUserScramCredentialOutputWithContext(ctx context.Context) UserScramCredentialOutput {
 	return o
-}
-
-func (o UserScramCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*UserScramCredential] {
-	return pulumix.Output[*UserScramCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The password of the credential
@@ -265,12 +240,6 @@ func (o UserScramCredentialArrayOutput) ToUserScramCredentialArrayOutputWithCont
 	return o
 }
 
-func (o UserScramCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserScramCredential] {
-	return pulumix.Output[[]*UserScramCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserScramCredentialArrayOutput) Index(i pulumi.IntInput) UserScramCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserScramCredential {
 		return vs[0].([]*UserScramCredential)[vs[1].(int)]
@@ -289,12 +258,6 @@ func (o UserScramCredentialMapOutput) ToUserScramCredentialMapOutput() UserScram
 
 func (o UserScramCredentialMapOutput) ToUserScramCredentialMapOutputWithContext(ctx context.Context) UserScramCredentialMapOutput {
 	return o
-}
-
-func (o UserScramCredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserScramCredential] {
-	return pulumix.Output[map[string]*UserScramCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserScramCredentialMapOutput) MapIndex(k pulumi.StringInput) UserScramCredentialOutput {
