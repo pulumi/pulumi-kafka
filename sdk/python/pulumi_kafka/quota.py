@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['QuotaArgs', 'Quota']
@@ -23,10 +23,33 @@ class QuotaArgs:
         :param pulumi.Input[str] entity_type: The type of the entity (client-id, user, ip)
         :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v properties.
         """
-        pulumi.set(__self__, "entity_name", entity_name)
-        pulumi.set(__self__, "entity_type", entity_type)
+        QuotaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity_name=entity_name,
+            entity_type=entity_type,
+            config=config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity_name: Optional[pulumi.Input[str]] = None,
+             entity_type: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entity_name is None and 'entityName' in kwargs:
+            entity_name = kwargs['entityName']
+        if entity_name is None:
+            raise TypeError("Missing 'entity_name' argument")
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+
+        _setter("entity_name", entity_name)
+        _setter("entity_type", entity_type)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
 
     @property
     @pulumi.getter(name="entityName")
@@ -77,12 +100,31 @@ class _QuotaState:
         :param pulumi.Input[str] entity_name: The name of the entity
         :param pulumi.Input[str] entity_type: The type of the entity (client-id, user, ip)
         """
+        _QuotaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            entity_name=entity_name,
+            entity_type=entity_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             entity_name: Optional[pulumi.Input[str]] = None,
+             entity_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entity_name is None and 'entityName' in kwargs:
+            entity_name = kwargs['entityName']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if entity_name is not None:
-            pulumi.set(__self__, "entity_name", entity_name)
+            _setter("entity_name", entity_name)
         if entity_type is not None:
-            pulumi.set(__self__, "entity_type", entity_type)
+            _setter("entity_type", entity_type)
 
     @property
     @pulumi.getter
@@ -156,6 +198,10 @@ class Quota(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QuotaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

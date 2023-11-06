@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
@@ -25,12 +25,35 @@ class TopicArgs:
         :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
         """
-        pulumi.set(__self__, "partitions", partitions)
-        pulumi.set(__self__, "replication_factor", replication_factor)
+        TopicArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            partitions=partitions,
+            replication_factor=replication_factor,
+            config=config,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             partitions: Optional[pulumi.Input[int]] = None,
+             replication_factor: Optional[pulumi.Input[int]] = None,
+             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if partitions is None:
+            raise TypeError("Missing 'partitions' argument")
+        if replication_factor is None and 'replicationFactor' in kwargs:
+            replication_factor = kwargs['replicationFactor']
+        if replication_factor is None:
+            raise TypeError("Missing 'replication_factor' argument")
+
+        _setter("partitions", partitions)
+        _setter("replication_factor", replication_factor)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -95,14 +118,33 @@ class _TopicState:
         :param pulumi.Input[int] partitions: Number of partitions.
         :param pulumi.Input[int] replication_factor: Number of replicas.
         """
+        _TopicState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            name=name,
+            partitions=partitions,
+            replication_factor=replication_factor,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             partitions: Optional[pulumi.Input[int]] = None,
+             replication_factor: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if replication_factor is None and 'replicationFactor' in kwargs:
+            replication_factor = kwargs['replicationFactor']
+
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if partitions is not None:
-            pulumi.set(__self__, "partitions", partitions)
+            _setter("partitions", partitions)
         if replication_factor is not None:
-            pulumi.set(__self__, "replication_factor", replication_factor)
+            _setter("replication_factor", replication_factor)
 
     @property
     @pulumi.getter
@@ -190,6 +232,10 @@ class Topic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
