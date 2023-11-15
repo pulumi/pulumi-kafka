@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
@@ -72,12 +71,6 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOu
 
 func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
 	return o
-}
-
-func (o LookupTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTopicResult] {
-	return pulumix.Output[LookupTopicResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupTopicResultOutput) Config() pulumi.MapOutput {
