@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/Mongey/terraform-provider-kafka v0.5.4
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.65.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.65.1-0.20231116191113-fdc251f0376b
 )
 
 require (
@@ -178,9 +178,9 @@ require (
 	github.com/pulumi/esc v0.5.7-0.20231030195049-f71961c0d5fa // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.8 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
-	github.com/pulumi/pulumi-yaml v1.4.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.4.1 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.93.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.93.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.94.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
@@ -250,3 +250,7 @@ replace (
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.17.3
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.78.2-0.20231116221104-a6a5df256d3c
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.94.1-0.20231116221104-a6a5df256d3c
