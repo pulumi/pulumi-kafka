@@ -149,7 +149,6 @@ ci-mgmt: .ci-mgmt.yaml
 
 .pulumi/bin/pulumi: .pulumi/version
 	curl -fsSL https://get.pulumi.com | HOME=$(WORKING_DIR) sh -s -- --version $(shell cat .pulumi/version)
-| HOME=$(WORKING_DIR) sh -s -- --version $(cat .pulumi/version)
 
 # Compute the version of Pulumi to use by inspecting the Go dependencies of the provider.
 .pulumi/version:
