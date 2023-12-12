@@ -3,4 +3,3 @@ major-version: 3
 docker: true
 makeTemplate: bridged
 team: ecosystem
-javaGenVersion: "v0.9.5"
