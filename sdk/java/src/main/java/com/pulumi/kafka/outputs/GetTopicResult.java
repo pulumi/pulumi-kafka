@@ -93,13 +93,13 @@ public final class GetTopicResult {
             return this;
         }
         public GetTopicResult build() {
-            final var o = new GetTopicResult();
-            o.config = config;
-            o.id = id;
-            o.name = name;
-            o.partitions = partitions;
-            o.replicationFactor = replicationFactor;
-            return o;
+            final var _resultValue = new GetTopicResult();
+            _resultValue.config = config;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.partitions = partitions;
+            _resultValue.replicationFactor = replicationFactor;
+            return _resultValue;
         }
     }
 }
