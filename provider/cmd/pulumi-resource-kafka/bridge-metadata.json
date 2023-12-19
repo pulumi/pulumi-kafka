@@ -25,6 +25,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "kafka:index/acl:Acl": "kafka_acl",
