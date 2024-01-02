@@ -5,6 +5,7 @@ package com.pulumi.kafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class UserScramCredentialArgs extends com.pulumi.resources.Resource
         }
 
         public UserScramCredentialArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.scramMechanism = Objects.requireNonNull($.scramMechanism, "expected parameter 'scramMechanism' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("UserScramCredentialArgs", "password");
+            }
+            if ($.scramMechanism == null) {
+                throw new MissingRequiredPropertyException("UserScramCredentialArgs", "scramMechanism");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("UserScramCredentialArgs", "username");
+            }
             return $;
         }
     }

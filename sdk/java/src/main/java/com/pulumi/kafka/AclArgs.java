@@ -5,6 +5,7 @@ package com.pulumi.kafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -178,12 +179,24 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AclArgs build() {
-            $.aclHost = Objects.requireNonNull($.aclHost, "expected parameter 'aclHost' to be non-null");
-            $.aclOperation = Objects.requireNonNull($.aclOperation, "expected parameter 'aclOperation' to be non-null");
-            $.aclPermissionType = Objects.requireNonNull($.aclPermissionType, "expected parameter 'aclPermissionType' to be non-null");
-            $.aclPrincipal = Objects.requireNonNull($.aclPrincipal, "expected parameter 'aclPrincipal' to be non-null");
-            $.aclResourceName = Objects.requireNonNull($.aclResourceName, "expected parameter 'aclResourceName' to be non-null");
-            $.aclResourceType = Objects.requireNonNull($.aclResourceType, "expected parameter 'aclResourceType' to be non-null");
+            if ($.aclHost == null) {
+                throw new MissingRequiredPropertyException("AclArgs", "aclHost");
+            }
+            if ($.aclOperation == null) {
+                throw new MissingRequiredPropertyException("AclArgs", "aclOperation");
+            }
+            if ($.aclPermissionType == null) {
+                throw new MissingRequiredPropertyException("AclArgs", "aclPermissionType");
+            }
+            if ($.aclPrincipal == null) {
+                throw new MissingRequiredPropertyException("AclArgs", "aclPrincipal");
+            }
+            if ($.aclResourceName == null) {
+                throw new MissingRequiredPropertyException("AclArgs", "aclResourceName");
+            }
+            if ($.aclResourceType == null) {
+                throw new MissingRequiredPropertyException("AclArgs", "aclResourceType");
+            }
             return $;
         }
     }
