@@ -5,6 +5,7 @@ package com.pulumi.kafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -152,8 +153,12 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public QuotaArgs build() {
-            $.entityName = Objects.requireNonNull($.entityName, "expected parameter 'entityName' to be non-null");
-            $.entityType = Objects.requireNonNull($.entityType, "expected parameter 'entityType' to be non-null");
+            if ($.entityName == null) {
+                throw new MissingRequiredPropertyException("QuotaArgs", "entityName");
+            }
+            if ($.entityType == null) {
+                throw new MissingRequiredPropertyException("QuotaArgs", "entityType");
+            }
             return $;
         }
     }

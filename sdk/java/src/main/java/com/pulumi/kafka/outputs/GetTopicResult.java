@@ -4,6 +4,7 @@
 package com.pulumi.kafka.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -69,27 +70,42 @@ public final class GetTopicResult {
 
         @CustomType.Setter
         public Builder config(Map<String,Object> config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder partitions(Integer partitions) {
-            this.partitions = Objects.requireNonNull(partitions);
+            if (partitions == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "partitions");
+            }
+            this.partitions = partitions;
             return this;
         }
         @CustomType.Setter
         public Builder replicationFactor(Integer replicationFactor) {
-            this.replicationFactor = Objects.requireNonNull(replicationFactor);
+            if (replicationFactor == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "replicationFactor");
+            }
+            this.replicationFactor = replicationFactor;
             return this;
         }
         public GetTopicResult build() {
