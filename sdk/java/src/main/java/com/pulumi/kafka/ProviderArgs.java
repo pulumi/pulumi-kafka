@@ -6,6 +6,7 @@ package com.pulumi.kafka;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -619,7 +620,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.bootstrapServers = Objects.requireNonNull($.bootstrapServers, "expected parameter 'bootstrapServers' to be non-null");
+            if ($.bootstrapServers == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "bootstrapServers");
+            }
             $.saslMechanism = Codegen.stringProp("saslMechanism").output().arg($.saslMechanism).env("KAFKA_SASL_MECHANISM").def("plain").getNullable();
             $.skipTlsVerify = Codegen.booleanProp("skipTlsVerify").output().arg($.skipTlsVerify).env("KAFKA_SKIP_VERIFY").def(false).getNullable();
             $.tlsEnabled = Codegen.booleanProp("tlsEnabled").output().arg($.tlsEnabled).env("KAFKA_ENABLE_TLS").def(true).getNullable();

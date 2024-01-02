@@ -5,6 +5,7 @@ package com.pulumi.kafka;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -190,8 +191,12 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TopicArgs build() {
-            $.partitions = Objects.requireNonNull($.partitions, "expected parameter 'partitions' to be non-null");
-            $.replicationFactor = Objects.requireNonNull($.replicationFactor, "expected parameter 'replicationFactor' to be non-null");
+            if ($.partitions == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "partitions");
+            }
+            if ($.replicationFactor == null) {
+                throw new MissingRequiredPropertyException("TopicArgs", "replicationFactor");
+            }
             return $;
         }
     }
