@@ -17,9 +17,10 @@
 package main
 
 import (
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+
 	kafka "github.com/pulumi/pulumi-kafka/provider/v3"
 	"github.com/pulumi/pulumi-kafka/provider/v3/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
 func main() {
