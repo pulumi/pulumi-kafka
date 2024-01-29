@@ -22,6 +22,7 @@ class ProviderArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_region: Optional[pulumi.Input[str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[str]] = None,
                  sasl_password: Optional[pulumi.Input[str]] = None,
                  sasl_username: Optional[pulumi.Input[str]] = None,
@@ -38,7 +39,8 @@ class ProviderArgs:
         :param pulumi.Input[str] client_key: The private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_file: Path to a file containing the private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
-        :param pulumi.Input[str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256
+        :param pulumi.Input[str] sasl_aws_region: AWS region where MSK is deployed.
+        :param pulumi.Input[str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         :param pulumi.Input[str] sasl_password: Password for SASL authentication.
         :param pulumi.Input[str] sasl_username: Username for SASL authentication.
         :param pulumi.Input[bool] skip_tls_verify: Set this to true only if the target Kafka server is an insecure development instance.
@@ -69,6 +71,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_key_file", client_key_file)
         if client_key_passphrase is not None:
             pulumi.set(__self__, "client_key_passphrase", client_key_passphrase)
+        if sasl_aws_region is not None:
+            pulumi.set(__self__, "sasl_aws_region", sasl_aws_region)
         if sasl_mechanism is None:
             sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
         if sasl_mechanism is not None:
@@ -194,10 +198,22 @@ class ProviderArgs:
         pulumi.set(self, "client_key_passphrase", value)
 
     @property
+    @pulumi.getter(name="saslAwsRegion")
+    def sasl_aws_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS region where MSK is deployed.
+        """
+        return pulumi.get(self, "sasl_aws_region")
+
+    @sasl_aws_region.setter
+    def sasl_aws_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sasl_aws_region", value)
+
+    @property
     @pulumi.getter(name="saslMechanism")
     def sasl_mechanism(self) -> Optional[pulumi.Input[str]]:
         """
-        SASL mechanism, can be plain, scram-sha512, scram-sha256
+        SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         """
         return pulumi.get(self, "sasl_mechanism")
 
@@ -279,6 +295,7 @@ class Provider(pulumi.ProviderResource):
                  client_key: Optional[pulumi.Input[str]] = None,
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_region: Optional[pulumi.Input[str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[str]] = None,
                  sasl_password: Optional[pulumi.Input[str]] = None,
                  sasl_username: Optional[pulumi.Input[str]] = None,
@@ -302,7 +319,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_key: The private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_file: Path to a file containing the private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
-        :param pulumi.Input[str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256
+        :param pulumi.Input[str] sasl_aws_region: AWS region where MSK is deployed.
+        :param pulumi.Input[str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         :param pulumi.Input[str] sasl_password: Password for SASL authentication.
         :param pulumi.Input[str] sasl_username: Username for SASL authentication.
         :param pulumi.Input[bool] skip_tls_verify: Set this to true only if the target Kafka server is an insecure development instance.
@@ -344,6 +362,7 @@ class Provider(pulumi.ProviderResource):
                  client_key: Optional[pulumi.Input[str]] = None,
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_region: Optional[pulumi.Input[str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[str]] = None,
                  sasl_password: Optional[pulumi.Input[str]] = None,
                  sasl_username: Optional[pulumi.Input[str]] = None,
@@ -369,6 +388,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["client_key_file"] = client_key_file
             __props__.__dict__["client_key_passphrase"] = client_key_passphrase
+            __props__.__dict__["sasl_aws_region"] = sasl_aws_region
             if sasl_mechanism is None:
                 sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
             __props__.__dict__["sasl_mechanism"] = sasl_mechanism
@@ -453,10 +473,18 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "client_key_passphrase")
 
     @property
+    @pulumi.getter(name="saslAwsRegion")
+    def sasl_aws_region(self) -> pulumi.Output[Optional[str]]:
+        """
+        AWS region where MSK is deployed.
+        """
+        return pulumi.get(self, "sasl_aws_region")
+
+    @property
     @pulumi.getter(name="saslMechanism")
     def sasl_mechanism(self) -> pulumi.Output[Optional[str]]:
         """
-        SASL mechanism, can be plain, scram-sha512, scram-sha256
+        SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         """
         return pulumi.get(self, "sasl_mechanism")
 

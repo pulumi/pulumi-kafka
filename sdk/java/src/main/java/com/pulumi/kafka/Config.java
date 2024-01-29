@@ -71,7 +71,14 @@ public final class Config {
         return Codegen.stringProp("clientKeyPassphrase").config(config).get();
     }
 /**
- * SASL mechanism, can be plain, scram-sha512, scram-sha256
+ * AWS region where MSK is deployed.
+ * 
+ */
+    public Optional<String> saslAwsRegion() {
+        return Codegen.stringProp("saslAwsRegion").config(config).get();
+    }
+/**
+ * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
  * 
  */
     public Optional<String> saslMechanism() {

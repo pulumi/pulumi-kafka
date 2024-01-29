@@ -61,7 +61,13 @@ namespace Pulumi.Kafka
         public Output<string?> ClientKeyPassphrase { get; private set; } = null!;
 
         /// <summary>
-        /// SASL mechanism, can be plain, scram-sha512, scram-sha256
+        /// AWS region where MSK is deployed.
+        /// </summary>
+        [Output("saslAwsRegion")]
+        public Output<string?> SaslAwsRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         /// </summary>
         [Output("saslMechanism")]
         public Output<string?> SaslMechanism { get; private set; } = null!;
@@ -161,7 +167,13 @@ namespace Pulumi.Kafka
         public Input<string>? ClientKeyPassphrase { get; set; }
 
         /// <summary>
-        /// SASL mechanism, can be plain, scram-sha512, scram-sha256
+        /// AWS region where MSK is deployed.
+        /// </summary>
+        [Input("saslAwsRegion")]
+        public Input<string>? SaslAwsRegion { get; set; }
+
+        /// <summary>
+        /// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         /// </summary>
         [Input("saslMechanism")]
         public Input<string>? SaslMechanism { get; set; }

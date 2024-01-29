@@ -60,7 +60,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientKeyPassphrase!: pulumi.Output<string | undefined>;
     /**
-     * SASL mechanism, can be plain, scram-sha512, scram-sha256
+     * AWS region where MSK is deployed.
+     */
+    public readonly saslAwsRegion!: pulumi.Output<string | undefined>;
+    /**
+     * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */
     public readonly saslMechanism!: pulumi.Output<string | undefined>;
     /**
@@ -94,6 +98,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
             resourceInputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
+            resourceInputs["saslAwsRegion"] = args ? args.saslAwsRegion : undefined;
             resourceInputs["saslMechanism"] = (args ? args.saslMechanism : undefined) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
             resourceInputs["saslPassword"] = args ? args.saslPassword : undefined;
             resourceInputs["saslUsername"] = args ? args.saslUsername : undefined;
@@ -149,7 +154,11 @@ export interface ProviderArgs {
      */
     clientKeyPassphrase?: pulumi.Input<string>;
     /**
-     * SASL mechanism, can be plain, scram-sha512, scram-sha256
+     * AWS region where MSK is deployed.
+     */
+    saslAwsRegion?: pulumi.Input<string>;
+    /**
+     * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */
     saslMechanism?: pulumi.Input<string>;
     /**

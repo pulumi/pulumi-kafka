@@ -57,7 +57,12 @@ func GetClientKeyPassphrase(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:clientKeyPassphrase")
 }
 
-// SASL mechanism, can be plain, scram-sha512, scram-sha256
+// AWS region where MSK is deployed.
+func GetSaslAwsRegion(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsRegion")
+}
+
+// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 func GetSaslMechanism(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "kafka:saslMechanism")
 	if err == nil {

@@ -165,14 +165,29 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SASL mechanism, can be plain, scram-sha512, scram-sha256
+     * AWS region where MSK is deployed.
+     * 
+     */
+    @Import(name="saslAwsRegion")
+    private @Nullable Output<String> saslAwsRegion;
+
+    /**
+     * @return AWS region where MSK is deployed.
+     * 
+     */
+    public Optional<Output<String>> saslAwsRegion() {
+        return Optional.ofNullable(this.saslAwsRegion);
+    }
+
+    /**
+     * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      * 
      */
     @Import(name="saslMechanism")
     private @Nullable Output<String> saslMechanism;
 
     /**
-     * @return SASL mechanism, can be plain, scram-sha512, scram-sha256
+     * @return SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      * 
      */
     public Optional<Output<String>> saslMechanism() {
@@ -265,6 +280,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientKey = $.clientKey;
         this.clientKeyFile = $.clientKeyFile;
         this.clientKeyPassphrase = $.clientKeyPassphrase;
+        this.saslAwsRegion = $.saslAwsRegion;
         this.saslMechanism = $.saslMechanism;
         this.saslPassword = $.saslPassword;
         this.saslUsername = $.saslUsername;
@@ -494,7 +510,28 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param saslMechanism SASL mechanism, can be plain, scram-sha512, scram-sha256
+         * @param saslAwsRegion AWS region where MSK is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsRegion(@Nullable Output<String> saslAwsRegion) {
+            $.saslAwsRegion = saslAwsRegion;
+            return this;
+        }
+
+        /**
+         * @param saslAwsRegion AWS region where MSK is deployed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsRegion(String saslAwsRegion) {
+            return saslAwsRegion(Output.of(saslAwsRegion));
+        }
+
+        /**
+         * @param saslMechanism SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
          * 
          * @return builder
          * 
@@ -505,7 +542,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param saslMechanism SASL mechanism, can be plain, scram-sha512, scram-sha256
+         * @param saslMechanism SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
          * 
          * @return builder
          * 

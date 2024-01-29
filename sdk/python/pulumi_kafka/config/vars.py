@@ -72,9 +72,16 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientKeyPassphrase')
 
     @property
+    def sasl_aws_region(self) -> Optional[str]:
+        """
+        AWS region where MSK is deployed.
+        """
+        return __config__.get('saslAwsRegion')
+
+    @property
     def sasl_mechanism(self) -> str:
         """
-        SASL mechanism, can be plain, scram-sha512, scram-sha256
+        SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         """
         return __config__.get('saslMechanism') or (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
 
