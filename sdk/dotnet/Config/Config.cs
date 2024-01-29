@@ -112,9 +112,19 @@ namespace Pulumi.Kafka
             set => _clientKeyPassphrase.Set(value);
         }
 
+        private static readonly __Value<string?> _saslAwsRegion = new __Value<string?>(() => __config.Get("saslAwsRegion"));
+        /// <summary>
+        /// AWS region where MSK is deployed.
+        /// </summary>
+        public static string? SaslAwsRegion
+        {
+            get => _saslAwsRegion.Get();
+            set => _saslAwsRegion.Set(value);
+        }
+
         private static readonly __Value<string?> _saslMechanism = new __Value<string?>(() => __config.Get("saslMechanism") ?? Utilities.GetEnv("KAFKA_SASL_MECHANISM") ?? "plain");
         /// <summary>
-        /// SASL mechanism, can be plain, scram-sha512, scram-sha256
+        /// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         /// </summary>
         public static string? SaslMechanism
         {

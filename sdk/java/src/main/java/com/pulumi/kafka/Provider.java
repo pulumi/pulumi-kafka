@@ -133,14 +133,28 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientKeyPassphrase);
     }
     /**
-     * SASL mechanism, can be plain, scram-sha512, scram-sha256
+     * AWS region where MSK is deployed.
+     * 
+     */
+    @Export(name="saslAwsRegion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsRegion;
+
+    /**
+     * @return AWS region where MSK is deployed.
+     * 
+     */
+    public Output<Optional<String>> saslAwsRegion() {
+        return Codegen.optional(this.saslAwsRegion);
+    }
+    /**
+     * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      * 
      */
     @Export(name="saslMechanism", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> saslMechanism;
 
     /**
-     * @return SASL mechanism, can be plain, scram-sha512, scram-sha256
+     * @return SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      * 
      */
     public Output<Optional<String>> saslMechanism() {

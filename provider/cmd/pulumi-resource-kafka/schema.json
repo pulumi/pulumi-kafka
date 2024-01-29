@@ -91,9 +91,13 @@
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
+            "saslAwsRegion": {
+                "type": "string",
+                "description": "AWS region where MSK is deployed.\n"
+            },
             "saslMechanism": {
                 "type": "string",
-                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256\n",
+                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam\n",
                 "default": "plain",
                 "defaultInfo": {
                     "environment": [
@@ -179,9 +183,13 @@
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
+            "saslAwsRegion": {
+                "type": "string",
+                "description": "AWS region where MSK is deployed.\n"
+            },
             "saslMechanism": {
                 "type": "string",
-                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256\n"
+                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam\n"
             },
             "saslPassword": {
                 "type": "string",
@@ -246,9 +254,13 @@
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
+            "saslAwsRegion": {
+                "type": "string",
+                "description": "AWS region where MSK is deployed.\n"
+            },
             "saslMechanism": {
                 "type": "string",
-                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256\n",
+                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam\n",
                 "default": "plain",
                 "defaultInfo": {
                     "environment": [

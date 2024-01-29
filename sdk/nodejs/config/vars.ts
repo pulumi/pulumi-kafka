@@ -96,7 +96,18 @@ Object.defineProperty(exports, "clientKeyPassphrase", {
 });
 
 /**
- * SASL mechanism, can be plain, scram-sha512, scram-sha256
+ * AWS region where MSK is deployed.
+ */
+export declare const saslAwsRegion: string | undefined;
+Object.defineProperty(exports, "saslAwsRegion", {
+    get() {
+        return __config.get("saslAwsRegion");
+    },
+    enumerable: true,
+});
+
+/**
+ * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
  */
 export declare const saslMechanism: string;
 Object.defineProperty(exports, "saslMechanism", {

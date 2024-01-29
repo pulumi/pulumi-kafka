@@ -39,7 +39,9 @@ type Provider struct {
 	ClientKeyFile pulumi.StringPtrOutput `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrOutput `pulumi:"clientKeyPassphrase"`
-	// SASL mechanism, can be plain, scram-sha512, scram-sha256
+	// AWS region where MSK is deployed.
+	SaslAwsRegion pulumi.StringPtrOutput `pulumi:"saslAwsRegion"`
+	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism pulumi.StringPtrOutput `pulumi:"saslMechanism"`
 	// Password for SASL authentication.
 	SaslPassword pulumi.StringPtrOutput `pulumi:"saslPassword"`
@@ -104,7 +106,9 @@ type providerArgs struct {
 	ClientKeyFile *string `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase *string `pulumi:"clientKeyPassphrase"`
-	// SASL mechanism, can be plain, scram-sha512, scram-sha256
+	// AWS region where MSK is deployed.
+	SaslAwsRegion *string `pulumi:"saslAwsRegion"`
+	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism *string `pulumi:"saslMechanism"`
 	// Password for SASL authentication.
 	SaslPassword *string `pulumi:"saslPassword"`
@@ -142,7 +146,9 @@ type ProviderArgs struct {
 	ClientKeyFile pulumi.StringPtrInput
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrInput
-	// SASL mechanism, can be plain, scram-sha512, scram-sha256
+	// AWS region where MSK is deployed.
+	SaslAwsRegion pulumi.StringPtrInput
+	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism pulumi.StringPtrInput
 	// Password for SASL authentication.
 	SaslPassword pulumi.StringPtrInput
@@ -234,7 +240,12 @@ func (o ProviderOutput) ClientKeyPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKeyPassphrase }).(pulumi.StringPtrOutput)
 }
 
-// SASL mechanism, can be plain, scram-sha512, scram-sha256
+// AWS region where MSK is deployed.
+func (o ProviderOutput) SaslAwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 func (o ProviderOutput) SaslMechanism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslMechanism }).(pulumi.StringPtrOutput)
 }

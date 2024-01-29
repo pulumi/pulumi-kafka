@@ -49,9 +49,14 @@ clientKeyPassphrase: Optional[str]
 The passphrase for the private key that the certificate was issued for.
 """
 
+saslAwsRegion: Optional[str]
+"""
+AWS region where MSK is deployed.
+"""
+
 saslMechanism: str
 """
-SASL mechanism, can be plain, scram-sha512, scram-sha256
+SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 """
 
 saslPassword: Optional[str]
