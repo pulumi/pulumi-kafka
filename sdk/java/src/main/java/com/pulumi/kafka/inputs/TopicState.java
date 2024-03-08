@@ -49,14 +49,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of partitions.
+     * The number of partitions the topic should have.
      * 
      */
     @Import(name="partitions")
     private @Nullable Output<Integer> partitions;
 
     /**
-     * @return Number of partitions.
+     * @return The number of partitions the topic should have.
      * 
      */
     public Optional<Output<Integer>> partitions() {
@@ -64,14 +64,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of replicas.
+     * The number of replicas the topic should have.
      * 
      */
     @Import(name="replicationFactor")
     private @Nullable Output<Integer> replicationFactor;
 
     /**
-     * @return Number of replicas.
+     * @return The number of replicas the topic should have.
      * 
      */
     public Optional<Output<Integer>> replicationFactor() {
@@ -148,7 +148,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions Number of partitions.
+         * @param partitions The number of partitions the topic should have.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions Number of partitions.
+         * @param partitions The number of partitions the topic should have.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationFactor Number of replicas.
+         * @param replicationFactor The number of replicas the topic should have.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationFactor Number of replicas.
+         * @param replicationFactor The number of replicas the topic should have.
          * 
          * @return builder
          * 
