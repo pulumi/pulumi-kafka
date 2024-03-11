@@ -12,6 +12,48 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A resource for managing Kafka topics. Increases partition count without destroying the topic.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewTopic(ctx, "logs", &kafka.TopicArgs{
+//				Config: pulumi.Map{
+//					"cleanup.policy": pulumi.Any("compact"),
+//					"segment.ms":     pulumi.Any("20000"),
+//				},
+//				Partitions:        pulumi.Int(100),
+//				ReplicationFactor: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Import
+//
+// Topics can be imported using their ARN, e.g.
+//
+// ```sh
+// $ pulumi import kafka:index/topic:Topic logs systemd_logs
+// ```
 type Topic struct {
 	pulumi.CustomResourceState
 
@@ -19,9 +61,9 @@ type Topic struct {
 	Config pulumi.MapOutput `pulumi:"config"`
 	// The name of the topic.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of partitions.
+	// The number of partitions the topic should have.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
-	// Number of replicas.
+	// The number of replicas the topic should have.
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 }
 
@@ -65,9 +107,9 @@ type topicState struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
-	// Number of partitions.
+	// The number of partitions the topic should have.
 	Partitions *int `pulumi:"partitions"`
-	// Number of replicas.
+	// The number of replicas the topic should have.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 }
 
@@ -76,9 +118,9 @@ type TopicState struct {
 	Config pulumi.MapInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
-	// Number of partitions.
+	// The number of partitions the topic should have.
 	Partitions pulumi.IntPtrInput
-	// Number of replicas.
+	// The number of replicas the topic should have.
 	ReplicationFactor pulumi.IntPtrInput
 }
 
@@ -91,9 +133,9 @@ type topicArgs struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
-	// Number of partitions.
+	// The number of partitions the topic should have.
 	Partitions int `pulumi:"partitions"`
-	// Number of replicas.
+	// The number of replicas the topic should have.
 	ReplicationFactor int `pulumi:"replicationFactor"`
 }
 
@@ -103,9 +145,9 @@ type TopicArgs struct {
 	Config pulumi.MapInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
-	// Number of partitions.
+	// The number of partitions the topic should have.
 	Partitions pulumi.IntInput
-	// Number of replicas.
+	// The number of replicas the topic should have.
 	ReplicationFactor pulumi.IntInput
 }
 
@@ -206,12 +248,12 @@ func (o TopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of partitions.
+// The number of partitions the topic should have.
 func (o TopicOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
 }
 
-// Number of replicas.
+// The number of replicas the topic should have.
 func (o TopicOutput) ReplicationFactor() pulumi.IntOutput {
 	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.ReplicationFactor }).(pulumi.IntOutput)
 }

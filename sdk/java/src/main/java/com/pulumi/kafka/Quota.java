@@ -16,45 +16,87 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * A resource for managing Kafka quotas.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Quota;
+ * import com.pulumi.kafka.QuotaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var quota = new Quota(&#34;quota&#34;, QuotaArgs.builder()        
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;consumer_byte_rate&#34;, &#34;5000000&#34;),
+ *                 Map.entry(&#34;producer_byte_rate&#34;, &#34;2500000&#34;)
+ *             ))
+ *             .entityName(&#34;app_consumer&#34;)
+ *             .entityType(&#34;client-id&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ */
 @ResourceType(type="kafka:index/quota:Quota")
 public class Quota extends com.pulumi.resources.CustomResource {
     /**
-     * A map of string k/v properties.
+     * A map of string k/v attributes.
      * 
      */
     @Export(name="config", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> config;
 
     /**
-     * @return A map of string k/v properties.
+     * @return A map of string k/v attributes.
      * 
      */
     public Output<Optional<Map<String,Object>>> config() {
         return Codegen.optional(this.config);
     }
     /**
-     * The name of the entity
+     * The name of the entity to target.
      * 
      */
     @Export(name="entityName", refs={String.class}, tree="[0]")
     private Output<String> entityName;
 
     /**
-     * @return The name of the entity
+     * @return The name of the entity to target.
      * 
      */
     public Output<String> entityName() {
         return this.entityName;
     }
     /**
-     * The type of the entity (client-id, user, ip)
+     * The type of entity. Valid values are `client-id`, `user`, `ip`.
      * 
      */
     @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**
-     * @return The type of the entity (client-id, user, ip)
+     * @return The type of entity. Valid values are `client-id`, `user`, `ip`.
      * 
      */
     public Output<String> entityType() {

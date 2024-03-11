@@ -4,6 +4,35 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * A resource for managing Kafka topics. Increases partition count without destroying the topic.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const logs = new kafka.Topic("logs", {
+ *     config: {
+ *         "cleanup.policy": "compact",
+ *         "segment.ms": "20000",
+ *     },
+ *     partitions: 100,
+ *     replicationFactor: 2,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * Topics can be imported using their ARN, e.g.
+ *
+ * ```sh
+ * $ pulumi import kafka:index/topic:Topic logs systemd_logs
+ * ```
+ */
 export class Topic extends pulumi.CustomResource {
     /**
      * Get an existing Topic resource's state with the given name, ID, and optional extra
@@ -41,11 +70,11 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Number of partitions.
+     * The number of partitions the topic should have.
      */
     public readonly partitions!: pulumi.Output<number>;
     /**
-     * Number of replicas.
+     * The number of replicas the topic should have.
      */
     public readonly replicationFactor!: pulumi.Output<number>;
 
@@ -97,11 +126,11 @@ export interface TopicState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of partitions.
+     * The number of partitions the topic should have.
      */
     partitions?: pulumi.Input<number>;
     /**
-     * Number of replicas.
+     * The number of replicas the topic should have.
      */
     replicationFactor?: pulumi.Input<number>;
 }
@@ -119,11 +148,11 @@ export interface TopicArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of partitions.
+     * The number of partitions the topic should have.
      */
     partitions: pulumi.Input<number>;
     /**
-     * Number of replicas.
+     * The number of replicas the topic should have.
      */
     replicationFactor: pulumi.Input<number>;
 }
