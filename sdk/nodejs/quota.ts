@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * A resource for managing Kafka quotas.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const quota = new kafka.Quota("quota", {
+ *     config: {
+ *         consumer_byte_rate: "5000000",
+ *         producer_byte_rate: "2500000",
+ *     },
+ *     entityName: "app_consumer",
+ *     entityType: "client-id",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ */
 export class Quota extends pulumi.CustomResource {
     /**
      * Get an existing Quota resource's state with the given name, ID, and optional extra
@@ -33,15 +54,15 @@ export class Quota extends pulumi.CustomResource {
     }
 
     /**
-     * A map of string k/v properties.
+     * A map of string k/v attributes.
      */
     public readonly config!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The name of the entity
+     * The name of the entity to target.
      */
     public readonly entityName!: pulumi.Output<string>;
     /**
-     * The type of the entity (client-id, user, ip)
+     * The type of entity. Valid values are `client-id`, `user`, `ip`.
      */
     public readonly entityType!: pulumi.Output<string>;
 
@@ -83,15 +104,15 @@ export class Quota extends pulumi.CustomResource {
  */
 export interface QuotaState {
     /**
-     * A map of string k/v properties.
+     * A map of string k/v attributes.
      */
     config?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the entity
+     * The name of the entity to target.
      */
     entityName?: pulumi.Input<string>;
     /**
-     * The type of the entity (client-id, user, ip)
+     * The type of entity. Valid values are `client-id`, `user`, `ip`.
      */
     entityType?: pulumi.Input<string>;
 }
@@ -101,15 +122,15 @@ export interface QuotaState {
  */
 export interface QuotaArgs {
     /**
-     * A map of string k/v properties.
+     * A map of string k/v attributes.
      */
     config?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The name of the entity
+     * The name of the entity to target.
      */
     entityName: pulumi.Input<string>;
     /**
-     * The type of the entity (client-id, user, ip)
+     * The type of entity. Valid values are `client-id`, `user`, `ip`.
      */
     entityType: pulumi.Input<string>;
 }

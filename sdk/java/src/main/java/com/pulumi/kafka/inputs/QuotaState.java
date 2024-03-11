@@ -18,14 +18,14 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
     public static final QuotaState Empty = new QuotaState();
 
     /**
-     * A map of string k/v properties.
+     * A map of string k/v attributes.
      * 
      */
     @Import(name="config")
     private @Nullable Output<Map<String,Object>> config;
 
     /**
-     * @return A map of string k/v properties.
+     * @return A map of string k/v attributes.
      * 
      */
     public Optional<Output<Map<String,Object>>> config() {
@@ -33,14 +33,14 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the entity
+     * The name of the entity to target.
      * 
      */
     @Import(name="entityName")
     private @Nullable Output<String> entityName;
 
     /**
-     * @return The name of the entity
+     * @return The name of the entity to target.
      * 
      */
     public Optional<Output<String>> entityName() {
@@ -48,14 +48,14 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the entity (client-id, user, ip)
+     * The type of entity. Valid values are `client-id`, `user`, `ip`.
      * 
      */
     @Import(name="entityType")
     private @Nullable Output<String> entityType;
 
     /**
-     * @return The type of the entity (client-id, user, ip)
+     * @return The type of entity. Valid values are `client-id`, `user`, `ip`.
      * 
      */
     public Optional<Output<String>> entityType() {
@@ -89,7 +89,7 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config A map of string k/v properties.
+         * @param config A map of string k/v attributes.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config A map of string k/v properties.
+         * @param config A map of string k/v attributes.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityName The name of the entity
+         * @param entityName The name of the entity to target.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityName The name of the entity
+         * @param entityName The name of the entity to target.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityType The type of the entity (client-id, user, ip)
+         * @param entityType The type of entity. Valid values are `client-id`, `user`, `ip`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class QuotaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityType The type of the entity (client-id, user, ip)
+         * @param entityType The type of entity. Valid values are `client-id`, `user`, `ip`.
          * 
          * @return builder
          * 
