@@ -133,6 +133,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientKeyPassphrase);
     }
     /**
+     * AWS profile name to use
+     * 
+     */
+    @Export(name="saslAwsProfile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsProfile;
+
+    /**
+     * @return AWS profile name to use
+     * 
+     */
+    public Output<Optional<String>> saslAwsProfile() {
+        return Codegen.optional(this.saslAwsProfile);
+    }
+    /**
      * AWS region where MSK is deployed.
      * 
      */
@@ -145,6 +159,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      */
     public Output<Optional<String>> saslAwsRegion() {
         return Codegen.optional(this.saslAwsRegion);
+    }
+    /**
+     * Arn of an AWS IAM role to assume
+     * 
+     */
+    @Export(name="saslAwsRoleArn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsRoleArn;
+
+    /**
+     * @return Arn of an AWS IAM role to assume
+     * 
+     */
+    public Output<Optional<String>> saslAwsRoleArn() {
+        return Codegen.optional(this.saslAwsRoleArn);
     }
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -173,6 +201,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      */
     public Output<Optional<String>> saslPassword() {
         return Codegen.optional(this.saslPassword);
+    }
+    /**
+     * The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+     * 
+     */
+    @Export(name="saslTokenUrl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslTokenUrl;
+
+    /**
+     * @return The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+     * 
+     */
+    public Output<Optional<String>> saslTokenUrl() {
+        return Codegen.optional(this.saslTokenUrl);
     }
     /**
      * Username for SASL authentication.

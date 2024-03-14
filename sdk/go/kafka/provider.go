@@ -39,12 +39,18 @@ type Provider struct {
 	ClientKeyFile pulumi.StringPtrOutput `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrOutput `pulumi:"clientKeyPassphrase"`
+	// AWS profile name to use
+	SaslAwsProfile pulumi.StringPtrOutput `pulumi:"saslAwsProfile"`
 	// AWS region where MSK is deployed.
 	SaslAwsRegion pulumi.StringPtrOutput `pulumi:"saslAwsRegion"`
+	// Arn of an AWS IAM role to assume
+	SaslAwsRoleArn pulumi.StringPtrOutput `pulumi:"saslAwsRoleArn"`
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism pulumi.StringPtrOutput `pulumi:"saslMechanism"`
 	// Password for SASL authentication.
 	SaslPassword pulumi.StringPtrOutput `pulumi:"saslPassword"`
+	// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+	SaslTokenUrl pulumi.StringPtrOutput `pulumi:"saslTokenUrl"`
 	// Username for SASL authentication.
 	SaslUsername pulumi.StringPtrOutput `pulumi:"saslUsername"`
 }
@@ -106,12 +112,20 @@ type providerArgs struct {
 	ClientKeyFile *string `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase *string `pulumi:"clientKeyPassphrase"`
+	// Set this to true to turn AWS credentials debug.
+	SaslAwsCredsDebug *bool `pulumi:"saslAwsCredsDebug"`
+	// AWS profile name to use
+	SaslAwsProfile *string `pulumi:"saslAwsProfile"`
 	// AWS region where MSK is deployed.
 	SaslAwsRegion *string `pulumi:"saslAwsRegion"`
+	// Arn of an AWS IAM role to assume
+	SaslAwsRoleArn *string `pulumi:"saslAwsRoleArn"`
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism *string `pulumi:"saslMechanism"`
 	// Password for SASL authentication.
 	SaslPassword *string `pulumi:"saslPassword"`
+	// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+	SaslTokenUrl *string `pulumi:"saslTokenUrl"`
 	// Username for SASL authentication.
 	SaslUsername *string `pulumi:"saslUsername"`
 	// Set this to true only if the target Kafka server is an insecure development instance.
@@ -146,12 +160,20 @@ type ProviderArgs struct {
 	ClientKeyFile pulumi.StringPtrInput
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrInput
+	// Set this to true to turn AWS credentials debug.
+	SaslAwsCredsDebug pulumi.BoolPtrInput
+	// AWS profile name to use
+	SaslAwsProfile pulumi.StringPtrInput
 	// AWS region where MSK is deployed.
 	SaslAwsRegion pulumi.StringPtrInput
+	// Arn of an AWS IAM role to assume
+	SaslAwsRoleArn pulumi.StringPtrInput
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism pulumi.StringPtrInput
 	// Password for SASL authentication.
 	SaslPassword pulumi.StringPtrInput
+	// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+	SaslTokenUrl pulumi.StringPtrInput
 	// Username for SASL authentication.
 	SaslUsername pulumi.StringPtrInput
 	// Set this to true only if the target Kafka server is an insecure development instance.
@@ -240,9 +262,19 @@ func (o ProviderOutput) ClientKeyPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKeyPassphrase }).(pulumi.StringPtrOutput)
 }
 
+// AWS profile name to use
+func (o ProviderOutput) SaslAwsProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsProfile }).(pulumi.StringPtrOutput)
+}
+
 // AWS region where MSK is deployed.
 func (o ProviderOutput) SaslAwsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// Arn of an AWS IAM role to assume
+func (o ProviderOutput) SaslAwsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsRoleArn }).(pulumi.StringPtrOutput)
 }
 
 // SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -253,6 +285,11 @@ func (o ProviderOutput) SaslMechanism() pulumi.StringPtrOutput {
 // Password for SASL authentication.
 func (o ProviderOutput) SaslPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslPassword }).(pulumi.StringPtrOutput)
+}
+
+// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+func (o ProviderOutput) SaslTokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslTokenUrl }).(pulumi.StringPtrOutput)
 }
 
 // Username for SASL authentication.

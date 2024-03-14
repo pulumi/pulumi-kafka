@@ -60,9 +60,17 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientKeyPassphrase!: pulumi.Output<string | undefined>;
     /**
+     * AWS profile name to use
+     */
+    public readonly saslAwsProfile!: pulumi.Output<string | undefined>;
+    /**
      * AWS region where MSK is deployed.
      */
     public readonly saslAwsRegion!: pulumi.Output<string | undefined>;
+    /**
+     * Arn of an AWS IAM role to assume
+     */
+    public readonly saslAwsRoleArn!: pulumi.Output<string | undefined>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */
@@ -71,6 +79,10 @@ export class Provider extends pulumi.ProviderResource {
      * Password for SASL authentication.
      */
     public readonly saslPassword!: pulumi.Output<string | undefined>;
+    /**
+     * The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+     */
+    public readonly saslTokenUrl!: pulumi.Output<string | undefined>;
     /**
      * Username for SASL authentication.
      */
@@ -98,9 +110,13 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
             resourceInputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
+            resourceInputs["saslAwsCredsDebug"] = pulumi.output(args ? args.saslAwsCredsDebug : undefined).apply(JSON.stringify);
+            resourceInputs["saslAwsProfile"] = args ? args.saslAwsProfile : undefined;
             resourceInputs["saslAwsRegion"] = args ? args.saslAwsRegion : undefined;
+            resourceInputs["saslAwsRoleArn"] = args ? args.saslAwsRoleArn : undefined;
             resourceInputs["saslMechanism"] = (args ? args.saslMechanism : undefined) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
             resourceInputs["saslPassword"] = args ? args.saslPassword : undefined;
+            resourceInputs["saslTokenUrl"] = args ? args.saslTokenUrl : undefined;
             resourceInputs["saslUsername"] = args ? args.saslUsername : undefined;
             resourceInputs["skipTlsVerify"] = pulumi.output((args ? args.skipTlsVerify : undefined) ?? (utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false)).apply(JSON.stringify);
             resourceInputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
@@ -154,9 +170,21 @@ export interface ProviderArgs {
      */
     clientKeyPassphrase?: pulumi.Input<string>;
     /**
+     * Set this to true to turn AWS credentials debug.
+     */
+    saslAwsCredsDebug?: pulumi.Input<boolean>;
+    /**
+     * AWS profile name to use
+     */
+    saslAwsProfile?: pulumi.Input<string>;
+    /**
      * AWS region where MSK is deployed.
      */
     saslAwsRegion?: pulumi.Input<string>;
+    /**
+     * Arn of an AWS IAM role to assume
+     */
+    saslAwsRoleArn?: pulumi.Input<string>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */
@@ -165,6 +193,10 @@ export interface ProviderArgs {
      * Password for SASL authentication.
      */
     saslPassword?: pulumi.Input<string>;
+    /**
+     * The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+     */
+    saslTokenUrl?: pulumi.Input<string>;
     /**
      * Username for SASL authentication.
      */

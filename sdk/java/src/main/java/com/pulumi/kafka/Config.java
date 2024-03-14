@@ -71,11 +71,32 @@ public final class Config {
         return Codegen.stringProp("clientKeyPassphrase").config(config).get();
     }
 /**
+ * Set this to true to turn AWS credentials debug.
+ * 
+ */
+    public Optional<Boolean> saslAwsCredsDebug() {
+        return Codegen.booleanProp("saslAwsCredsDebug").config(config).get();
+    }
+/**
+ * AWS profile name to use
+ * 
+ */
+    public Optional<String> saslAwsProfile() {
+        return Codegen.stringProp("saslAwsProfile").config(config).get();
+    }
+/**
  * AWS region where MSK is deployed.
  * 
  */
     public Optional<String> saslAwsRegion() {
         return Codegen.stringProp("saslAwsRegion").config(config).get();
+    }
+/**
+ * Arn of an AWS IAM role to assume
+ * 
+ */
+    public Optional<String> saslAwsRoleArn() {
+        return Codegen.stringProp("saslAwsRoleArn").config(config).get();
     }
 /**
  * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -90,6 +111,13 @@ public final class Config {
  */
     public Optional<String> saslPassword() {
         return Codegen.stringProp("saslPassword").config(config).get();
+    }
+/**
+ * The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+ * 
+ */
+    public Optional<String> saslTokenUrl() {
+        return Codegen.stringProp("saslTokenUrl").config(config).get();
     }
 /**
  * Username for SASL authentication.

@@ -72,11 +72,32 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientKeyPassphrase')
 
     @property
+    def sasl_aws_creds_debug(self) -> Optional[bool]:
+        """
+        Set this to true to turn AWS credentials debug.
+        """
+        return __config__.get_bool('saslAwsCredsDebug')
+
+    @property
+    def sasl_aws_profile(self) -> Optional[str]:
+        """
+        AWS profile name to use
+        """
+        return __config__.get('saslAwsProfile')
+
+    @property
     def sasl_aws_region(self) -> Optional[str]:
         """
         AWS region where MSK is deployed.
         """
         return __config__.get('saslAwsRegion')
+
+    @property
+    def sasl_aws_role_arn(self) -> Optional[str]:
+        """
+        Arn of an AWS IAM role to assume
+        """
+        return __config__.get('saslAwsRoleArn')
 
     @property
     def sasl_mechanism(self) -> str:
@@ -91,6 +112,13 @@ class _ExportableConfig(types.ModuleType):
         Password for SASL authentication.
         """
         return __config__.get('saslPassword')
+
+    @property
+    def sasl_token_url(self) -> Optional[str]:
+        """
+        The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+        """
+        return __config__.get('saslTokenUrl')
 
     @property
     def sasl_username(self) -> Optional[str]:

@@ -49,9 +49,24 @@ clientKeyPassphrase: Optional[str]
 The passphrase for the private key that the certificate was issued for.
 """
 
+saslAwsCredsDebug: Optional[bool]
+"""
+Set this to true to turn AWS credentials debug.
+"""
+
+saslAwsProfile: Optional[str]
+"""
+AWS profile name to use
+"""
+
 saslAwsRegion: Optional[str]
 """
 AWS region where MSK is deployed.
+"""
+
+saslAwsRoleArn: Optional[str]
+"""
+Arn of an AWS IAM role to assume
 """
 
 saslMechanism: str
@@ -62,6 +77,11 @@ SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 saslPassword: Optional[str]
 """
 Password for SASL authentication.
+"""
+
+saslTokenUrl: Optional[str]
+"""
+The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
 """
 
 saslUsername: Optional[str]
