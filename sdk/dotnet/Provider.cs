@@ -61,10 +61,22 @@ namespace Pulumi.Kafka
         public Output<string?> ClientKeyPassphrase { get; private set; } = null!;
 
         /// <summary>
+        /// AWS profile name to use
+        /// </summary>
+        [Output("saslAwsProfile")]
+        public Output<string?> SaslAwsProfile { get; private set; } = null!;
+
+        /// <summary>
         /// AWS region where MSK is deployed.
         /// </summary>
         [Output("saslAwsRegion")]
         public Output<string?> SaslAwsRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// Arn of an AWS IAM role to assume
+        /// </summary>
+        [Output("saslAwsRoleArn")]
+        public Output<string?> SaslAwsRoleArn { get; private set; } = null!;
 
         /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -77,6 +89,12 @@ namespace Pulumi.Kafka
         /// </summary>
         [Output("saslPassword")]
         public Output<string?> SaslPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+        /// </summary>
+        [Output("saslTokenUrl")]
+        public Output<string?> SaslTokenUrl { get; private set; } = null!;
 
         /// <summary>
         /// Username for SASL authentication.
@@ -167,10 +185,28 @@ namespace Pulumi.Kafka
         public Input<string>? ClientKeyPassphrase { get; set; }
 
         /// <summary>
+        /// Set this to true to turn AWS credentials debug.
+        /// </summary>
+        [Input("saslAwsCredsDebug", json: true)]
+        public Input<bool>? SaslAwsCredsDebug { get; set; }
+
+        /// <summary>
+        /// AWS profile name to use
+        /// </summary>
+        [Input("saslAwsProfile")]
+        public Input<string>? SaslAwsProfile { get; set; }
+
+        /// <summary>
         /// AWS region where MSK is deployed.
         /// </summary>
         [Input("saslAwsRegion")]
         public Input<string>? SaslAwsRegion { get; set; }
+
+        /// <summary>
+        /// Arn of an AWS IAM role to assume
+        /// </summary>
+        [Input("saslAwsRoleArn")]
+        public Input<string>? SaslAwsRoleArn { get; set; }
 
         /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -183,6 +219,12 @@ namespace Pulumi.Kafka
         /// </summary>
         [Input("saslPassword")]
         public Input<string>? SaslPassword { get; set; }
+
+        /// <summary>
+        /// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+        /// </summary>
+        [Input("saslTokenUrl")]
+        public Input<string>? SaslTokenUrl { get; set; }
 
         /// <summary>
         /// Username for SASL authentication.

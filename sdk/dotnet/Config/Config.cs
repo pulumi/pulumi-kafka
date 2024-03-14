@@ -112,6 +112,26 @@ namespace Pulumi.Kafka
             set => _clientKeyPassphrase.Set(value);
         }
 
+        private static readonly __Value<bool?> _saslAwsCredsDebug = new __Value<bool?>(() => __config.GetBoolean("saslAwsCredsDebug"));
+        /// <summary>
+        /// Set this to true to turn AWS credentials debug.
+        /// </summary>
+        public static bool? SaslAwsCredsDebug
+        {
+            get => _saslAwsCredsDebug.Get();
+            set => _saslAwsCredsDebug.Set(value);
+        }
+
+        private static readonly __Value<string?> _saslAwsProfile = new __Value<string?>(() => __config.Get("saslAwsProfile"));
+        /// <summary>
+        /// AWS profile name to use
+        /// </summary>
+        public static string? SaslAwsProfile
+        {
+            get => _saslAwsProfile.Get();
+            set => _saslAwsProfile.Set(value);
+        }
+
         private static readonly __Value<string?> _saslAwsRegion = new __Value<string?>(() => __config.Get("saslAwsRegion"));
         /// <summary>
         /// AWS region where MSK is deployed.
@@ -120,6 +140,16 @@ namespace Pulumi.Kafka
         {
             get => _saslAwsRegion.Get();
             set => _saslAwsRegion.Set(value);
+        }
+
+        private static readonly __Value<string?> _saslAwsRoleArn = new __Value<string?>(() => __config.Get("saslAwsRoleArn"));
+        /// <summary>
+        /// Arn of an AWS IAM role to assume
+        /// </summary>
+        public static string? SaslAwsRoleArn
+        {
+            get => _saslAwsRoleArn.Get();
+            set => _saslAwsRoleArn.Set(value);
         }
 
         private static readonly __Value<string?> _saslMechanism = new __Value<string?>(() => __config.Get("saslMechanism") ?? Utilities.GetEnv("KAFKA_SASL_MECHANISM") ?? "plain");
@@ -140,6 +170,16 @@ namespace Pulumi.Kafka
         {
             get => _saslPassword.Get();
             set => _saslPassword.Set(value);
+        }
+
+        private static readonly __Value<string?> _saslTokenUrl = new __Value<string?>(() => __config.Get("saslTokenUrl"));
+        /// <summary>
+        /// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+        /// </summary>
+        public static string? SaslTokenUrl
+        {
+            get => _saslTokenUrl.Get();
+            set => _saslTokenUrl.Set(value);
         }
 
         private static readonly __Value<string?> _saslUsername = new __Value<string?>(() => __config.Get("saslUsername"));

@@ -57,9 +57,24 @@ func GetClientKeyPassphrase(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:clientKeyPassphrase")
 }
 
+// Set this to true to turn AWS credentials debug.
+func GetSaslAwsCredsDebug(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "kafka:saslAwsCredsDebug")
+}
+
+// AWS profile name to use
+func GetSaslAwsProfile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsProfile")
+}
+
 // AWS region where MSK is deployed.
 func GetSaslAwsRegion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:saslAwsRegion")
+}
+
+// Arn of an AWS IAM role to assume
+func GetSaslAwsRoleArn(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsRoleArn")
 }
 
 // SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -78,6 +93,11 @@ func GetSaslMechanism(ctx *pulumi.Context) string {
 // Password for SASL authentication.
 func GetSaslPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:saslPassword")
+}
+
+// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+func GetSaslTokenUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslTokenUrl")
 }
 
 // Username for SASL authentication.

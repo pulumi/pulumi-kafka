@@ -165,6 +165,36 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set this to true to turn AWS credentials debug.
+     * 
+     */
+    @Import(name="saslAwsCredsDebug", json=true)
+    private @Nullable Output<Boolean> saslAwsCredsDebug;
+
+    /**
+     * @return Set this to true to turn AWS credentials debug.
+     * 
+     */
+    public Optional<Output<Boolean>> saslAwsCredsDebug() {
+        return Optional.ofNullable(this.saslAwsCredsDebug);
+    }
+
+    /**
+     * AWS profile name to use
+     * 
+     */
+    @Import(name="saslAwsProfile")
+    private @Nullable Output<String> saslAwsProfile;
+
+    /**
+     * @return AWS profile name to use
+     * 
+     */
+    public Optional<Output<String>> saslAwsProfile() {
+        return Optional.ofNullable(this.saslAwsProfile);
+    }
+
+    /**
      * AWS region where MSK is deployed.
      * 
      */
@@ -177,6 +207,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> saslAwsRegion() {
         return Optional.ofNullable(this.saslAwsRegion);
+    }
+
+    /**
+     * Arn of an AWS IAM role to assume
+     * 
+     */
+    @Import(name="saslAwsRoleArn")
+    private @Nullable Output<String> saslAwsRoleArn;
+
+    /**
+     * @return Arn of an AWS IAM role to assume
+     * 
+     */
+    public Optional<Output<String>> saslAwsRoleArn() {
+        return Optional.ofNullable(this.saslAwsRoleArn);
     }
 
     /**
@@ -207,6 +252,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> saslPassword() {
         return Optional.ofNullable(this.saslPassword);
+    }
+
+    /**
+     * The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+     * 
+     */
+    @Import(name="saslTokenUrl")
+    private @Nullable Output<String> saslTokenUrl;
+
+    /**
+     * @return The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+     * 
+     */
+    public Optional<Output<String>> saslTokenUrl() {
+        return Optional.ofNullable(this.saslTokenUrl);
     }
 
     /**
@@ -280,9 +340,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientKey = $.clientKey;
         this.clientKeyFile = $.clientKeyFile;
         this.clientKeyPassphrase = $.clientKeyPassphrase;
+        this.saslAwsCredsDebug = $.saslAwsCredsDebug;
+        this.saslAwsProfile = $.saslAwsProfile;
         this.saslAwsRegion = $.saslAwsRegion;
+        this.saslAwsRoleArn = $.saslAwsRoleArn;
         this.saslMechanism = $.saslMechanism;
         this.saslPassword = $.saslPassword;
+        this.saslTokenUrl = $.saslTokenUrl;
         this.saslUsername = $.saslUsername;
         this.skipTlsVerify = $.skipTlsVerify;
         this.timeout = $.timeout;
@@ -510,6 +574,48 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param saslAwsCredsDebug Set this to true to turn AWS credentials debug.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsCredsDebug(@Nullable Output<Boolean> saslAwsCredsDebug) {
+            $.saslAwsCredsDebug = saslAwsCredsDebug;
+            return this;
+        }
+
+        /**
+         * @param saslAwsCredsDebug Set this to true to turn AWS credentials debug.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsCredsDebug(Boolean saslAwsCredsDebug) {
+            return saslAwsCredsDebug(Output.of(saslAwsCredsDebug));
+        }
+
+        /**
+         * @param saslAwsProfile AWS profile name to use
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsProfile(@Nullable Output<String> saslAwsProfile) {
+            $.saslAwsProfile = saslAwsProfile;
+            return this;
+        }
+
+        /**
+         * @param saslAwsProfile AWS profile name to use
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsProfile(String saslAwsProfile) {
+            return saslAwsProfile(Output.of(saslAwsProfile));
+        }
+
+        /**
          * @param saslAwsRegion AWS region where MSK is deployed.
          * 
          * @return builder
@@ -528,6 +634,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder saslAwsRegion(String saslAwsRegion) {
             return saslAwsRegion(Output.of(saslAwsRegion));
+        }
+
+        /**
+         * @param saslAwsRoleArn Arn of an AWS IAM role to assume
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsRoleArn(@Nullable Output<String> saslAwsRoleArn) {
+            $.saslAwsRoleArn = saslAwsRoleArn;
+            return this;
+        }
+
+        /**
+         * @param saslAwsRoleArn Arn of an AWS IAM role to assume
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsRoleArn(String saslAwsRoleArn) {
+            return saslAwsRoleArn(Output.of(saslAwsRoleArn));
         }
 
         /**
@@ -570,6 +697,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder saslPassword(String saslPassword) {
             return saslPassword(Output.of(saslPassword));
+        }
+
+        /**
+         * @param saslTokenUrl The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslTokenUrl(@Nullable Output<String> saslTokenUrl) {
+            $.saslTokenUrl = saslTokenUrl;
+            return this;
+        }
+
+        /**
+         * @param saslTokenUrl The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslTokenUrl(String saslTokenUrl) {
+            return saslTokenUrl(Output.of(saslTokenUrl));
         }
 
         /**

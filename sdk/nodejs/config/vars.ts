@@ -96,12 +96,45 @@ Object.defineProperty(exports, "clientKeyPassphrase", {
 });
 
 /**
+ * Set this to true to turn AWS credentials debug.
+ */
+export declare const saslAwsCredsDebug: boolean | undefined;
+Object.defineProperty(exports, "saslAwsCredsDebug", {
+    get() {
+        return __config.getObject<boolean>("saslAwsCredsDebug");
+    },
+    enumerable: true,
+});
+
+/**
+ * AWS profile name to use
+ */
+export declare const saslAwsProfile: string | undefined;
+Object.defineProperty(exports, "saslAwsProfile", {
+    get() {
+        return __config.get("saslAwsProfile");
+    },
+    enumerable: true,
+});
+
+/**
  * AWS region where MSK is deployed.
  */
 export declare const saslAwsRegion: string | undefined;
 Object.defineProperty(exports, "saslAwsRegion", {
     get() {
         return __config.get("saslAwsRegion");
+    },
+    enumerable: true,
+});
+
+/**
+ * Arn of an AWS IAM role to assume
+ */
+export declare const saslAwsRoleArn: string | undefined;
+Object.defineProperty(exports, "saslAwsRoleArn", {
+    get() {
+        return __config.get("saslAwsRoleArn");
     },
     enumerable: true,
 });
@@ -124,6 +157,17 @@ export declare const saslPassword: string | undefined;
 Object.defineProperty(exports, "saslPassword", {
     get() {
         return __config.get("saslPassword");
+    },
+    enumerable: true,
+});
+
+/**
+ * The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
+ */
+export declare const saslTokenUrl: string | undefined;
+Object.defineProperty(exports, "saslTokenUrl", {
+    get() {
+        return __config.get("saslTokenUrl");
     },
     enumerable: true,
 });

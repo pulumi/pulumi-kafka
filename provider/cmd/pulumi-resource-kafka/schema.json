@@ -91,9 +91,21 @@
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
+            "saslAwsCredsDebug": {
+                "type": "boolean",
+                "description": "Set this to true to turn AWS credentials debug.\n"
+            },
+            "saslAwsProfile": {
+                "type": "string",
+                "description": "AWS profile name to use\n"
+            },
             "saslAwsRegion": {
                 "type": "string",
                 "description": "AWS region where MSK is deployed.\n"
+            },
+            "saslAwsRoleArn": {
+                "type": "string",
+                "description": "Arn of an AWS IAM role to assume\n"
             },
             "saslMechanism": {
                 "type": "string",
@@ -108,6 +120,10 @@
             "saslPassword": {
                 "type": "string",
                 "description": "Password for SASL authentication.\n"
+            },
+            "saslTokenUrl": {
+                "type": "string",
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer\n"
             },
             "saslUsername": {
                 "type": "string",
@@ -183,9 +199,21 @@
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
+            "saslAwsCredsDebug": {
+                "type": "boolean",
+                "description": "Set this to true to turn AWS credentials debug.\n"
+            },
+            "saslAwsProfile": {
+                "type": "string",
+                "description": "AWS profile name to use\n"
+            },
             "saslAwsRegion": {
                 "type": "string",
                 "description": "AWS region where MSK is deployed.\n"
+            },
+            "saslAwsRoleArn": {
+                "type": "string",
+                "description": "Arn of an AWS IAM role to assume\n"
             },
             "saslMechanism": {
                 "type": "string",
@@ -194,6 +222,10 @@
             "saslPassword": {
                 "type": "string",
                 "description": "Password for SASL authentication.\n"
+            },
+            "saslTokenUrl": {
+                "type": "string",
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer\n"
             },
             "saslUsername": {
                 "type": "string",
@@ -254,9 +286,21 @@
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
+            "saslAwsCredsDebug": {
+                "type": "boolean",
+                "description": "Set this to true to turn AWS credentials debug.\n"
+            },
+            "saslAwsProfile": {
+                "type": "string",
+                "description": "AWS profile name to use\n"
+            },
             "saslAwsRegion": {
                 "type": "string",
                 "description": "AWS region where MSK is deployed.\n"
+            },
+            "saslAwsRoleArn": {
+                "type": "string",
+                "description": "Arn of an AWS IAM role to assume\n"
             },
             "saslMechanism": {
                 "type": "string",
@@ -271,6 +315,10 @@
             "saslPassword": {
                 "type": "string",
                 "description": "Password for SASL authentication.\n"
+            },
+            "saslTokenUrl": {
+                "type": "string",
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer\n"
             },
             "saslUsername": {
                 "type": "string",
