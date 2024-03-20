@@ -32,7 +32,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Path to a CA certificate file to validate the server's certificate.
      *
-     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
      */
     public readonly caCertFile!: pulumi.Output<string | undefined>;
     /**
@@ -42,7 +42,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Path to a file containing the client certificate.
      *
-     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
      */
     public readonly clientCertFile!: pulumi.Output<string | undefined>;
     /**
@@ -52,7 +52,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Path to a file containing the private key that the certificate was issued for.
      *
-     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
      */
     public readonly clientKeyFile!: pulumi.Output<string | undefined>;
     /**
@@ -142,7 +142,7 @@ export interface ProviderArgs {
     /**
      * Path to a CA certificate file to validate the server's certificate.
      *
-     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
      */
     caCertFile?: pulumi.Input<string>;
     /**
@@ -152,7 +152,7 @@ export interface ProviderArgs {
     /**
      * Path to a file containing the client certificate.
      *
-     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
      */
     clientCertFile?: pulumi.Input<string>;
     /**
@@ -162,7 +162,7 @@ export interface ProviderArgs {
     /**
      * Path to a file containing the private key that the certificate was issued for.
      *
-     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+     * @deprecated This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
      */
     clientKeyFile?: pulumi.Input<string>;
     /**
