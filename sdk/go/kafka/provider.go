@@ -23,19 +23,19 @@ type Provider struct {
 	CaCert pulumi.StringPtrOutput `pulumi:"caCert"`
 	// Path to a CA certificate file to validate the server's certificate.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
 	CaCertFile pulumi.StringPtrOutput `pulumi:"caCertFile"`
 	// The client certificate.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
 	// Path to a file containing the client certificate.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
 	ClientCertFile pulumi.StringPtrOutput `pulumi:"clientCertFile"`
 	// The private key that the certificate was issued for.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// Path to a file containing the private key that the certificate was issued for.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
 	ClientKeyFile pulumi.StringPtrOutput `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrOutput `pulumi:"clientKeyPassphrase"`
@@ -96,19 +96,19 @@ type providerArgs struct {
 	CaCert *string `pulumi:"caCert"`
 	// Path to a CA certificate file to validate the server's certificate.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
 	CaCertFile *string `pulumi:"caCertFile"`
 	// The client certificate.
 	ClientCert *string `pulumi:"clientCert"`
 	// Path to a file containing the client certificate.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
 	ClientCertFile *string `pulumi:"clientCertFile"`
 	// The private key that the certificate was issued for.
 	ClientKey *string `pulumi:"clientKey"`
 	// Path to a file containing the private key that the certificate was issued for.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
 	ClientKeyFile *string `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase *string `pulumi:"clientKeyPassphrase"`
@@ -144,19 +144,19 @@ type ProviderArgs struct {
 	CaCert pulumi.StringPtrInput
 	// Path to a CA certificate file to validate the server's certificate.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
 	CaCertFile pulumi.StringPtrInput
 	// The client certificate.
 	ClientCert pulumi.StringPtrInput
 	// Path to a file containing the client certificate.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
 	ClientCertFile pulumi.StringPtrInput
 	// The private key that the certificate was issued for.
 	ClientKey pulumi.StringPtrInput
 	// Path to a file containing the private key that the certificate was issued for.
 	//
-	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+	// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
 	ClientKeyFile pulumi.StringPtrInput
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrInput
@@ -228,7 +228,7 @@ func (o ProviderOutput) CaCert() pulumi.StringPtrOutput {
 
 // Path to a CA certificate file to validate the server's certificate.
 //
-// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
 func (o ProviderOutput) CaCertFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CaCertFile }).(pulumi.StringPtrOutput)
 }
@@ -240,7 +240,7 @@ func (o ProviderOutput) ClientCert() pulumi.StringPtrOutput {
 
 // Path to a file containing the client certificate.
 //
-// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
 func (o ProviderOutput) ClientCertFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCertFile }).(pulumi.StringPtrOutput)
 }
@@ -252,7 +252,7 @@ func (o ProviderOutput) ClientKey() pulumi.StringPtrOutput {
 
 // Path to a file containing the private key that the certificate was issued for.
 //
-// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+// Deprecated: This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
 func (o ProviderOutput) ClientKeyFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKeyFile }).(pulumi.StringPtrOutput)
 }
