@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/Mongey/terraform-provider-kafka v0.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.78.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.78.1-0.20240329111819-c8ee79b47342
 )
 
 require (
@@ -122,7 +122,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.19.1 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.22.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.22.1 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
@@ -180,11 +180,11 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.6.2 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.9.9 // indirect
+	github.com/pulumi/pulumi-java/pkg v0.10.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.6.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.111.1 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.111.1 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.112.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.112.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
@@ -201,7 +201,7 @@ require (
 	github.com/skeema/knownhosts v1.2.1 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
-	github.com/spf13/cobra v1.7.0 // indirect
+	github.com/spf13/cobra v1.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
@@ -245,7 +245,7 @@ require (
 	google.golang.org/genproto v0.0.0-20240123012728-ef4313101c80 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20240123012728-ef4313101c80 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240123012728-ef4313101c80 // indirect
-	google.golang.org/grpc v1.62.0 // indirect
+	google.golang.org/grpc v1.62.1 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
