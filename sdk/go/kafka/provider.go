@@ -39,6 +39,9 @@ type Provider struct {
 	ClientKeyFile pulumi.StringPtrOutput `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrOutput `pulumi:"clientKeyPassphrase"`
+	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+	// versions. Default is 2.7.0.
+	KafkaVersion pulumi.StringPtrOutput `pulumi:"kafkaVersion"`
 	// AWS profile name to use
 	SaslAwsProfile pulumi.StringPtrOutput `pulumi:"saslAwsProfile"`
 	// AWS region where MSK is deployed.
@@ -112,6 +115,9 @@ type providerArgs struct {
 	ClientKeyFile *string `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase *string `pulumi:"clientKeyPassphrase"`
+	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+	// versions. Default is 2.7.0.
+	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// Set this to true to turn AWS credentials debug.
 	SaslAwsCredsDebug *bool `pulumi:"saslAwsCredsDebug"`
 	// AWS profile name to use
@@ -160,6 +166,9 @@ type ProviderArgs struct {
 	ClientKeyFile pulumi.StringPtrInput
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrInput
+	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+	// versions. Default is 2.7.0.
+	KafkaVersion pulumi.StringPtrInput
 	// Set this to true to turn AWS credentials debug.
 	SaslAwsCredsDebug pulumi.BoolPtrInput
 	// AWS profile name to use
@@ -260,6 +269,12 @@ func (o ProviderOutput) ClientKeyFile() pulumi.StringPtrOutput {
 // The passphrase for the private key that the certificate was issued for.
 func (o ProviderOutput) ClientKeyPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKeyPassphrase }).(pulumi.StringPtrOutput)
+}
+
+// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+// versions. Default is 2.7.0.
+func (o ProviderOutput) KafkaVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
 // AWS profile name to use

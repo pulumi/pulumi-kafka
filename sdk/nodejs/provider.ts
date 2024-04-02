@@ -60,6 +60,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientKeyPassphrase!: pulumi.Output<string | undefined>;
     /**
+     * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+     * versions. Default is 2.7.0.
+     */
+    public readonly kafkaVersion!: pulumi.Output<string | undefined>;
+    /**
      * AWS profile name to use
      */
     public readonly saslAwsProfile!: pulumi.Output<string | undefined>;
@@ -110,6 +115,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientKey"] = args ? args.clientKey : undefined;
             resourceInputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
             resourceInputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
+            resourceInputs["kafkaVersion"] = args ? args.kafkaVersion : undefined;
             resourceInputs["saslAwsCredsDebug"] = pulumi.output(args ? args.saslAwsCredsDebug : undefined).apply(JSON.stringify);
             resourceInputs["saslAwsProfile"] = args ? args.saslAwsProfile : undefined;
             resourceInputs["saslAwsRegion"] = args ? args.saslAwsRegion : undefined;
@@ -169,6 +175,11 @@ export interface ProviderArgs {
      * The passphrase for the private key that the certificate was issued for.
      */
     clientKeyPassphrase?: pulumi.Input<string>;
+    /**
+     * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+     * versions. Default is 2.7.0.
+     */
+    kafkaVersion?: pulumi.Input<string>;
     /**
      * Set this to true to turn AWS credentials debug.
      */

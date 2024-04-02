@@ -72,6 +72,14 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientKeyPassphrase')
 
     @property
+    def kafka_version(self) -> Optional[str]:
+        """
+        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+        versions. Default is 2.7.0.
+        """
+        return __config__.get('kafkaVersion')
+
+    @property
     def sasl_aws_creds_debug(self) -> Optional[bool]:
         """
         Set this to true to turn AWS credentials debug.

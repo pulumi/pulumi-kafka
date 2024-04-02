@@ -112,6 +112,17 @@ namespace Pulumi.Kafka
             set => _clientKeyPassphrase.Set(value);
         }
 
+        private static readonly __Value<string?> _kafkaVersion = new __Value<string?>(() => __config.Get("kafkaVersion"));
+        /// <summary>
+        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+        /// versions. Default is 2.7.0.
+        /// </summary>
+        public static string? KafkaVersion
+        {
+            get => _kafkaVersion.Get();
+            set => _kafkaVersion.Set(value);
+        }
+
         private static readonly __Value<bool?> _saslAwsCredsDebug = new __Value<bool?>(() => __config.GetBoolean("saslAwsCredsDebug"));
         /// <summary>
         /// Set this to true to turn AWS credentials debug.

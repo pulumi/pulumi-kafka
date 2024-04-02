@@ -57,6 +57,12 @@ func GetClientKeyPassphrase(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:clientKeyPassphrase")
 }
 
+// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+// versions. Default is 2.7.0.
+func GetKafkaVersion(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:kafkaVersion")
+}
+
 // Set this to true to turn AWS credentials debug.
 func GetSaslAwsCredsDebug(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "kafka:saslAwsCredsDebug")

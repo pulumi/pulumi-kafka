@@ -165,6 +165,23 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+     * versions. Default is 2.7.0.
+     * 
+     */
+    @Import(name="kafkaVersion")
+    private @Nullable Output<String> kafkaVersion;
+
+    /**
+     * @return The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+     * versions. Default is 2.7.0.
+     * 
+     */
+    public Optional<Output<String>> kafkaVersion() {
+        return Optional.ofNullable(this.kafkaVersion);
+    }
+
+    /**
      * Set this to true to turn AWS credentials debug.
      * 
      */
@@ -340,6 +357,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientKey = $.clientKey;
         this.clientKeyFile = $.clientKeyFile;
         this.clientKeyPassphrase = $.clientKeyPassphrase;
+        this.kafkaVersion = $.kafkaVersion;
         this.saslAwsCredsDebug = $.saslAwsCredsDebug;
         this.saslAwsProfile = $.saslAwsProfile;
         this.saslAwsRegion = $.saslAwsRegion;
@@ -571,6 +589,29 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientKeyPassphrase(String clientKeyPassphrase) {
             return clientKeyPassphrase(Output.of(clientKeyPassphrase));
+        }
+
+        /**
+         * @param kafkaVersion The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+         * versions. Default is 2.7.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaVersion(@Nullable Output<String> kafkaVersion) {
+            $.kafkaVersion = kafkaVersion;
+            return this;
+        }
+
+        /**
+         * @param kafkaVersion The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+         * versions. Default is 2.7.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkaVersion(String kafkaVersion) {
+            return kafkaVersion(Output.of(kafkaVersion));
         }
 
         /**
