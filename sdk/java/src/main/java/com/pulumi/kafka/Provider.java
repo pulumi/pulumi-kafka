@@ -133,6 +133,22 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.clientKeyPassphrase);
     }
     /**
+     * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+     * versions. Default is 2.7.0.
+     * 
+     */
+    @Export(name="kafkaVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kafkaVersion;
+
+    /**
+     * @return The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+     * versions. Default is 2.7.0.
+     * 
+     */
+    public Output<Optional<String>> kafkaVersion() {
+        return Codegen.optional(this.kafkaVersion);
+    }
+    /**
      * AWS profile name to use
      * 
      */

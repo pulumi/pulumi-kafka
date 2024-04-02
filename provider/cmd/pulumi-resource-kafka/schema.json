@@ -91,6 +91,10 @@
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
+            "kafkaVersion": {
+                "type": "string",
+                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
+            },
             "saslAwsCredsDebug": {
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
@@ -199,6 +203,10 @@
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
             },
+            "kafkaVersion": {
+                "type": "string",
+                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
+            },
             "saslAwsCredsDebug": {
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
@@ -285,6 +293,10 @@
             "clientKeyPassphrase": {
                 "type": "string",
                 "description": "The passphrase for the private key that the certificate was issued for.\n"
+            },
+            "kafkaVersion": {
+                "type": "string",
+                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
             },
             "saslAwsCredsDebug": {
                 "type": "boolean",

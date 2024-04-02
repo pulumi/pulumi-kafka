@@ -61,6 +61,13 @@ namespace Pulumi.Kafka
         public Output<string?> ClientKeyPassphrase { get; private set; } = null!;
 
         /// <summary>
+        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+        /// versions. Default is 2.7.0.
+        /// </summary>
+        [Output("kafkaVersion")]
+        public Output<string?> KafkaVersion { get; private set; } = null!;
+
+        /// <summary>
         /// AWS profile name to use
         /// </summary>
         [Output("saslAwsProfile")]
@@ -183,6 +190,13 @@ namespace Pulumi.Kafka
         /// </summary>
         [Input("clientKeyPassphrase")]
         public Input<string>? ClientKeyPassphrase { get; set; }
+
+        /// <summary>
+        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+        /// versions. Default is 2.7.0.
+        /// </summary>
+        [Input("kafkaVersion")]
+        public Input<string>? KafkaVersion { get; set; }
 
         /// <summary>
         /// Set this to true to turn AWS credentials debug.

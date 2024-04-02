@@ -22,6 +22,7 @@ class ProviderArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
+                 kafka_version: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,8 @@ class ProviderArgs:
         :param pulumi.Input[str] client_key: The private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_file: Path to a file containing the private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
+        :param pulumi.Input[str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+               versions. Default is 2.7.0.
         :param pulumi.Input[bool] sasl_aws_creds_debug: Set this to true to turn AWS credentials debug.
         :param pulumi.Input[str] sasl_aws_profile: AWS profile name to use
         :param pulumi.Input[str] sasl_aws_region: AWS region where MSK is deployed.
@@ -79,6 +82,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_key_file", client_key_file)
         if client_key_passphrase is not None:
             pulumi.set(__self__, "client_key_passphrase", client_key_passphrase)
+        if kafka_version is not None:
+            pulumi.set(__self__, "kafka_version", kafka_version)
         if sasl_aws_creds_debug is not None:
             pulumi.set(__self__, "sasl_aws_creds_debug", sasl_aws_creds_debug)
         if sasl_aws_profile is not None:
@@ -212,6 +217,19 @@ class ProviderArgs:
     @client_key_passphrase.setter
     def client_key_passphrase(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_key_passphrase", value)
+
+    @property
+    @pulumi.getter(name="kafkaVersion")
+    def kafka_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+        versions. Default is 2.7.0.
+        """
+        return pulumi.get(self, "kafka_version")
+
+    @kafka_version.setter
+    def kafka_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kafka_version", value)
 
     @property
     @pulumi.getter(name="saslAwsCredsDebug")
@@ -359,6 +377,7 @@ class Provider(pulumi.ProviderResource):
                  client_key: Optional[pulumi.Input[str]] = None,
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
+                 kafka_version: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
@@ -387,6 +406,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_key: The private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_file: Path to a file containing the private key that the certificate was issued for.
         :param pulumi.Input[str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
+        :param pulumi.Input[str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+               versions. Default is 2.7.0.
         :param pulumi.Input[bool] sasl_aws_creds_debug: Set this to true to turn AWS credentials debug.
         :param pulumi.Input[str] sasl_aws_profile: AWS profile name to use
         :param pulumi.Input[str] sasl_aws_region: AWS region where MSK is deployed.
@@ -434,6 +455,7 @@ class Provider(pulumi.ProviderResource):
                  client_key: Optional[pulumi.Input[str]] = None,
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
+                 kafka_version: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
@@ -464,6 +486,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["client_key_file"] = client_key_file
             __props__.__dict__["client_key_passphrase"] = client_key_passphrase
+            __props__.__dict__["kafka_version"] = kafka_version
             __props__.__dict__["sasl_aws_creds_debug"] = pulumi.Output.from_input(sasl_aws_creds_debug).apply(pulumi.runtime.to_json) if sasl_aws_creds_debug is not None else None
             __props__.__dict__["sasl_aws_profile"] = sasl_aws_profile
             __props__.__dict__["sasl_aws_region"] = sasl_aws_region
@@ -551,6 +574,15 @@ class Provider(pulumi.ProviderResource):
         The passphrase for the private key that the certificate was issued for.
         """
         return pulumi.get(self, "client_key_passphrase")
+
+    @property
+    @pulumi.getter(name="kafkaVersion")
+    def kafka_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+        versions. Default is 2.7.0.
+        """
+        return pulumi.get(self, "kafka_version")
 
     @property
     @pulumi.getter(name="saslAwsProfile")

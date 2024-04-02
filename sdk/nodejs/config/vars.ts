@@ -96,6 +96,18 @@ Object.defineProperty(exports, "clientKeyPassphrase", {
 });
 
 /**
+ * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
+ * versions. Default is 2.7.0.
+ */
+export declare const kafkaVersion: string | undefined;
+Object.defineProperty(exports, "kafkaVersion", {
+    get() {
+        return __config.get("kafkaVersion");
+    },
+    enumerable: true,
+});
+
+/**
  * Set this to true to turn AWS credentials debug.
  */
 export declare const saslAwsCredsDebug: boolean | undefined;
