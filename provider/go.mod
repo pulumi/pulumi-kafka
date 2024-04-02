@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-kafka/provider/v3
 go 1.21
 
 require (
-	github.com/Mongey/terraform-provider-kafka v0.7.0
+	github.com/Mongey/terraform-provider-kafka v0.7.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.79.0
 )
 
@@ -232,7 +232,7 @@ require (
 	golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa // indirect
 	golang.org/x/mod v0.15.0 // indirect
 	golang.org/x/net v0.22.0 // indirect
-	golang.org/x/oauth2 v0.16.0 // indirect
+	golang.org/x/oauth2 v0.18.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/term v0.18.0 // indirect
