@@ -141,12 +141,12 @@ class Quota(pulumi.CustomResource):
         import pulumi_kafka as kafka
 
         quota = kafka.Quota("quota",
+            entity_name="app_consumer",
+            entity_type="client-id",
             config={
                 "consumer_byte_rate": "5000000",
                 "producer_byte_rate": "2500000",
-            },
-            entity_name="app_consumer",
-            entity_type="client-id")
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -173,12 +173,12 @@ class Quota(pulumi.CustomResource):
         import pulumi_kafka as kafka
 
         quota = kafka.Quota("quota",
+            entity_name="app_consumer",
+            entity_type="client-id",
             config={
                 "consumer_byte_rate": "5000000",
                 "producer_byte_rate": "2500000",
-            },
-            entity_name="app_consumer",
-            entity_type="client-id")
+            })
         ```
         <!--End PulumiCodeChooser -->
 

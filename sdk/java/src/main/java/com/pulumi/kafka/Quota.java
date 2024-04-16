@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var quota = new Quota(&#34;quota&#34;, QuotaArgs.builder()        
+ *             .entityName(&#34;app_consumer&#34;)
+ *             .entityType(&#34;client-id&#34;)
  *             .config(Map.ofEntries(
  *                 Map.entry(&#34;consumer_byte_rate&#34;, &#34;5000000&#34;),
  *                 Map.entry(&#34;producer_byte_rate&#34;, &#34;2500000&#34;)
  *             ))
- *             .entityName(&#34;app_consumer&#34;)
- *             .entityType(&#34;client-id&#34;)
  *             .build());
  * 
  *     }

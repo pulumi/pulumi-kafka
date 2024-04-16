@@ -30,12 +30,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := kafka.NewQuota(ctx, "quota", &kafka.QuotaArgs{
+//				EntityName: pulumi.String("app_consumer"),
+//				EntityType: pulumi.String("client-id"),
 //				Config: pulumi.Map{
 //					"consumer_byte_rate": pulumi.Any("5000000"),
 //					"producer_byte_rate": pulumi.Any("2500000"),
 //				},
-//				EntityName: pulumi.String("app_consumer"),
-//				EntityType: pulumi.String("client-id"),
 //			})
 //			if err != nil {
 //				return err

@@ -30,12 +30,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := kafka.NewTopic(ctx, "logs", &kafka.TopicArgs{
-//				Config: pulumi.Map{
-//					"cleanup.policy": pulumi.Any("compact"),
-//					"segment.ms":     pulumi.Any("20000"),
-//				},
-//				Partitions:        pulumi.Int(100),
+//				Name:              pulumi.String("systemd_logs"),
 //				ReplicationFactor: pulumi.Int(2),
+//				Partitions:        pulumi.Int(100),
+//				Config: pulumi.Map{
+//					"segment.ms":     pulumi.Any("20000"),
+//					"cleanup.policy": pulumi.Any("compact"),
+//				},
 //			})
 //			if err != nil {
 //				return err

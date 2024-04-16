@@ -15,12 +15,13 @@ import * as utilities from "./utilities";
  * import * as kafka from "@pulumi/kafka";
  *
  * const logs = new kafka.Topic("logs", {
- *     config: {
- *         "cleanup.policy": "compact",
- *         "segment.ms": "20000",
- *     },
- *     partitions: 100,
+ *     name: "systemd_logs",
  *     replicationFactor: 2,
+ *     partitions: 100,
+ *     config: {
+ *         "segment.ms": "20000",
+ *         "cleanup.policy": "compact",
+ *     },
  * });
  * ```
  * <!--End PulumiCodeChooser -->

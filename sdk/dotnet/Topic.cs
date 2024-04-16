@@ -25,13 +25,14 @@ namespace Pulumi.Kafka
     /// {
     ///     var logs = new Kafka.Topic("logs", new()
     ///     {
+    ///         Name = "systemd_logs",
+    ///         ReplicationFactor = 2,
+    ///         Partitions = 100,
     ///         Config = 
     ///         {
-    ///             { "cleanup.policy", "compact" },
     ///             { "segment.ms", "20000" },
+    ///             { "cleanup.policy", "compact" },
     ///         },
-    ///         Partitions = 100,
-    ///         ReplicationFactor = 2,
     ///     });
     /// 
     /// });

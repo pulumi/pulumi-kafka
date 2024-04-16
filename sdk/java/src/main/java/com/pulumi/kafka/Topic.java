@@ -45,12 +45,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var logs = new Topic(&#34;logs&#34;, TopicArgs.builder()        
- *             .config(Map.ofEntries(
- *                 Map.entry(&#34;cleanup.policy&#34;, &#34;compact&#34;),
- *                 Map.entry(&#34;segment.ms&#34;, &#34;20000&#34;)
- *             ))
- *             .partitions(100)
+ *             .name(&#34;systemd_logs&#34;)
  *             .replicationFactor(2)
+ *             .partitions(100)
+ *             .config(Map.ofEntries(
+ *                 Map.entry(&#34;segment.ms&#34;, &#34;20000&#34;),
+ *                 Map.entry(&#34;cleanup.policy&#34;, &#34;compact&#34;)
+ *             ))
  *             .build());
  * 
  *     }
