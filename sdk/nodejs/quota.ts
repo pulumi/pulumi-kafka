@@ -15,12 +15,12 @@ import * as utilities from "./utilities";
  * import * as kafka from "@pulumi/kafka";
  *
  * const quota = new kafka.Quota("quota", {
+ *     entityName: "app_consumer",
+ *     entityType: "client-id",
  *     config: {
  *         consumer_byte_rate: "5000000",
  *         producer_byte_rate: "2500000",
  *     },
- *     entityName: "app_consumer",
- *     entityType: "client-id",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

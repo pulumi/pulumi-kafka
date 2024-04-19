@@ -25,13 +25,13 @@ namespace Pulumi.Kafka
     /// {
     ///     var quota = new Kafka.Quota("quota", new()
     ///     {
+    ///         EntityName = "app_consumer",
+    ///         EntityType = "client-id",
     ///         Config = 
     ///         {
     ///             { "consumer_byte_rate", "5000000" },
     ///             { "producer_byte_rate", "2500000" },
     ///         },
-    ///         EntityName = "app_consumer",
-    ///         EntityType = "client-id",
     ///     });
     /// 
     /// });

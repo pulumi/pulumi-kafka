@@ -174,12 +174,13 @@ class Topic(pulumi.CustomResource):
         import pulumi_kafka as kafka
 
         logs = kafka.Topic("logs",
-            config={
-                "cleanup.policy": "compact",
-                "segment.ms": "20000",
-            },
+            name="systemd_logs",
+            replication_factor=2,
             partitions=100,
-            replication_factor=2)
+            config={
+                "segment.ms": "20000",
+                "cleanup.policy": "compact",
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -215,12 +216,13 @@ class Topic(pulumi.CustomResource):
         import pulumi_kafka as kafka
 
         logs = kafka.Topic("logs",
-            config={
-                "cleanup.policy": "compact",
-                "segment.ms": "20000",
-            },
+            name="systemd_logs",
+            replication_factor=2,
             partitions=100,
-            replication_factor=2)
+            config={
+                "segment.ms": "20000",
+                "cleanup.policy": "compact",
+            })
         ```
         <!--End PulumiCodeChooser -->
 
