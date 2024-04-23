@@ -135,7 +135,6 @@ class Quota(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_kafka as kafka
@@ -148,7 +147,6 @@ class Quota(pulumi.CustomResource):
                 "producer_byte_rate": "2500000",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -167,7 +165,6 @@ class Quota(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_kafka as kafka
@@ -180,7 +177,6 @@ class Quota(pulumi.CustomResource):
                 "producer_byte_rate": "2500000",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param QuotaArgs args: The arguments to use to populate this resource's properties.
