@@ -287,7 +287,6 @@ class Acl(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_kafka as kafka
@@ -300,7 +299,6 @@ class Acl(pulumi.CustomResource):
             acl_operation="Write",
             acl_permission_type="Deny")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -342,7 +340,6 @@ class Acl(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_kafka as kafka
@@ -355,7 +352,6 @@ class Acl(pulumi.CustomResource):
             acl_operation="Write",
             acl_permission_type="Deny")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
