@@ -8,3 +8,14 @@ plugins:
   - name: terraform
     version: "1.0.16"
     kind: converter
+
+worktreeAllowedChanges: |-
+  sdk/**/pulumi-plugin.json
+  sdk/dotnet/Pulumi.*.csproj
+  sdk/go/*/internal/pulumiUtilities.go
+  sdk/nodejs/package.json
+  sdk/python/pyproject.toml
+
+publish:
+  goSdk:
+    usePush: true
