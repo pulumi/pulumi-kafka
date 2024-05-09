@@ -20,25 +20,21 @@
             "namespaces": {
                 "kafka": "Kafka"
             },
-            "compatibility": "tfbridge20"
+            "compatibility": "tfbridge20",
+            "respectSchemaVersion": true
         },
         "go": {
             "importBasePath": "github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka",
             "generateResourceContainerTypes": true,
-            "generateExtraInputTypes": true
+            "generateExtraInputTypes": true,
+            "respectSchemaVersion": true
         },
         "nodejs": {
             "packageDescription": "A Pulumi package for creating and managing Kafka.",
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-kafka)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-kafka` repo](https://github.com/pulumi/pulumi-kafka/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-kafka` repo](https://github.com/Mongey/terraform-provider-kafka/issues).",
-            "dependencies": {
-                "@pulumi/pulumi": "^3.0.0"
-            },
-            "devDependencies": {
-                "@types/mime": "^2.0.0",
-                "@types/node": "^10.0.0"
-            },
             "compatibility": "tfbridge20",
-            "disableUnionOutputTypes": true
+            "disableUnionOutputTypes": true,
+            "respectSchemaVersion": true
         },
         "python": {
             "requires": {
@@ -46,6 +42,7 @@
             },
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-kafka)\n\u003e distributed under [MIT](https://mit-license.org/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-kafka` repo](https://github.com/pulumi/pulumi-kafka/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-kafka` repo](https://github.com/Mongey/terraform-provider-kafka/issues).",
             "compatibility": "tfbridge20",
+            "respectSchemaVersion": true,
             "pyproject": {
                 "enabled": true
             }
