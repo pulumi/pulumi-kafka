@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,18 +42,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Acl(&#34;test&#34;, AclArgs.builder()        
- *             .aclResourceName(&#34;syslog&#34;)
- *             .aclResourceType(&#34;Topic&#34;)
- *             .aclPrincipal(&#34;User:Alice&#34;)
- *             .aclHost(&#34;*&#34;)
- *             .aclOperation(&#34;Write&#34;)
- *             .aclPermissionType(&#34;Deny&#34;)
+ *         var test = new Acl("test", AclArgs.builder()        
+ *             .aclResourceName("syslog")
+ *             .aclResourceType("Topic")
+ *             .aclPrincipal("User:Alice")
+ *             .aclHost("*")
+ *             .aclOperation("Write")
+ *             .aclPermissionType("Deny")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
