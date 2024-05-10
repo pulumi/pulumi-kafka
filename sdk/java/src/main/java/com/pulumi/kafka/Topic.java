@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,19 +45,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var logs = new Topic(&#34;logs&#34;, TopicArgs.builder()        
- *             .name(&#34;systemd_logs&#34;)
+ *         var logs = new Topic("logs", TopicArgs.builder()        
+ *             .name("systemd_logs")
  *             .replicationFactor(2)
  *             .partitions(100)
  *             .config(Map.ofEntries(
- *                 Map.entry(&#34;segment.ms&#34;, &#34;20000&#34;),
- *                 Map.entry(&#34;cleanup.policy&#34;, &#34;compact&#34;)
+ *                 Map.entry("segment.ms", "20000"),
+ *                 Map.entry("cleanup.policy", "compact")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
