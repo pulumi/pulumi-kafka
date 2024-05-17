@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var logs = new Topic("logs", TopicArgs.builder()        
+ *         var logs = new Topic("logs", TopicArgs.builder()
  *             .name("systemd_logs")
  *             .replicationFactor(2)
  *             .partitions(100)
