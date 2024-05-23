@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var quota = new Quota("quota", QuotaArgs.builder()        
+ *         var quota = new Quota("quota", QuotaArgs.builder()
  *             .entityName("app_consumer")
  *             .entityType("client-id")
  *             .config(Map.ofEntries(

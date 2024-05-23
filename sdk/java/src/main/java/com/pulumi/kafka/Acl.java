@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new Acl("test", AclArgs.builder()        
+ *         var test = new Acl("test", AclArgs.builder()
  *             .aclResourceName("syslog")
  *             .aclResourceType("Topic")
  *             .aclPrincipal("User:Alice")
