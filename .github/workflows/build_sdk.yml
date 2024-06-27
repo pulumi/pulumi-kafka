@@ -23,7 +23,6 @@ env:
   SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
   SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
   SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TF_APPEND_USER_AGENT: pulumi
   PROVIDER_VERSION: ${{ inputs.version }}
 
@@ -76,7 +75,7 @@ jobs:
           allowed-changes: |
             sdk/**/pulumi-plugin.json
             sdk/dotnet/Pulumi.*.csproj
-            sdk/go/*/internal/pulumiUtilities.go
+            sdk/go/**/pulumiUtilities.go
             sdk/nodejs/package.json
             sdk/python/pyproject.toml
       - name: Compress SDK folder
