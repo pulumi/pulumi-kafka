@@ -79,7 +79,7 @@ public class UserScramCredential extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserScramCredential(String name) {
+    public UserScramCredential(java.lang.String name) {
         this(name, UserScramCredentialArgs.Empty);
     }
     /**
@@ -87,7 +87,7 @@ public class UserScramCredential extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserScramCredential(String name, UserScramCredentialArgs args) {
+    public UserScramCredential(java.lang.String name, UserScramCredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -96,15 +96,22 @@ public class UserScramCredential extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserScramCredential(String name, UserScramCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("kafka:index/userScramCredential:UserScramCredential", name, args == null ? UserScramCredentialArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserScramCredential(java.lang.String name, UserScramCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("kafka:index/userScramCredential:UserScramCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserScramCredential(String name, Output<String> id, @Nullable UserScramCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("kafka:index/userScramCredential:UserScramCredential", name, state, makeResourceOptions(options, id));
+    private UserScramCredential(java.lang.String name, Output<java.lang.String> id, @Nullable UserScramCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("kafka:index/userScramCredential:UserScramCredential", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserScramCredentialArgs makeArgs(UserScramCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserScramCredentialArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -123,7 +130,7 @@ public class UserScramCredential extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserScramCredential get(String name, Output<String> id, @Nullable UserScramCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserScramCredential get(java.lang.String name, Output<java.lang.String> id, @Nullable UserScramCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserScramCredential(name, id, state, options);
     }
 }
