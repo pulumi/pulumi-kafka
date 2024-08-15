@@ -43,7 +43,7 @@ namespace Pulumi.Kafka
         /// A map of string k/v attributes.
         /// </summary>
         [Output("config")]
-        public Output<ImmutableDictionary<string, object>?> Config { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Config { get; private set; } = null!;
 
         /// <summary>
         /// The name of the entity to target.
@@ -104,14 +104,14 @@ namespace Pulumi.Kafka
     public sealed class QuotaArgs : global::Pulumi.ResourceArgs
     {
         [Input("config")]
-        private InputMap<object>? _config;
+        private InputMap<string>? _config;
 
         /// <summary>
         /// A map of string k/v attributes.
         /// </summary>
-        public InputMap<object> Config
+        public InputMap<string> Config
         {
-            get => _config ?? (_config = new InputMap<object>());
+            get => _config ?? (_config = new InputMap<string>());
             set => _config = value;
         }
 
@@ -136,14 +136,14 @@ namespace Pulumi.Kafka
     public sealed class QuotaState : global::Pulumi.ResourceArgs
     {
         [Input("config")]
-        private InputMap<object>? _config;
+        private InputMap<string>? _config;
 
         /// <summary>
         /// A map of string k/v attributes.
         /// </summary>
-        public InputMap<object> Config
+        public InputMap<string> Config
         {
-            get => _config ?? (_config = new InputMap<object>());
+            get => _config ?? (_config = new InputMap<string>());
             set => _config = value;
         }
 

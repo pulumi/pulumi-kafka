@@ -54,7 +54,7 @@ export class Quota extends pulumi.CustomResource {
     /**
      * A map of string k/v attributes.
      */
-    public readonly config!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the entity to target.
      */
@@ -104,7 +104,7 @@ export interface QuotaState {
     /**
      * A map of string k/v attributes.
      */
-    config?: pulumi.Input<{[key: string]: any}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the entity to target.
      */
@@ -122,7 +122,7 @@ export interface QuotaArgs {
     /**
      * A map of string k/v attributes.
      */
-    config?: pulumi.Input<{[key: string]: any}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the entity to target.
      */

@@ -40,7 +40,7 @@ class GetTopicResult:
 
     @property
     @pulumi.getter
-    def config(self) -> Mapping[str, Any]:
+    def config(self) -> Mapping[str, str]:
         return pulumi.get(self, "config")
 
     @property

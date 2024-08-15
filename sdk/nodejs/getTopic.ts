@@ -23,7 +23,7 @@ export interface GetTopicArgs {
  * A collection of values returned by getTopic.
  */
 export interface GetTopicResult {
-    readonly config: {[key: string]: any};
+    readonly config: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
      */

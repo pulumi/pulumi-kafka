@@ -32,9 +32,9 @@ import (
 //				Name:              pulumi.String("systemd_logs"),
 //				ReplicationFactor: pulumi.Int(2),
 //				Partitions:        pulumi.Int(100),
-//				Config: pulumi.Map{
-//					"segment.ms":     pulumi.Any("20000"),
-//					"cleanup.policy": pulumi.Any("compact"),
+//				Config: pulumi.StringMap{
+//					"segment.ms":     pulumi.String("20000"),
+//					"cleanup.policy": pulumi.String("compact"),
 //				},
 //			})
 //			if err != nil {
@@ -57,7 +57,7 @@ type Topic struct {
 	pulumi.CustomResourceState
 
 	// A map of string k/v attributes.
-	Config pulumi.MapOutput `pulumi:"config"`
+	Config pulumi.StringMapOutput `pulumi:"config"`
 	// The name of the topic.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of partitions the topic should have.
@@ -103,7 +103,7 @@ func GetTopic(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
 	// A map of string k/v attributes.
-	Config map[string]interface{} `pulumi:"config"`
+	Config map[string]string `pulumi:"config"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
 	// The number of partitions the topic should have.
@@ -114,7 +114,7 @@ type topicState struct {
 
 type TopicState struct {
 	// A map of string k/v attributes.
-	Config pulumi.MapInput
+	Config pulumi.StringMapInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
 	// The number of partitions the topic should have.
@@ -129,7 +129,7 @@ func (TopicState) ElementType() reflect.Type {
 
 type topicArgs struct {
 	// A map of string k/v attributes.
-	Config map[string]interface{} `pulumi:"config"`
+	Config map[string]string `pulumi:"config"`
 	// The name of the topic.
 	Name *string `pulumi:"name"`
 	// The number of partitions the topic should have.
@@ -141,7 +141,7 @@ type topicArgs struct {
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
 	// A map of string k/v attributes.
-	Config pulumi.MapInput
+	Config pulumi.StringMapInput
 	// The name of the topic.
 	Name pulumi.StringPtrInput
 	// The number of partitions the topic should have.
@@ -238,8 +238,8 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 }
 
 // A map of string k/v attributes.
-func (o TopicOutput) Config() pulumi.MapOutput {
-	return o.ApplyT(func(v *Topic) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
+func (o TopicOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
 
 // The name of the topic.

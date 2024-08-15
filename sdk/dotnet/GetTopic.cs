@@ -45,7 +45,7 @@ namespace Pulumi.Kafka
     [OutputType]
     public sealed class GetTopicResult
     {
-        public readonly ImmutableDictionary<string, object> Config;
+        public readonly ImmutableDictionary<string, string> Config;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Kafka
 
         [OutputConstructor]
         private GetTopicResult(
-            ImmutableDictionary<string, object> config,
+            ImmutableDictionary<string, string> config,
 
             string id,
 

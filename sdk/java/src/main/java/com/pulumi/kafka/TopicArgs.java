@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,13 +23,13 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="config")
-    private @Nullable Output<Map<String,Object>> config;
+    private @Nullable Output<Map<String,String>> config;
 
     /**
      * @return A map of string k/v attributes.
      * 
      */
-    public Optional<Output<Map<String,Object>>> config() {
+    public Optional<Output<Map<String,String>>> config() {
         return Optional.ofNullable(this.config);
     }
 
@@ -112,7 +111,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder config(@Nullable Output<Map<String,Object>> config) {
+        public Builder config(@Nullable Output<Map<String,String>> config) {
             $.config = config;
             return this;
         }
@@ -123,7 +122,7 @@ public final class TopicArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder config(Map<String,Object> config) {
+        public Builder config(Map<String,String> config) {
             return config(Output.of(config));
         }
 
