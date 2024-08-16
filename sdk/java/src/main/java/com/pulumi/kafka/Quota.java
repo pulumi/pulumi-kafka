@@ -10,7 +10,6 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.kafka.QuotaArgs;
 import com.pulumi.kafka.Utilities;
 import com.pulumi.kafka.inputs.QuotaState;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -66,14 +65,14 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * A map of string k/v attributes.
      * 
      */
-    @Export(name="config", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output</* @Nullable */ Map<String,Object>> config;
+    @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> config;
 
     /**
      * @return A map of string k/v attributes.
      * 
      */
-    public Output<Optional<Map<String,Object>>> config() {
+    public Output<Optional<Map<String,String>>> config() {
         return Codegen.optional(this.config);
     }
     /**

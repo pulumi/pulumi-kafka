@@ -16,13 +16,13 @@ class TopicArgs:
     def __init__(__self__, *,
                  partitions: pulumi.Input[int],
                  replication_factor: pulumi.Input[int],
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Topic resource.
         :param pulumi.Input[int] partitions: The number of partitions the topic should have.
         :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
-        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
         """
         pulumi.set(__self__, "partitions", partitions)
@@ -58,14 +58,14 @@ class TopicArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of string k/v attributes.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "config", value)
 
     @property
@@ -84,13 +84,13 @@ class TopicArgs:
 @pulumi.input_type
 class _TopicState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  partitions: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
-        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[int] partitions: The number of partitions the topic should have.
         :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
@@ -106,14 +106,14 @@ class _TopicState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of string k/v attributes.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "config", value)
 
     @property
@@ -158,7 +158,7 @@ class Topic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  partitions: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -192,7 +192,7 @@ class Topic(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[int] partitions: The number of partitions the topic should have.
         :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
@@ -245,7 +245,7 @@ class Topic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  partitions: Optional[pulumi.Input[int]] = None,
                  replication_factor: Optional[pulumi.Input[int]] = None,
@@ -276,7 +276,7 @@ class Topic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             partitions: Optional[pulumi.Input[int]] = None,
             replication_factor: Optional[pulumi.Input[int]] = None) -> 'Topic':
@@ -287,7 +287,7 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: A map of string k/v attributes.
         :param pulumi.Input[str] name: The name of the topic.
         :param pulumi.Input[int] partitions: The number of partitions the topic should have.
         :param pulumi.Input[int] replication_factor: The number of replicas the topic should have.
@@ -304,7 +304,7 @@ class Topic(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of string k/v attributes.
         """

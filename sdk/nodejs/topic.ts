@@ -63,7 +63,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * A map of string k/v attributes.
      */
-    public readonly config!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the topic.
      */
@@ -119,7 +119,7 @@ export interface TopicState {
     /**
      * A map of string k/v attributes.
      */
-    config?: pulumi.Input<{[key: string]: any}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the topic.
      */
@@ -141,7 +141,7 @@ export interface TopicArgs {
     /**
      * A map of string k/v attributes.
      */
-    config?: pulumi.Input<{[key: string]: any}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the topic.
      */
