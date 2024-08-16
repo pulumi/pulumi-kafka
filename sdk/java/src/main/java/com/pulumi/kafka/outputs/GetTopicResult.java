@@ -6,14 +6,13 @@ package com.pulumi.kafka.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetTopicResult {
-    private Map<String,Object> config;
+    private Map<String,String> config;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -24,7 +23,7 @@ public final class GetTopicResult {
     private Integer replicationFactor;
 
     private GetTopicResult() {}
-    public Map<String,Object> config() {
+    public Map<String,String> config() {
         return this.config;
     }
     /**
@@ -53,7 +52,7 @@ public final class GetTopicResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> config;
+        private Map<String,String> config;
         private String id;
         private String name;
         private Integer partitions;
@@ -69,7 +68,7 @@ public final class GetTopicResult {
         }
 
         @CustomType.Setter
-        public Builder config(Map<String,Object> config) {
+        public Builder config(Map<String,String> config) {
             if (config == null) {
               throw new MissingRequiredPropertyException("GetTopicResult", "config");
             }

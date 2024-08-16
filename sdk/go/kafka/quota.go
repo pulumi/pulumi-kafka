@@ -31,9 +31,9 @@ import (
 //			_, err := kafka.NewQuota(ctx, "quota", &kafka.QuotaArgs{
 //				EntityName: pulumi.String("app_consumer"),
 //				EntityType: pulumi.String("client-id"),
-//				Config: pulumi.Map{
-//					"consumer_byte_rate": pulumi.Any("5000000"),
-//					"producer_byte_rate": pulumi.Any("2500000"),
+//				Config: pulumi.StringMap{
+//					"consumer_byte_rate": pulumi.String("5000000"),
+//					"producer_byte_rate": pulumi.String("2500000"),
 //				},
 //			})
 //			if err != nil {
@@ -48,7 +48,7 @@ type Quota struct {
 	pulumi.CustomResourceState
 
 	// A map of string k/v attributes.
-	Config pulumi.MapOutput `pulumi:"config"`
+	Config pulumi.StringMapOutput `pulumi:"config"`
 	// The name of the entity to target.
 	EntityName pulumi.StringOutput `pulumi:"entityName"`
 	// The type of entity. Valid values are `client-id`, `user`, `ip`.
@@ -92,7 +92,7 @@ func GetQuota(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Quota resources.
 type quotaState struct {
 	// A map of string k/v attributes.
-	Config map[string]interface{} `pulumi:"config"`
+	Config map[string]string `pulumi:"config"`
 	// The name of the entity to target.
 	EntityName *string `pulumi:"entityName"`
 	// The type of entity. Valid values are `client-id`, `user`, `ip`.
@@ -101,7 +101,7 @@ type quotaState struct {
 
 type QuotaState struct {
 	// A map of string k/v attributes.
-	Config pulumi.MapInput
+	Config pulumi.StringMapInput
 	// The name of the entity to target.
 	EntityName pulumi.StringPtrInput
 	// The type of entity. Valid values are `client-id`, `user`, `ip`.
@@ -114,7 +114,7 @@ func (QuotaState) ElementType() reflect.Type {
 
 type quotaArgs struct {
 	// A map of string k/v attributes.
-	Config map[string]interface{} `pulumi:"config"`
+	Config map[string]string `pulumi:"config"`
 	// The name of the entity to target.
 	EntityName string `pulumi:"entityName"`
 	// The type of entity. Valid values are `client-id`, `user`, `ip`.
@@ -124,7 +124,7 @@ type quotaArgs struct {
 // The set of arguments for constructing a Quota resource.
 type QuotaArgs struct {
 	// A map of string k/v attributes.
-	Config pulumi.MapInput
+	Config pulumi.StringMapInput
 	// The name of the entity to target.
 	EntityName pulumi.StringInput
 	// The type of entity. Valid values are `client-id`, `user`, `ip`.
@@ -219,8 +219,8 @@ func (o QuotaOutput) ToQuotaOutputWithContext(ctx context.Context) QuotaOutput {
 }
 
 // A map of string k/v attributes.
-func (o QuotaOutput) Config() pulumi.MapOutput {
-	return o.ApplyT(func(v *Quota) pulumi.MapOutput { return v.Config }).(pulumi.MapOutput)
+func (o QuotaOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Quota) pulumi.StringMapOutput { return v.Config }).(pulumi.StringMapOutput)
 }
 
 // The name of the entity to target.

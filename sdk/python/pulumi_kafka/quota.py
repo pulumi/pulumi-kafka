@@ -16,12 +16,12 @@ class QuotaArgs:
     def __init__(__self__, *,
                  entity_name: pulumi.Input[str],
                  entity_type: pulumi.Input[str],
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Quota resource.
         :param pulumi.Input[str] entity_name: The name of the entity to target.
         :param pulumi.Input[str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
-        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: A map of string k/v attributes.
         """
         pulumi.set(__self__, "entity_name", entity_name)
         pulumi.set(__self__, "entity_type", entity_type)
@@ -54,26 +54,26 @@ class QuotaArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of string k/v attributes.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "config", value)
 
 
 @pulumi.input_type
 class _QuotaState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  entity_name: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Quota resources.
-        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: A map of string k/v attributes.
         :param pulumi.Input[str] entity_name: The name of the entity to target.
         :param pulumi.Input[str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
         """
@@ -86,14 +86,14 @@ class _QuotaState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A map of string k/v attributes.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "config", value)
 
     @property
@@ -126,7 +126,7 @@ class Quota(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  entity_name: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -150,7 +150,7 @@ class Quota(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: A map of string k/v attributes.
         :param pulumi.Input[str] entity_name: The name of the entity to target.
         :param pulumi.Input[str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
         """
@@ -193,7 +193,7 @@ class Quota(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  entity_name: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -222,7 +222,7 @@ class Quota(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             entity_name: Optional[pulumi.Input[str]] = None,
             entity_type: Optional[pulumi.Input[str]] = None) -> 'Quota':
         """
@@ -232,7 +232,7 @@ class Quota(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] config: A map of string k/v attributes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: A map of string k/v attributes.
         :param pulumi.Input[str] entity_name: The name of the entity to target.
         :param pulumi.Input[str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
         """
@@ -247,7 +247,7 @@ class Quota(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def config(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A map of string k/v attributes.
         """

@@ -28,7 +28,7 @@ type LookupTopicArgs struct {
 
 // A collection of values returned by getTopic.
 type LookupTopicResult struct {
-	Config map[string]interface{} `pulumi:"config"`
+	Config map[string]string `pulumi:"config"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                string `pulumi:"id"`
 	Name              string `pulumi:"name"`
@@ -73,8 +73,8 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx contex
 	return o
 }
 
-func (o LookupTopicResultOutput) Config() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupTopicResult) map[string]interface{} { return v.Config }).(pulumi.MapOutput)
+func (o LookupTopicResultOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupTopicResult) map[string]string { return v.Config }).(pulumi.StringMapOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
