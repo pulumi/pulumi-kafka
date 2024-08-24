@@ -68,6 +68,12 @@ namespace Pulumi.Kafka
         public Output<string?> KafkaVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The AWS access key.
+        /// </summary>
+        [Output("saslAwsAccessKey")]
+        public Output<string?> SaslAwsAccessKey { get; private set; } = null!;
+
+        /// <summary>
         /// AWS profile name to use
         /// </summary>
         [Output("saslAwsProfile")]
@@ -84,6 +90,18 @@ namespace Pulumi.Kafka
         /// </summary>
         [Output("saslAwsRoleArn")]
         public Output<string?> SaslAwsRoleArn { get; private set; } = null!;
+
+        /// <summary>
+        /// The AWS secret key.
+        /// </summary>
+        [Output("saslAwsSecretKey")]
+        public Output<string?> SaslAwsSecretKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The AWS session token. Only required if you are using temporary security credentials.
+        /// </summary>
+        [Output("saslAwsToken")]
+        public Output<string?> SaslAwsToken { get; private set; } = null!;
 
         /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -199,6 +217,12 @@ namespace Pulumi.Kafka
         public Input<string>? KafkaVersion { get; set; }
 
         /// <summary>
+        /// The AWS access key.
+        /// </summary>
+        [Input("saslAwsAccessKey")]
+        public Input<string>? SaslAwsAccessKey { get; set; }
+
+        /// <summary>
         /// Set this to true to turn AWS credentials debug.
         /// </summary>
         [Input("saslAwsCredsDebug", json: true)]
@@ -221,6 +245,18 @@ namespace Pulumi.Kafka
         /// </summary>
         [Input("saslAwsRoleArn")]
         public Input<string>? SaslAwsRoleArn { get; set; }
+
+        /// <summary>
+        /// The AWS secret key.
+        /// </summary>
+        [Input("saslAwsSecretKey")]
+        public Input<string>? SaslAwsSecretKey { get; set; }
+
+        /// <summary>
+        /// The AWS session token. Only required if you are using temporary security credentials.
+        /// </summary>
+        [Input("saslAwsToken")]
+        public Input<string>? SaslAwsToken { get; set; }
 
         /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam

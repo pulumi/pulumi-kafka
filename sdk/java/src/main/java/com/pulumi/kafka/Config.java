@@ -79,6 +79,13 @@ public final class Config {
         return Codegen.stringProp("kafkaVersion").config(config).get();
     }
 /**
+ * The AWS access key.
+ * 
+ */
+    public Optional<String> saslAwsAccessKey() {
+        return Codegen.stringProp("saslAwsAccessKey").config(config).get();
+    }
+/**
  * Set this to true to turn AWS credentials debug.
  * 
  */
@@ -105,6 +112,20 @@ public final class Config {
  */
     public Optional<String> saslAwsRoleArn() {
         return Codegen.stringProp("saslAwsRoleArn").config(config).get();
+    }
+/**
+ * The AWS secret key.
+ * 
+ */
+    public Optional<String> saslAwsSecretKey() {
+        return Codegen.stringProp("saslAwsSecretKey").config(config).get();
+    }
+/**
+ * The AWS session token. Only required if you are using temporary security credentials.
+ * 
+ */
+    public Optional<String> saslAwsToken() {
+        return Codegen.stringProp("saslAwsToken").config(config).get();
     }
 /**
  * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam

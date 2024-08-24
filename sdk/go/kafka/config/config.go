@@ -63,6 +63,11 @@ func GetKafkaVersion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:kafkaVersion")
 }
 
+// The AWS access key.
+func GetSaslAwsAccessKey(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsAccessKey")
+}
+
 // Set this to true to turn AWS credentials debug.
 func GetSaslAwsCredsDebug(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "kafka:saslAwsCredsDebug")
@@ -81,6 +86,16 @@ func GetSaslAwsRegion(ctx *pulumi.Context) string {
 // Arn of an AWS IAM role to assume
 func GetSaslAwsRoleArn(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:saslAwsRoleArn")
+}
+
+// The AWS secret key.
+func GetSaslAwsSecretKey(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsSecretKey")
+}
+
+// The AWS session token. Only required if you are using temporary security credentials.
+func GetSaslAwsToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsToken")
 }
 
 // SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam

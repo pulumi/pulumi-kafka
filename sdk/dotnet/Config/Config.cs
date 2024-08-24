@@ -123,6 +123,16 @@ namespace Pulumi.Kafka
             set => _kafkaVersion.Set(value);
         }
 
+        private static readonly __Value<string?> _saslAwsAccessKey = new __Value<string?>(() => __config.Get("saslAwsAccessKey"));
+        /// <summary>
+        /// The AWS access key.
+        /// </summary>
+        public static string? SaslAwsAccessKey
+        {
+            get => _saslAwsAccessKey.Get();
+            set => _saslAwsAccessKey.Set(value);
+        }
+
         private static readonly __Value<bool?> _saslAwsCredsDebug = new __Value<bool?>(() => __config.GetBoolean("saslAwsCredsDebug"));
         /// <summary>
         /// Set this to true to turn AWS credentials debug.
@@ -161,6 +171,26 @@ namespace Pulumi.Kafka
         {
             get => _saslAwsRoleArn.Get();
             set => _saslAwsRoleArn.Set(value);
+        }
+
+        private static readonly __Value<string?> _saslAwsSecretKey = new __Value<string?>(() => __config.Get("saslAwsSecretKey"));
+        /// <summary>
+        /// The AWS secret key.
+        /// </summary>
+        public static string? SaslAwsSecretKey
+        {
+            get => _saslAwsSecretKey.Get();
+            set => _saslAwsSecretKey.Set(value);
+        }
+
+        private static readonly __Value<string?> _saslAwsToken = new __Value<string?>(() => __config.Get("saslAwsToken"));
+        /// <summary>
+        /// The AWS session token. Only required if you are using temporary security credentials.
+        /// </summary>
+        public static string? SaslAwsToken
+        {
+            get => _saslAwsToken.Get();
+            set => _saslAwsToken.Set(value);
         }
 
         private static readonly __Value<string?> _saslMechanism = new __Value<string?>(() => __config.Get("saslMechanism") ?? Utilities.GetEnv("KAFKA_SASL_MECHANISM") ?? "plain");

@@ -55,6 +55,11 @@ The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some feat
 versions. Default is 2.7.0.
 """
 
+saslAwsAccessKey: Optional[str]
+"""
+The AWS access key.
+"""
+
 saslAwsCredsDebug: Optional[bool]
 """
 Set this to true to turn AWS credentials debug.
@@ -73,6 +78,16 @@ AWS region where MSK is deployed.
 saslAwsRoleArn: Optional[str]
 """
 Arn of an AWS IAM role to assume
+"""
+
+saslAwsSecretKey: Optional[str]
+"""
+The AWS secret key.
+"""
+
+saslAwsToken: Optional[str]
+"""
+The AWS session token. Only required if you are using temporary security credentials.
 """
 
 saslMechanism: str
