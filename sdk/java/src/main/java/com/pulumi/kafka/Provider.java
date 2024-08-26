@@ -149,6 +149,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.kafkaVersion);
     }
     /**
+     * The AWS access key.
+     * 
+     */
+    @Export(name="saslAwsAccessKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsAccessKey;
+
+    /**
+     * @return The AWS access key.
+     * 
+     */
+    public Output<Optional<String>> saslAwsAccessKey() {
+        return Codegen.optional(this.saslAwsAccessKey);
+    }
+    /**
      * AWS profile name to use
      * 
      */
@@ -189,6 +203,34 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      */
     public Output<Optional<String>> saslAwsRoleArn() {
         return Codegen.optional(this.saslAwsRoleArn);
+    }
+    /**
+     * The AWS secret key.
+     * 
+     */
+    @Export(name="saslAwsSecretKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsSecretKey;
+
+    /**
+     * @return The AWS secret key.
+     * 
+     */
+    public Output<Optional<String>> saslAwsSecretKey() {
+        return Codegen.optional(this.saslAwsSecretKey);
+    }
+    /**
+     * The AWS session token. Only required if you are using temporary security credentials.
+     * 
+     */
+    @Export(name="saslAwsToken", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsToken;
+
+    /**
+     * @return The AWS session token. Only required if you are using temporary security credentials.
+     * 
+     */
+    public Output<Optional<String>> saslAwsToken() {
+        return Codegen.optional(this.saslAwsToken);
     }
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam

@@ -182,6 +182,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The AWS access key.
+     * 
+     */
+    @Import(name="saslAwsAccessKey")
+    private @Nullable Output<String> saslAwsAccessKey;
+
+    /**
+     * @return The AWS access key.
+     * 
+     */
+    public Optional<Output<String>> saslAwsAccessKey() {
+        return Optional.ofNullable(this.saslAwsAccessKey);
+    }
+
+    /**
      * Set this to true to turn AWS credentials debug.
      * 
      */
@@ -239,6 +254,36 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> saslAwsRoleArn() {
         return Optional.ofNullable(this.saslAwsRoleArn);
+    }
+
+    /**
+     * The AWS secret key.
+     * 
+     */
+    @Import(name="saslAwsSecretKey")
+    private @Nullable Output<String> saslAwsSecretKey;
+
+    /**
+     * @return The AWS secret key.
+     * 
+     */
+    public Optional<Output<String>> saslAwsSecretKey() {
+        return Optional.ofNullable(this.saslAwsSecretKey);
+    }
+
+    /**
+     * The AWS session token. Only required if you are using temporary security credentials.
+     * 
+     */
+    @Import(name="saslAwsToken")
+    private @Nullable Output<String> saslAwsToken;
+
+    /**
+     * @return The AWS session token. Only required if you are using temporary security credentials.
+     * 
+     */
+    public Optional<Output<String>> saslAwsToken() {
+        return Optional.ofNullable(this.saslAwsToken);
     }
 
     /**
@@ -358,10 +403,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientKeyFile = $.clientKeyFile;
         this.clientKeyPassphrase = $.clientKeyPassphrase;
         this.kafkaVersion = $.kafkaVersion;
+        this.saslAwsAccessKey = $.saslAwsAccessKey;
         this.saslAwsCredsDebug = $.saslAwsCredsDebug;
         this.saslAwsProfile = $.saslAwsProfile;
         this.saslAwsRegion = $.saslAwsRegion;
         this.saslAwsRoleArn = $.saslAwsRoleArn;
+        this.saslAwsSecretKey = $.saslAwsSecretKey;
+        this.saslAwsToken = $.saslAwsToken;
         this.saslMechanism = $.saslMechanism;
         this.saslPassword = $.saslPassword;
         this.saslTokenUrl = $.saslTokenUrl;
@@ -615,6 +663,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param saslAwsAccessKey The AWS access key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsAccessKey(@Nullable Output<String> saslAwsAccessKey) {
+            $.saslAwsAccessKey = saslAwsAccessKey;
+            return this;
+        }
+
+        /**
+         * @param saslAwsAccessKey The AWS access key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsAccessKey(String saslAwsAccessKey) {
+            return saslAwsAccessKey(Output.of(saslAwsAccessKey));
+        }
+
+        /**
          * @param saslAwsCredsDebug Set this to true to turn AWS credentials debug.
          * 
          * @return builder
@@ -696,6 +765,48 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder saslAwsRoleArn(String saslAwsRoleArn) {
             return saslAwsRoleArn(Output.of(saslAwsRoleArn));
+        }
+
+        /**
+         * @param saslAwsSecretKey The AWS secret key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsSecretKey(@Nullable Output<String> saslAwsSecretKey) {
+            $.saslAwsSecretKey = saslAwsSecretKey;
+            return this;
+        }
+
+        /**
+         * @param saslAwsSecretKey The AWS secret key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsSecretKey(String saslAwsSecretKey) {
+            return saslAwsSecretKey(Output.of(saslAwsSecretKey));
+        }
+
+        /**
+         * @param saslAwsToken The AWS session token. Only required if you are using temporary security credentials.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsToken(@Nullable Output<String> saslAwsToken) {
+            $.saslAwsToken = saslAwsToken;
+            return this;
+        }
+
+        /**
+         * @param saslAwsToken The AWS session token. Only required if you are using temporary security credentials.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsToken(String saslAwsToken) {
+            return saslAwsToken(Output.of(saslAwsToken));
         }
 
         /**

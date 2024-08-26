@@ -42,12 +42,18 @@ type Provider struct {
 	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
 	// versions. Default is 2.7.0.
 	KafkaVersion pulumi.StringPtrOutput `pulumi:"kafkaVersion"`
+	// The AWS access key.
+	SaslAwsAccessKey pulumi.StringPtrOutput `pulumi:"saslAwsAccessKey"`
 	// AWS profile name to use
 	SaslAwsProfile pulumi.StringPtrOutput `pulumi:"saslAwsProfile"`
 	// AWS region where MSK is deployed.
 	SaslAwsRegion pulumi.StringPtrOutput `pulumi:"saslAwsRegion"`
 	// Arn of an AWS IAM role to assume
 	SaslAwsRoleArn pulumi.StringPtrOutput `pulumi:"saslAwsRoleArn"`
+	// The AWS secret key.
+	SaslAwsSecretKey pulumi.StringPtrOutput `pulumi:"saslAwsSecretKey"`
+	// The AWS session token. Only required if you are using temporary security credentials.
+	SaslAwsToken pulumi.StringPtrOutput `pulumi:"saslAwsToken"`
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism pulumi.StringPtrOutput `pulumi:"saslMechanism"`
 	// Password for SASL authentication.
@@ -118,6 +124,8 @@ type providerArgs struct {
 	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
 	// versions. Default is 2.7.0.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
+	// The AWS access key.
+	SaslAwsAccessKey *string `pulumi:"saslAwsAccessKey"`
 	// Set this to true to turn AWS credentials debug.
 	SaslAwsCredsDebug *bool `pulumi:"saslAwsCredsDebug"`
 	// AWS profile name to use
@@ -126,6 +134,10 @@ type providerArgs struct {
 	SaslAwsRegion *string `pulumi:"saslAwsRegion"`
 	// Arn of an AWS IAM role to assume
 	SaslAwsRoleArn *string `pulumi:"saslAwsRoleArn"`
+	// The AWS secret key.
+	SaslAwsSecretKey *string `pulumi:"saslAwsSecretKey"`
+	// The AWS session token. Only required if you are using temporary security credentials.
+	SaslAwsToken *string `pulumi:"saslAwsToken"`
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism *string `pulumi:"saslMechanism"`
 	// Password for SASL authentication.
@@ -169,6 +181,8 @@ type ProviderArgs struct {
 	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
 	// versions. Default is 2.7.0.
 	KafkaVersion pulumi.StringPtrInput
+	// The AWS access key.
+	SaslAwsAccessKey pulumi.StringPtrInput
 	// Set this to true to turn AWS credentials debug.
 	SaslAwsCredsDebug pulumi.BoolPtrInput
 	// AWS profile name to use
@@ -177,6 +191,10 @@ type ProviderArgs struct {
 	SaslAwsRegion pulumi.StringPtrInput
 	// Arn of an AWS IAM role to assume
 	SaslAwsRoleArn pulumi.StringPtrInput
+	// The AWS secret key.
+	SaslAwsSecretKey pulumi.StringPtrInput
+	// The AWS session token. Only required if you are using temporary security credentials.
+	SaslAwsToken pulumi.StringPtrInput
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism pulumi.StringPtrInput
 	// Password for SASL authentication.
@@ -277,6 +295,11 @@ func (o ProviderOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
+// The AWS access key.
+func (o ProviderOutput) SaslAwsAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsAccessKey }).(pulumi.StringPtrOutput)
+}
+
 // AWS profile name to use
 func (o ProviderOutput) SaslAwsProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsProfile }).(pulumi.StringPtrOutput)
@@ -290,6 +313,16 @@ func (o ProviderOutput) SaslAwsRegion() pulumi.StringPtrOutput {
 // Arn of an AWS IAM role to assume
 func (o ProviderOutput) SaslAwsRoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The AWS secret key.
+func (o ProviderOutput) SaslAwsSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsSecretKey }).(pulumi.StringPtrOutput)
+}
+
+// The AWS session token. Only required if you are using temporary security credentials.
+func (o ProviderOutput) SaslAwsToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsToken }).(pulumi.StringPtrOutput)
 }
 
 // SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam

@@ -80,6 +80,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('kafkaVersion')
 
     @property
+    def sasl_aws_access_key(self) -> Optional[str]:
+        """
+        The AWS access key.
+        """
+        return __config__.get('saslAwsAccessKey')
+
+    @property
     def sasl_aws_creds_debug(self) -> Optional[bool]:
         """
         Set this to true to turn AWS credentials debug.
@@ -106,6 +113,20 @@ class _ExportableConfig(types.ModuleType):
         Arn of an AWS IAM role to assume
         """
         return __config__.get('saslAwsRoleArn')
+
+    @property
+    def sasl_aws_secret_key(self) -> Optional[str]:
+        """
+        The AWS secret key.
+        """
+        return __config__.get('saslAwsSecretKey')
+
+    @property
+    def sasl_aws_token(self) -> Optional[str]:
+        """
+        The AWS session token. Only required if you are using temporary security credentials.
+        """
+        return __config__.get('saslAwsToken')
 
     @property
     def sasl_mechanism(self) -> str:

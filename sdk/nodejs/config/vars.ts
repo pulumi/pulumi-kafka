@@ -108,6 +108,17 @@ Object.defineProperty(exports, "kafkaVersion", {
 });
 
 /**
+ * The AWS access key.
+ */
+export declare const saslAwsAccessKey: string | undefined;
+Object.defineProperty(exports, "saslAwsAccessKey", {
+    get() {
+        return __config.get("saslAwsAccessKey");
+    },
+    enumerable: true,
+});
+
+/**
  * Set this to true to turn AWS credentials debug.
  */
 export declare const saslAwsCredsDebug: boolean | undefined;
@@ -147,6 +158,28 @@ export declare const saslAwsRoleArn: string | undefined;
 Object.defineProperty(exports, "saslAwsRoleArn", {
     get() {
         return __config.get("saslAwsRoleArn");
+    },
+    enumerable: true,
+});
+
+/**
+ * The AWS secret key.
+ */
+export declare const saslAwsSecretKey: string | undefined;
+Object.defineProperty(exports, "saslAwsSecretKey", {
+    get() {
+        return __config.get("saslAwsSecretKey");
+    },
+    enumerable: true,
+});
+
+/**
+ * The AWS session token. Only required if you are using temporary security credentials.
+ */
+export declare const saslAwsToken: string | undefined;
+Object.defineProperty(exports, "saslAwsToken", {
+    get() {
+        return __config.get("saslAwsToken");
     },
     enumerable: true,
 });

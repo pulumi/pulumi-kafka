@@ -92,6 +92,10 @@
                 "type": "string",
                 "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
             },
+            "saslAwsAccessKey": {
+                "type": "string",
+                "description": "The AWS access key.\n"
+            },
             "saslAwsCredsDebug": {
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
@@ -107,6 +111,14 @@
             "saslAwsRoleArn": {
                 "type": "string",
                 "description": "Arn of an AWS IAM role to assume\n"
+            },
+            "saslAwsSecretKey": {
+                "type": "string",
+                "description": "The AWS secret key.\n"
+            },
+            "saslAwsToken": {
+                "type": "string",
+                "description": "The AWS session token. Only required if you are using temporary security credentials.\n"
             },
             "saslMechanism": {
                 "type": "string",
@@ -204,6 +216,10 @@
                 "type": "string",
                 "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
             },
+            "saslAwsAccessKey": {
+                "type": "string",
+                "description": "The AWS access key.\n"
+            },
             "saslAwsCredsDebug": {
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
@@ -219,6 +235,14 @@
             "saslAwsRoleArn": {
                 "type": "string",
                 "description": "Arn of an AWS IAM role to assume\n"
+            },
+            "saslAwsSecretKey": {
+                "type": "string",
+                "description": "The AWS secret key.\n"
+            },
+            "saslAwsToken": {
+                "type": "string",
+                "description": "The AWS session token. Only required if you are using temporary security credentials.\n"
             },
             "saslMechanism": {
                 "type": "string",
@@ -295,6 +319,10 @@
                 "type": "string",
                 "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
             },
+            "saslAwsAccessKey": {
+                "type": "string",
+                "description": "The AWS access key.\n"
+            },
             "saslAwsCredsDebug": {
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
@@ -310,6 +338,14 @@
             "saslAwsRoleArn": {
                 "type": "string",
                 "description": "Arn of an AWS IAM role to assume\n"
+            },
+            "saslAwsSecretKey": {
+                "type": "string",
+                "description": "The AWS secret key.\n"
+            },
+            "saslAwsToken": {
+                "type": "string",
+                "description": "The AWS session token. Only required if you are using temporary security credentials.\n"
             },
             "saslMechanism": {
                 "type": "string",

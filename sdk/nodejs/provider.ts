@@ -65,6 +65,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly kafkaVersion!: pulumi.Output<string | undefined>;
     /**
+     * The AWS access key.
+     */
+    public readonly saslAwsAccessKey!: pulumi.Output<string | undefined>;
+    /**
      * AWS profile name to use
      */
     public readonly saslAwsProfile!: pulumi.Output<string | undefined>;
@@ -76,6 +80,14 @@ export class Provider extends pulumi.ProviderResource {
      * Arn of an AWS IAM role to assume
      */
     public readonly saslAwsRoleArn!: pulumi.Output<string | undefined>;
+    /**
+     * The AWS secret key.
+     */
+    public readonly saslAwsSecretKey!: pulumi.Output<string | undefined>;
+    /**
+     * The AWS session token. Only required if you are using temporary security credentials.
+     */
+    public readonly saslAwsToken!: pulumi.Output<string | undefined>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */
@@ -116,10 +128,13 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
             resourceInputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
             resourceInputs["kafkaVersion"] = args ? args.kafkaVersion : undefined;
+            resourceInputs["saslAwsAccessKey"] = args ? args.saslAwsAccessKey : undefined;
             resourceInputs["saslAwsCredsDebug"] = pulumi.output(args ? args.saslAwsCredsDebug : undefined).apply(JSON.stringify);
             resourceInputs["saslAwsProfile"] = args ? args.saslAwsProfile : undefined;
             resourceInputs["saslAwsRegion"] = args ? args.saslAwsRegion : undefined;
             resourceInputs["saslAwsRoleArn"] = args ? args.saslAwsRoleArn : undefined;
+            resourceInputs["saslAwsSecretKey"] = args ? args.saslAwsSecretKey : undefined;
+            resourceInputs["saslAwsToken"] = args ? args.saslAwsToken : undefined;
             resourceInputs["saslMechanism"] = (args ? args.saslMechanism : undefined) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
             resourceInputs["saslPassword"] = args ? args.saslPassword : undefined;
             resourceInputs["saslTokenUrl"] = args ? args.saslTokenUrl : undefined;
@@ -181,6 +196,10 @@ export interface ProviderArgs {
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
+     * The AWS access key.
+     */
+    saslAwsAccessKey?: pulumi.Input<string>;
+    /**
      * Set this to true to turn AWS credentials debug.
      */
     saslAwsCredsDebug?: pulumi.Input<boolean>;
@@ -196,6 +215,14 @@ export interface ProviderArgs {
      * Arn of an AWS IAM role to assume
      */
     saslAwsRoleArn?: pulumi.Input<string>;
+    /**
+     * The AWS secret key.
+     */
+    saslAwsSecretKey?: pulumi.Input<string>;
+    /**
+     * The AWS session token. Only required if you are using temporary security credentials.
+     */
+    saslAwsToken?: pulumi.Input<string>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */

@@ -23,10 +23,13 @@ class ProviderArgs:
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_access_key: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
                  sasl_aws_role_arn: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_secret_key: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_token: Optional[pulumi.Input[str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[str]] = None,
                  sasl_password: Optional[pulumi.Input[str]] = None,
                  sasl_token_url: Optional[pulumi.Input[str]] = None,
@@ -46,10 +49,13 @@ class ProviderArgs:
         :param pulumi.Input[str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
         :param pulumi.Input[str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
                versions. Default is 2.7.0.
+        :param pulumi.Input[str] sasl_aws_access_key: The AWS access key.
         :param pulumi.Input[bool] sasl_aws_creds_debug: Set this to true to turn AWS credentials debug.
         :param pulumi.Input[str] sasl_aws_profile: AWS profile name to use
         :param pulumi.Input[str] sasl_aws_region: AWS region where MSK is deployed.
         :param pulumi.Input[str] sasl_aws_role_arn: Arn of an AWS IAM role to assume
+        :param pulumi.Input[str] sasl_aws_secret_key: The AWS secret key.
+        :param pulumi.Input[str] sasl_aws_token: The AWS session token. Only required if you are using temporary security credentials.
         :param pulumi.Input[str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         :param pulumi.Input[str] sasl_password: Password for SASL authentication.
         :param pulumi.Input[str] sasl_token_url: The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
@@ -84,6 +90,8 @@ class ProviderArgs:
             pulumi.set(__self__, "client_key_passphrase", client_key_passphrase)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
+        if sasl_aws_access_key is not None:
+            pulumi.set(__self__, "sasl_aws_access_key", sasl_aws_access_key)
         if sasl_aws_creds_debug is not None:
             pulumi.set(__self__, "sasl_aws_creds_debug", sasl_aws_creds_debug)
         if sasl_aws_profile is not None:
@@ -92,6 +100,10 @@ class ProviderArgs:
             pulumi.set(__self__, "sasl_aws_region", sasl_aws_region)
         if sasl_aws_role_arn is not None:
             pulumi.set(__self__, "sasl_aws_role_arn", sasl_aws_role_arn)
+        if sasl_aws_secret_key is not None:
+            pulumi.set(__self__, "sasl_aws_secret_key", sasl_aws_secret_key)
+        if sasl_aws_token is not None:
+            pulumi.set(__self__, "sasl_aws_token", sasl_aws_token)
         if sasl_mechanism is None:
             sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
         if sasl_mechanism is not None:
@@ -226,6 +238,18 @@ class ProviderArgs:
         pulumi.set(self, "kafka_version", value)
 
     @property
+    @pulumi.getter(name="saslAwsAccessKey")
+    def sasl_aws_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS access key.
+        """
+        return pulumi.get(self, "sasl_aws_access_key")
+
+    @sasl_aws_access_key.setter
+    def sasl_aws_access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sasl_aws_access_key", value)
+
+    @property
     @pulumi.getter(name="saslAwsCredsDebug")
     def sasl_aws_creds_debug(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -272,6 +296,30 @@ class ProviderArgs:
     @sasl_aws_role_arn.setter
     def sasl_aws_role_arn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sasl_aws_role_arn", value)
+
+    @property
+    @pulumi.getter(name="saslAwsSecretKey")
+    def sasl_aws_secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS secret key.
+        """
+        return pulumi.get(self, "sasl_aws_secret_key")
+
+    @sasl_aws_secret_key.setter
+    def sasl_aws_secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sasl_aws_secret_key", value)
+
+    @property
+    @pulumi.getter(name="saslAwsToken")
+    def sasl_aws_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS session token. Only required if you are using temporary security credentials.
+        """
+        return pulumi.get(self, "sasl_aws_token")
+
+    @sasl_aws_token.setter
+    def sasl_aws_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sasl_aws_token", value)
 
     @property
     @pulumi.getter(name="saslMechanism")
@@ -372,10 +420,13 @@ class Provider(pulumi.ProviderResource):
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_access_key: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
                  sasl_aws_role_arn: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_secret_key: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_token: Optional[pulumi.Input[str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[str]] = None,
                  sasl_password: Optional[pulumi.Input[str]] = None,
                  sasl_token_url: Optional[pulumi.Input[str]] = None,
@@ -402,10 +453,13 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
         :param pulumi.Input[str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
                versions. Default is 2.7.0.
+        :param pulumi.Input[str] sasl_aws_access_key: The AWS access key.
         :param pulumi.Input[bool] sasl_aws_creds_debug: Set this to true to turn AWS credentials debug.
         :param pulumi.Input[str] sasl_aws_profile: AWS profile name to use
         :param pulumi.Input[str] sasl_aws_region: AWS region where MSK is deployed.
         :param pulumi.Input[str] sasl_aws_role_arn: Arn of an AWS IAM role to assume
+        :param pulumi.Input[str] sasl_aws_secret_key: The AWS secret key.
+        :param pulumi.Input[str] sasl_aws_token: The AWS session token. Only required if you are using temporary security credentials.
         :param pulumi.Input[str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         :param pulumi.Input[str] sasl_password: Password for SASL authentication.
         :param pulumi.Input[str] sasl_token_url: The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
@@ -450,10 +504,13 @@ class Provider(pulumi.ProviderResource):
                  client_key_file: Optional[pulumi.Input[str]] = None,
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_access_key: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
                  sasl_aws_role_arn: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_secret_key: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_token: Optional[pulumi.Input[str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[str]] = None,
                  sasl_password: Optional[pulumi.Input[str]] = None,
                  sasl_token_url: Optional[pulumi.Input[str]] = None,
@@ -481,10 +538,13 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_key_file"] = client_key_file
             __props__.__dict__["client_key_passphrase"] = client_key_passphrase
             __props__.__dict__["kafka_version"] = kafka_version
+            __props__.__dict__["sasl_aws_access_key"] = sasl_aws_access_key
             __props__.__dict__["sasl_aws_creds_debug"] = pulumi.Output.from_input(sasl_aws_creds_debug).apply(pulumi.runtime.to_json) if sasl_aws_creds_debug is not None else None
             __props__.__dict__["sasl_aws_profile"] = sasl_aws_profile
             __props__.__dict__["sasl_aws_region"] = sasl_aws_region
             __props__.__dict__["sasl_aws_role_arn"] = sasl_aws_role_arn
+            __props__.__dict__["sasl_aws_secret_key"] = sasl_aws_secret_key
+            __props__.__dict__["sasl_aws_token"] = sasl_aws_token
             if sasl_mechanism is None:
                 sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
             __props__.__dict__["sasl_mechanism"] = sasl_mechanism
@@ -573,6 +633,14 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "kafka_version")
 
     @property
+    @pulumi.getter(name="saslAwsAccessKey")
+    def sasl_aws_access_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The AWS access key.
+        """
+        return pulumi.get(self, "sasl_aws_access_key")
+
+    @property
     @pulumi.getter(name="saslAwsProfile")
     def sasl_aws_profile(self) -> pulumi.Output[Optional[str]]:
         """
@@ -595,6 +663,22 @@ class Provider(pulumi.ProviderResource):
         Arn of an AWS IAM role to assume
         """
         return pulumi.get(self, "sasl_aws_role_arn")
+
+    @property
+    @pulumi.getter(name="saslAwsSecretKey")
+    def sasl_aws_secret_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The AWS secret key.
+        """
+        return pulumi.get(self, "sasl_aws_secret_key")
+
+    @property
+    @pulumi.getter(name="saslAwsToken")
+    def sasl_aws_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The AWS session token. Only required if you are using temporary security credentials.
+        """
+        return pulumi.get(self, "sasl_aws_token")
 
     @property
     @pulumi.getter(name="saslMechanism")
