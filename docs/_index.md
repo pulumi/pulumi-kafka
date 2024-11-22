@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The kafka provider is available as a package in all Pulumi languages:
+The Kafka provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/kafka`](https://www.npmjs.com/package/@pulumi/kafka)
 * Python: [`pulumi-kafka`](https://pypi.org/project/pulumi-kafka/)
