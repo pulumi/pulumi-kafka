@@ -31,3 +31,7 @@ schema-embed.json
 
 
 sdk/python/venv
+
+
+# Ignore local build tracking directory
+.make
