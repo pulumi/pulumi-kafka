@@ -1,11 +1,9 @@
 module github.com/pulumi/pulumi-kafka/provider/v3
 
-go 1.22.0
-
-toolchain go1.22.7
+go 1.22.7
 
 require (
-	github.com/Mongey/terraform-provider-kafka v0.8.1
+	github.com/Mongey/terraform-provider-kafka v0.8.3
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.96.0
 )
 
@@ -22,7 +20,7 @@ require (
 	github.com/Masterminds/semver/v3 v3.2.0 // indirect
 	github.com/Masterminds/sprig/v3 v3.2.3 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
-	github.com/ProtonMail/go-crypto v1.1.0-alpha.0 // indirect
+	github.com/ProtonMail/go-crypto v1.1.0-alpha.2 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
@@ -31,19 +29,19 @@ require (
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aws/aws-msk-iam-sasl-signer-go v1.0.0 // indirect
 	github.com/aws/aws-sdk-go v1.50.36 // indirect
-	github.com/aws/aws-sdk-go-v2 v1.30.4 // indirect
+	github.com/aws/aws-sdk-go-v2 v1.32.6 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.27.11 // indirect
-	github.com/aws/aws-sdk-go-v2/credentials v1.17.28 // indirect
-	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.12 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.16 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.16 // indirect
+	github.com/aws/aws-sdk-go-v2/credentials v1.17.47 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.21 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.3.25 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.6.25 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.8.0 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.11.4 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.11.18 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sso v1.22.5 // indirect
-	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.26.5 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sts v1.30.4 // indirect
-	github.com/aws/smithy-go v1.20.4 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.12.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.12.6 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sso v1.24.7 // indirect
+	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.28.6 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sts v1.33.2 // indirect
+	github.com/aws/smithy-go v1.22.1 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect
 	github.com/bgentry/speakeasy v0.1.0 // indirect
@@ -91,14 +89,14 @@ require (
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-safetemp v1.0.0 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
-	github.com/hashicorp/go-version v1.6.0 // indirect
+	github.com/hashicorp/go-version v1.7.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hashicorp/hcl/v2 v2.22.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.25.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.35.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/huandu/xstrings v1.3.3 // indirect
 	github.com/iancoleman/strcase v0.2.0 // indirect
@@ -181,8 +179,8 @@ require (
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/xdg/scram v1.0.5 // indirect
 	github.com/xdg/stringprep v1.0.3 // indirect
-	github.com/yuin/goldmark v1.7.4 // indirect
-	github.com/zclconf/go-cty v1.14.2 // indirect
+	github.com/yuin/goldmark v1.7.7 // indirect
+	github.com/zclconf/go-cty v1.15.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.49.0 // indirect
@@ -190,15 +188,15 @@ require (
 	go.opentelemetry.io/otel/metric v1.24.0 // indirect
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
-	golang.org/x/crypto v0.26.0 // indirect
+	golang.org/x/crypto v0.28.0 // indirect
 	golang.org/x/exp v0.0.0-20240604190554-fc45aab8b7f8 // indirect
-	golang.org/x/mod v0.18.0 // indirect
+	golang.org/x/mod v0.21.0 // indirect
 	golang.org/x/net v0.28.0 // indirect
-	golang.org/x/oauth2 v0.22.0 // indirect
-	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.24.0 // indirect
-	golang.org/x/term v0.23.0 // indirect
-	golang.org/x/text v0.17.0 // indirect
+	golang.org/x/oauth2 v0.24.0 // indirect
+	golang.org/x/sync v0.9.0 // indirect
+	golang.org/x/sys v0.26.0 // indirect
+	golang.org/x/term v0.25.0 // indirect
+	golang.org/x/text v0.20.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	golang.org/x/tools v0.22.0 // indirect
 	google.golang.org/api v0.169.0 // indirect
