@@ -4,7 +4,7 @@ go 1.22.7
 
 require (
 	github.com/Mongey/terraform-provider-kafka v0.8.3
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.96.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.96.1-0.20241209191100-0c46ff573f44
 )
 
 require (
@@ -146,10 +146,10 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.17.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.11.2 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.140.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.140.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v0.18.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.12.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.142.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.142.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
