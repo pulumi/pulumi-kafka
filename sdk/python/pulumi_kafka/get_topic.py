@@ -102,13 +102,13 @@ def get_topic(name: Optional[str] = None,
         partitions=pulumi.get(__ret__, 'partitions'),
         replication_factor=pulumi.get(__ret__, 'replication_factor'))
 def get_topic_output(name: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTopicResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('kafka:index:getTopic', __args__, opts=opts, typ=GetTopicResult)
     return __ret__.apply(lambda __response__: GetTopicResult(
         config=pulumi.get(__response__, 'config'),
