@@ -31,7 +31,7 @@ export interface GetTopicResult {
     readonly partitions: number;
     readonly replicationFactor: number;
 }
-export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
+export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("kafka:index:getTopic", {
         "name": args.name,
