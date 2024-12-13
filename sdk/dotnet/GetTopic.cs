@@ -16,6 +16,9 @@ namespace Pulumi.Kafka
 
         public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTopicResult>("kafka:index:getTopic", args ?? new GetTopicInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetTopicResult> Invoke(GetTopicInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTopicResult>("kafka:index:getTopic", args ?? new GetTopicInvokeArgs(), options.WithDefaults());
     }
 
 
