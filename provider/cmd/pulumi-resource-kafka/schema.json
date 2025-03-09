@@ -93,6 +93,14 @@
                 "type": "string",
                 "description": "The AWS access key.\n"
             },
+            "saslAwsContainerAuthorizationTokenFile": {
+                "type": "string",
+                "description": "Path to a file containing the AWS pod identity authorization token\n"
+            },
+            "saslAwsContainerCredentialsFullUri": {
+                "type": "string",
+                "description": "URI to retrieve AWS credentials from\n"
+            },
             "saslAwsCredsDebug": {
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
@@ -217,6 +225,14 @@
                 "type": "string",
                 "description": "The AWS access key.\n"
             },
+            "saslAwsContainerAuthorizationTokenFile": {
+                "type": "string",
+                "description": "Path to a file containing the AWS pod identity authorization token\n"
+            },
+            "saslAwsContainerCredentialsFullUri": {
+                "type": "string",
+                "description": "URI to retrieve AWS credentials from\n"
+            },
             "saslAwsCredsDebug": {
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
@@ -319,6 +335,14 @@
             "saslAwsAccessKey": {
                 "type": "string",
                 "description": "The AWS access key.\n"
+            },
+            "saslAwsContainerAuthorizationTokenFile": {
+                "type": "string",
+                "description": "Path to a file containing the AWS pod identity authorization token\n"
+            },
+            "saslAwsContainerCredentialsFullUri": {
+                "type": "string",
+                "description": "URI to retrieve AWS credentials from\n"
             },
             "saslAwsCredsDebug": {
                 "type": "boolean",
