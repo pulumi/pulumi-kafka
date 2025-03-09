@@ -68,6 +68,16 @@ func GetSaslAwsAccessKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:saslAwsAccessKey")
 }
 
+// Path to a file containing the AWS pod identity authorization token
+func GetSaslAwsContainerAuthorizationTokenFile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsContainerAuthorizationTokenFile")
+}
+
+// URI to retrieve AWS credentials from
+func GetSaslAwsContainerCredentialsFullUri(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsContainerCredentialsFullUri")
+}
+
 // Set this to true to turn AWS credentials debug.
 func GetSaslAwsCredsDebug(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "kafka:saslAwsCredsDebug")

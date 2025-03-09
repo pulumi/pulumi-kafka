@@ -74,6 +74,18 @@ namespace Pulumi.Kafka
         public Output<string?> SaslAwsAccessKey { get; private set; } = null!;
 
         /// <summary>
+        /// Path to a file containing the AWS pod identity authorization token
+        /// </summary>
+        [Output("saslAwsContainerAuthorizationTokenFile")]
+        public Output<string?> SaslAwsContainerAuthorizationTokenFile { get; private set; } = null!;
+
+        /// <summary>
+        /// URI to retrieve AWS credentials from
+        /// </summary>
+        [Output("saslAwsContainerCredentialsFullUri")]
+        public Output<string?> SaslAwsContainerCredentialsFullUri { get; private set; } = null!;
+
+        /// <summary>
         /// AWS profile name to use
         /// </summary>
         [Output("saslAwsProfile")]
@@ -221,6 +233,18 @@ namespace Pulumi.Kafka
         /// </summary>
         [Input("saslAwsAccessKey")]
         public Input<string>? SaslAwsAccessKey { get; set; }
+
+        /// <summary>
+        /// Path to a file containing the AWS pod identity authorization token
+        /// </summary>
+        [Input("saslAwsContainerAuthorizationTokenFile")]
+        public Input<string>? SaslAwsContainerAuthorizationTokenFile { get; set; }
+
+        /// <summary>
+        /// URI to retrieve AWS credentials from
+        /// </summary>
+        [Input("saslAwsContainerCredentialsFullUri")]
+        public Input<string>? SaslAwsContainerCredentialsFullUri { get; set; }
 
         /// <summary>
         /// Set this to true to turn AWS credentials debug.

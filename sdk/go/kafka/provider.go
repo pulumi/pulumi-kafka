@@ -44,6 +44,10 @@ type Provider struct {
 	KafkaVersion pulumi.StringPtrOutput `pulumi:"kafkaVersion"`
 	// The AWS access key.
 	SaslAwsAccessKey pulumi.StringPtrOutput `pulumi:"saslAwsAccessKey"`
+	// Path to a file containing the AWS pod identity authorization token
+	SaslAwsContainerAuthorizationTokenFile pulumi.StringPtrOutput `pulumi:"saslAwsContainerAuthorizationTokenFile"`
+	// URI to retrieve AWS credentials from
+	SaslAwsContainerCredentialsFullUri pulumi.StringPtrOutput `pulumi:"saslAwsContainerCredentialsFullUri"`
 	// AWS profile name to use
 	SaslAwsProfile pulumi.StringPtrOutput `pulumi:"saslAwsProfile"`
 	// AWS region where MSK is deployed.
@@ -126,6 +130,10 @@ type providerArgs struct {
 	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// The AWS access key.
 	SaslAwsAccessKey *string `pulumi:"saslAwsAccessKey"`
+	// Path to a file containing the AWS pod identity authorization token
+	SaslAwsContainerAuthorizationTokenFile *string `pulumi:"saslAwsContainerAuthorizationTokenFile"`
+	// URI to retrieve AWS credentials from
+	SaslAwsContainerCredentialsFullUri *string `pulumi:"saslAwsContainerCredentialsFullUri"`
 	// Set this to true to turn AWS credentials debug.
 	SaslAwsCredsDebug *bool `pulumi:"saslAwsCredsDebug"`
 	// AWS profile name to use
@@ -183,6 +191,10 @@ type ProviderArgs struct {
 	KafkaVersion pulumi.StringPtrInput
 	// The AWS access key.
 	SaslAwsAccessKey pulumi.StringPtrInput
+	// Path to a file containing the AWS pod identity authorization token
+	SaslAwsContainerAuthorizationTokenFile pulumi.StringPtrInput
+	// URI to retrieve AWS credentials from
+	SaslAwsContainerCredentialsFullUri pulumi.StringPtrInput
 	// Set this to true to turn AWS credentials debug.
 	SaslAwsCredsDebug pulumi.BoolPtrInput
 	// AWS profile name to use
@@ -298,6 +310,16 @@ func (o ProviderOutput) KafkaVersion() pulumi.StringPtrOutput {
 // The AWS access key.
 func (o ProviderOutput) SaslAwsAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsAccessKey }).(pulumi.StringPtrOutput)
+}
+
+// Path to a file containing the AWS pod identity authorization token
+func (o ProviderOutput) SaslAwsContainerAuthorizationTokenFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsContainerAuthorizationTokenFile }).(pulumi.StringPtrOutput)
+}
+
+// URI to retrieve AWS credentials from
+func (o ProviderOutput) SaslAwsContainerCredentialsFullUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsContainerCredentialsFullUri }).(pulumi.StringPtrOutput)
 }
 
 // AWS profile name to use

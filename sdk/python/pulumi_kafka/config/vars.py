@@ -92,6 +92,20 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('saslAwsAccessKey')
 
     @property
+    def sasl_aws_container_authorization_token_file(self) -> Optional[str]:
+        """
+        Path to a file containing the AWS pod identity authorization token
+        """
+        return __config__.get('saslAwsContainerAuthorizationTokenFile')
+
+    @property
+    def sasl_aws_container_credentials_full_uri(self) -> Optional[str]:
+        """
+        URI to retrieve AWS credentials from
+        """
+        return __config__.get('saslAwsContainerCredentialsFullUri')
+
+    @property
     def sasl_aws_creds_debug(self) -> Optional[bool]:
         """
         Set this to true to turn AWS credentials debug.

@@ -119,6 +119,28 @@ Object.defineProperty(exports, "saslAwsAccessKey", {
 });
 
 /**
+ * Path to a file containing the AWS pod identity authorization token
+ */
+export declare const saslAwsContainerAuthorizationTokenFile: string | undefined;
+Object.defineProperty(exports, "saslAwsContainerAuthorizationTokenFile", {
+    get() {
+        return __config.get("saslAwsContainerAuthorizationTokenFile");
+    },
+    enumerable: true,
+});
+
+/**
+ * URI to retrieve AWS credentials from
+ */
+export declare const saslAwsContainerCredentialsFullUri: string | undefined;
+Object.defineProperty(exports, "saslAwsContainerCredentialsFullUri", {
+    get() {
+        return __config.get("saslAwsContainerCredentialsFullUri");
+    },
+    enumerable: true,
+});
+
+/**
  * Set this to true to turn AWS credentials debug.
  */
 export declare const saslAwsCredsDebug: boolean | undefined;

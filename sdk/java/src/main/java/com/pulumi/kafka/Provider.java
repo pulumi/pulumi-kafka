@@ -163,6 +163,34 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.saslAwsAccessKey);
     }
     /**
+     * Path to a file containing the AWS pod identity authorization token
+     * 
+     */
+    @Export(name="saslAwsContainerAuthorizationTokenFile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsContainerAuthorizationTokenFile;
+
+    /**
+     * @return Path to a file containing the AWS pod identity authorization token
+     * 
+     */
+    public Output<Optional<String>> saslAwsContainerAuthorizationTokenFile() {
+        return Codegen.optional(this.saslAwsContainerAuthorizationTokenFile);
+    }
+    /**
+     * URI to retrieve AWS credentials from
+     * 
+     */
+    @Export(name="saslAwsContainerCredentialsFullUri", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsContainerCredentialsFullUri;
+
+    /**
+     * @return URI to retrieve AWS credentials from
+     * 
+     */
+    public Output<Optional<String>> saslAwsContainerCredentialsFullUri() {
+        return Codegen.optional(this.saslAwsContainerCredentialsFullUri);
+    }
+    /**
      * AWS profile name to use
      * 
      */

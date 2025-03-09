@@ -197,6 +197,36 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Path to a file containing the AWS pod identity authorization token
+     * 
+     */
+    @Import(name="saslAwsContainerAuthorizationTokenFile")
+    private @Nullable Output<String> saslAwsContainerAuthorizationTokenFile;
+
+    /**
+     * @return Path to a file containing the AWS pod identity authorization token
+     * 
+     */
+    public Optional<Output<String>> saslAwsContainerAuthorizationTokenFile() {
+        return Optional.ofNullable(this.saslAwsContainerAuthorizationTokenFile);
+    }
+
+    /**
+     * URI to retrieve AWS credentials from
+     * 
+     */
+    @Import(name="saslAwsContainerCredentialsFullUri")
+    private @Nullable Output<String> saslAwsContainerCredentialsFullUri;
+
+    /**
+     * @return URI to retrieve AWS credentials from
+     * 
+     */
+    public Optional<Output<String>> saslAwsContainerCredentialsFullUri() {
+        return Optional.ofNullable(this.saslAwsContainerCredentialsFullUri);
+    }
+
+    /**
      * Set this to true to turn AWS credentials debug.
      * 
      */
@@ -404,6 +434,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientKeyPassphrase = $.clientKeyPassphrase;
         this.kafkaVersion = $.kafkaVersion;
         this.saslAwsAccessKey = $.saslAwsAccessKey;
+        this.saslAwsContainerAuthorizationTokenFile = $.saslAwsContainerAuthorizationTokenFile;
+        this.saslAwsContainerCredentialsFullUri = $.saslAwsContainerCredentialsFullUri;
         this.saslAwsCredsDebug = $.saslAwsCredsDebug;
         this.saslAwsProfile = $.saslAwsProfile;
         this.saslAwsRegion = $.saslAwsRegion;
@@ -681,6 +713,48 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder saslAwsAccessKey(String saslAwsAccessKey) {
             return saslAwsAccessKey(Output.of(saslAwsAccessKey));
+        }
+
+        /**
+         * @param saslAwsContainerAuthorizationTokenFile Path to a file containing the AWS pod identity authorization token
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsContainerAuthorizationTokenFile(@Nullable Output<String> saslAwsContainerAuthorizationTokenFile) {
+            $.saslAwsContainerAuthorizationTokenFile = saslAwsContainerAuthorizationTokenFile;
+            return this;
+        }
+
+        /**
+         * @param saslAwsContainerAuthorizationTokenFile Path to a file containing the AWS pod identity authorization token
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsContainerAuthorizationTokenFile(String saslAwsContainerAuthorizationTokenFile) {
+            return saslAwsContainerAuthorizationTokenFile(Output.of(saslAwsContainerAuthorizationTokenFile));
+        }
+
+        /**
+         * @param saslAwsContainerCredentialsFullUri URI to retrieve AWS credentials from
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsContainerCredentialsFullUri(@Nullable Output<String> saslAwsContainerCredentialsFullUri) {
+            $.saslAwsContainerCredentialsFullUri = saslAwsContainerCredentialsFullUri;
+            return this;
+        }
+
+        /**
+         * @param saslAwsContainerCredentialsFullUri URI to retrieve AWS credentials from
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsContainerCredentialsFullUri(String saslAwsContainerCredentialsFullUri) {
+            return saslAwsContainerCredentialsFullUri(Output.of(saslAwsContainerCredentialsFullUri));
         }
 
         /**

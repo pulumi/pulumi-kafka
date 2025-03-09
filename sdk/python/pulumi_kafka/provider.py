@@ -29,6 +29,8 @@ class ProviderArgs:
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  sasl_aws_access_key: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_container_authorization_token_file: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
@@ -55,6 +57,8 @@ class ProviderArgs:
         :param pulumi.Input[str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
                versions. Default is 2.7.0.
         :param pulumi.Input[str] sasl_aws_access_key: The AWS access key.
+        :param pulumi.Input[str] sasl_aws_container_authorization_token_file: Path to a file containing the AWS pod identity authorization token
+        :param pulumi.Input[str] sasl_aws_container_credentials_full_uri: URI to retrieve AWS credentials from
         :param pulumi.Input[bool] sasl_aws_creds_debug: Set this to true to turn AWS credentials debug.
         :param pulumi.Input[str] sasl_aws_profile: AWS profile name to use
         :param pulumi.Input[str] sasl_aws_region: AWS region where MSK is deployed.
@@ -97,6 +101,10 @@ class ProviderArgs:
             pulumi.set(__self__, "kafka_version", kafka_version)
         if sasl_aws_access_key is not None:
             pulumi.set(__self__, "sasl_aws_access_key", sasl_aws_access_key)
+        if sasl_aws_container_authorization_token_file is not None:
+            pulumi.set(__self__, "sasl_aws_container_authorization_token_file", sasl_aws_container_authorization_token_file)
+        if sasl_aws_container_credentials_full_uri is not None:
+            pulumi.set(__self__, "sasl_aws_container_credentials_full_uri", sasl_aws_container_credentials_full_uri)
         if sasl_aws_creds_debug is not None:
             pulumi.set(__self__, "sasl_aws_creds_debug", sasl_aws_creds_debug)
         if sasl_aws_profile is not None:
@@ -253,6 +261,30 @@ class ProviderArgs:
     @sasl_aws_access_key.setter
     def sasl_aws_access_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sasl_aws_access_key", value)
+
+    @property
+    @pulumi.getter(name="saslAwsContainerAuthorizationTokenFile")
+    def sasl_aws_container_authorization_token_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to a file containing the AWS pod identity authorization token
+        """
+        return pulumi.get(self, "sasl_aws_container_authorization_token_file")
+
+    @sasl_aws_container_authorization_token_file.setter
+    def sasl_aws_container_authorization_token_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sasl_aws_container_authorization_token_file", value)
+
+    @property
+    @pulumi.getter(name="saslAwsContainerCredentialsFullUri")
+    def sasl_aws_container_credentials_full_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI to retrieve AWS credentials from
+        """
+        return pulumi.get(self, "sasl_aws_container_credentials_full_uri")
+
+    @sasl_aws_container_credentials_full_uri.setter
+    def sasl_aws_container_credentials_full_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sasl_aws_container_credentials_full_uri", value)
 
     @property
     @pulumi.getter(name="saslAwsCredsDebug")
@@ -426,6 +458,8 @@ class Provider(pulumi.ProviderResource):
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  sasl_aws_access_key: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_container_authorization_token_file: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
@@ -459,6 +493,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
                versions. Default is 2.7.0.
         :param pulumi.Input[str] sasl_aws_access_key: The AWS access key.
+        :param pulumi.Input[str] sasl_aws_container_authorization_token_file: Path to a file containing the AWS pod identity authorization token
+        :param pulumi.Input[str] sasl_aws_container_credentials_full_uri: URI to retrieve AWS credentials from
         :param pulumi.Input[bool] sasl_aws_creds_debug: Set this to true to turn AWS credentials debug.
         :param pulumi.Input[str] sasl_aws_profile: AWS profile name to use
         :param pulumi.Input[str] sasl_aws_region: AWS region where MSK is deployed.
@@ -510,6 +546,8 @@ class Provider(pulumi.ProviderResource):
                  client_key_passphrase: Optional[pulumi.Input[str]] = None,
                  kafka_version: Optional[pulumi.Input[str]] = None,
                  sasl_aws_access_key: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_container_authorization_token_file: Optional[pulumi.Input[str]] = None,
+                 sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[bool]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[str]] = None,
@@ -544,6 +582,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_key_passphrase"] = client_key_passphrase
             __props__.__dict__["kafka_version"] = kafka_version
             __props__.__dict__["sasl_aws_access_key"] = sasl_aws_access_key
+            __props__.__dict__["sasl_aws_container_authorization_token_file"] = sasl_aws_container_authorization_token_file
+            __props__.__dict__["sasl_aws_container_credentials_full_uri"] = sasl_aws_container_credentials_full_uri
             __props__.__dict__["sasl_aws_creds_debug"] = pulumi.Output.from_input(sasl_aws_creds_debug).apply(pulumi.runtime.to_json) if sasl_aws_creds_debug is not None else None
             __props__.__dict__["sasl_aws_profile"] = sasl_aws_profile
             __props__.__dict__["sasl_aws_region"] = sasl_aws_region
@@ -644,6 +684,22 @@ class Provider(pulumi.ProviderResource):
         The AWS access key.
         """
         return pulumi.get(self, "sasl_aws_access_key")
+
+    @property
+    @pulumi.getter(name="saslAwsContainerAuthorizationTokenFile")
+    def sasl_aws_container_authorization_token_file(self) -> pulumi.Output[Optional[str]]:
+        """
+        Path to a file containing the AWS pod identity authorization token
+        """
+        return pulumi.get(self, "sasl_aws_container_authorization_token_file")
+
+    @property
+    @pulumi.getter(name="saslAwsContainerCredentialsFullUri")
+    def sasl_aws_container_credentials_full_uri(self) -> pulumi.Output[Optional[str]]:
+        """
+        URI to retrieve AWS credentials from
+        """
+        return pulumi.get(self, "sasl_aws_container_credentials_full_uri")
 
     @property
     @pulumi.getter(name="saslAwsProfile")

@@ -133,6 +133,26 @@ namespace Pulumi.Kafka
             set => _saslAwsAccessKey.Set(value);
         }
 
+        private static readonly __Value<string?> _saslAwsContainerAuthorizationTokenFile = new __Value<string?>(() => __config.Get("saslAwsContainerAuthorizationTokenFile"));
+        /// <summary>
+        /// Path to a file containing the AWS pod identity authorization token
+        /// </summary>
+        public static string? SaslAwsContainerAuthorizationTokenFile
+        {
+            get => _saslAwsContainerAuthorizationTokenFile.Get();
+            set => _saslAwsContainerAuthorizationTokenFile.Set(value);
+        }
+
+        private static readonly __Value<string?> _saslAwsContainerCredentialsFullUri = new __Value<string?>(() => __config.Get("saslAwsContainerCredentialsFullUri"));
+        /// <summary>
+        /// URI to retrieve AWS credentials from
+        /// </summary>
+        public static string? SaslAwsContainerCredentialsFullUri
+        {
+            get => _saslAwsContainerCredentialsFullUri.Get();
+            set => _saslAwsContainerCredentialsFullUri.Set(value);
+        }
+
         private static readonly __Value<bool?> _saslAwsCredsDebug = new __Value<bool?>(() => __config.GetBoolean("saslAwsCredsDebug"));
         /// <summary>
         /// Set this to true to turn AWS credentials debug.
