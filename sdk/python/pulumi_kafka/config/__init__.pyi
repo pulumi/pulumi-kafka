@@ -65,6 +65,16 @@ saslAwsAccessKey: Optional[str]
 The AWS access key.
 """
 
+saslAwsContainerAuthorizationTokenFile: Optional[str]
+"""
+Path to a file containing the AWS pod identity authorization token
+"""
+
+saslAwsContainerCredentialsFullUri: Optional[str]
+"""
+URI to retrieve AWS credentials from
+"""
+
 saslAwsCredsDebug: Optional[bool]
 """
 Set this to true to turn AWS credentials debug.

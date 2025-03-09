@@ -86,6 +86,20 @@ public final class Config {
         return Codegen.stringProp("saslAwsAccessKey").config(config).get();
     }
 /**
+ * Path to a file containing the AWS pod identity authorization token
+ * 
+ */
+    public Optional<String> saslAwsContainerAuthorizationTokenFile() {
+        return Codegen.stringProp("saslAwsContainerAuthorizationTokenFile").config(config).get();
+    }
+/**
+ * URI to retrieve AWS credentials from
+ * 
+ */
+    public Optional<String> saslAwsContainerCredentialsFullUri() {
+        return Codegen.stringProp("saslAwsContainerCredentialsFullUri").config(config).get();
+    }
+/**
  * Set this to true to turn AWS credentials debug.
  * 
  */

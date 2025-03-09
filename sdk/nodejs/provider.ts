@@ -69,6 +69,14 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly saslAwsAccessKey!: pulumi.Output<string | undefined>;
     /**
+     * Path to a file containing the AWS pod identity authorization token
+     */
+    public readonly saslAwsContainerAuthorizationTokenFile!: pulumi.Output<string | undefined>;
+    /**
+     * URI to retrieve AWS credentials from
+     */
+    public readonly saslAwsContainerCredentialsFullUri!: pulumi.Output<string | undefined>;
+    /**
      * AWS profile name to use
      */
     public readonly saslAwsProfile!: pulumi.Output<string | undefined>;
@@ -129,6 +137,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
             resourceInputs["kafkaVersion"] = args ? args.kafkaVersion : undefined;
             resourceInputs["saslAwsAccessKey"] = args ? args.saslAwsAccessKey : undefined;
+            resourceInputs["saslAwsContainerAuthorizationTokenFile"] = args ? args.saslAwsContainerAuthorizationTokenFile : undefined;
+            resourceInputs["saslAwsContainerCredentialsFullUri"] = args ? args.saslAwsContainerCredentialsFullUri : undefined;
             resourceInputs["saslAwsCredsDebug"] = pulumi.output(args ? args.saslAwsCredsDebug : undefined).apply(JSON.stringify);
             resourceInputs["saslAwsProfile"] = args ? args.saslAwsProfile : undefined;
             resourceInputs["saslAwsRegion"] = args ? args.saslAwsRegion : undefined;
@@ -199,6 +209,14 @@ export interface ProviderArgs {
      * The AWS access key.
      */
     saslAwsAccessKey?: pulumi.Input<string>;
+    /**
+     * Path to a file containing the AWS pod identity authorization token
+     */
+    saslAwsContainerAuthorizationTokenFile?: pulumi.Input<string>;
+    /**
+     * URI to retrieve AWS credentials from
+     */
+    saslAwsContainerCredentialsFullUri?: pulumi.Input<string>;
     /**
      * Set this to true to turn AWS credentials debug.
      */
