@@ -1,0 +1,3 @@
+name: kafka-force-delete
+runtime: nodejs
+description: A Kafka example demonstrating force deletion of resources 

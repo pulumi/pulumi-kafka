@@ -30,6 +30,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 
 	"github.com/pulumi/pulumi-kafka/provider/v3/pkg/version"
+	customkafka "github.com/pulumi/pulumi-kafka/provider/v3/kafka"
 )
 
 // all of the token components used below.
@@ -48,7 +49,7 @@ var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(kafka.Provider())
+	p := shimv2.NewProvider(customkafka.ForceDeleteProviderFactoryWrapper())
 	prov := tfbridge.ProviderInfo{
 		P:                 p,
 		Name:              "kafka",
@@ -84,6 +85,14 @@ func Provider() tfbridge.ProviderInfo {
 						"KAFKA_ENABLE_TLS",
 					},
 					Value: true,
+				},
+			},
+			"force_delete_resources": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"KAFKA_FORCE_DELETE_RESOURCES",
+					},
+					Value: false,
 				},
 			},
 		},

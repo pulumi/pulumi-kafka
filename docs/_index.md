@@ -37,3 +37,4 @@ The Kafka provider is available as a package in all Pulumi languages:
 - `skipTlsVerify` (Boolean) Set this to true only if the target Kafka server is an insecure development instance.
 - `timeout` (Number) Timeout in seconds
 - `tlsEnabled` (Boolean) Enable communication with the Kafka Cluster over TLS.
+- `force_delete_resources` (Boolean) Force delete Kafka resources even if the Kafka cluster is not responsive. This is useful when you've deleted the Kafka cluster but resources still exist in the Pulumi/Terraform state. Default is false.
