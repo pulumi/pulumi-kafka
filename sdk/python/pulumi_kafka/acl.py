@@ -276,6 +276,9 @@ class _AclState:
 
 
 class Acl(pulumi.CustomResource):
+
+    pulumi_type = "kafka:index/acl:Acl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

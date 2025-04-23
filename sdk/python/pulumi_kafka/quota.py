@@ -128,6 +128,9 @@ class _QuotaState:
 
 
 class Quota(pulumi.CustomResource):
+
+    pulumi_type = "kafka:index/quota:Quota"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
