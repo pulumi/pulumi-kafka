@@ -159,6 +159,9 @@ class _UserScramCredentialState:
 
 
 class UserScramCredential(pulumi.CustomResource):
+
+    pulumi_type = "kafka:index/userScramCredential:UserScramCredential"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
