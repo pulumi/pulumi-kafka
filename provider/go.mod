@@ -6,7 +6,7 @@ toolchain go1.23.8
 
 require (
 	github.com/Mongey/terraform-provider-kafka v0.9.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.107.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.107.1-0.20250507172149-72d59646c734
 )
 
 require (
@@ -148,10 +148,10 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.13.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
-	github.com/pulumi/pulumi-java/pkg v1.8.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v1.10.1-0.20250501085720-de3b4406576e // indirect
 	github.com/pulumi/pulumi-yaml v1.15.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.163.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.163.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.166.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.166.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
