@@ -417,7 +417,10 @@
         },
         "requiredInputs": [
             "bootstrapServers"
-        ]
+        ],
+        "methods": {
+            "terraformConfig": "pulumi:providers:kafka/terraformConfig"
+        }
     },
     "resources": {
         "kafka:index/acl:Acl": {
@@ -821,6 +824,35 @@
                     "partitions",
                     "replicationFactor",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:kafka/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:kafka"
+                    }
+                },
+                "type": "pulumi:providers:kafka/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
