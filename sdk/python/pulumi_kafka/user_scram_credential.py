@@ -158,10 +158,8 @@ class _UserScramCredentialState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("kafka:index/userScramCredential:UserScramCredential")
 class UserScramCredential(pulumi.CustomResource):
-
-    pulumi_type = "kafka:index/userScramCredential:UserScramCredential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
