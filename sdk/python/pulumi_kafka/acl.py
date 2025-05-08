@@ -275,10 +275,8 @@ class _AclState:
         pulumi.set(self, "resource_pattern_type_filter", value)
 
 
+@pulumi.type_token("kafka:index/acl:Acl")
 class Acl(pulumi.CustomResource):
-
-    pulumi_type = "kafka:index/acl:Acl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

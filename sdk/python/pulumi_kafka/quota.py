@@ -127,10 +127,8 @@ class _QuotaState:
         pulumi.set(self, "entity_type", value)
 
 
+@pulumi.type_token("kafka:index/quota:Quota")
 class Quota(pulumi.CustomResource):
-
-    pulumi_type = "kafka:index/quota:Quota"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
