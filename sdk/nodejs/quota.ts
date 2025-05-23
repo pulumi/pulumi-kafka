@@ -58,7 +58,7 @@ export class Quota extends pulumi.CustomResource {
     /**
      * The name of the entity to target.
      */
-    public readonly entityName!: pulumi.Output<string>;
+    public readonly entityName!: pulumi.Output<string | undefined>;
     /**
      * The type of entity. Valid values are `client-id`, `user`, `ip`.
      */
@@ -82,9 +82,6 @@ export class Quota extends pulumi.CustomResource {
             resourceInputs["entityType"] = state ? state.entityType : undefined;
         } else {
             const args = argsOrState as QuotaArgs | undefined;
-            if ((!args || args.entityName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entityName'");
-            }
             if ((!args || args.entityType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entityType'");
             }
@@ -126,7 +123,7 @@ export interface QuotaArgs {
     /**
      * The name of the entity to target.
      */
-    entityName: pulumi.Input<string>;
+    entityName?: pulumi.Input<string>;
     /**
      * The type of entity. Valid values are `client-id`, `user`, `ip`.
      */

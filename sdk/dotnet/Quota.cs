@@ -49,7 +49,7 @@ namespace Pulumi.Kafka
         /// The name of the entity to target.
         /// </summary>
         [Output("entityName")]
-        public Output<string> EntityName { get; private set; } = null!;
+        public Output<string?> EntityName { get; private set; } = null!;
 
         /// <summary>
         /// The type of entity. Valid values are `client-id`, `user`, `ip`.
@@ -118,8 +118,8 @@ namespace Pulumi.Kafka
         /// <summary>
         /// The name of the entity to target.
         /// </summary>
-        [Input("entityName", required: true)]
-        public Input<string> EntityName { get; set; } = null!;
+        [Input("entityName")]
+        public Input<string>? EntityName { get; set; }
 
         /// <summary>
         /// The type of entity. Valid values are `client-id`, `user`, `ip`.

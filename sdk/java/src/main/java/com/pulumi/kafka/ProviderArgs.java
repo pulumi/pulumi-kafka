@@ -242,6 +242,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * External ID of the AWS IAM role to assume
+     * 
+     */
+    @Import(name="saslAwsExternalId")
+    private @Nullable Output<String> saslAwsExternalId;
+
+    /**
+     * @return External ID of the AWS IAM role to assume
+     * 
+     */
+    public Optional<Output<String>> saslAwsExternalId() {
+        return Optional.ofNullable(this.saslAwsExternalId);
+    }
+
+    /**
      * AWS profile name to use
      * 
      */
@@ -299,6 +314,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> saslAwsSecretKey() {
         return Optional.ofNullable(this.saslAwsSecretKey);
+    }
+
+    /**
+     * List of paths to AWS shared config files.
+     * 
+     */
+    @Import(name="saslAwsSharedConfigFiles", json=true)
+    private @Nullable Output<List<String>> saslAwsSharedConfigFiles;
+
+    /**
+     * @return List of paths to AWS shared config files.
+     * 
+     */
+    public Optional<Output<List<String>>> saslAwsSharedConfigFiles() {
+        return Optional.ofNullable(this.saslAwsSharedConfigFiles);
     }
 
     /**
@@ -437,10 +467,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.saslAwsContainerAuthorizationTokenFile = $.saslAwsContainerAuthorizationTokenFile;
         this.saslAwsContainerCredentialsFullUri = $.saslAwsContainerCredentialsFullUri;
         this.saslAwsCredsDebug = $.saslAwsCredsDebug;
+        this.saslAwsExternalId = $.saslAwsExternalId;
         this.saslAwsProfile = $.saslAwsProfile;
         this.saslAwsRegion = $.saslAwsRegion;
         this.saslAwsRoleArn = $.saslAwsRoleArn;
         this.saslAwsSecretKey = $.saslAwsSecretKey;
+        this.saslAwsSharedConfigFiles = $.saslAwsSharedConfigFiles;
         this.saslAwsToken = $.saslAwsToken;
         this.saslMechanism = $.saslMechanism;
         this.saslPassword = $.saslPassword;
@@ -779,6 +811,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param saslAwsExternalId External ID of the AWS IAM role to assume
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsExternalId(@Nullable Output<String> saslAwsExternalId) {
+            $.saslAwsExternalId = saslAwsExternalId;
+            return this;
+        }
+
+        /**
+         * @param saslAwsExternalId External ID of the AWS IAM role to assume
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsExternalId(String saslAwsExternalId) {
+            return saslAwsExternalId(Output.of(saslAwsExternalId));
+        }
+
+        /**
          * @param saslAwsProfile AWS profile name to use
          * 
          * @return builder
@@ -860,6 +913,37 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder saslAwsSecretKey(String saslAwsSecretKey) {
             return saslAwsSecretKey(Output.of(saslAwsSecretKey));
+        }
+
+        /**
+         * @param saslAwsSharedConfigFiles List of paths to AWS shared config files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsSharedConfigFiles(@Nullable Output<List<String>> saslAwsSharedConfigFiles) {
+            $.saslAwsSharedConfigFiles = saslAwsSharedConfigFiles;
+            return this;
+        }
+
+        /**
+         * @param saslAwsSharedConfigFiles List of paths to AWS shared config files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsSharedConfigFiles(List<String> saslAwsSharedConfigFiles) {
+            return saslAwsSharedConfigFiles(Output.of(saslAwsSharedConfigFiles));
+        }
+
+        /**
+         * @param saslAwsSharedConfigFiles List of paths to AWS shared config files.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslAwsSharedConfigFiles(String... saslAwsSharedConfigFiles) {
+            return saslAwsSharedConfigFiles(List.of(saslAwsSharedConfigFiles));
         }
 
         /**

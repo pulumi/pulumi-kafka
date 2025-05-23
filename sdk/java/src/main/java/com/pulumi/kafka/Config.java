@@ -107,6 +107,13 @@ public final class Config {
         return Codegen.booleanProp("saslAwsCredsDebug").config(config).get();
     }
 /**
+ * External ID of the AWS IAM role to assume
+ * 
+ */
+    public Optional<String> saslAwsExternalId() {
+        return Codegen.stringProp("saslAwsExternalId").config(config).get();
+    }
+/**
  * AWS profile name to use
  * 
  */
@@ -133,6 +140,13 @@ public final class Config {
  */
     public Optional<String> saslAwsSecretKey() {
         return Codegen.stringProp("saslAwsSecretKey").config(config).get();
+    }
+/**
+ * List of paths to AWS shared config files.
+ * 
+ */
+    public Optional<List<String>> saslAwsSharedConfigFiles() {
+        return Codegen.objectProp("saslAwsSharedConfigFiles", TypeShape.<List<String>>builder(List.class).addParameter(String.class).build()).config(config).get();
     }
 /**
  * The AWS session token. Only required if you are using temporary security credentials.

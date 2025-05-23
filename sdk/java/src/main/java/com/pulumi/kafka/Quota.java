@@ -80,14 +80,14 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="entityName", refs={String.class}, tree="[0]")
-    private Output<String> entityName;
+    private Output</* @Nullable */ String> entityName;
 
     /**
      * @return The name of the entity to target.
      * 
      */
-    public Output<String> entityName() {
-        return this.entityName;
+    public Output<Optional<String>> entityName() {
+        return Codegen.optional(this.entityName);
     }
     /**
      * The type of entity. Valid values are `client-id`, `user`, `ip`.

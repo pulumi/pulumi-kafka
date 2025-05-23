@@ -48,6 +48,8 @@ type Provider struct {
 	SaslAwsContainerAuthorizationTokenFile pulumi.StringPtrOutput `pulumi:"saslAwsContainerAuthorizationTokenFile"`
 	// URI to retrieve AWS credentials from
 	SaslAwsContainerCredentialsFullUri pulumi.StringPtrOutput `pulumi:"saslAwsContainerCredentialsFullUri"`
+	// External ID of the AWS IAM role to assume
+	SaslAwsExternalId pulumi.StringPtrOutput `pulumi:"saslAwsExternalId"`
 	// AWS profile name to use
 	SaslAwsProfile pulumi.StringPtrOutput `pulumi:"saslAwsProfile"`
 	// AWS region where MSK is deployed.
@@ -136,6 +138,8 @@ type providerArgs struct {
 	SaslAwsContainerCredentialsFullUri *string `pulumi:"saslAwsContainerCredentialsFullUri"`
 	// Set this to true to turn AWS credentials debug.
 	SaslAwsCredsDebug *bool `pulumi:"saslAwsCredsDebug"`
+	// External ID of the AWS IAM role to assume
+	SaslAwsExternalId *string `pulumi:"saslAwsExternalId"`
 	// AWS profile name to use
 	SaslAwsProfile *string `pulumi:"saslAwsProfile"`
 	// AWS region where MSK is deployed.
@@ -144,6 +148,8 @@ type providerArgs struct {
 	SaslAwsRoleArn *string `pulumi:"saslAwsRoleArn"`
 	// The AWS secret key.
 	SaslAwsSecretKey *string `pulumi:"saslAwsSecretKey"`
+	// List of paths to AWS shared config files.
+	SaslAwsSharedConfigFiles []string `pulumi:"saslAwsSharedConfigFiles"`
 	// The AWS session token. Only required if you are using temporary security credentials.
 	SaslAwsToken *string `pulumi:"saslAwsToken"`
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -197,6 +203,8 @@ type ProviderArgs struct {
 	SaslAwsContainerCredentialsFullUri pulumi.StringPtrInput
 	// Set this to true to turn AWS credentials debug.
 	SaslAwsCredsDebug pulumi.BoolPtrInput
+	// External ID of the AWS IAM role to assume
+	SaslAwsExternalId pulumi.StringPtrInput
 	// AWS profile name to use
 	SaslAwsProfile pulumi.StringPtrInput
 	// AWS region where MSK is deployed.
@@ -205,6 +213,8 @@ type ProviderArgs struct {
 	SaslAwsRoleArn pulumi.StringPtrInput
 	// The AWS secret key.
 	SaslAwsSecretKey pulumi.StringPtrInput
+	// List of paths to AWS shared config files.
+	SaslAwsSharedConfigFiles pulumi.StringArrayInput
 	// The AWS session token. Only required if you are using temporary security credentials.
 	SaslAwsToken pulumi.StringPtrInput
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -343,6 +353,11 @@ func (o ProviderOutput) SaslAwsContainerAuthorizationTokenFile() pulumi.StringPt
 // URI to retrieve AWS credentials from
 func (o ProviderOutput) SaslAwsContainerCredentialsFullUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsContainerCredentialsFullUri }).(pulumi.StringPtrOutput)
+}
+
+// External ID of the AWS IAM role to assume
+func (o ProviderOutput) SaslAwsExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SaslAwsExternalId }).(pulumi.StringPtrOutput)
 }
 
 // AWS profile name to use

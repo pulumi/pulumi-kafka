@@ -152,6 +152,17 @@ Object.defineProperty(exports, "saslAwsCredsDebug", {
 });
 
 /**
+ * External ID of the AWS IAM role to assume
+ */
+export declare const saslAwsExternalId: string | undefined;
+Object.defineProperty(exports, "saslAwsExternalId", {
+    get() {
+        return __config.get("saslAwsExternalId");
+    },
+    enumerable: true,
+});
+
+/**
  * AWS profile name to use
  */
 export declare const saslAwsProfile: string | undefined;
@@ -191,6 +202,17 @@ export declare const saslAwsSecretKey: string | undefined;
 Object.defineProperty(exports, "saslAwsSecretKey", {
     get() {
         return __config.get("saslAwsSecretKey");
+    },
+    enumerable: true,
+});
+
+/**
+ * List of paths to AWS shared config files.
+ */
+export declare const saslAwsSharedConfigFiles: string[] | undefined;
+Object.defineProperty(exports, "saslAwsSharedConfigFiles", {
+    get() {
+        return __config.getObject<string[]>("saslAwsSharedConfigFiles");
     },
     enumerable: true,
 });

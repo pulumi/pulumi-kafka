@@ -191,6 +191,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.saslAwsContainerCredentialsFullUri);
     }
     /**
+     * External ID of the AWS IAM role to assume
+     * 
+     */
+    @Export(name="saslAwsExternalId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> saslAwsExternalId;
+
+    /**
+     * @return External ID of the AWS IAM role to assume
+     * 
+     */
+    public Output<Optional<String>> saslAwsExternalId() {
+        return Codegen.optional(this.saslAwsExternalId);
+    }
+    /**
      * AWS profile name to use
      * 
      */

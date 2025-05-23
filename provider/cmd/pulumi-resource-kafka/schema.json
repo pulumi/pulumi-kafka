@@ -105,6 +105,10 @@
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
             },
+            "saslAwsExternalId": {
+                "type": "string",
+                "description": "External ID of the AWS IAM role to assume\n"
+            },
             "saslAwsProfile": {
                 "type": "string",
                 "description": "AWS profile name to use\n"
@@ -120,6 +124,13 @@
             "saslAwsSecretKey": {
                 "type": "string",
                 "description": "The AWS secret key.\n"
+            },
+            "saslAwsSharedConfigFiles": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "List of paths to AWS shared config files.\n"
             },
             "saslAwsToken": {
                 "type": "string",
@@ -237,6 +248,10 @@
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
             },
+            "saslAwsExternalId": {
+                "type": "string",
+                "description": "External ID of the AWS IAM role to assume\n"
+            },
             "saslAwsProfile": {
                 "type": "string",
                 "description": "AWS profile name to use\n"
@@ -252,6 +267,13 @@
             "saslAwsSecretKey": {
                 "type": "string",
                 "description": "The AWS secret key.\n"
+            },
+            "saslAwsSharedConfigFiles": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "List of paths to AWS shared config files.\n"
             },
             "saslAwsToken": {
                 "type": "string",
@@ -348,6 +370,10 @@
                 "type": "boolean",
                 "description": "Set this to true to turn AWS credentials debug.\n"
             },
+            "saslAwsExternalId": {
+                "type": "string",
+                "description": "External ID of the AWS IAM role to assume\n"
+            },
             "saslAwsProfile": {
                 "type": "string",
                 "description": "AWS profile name to use\n"
@@ -363,6 +389,13 @@
             "saslAwsSecretKey": {
                 "type": "string",
                 "description": "The AWS secret key.\n"
+            },
+            "saslAwsSharedConfigFiles": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "List of paths to AWS shared config files.\n"
             },
             "saslAwsToken": {
                 "type": "string",
@@ -570,7 +603,6 @@
                 }
             },
             "required": [
-                "entityName",
                 "entityType"
             ],
             "inputProperties": {
@@ -594,7 +626,6 @@
                 }
             },
             "requiredInputs": [
-                "entityName",
                 "entityType"
             ],
             "stateInputs": {

@@ -50,7 +50,7 @@ type Quota struct {
 	// A map of string k/v attributes.
 	Config pulumi.StringMapOutput `pulumi:"config"`
 	// The name of the entity to target.
-	EntityName pulumi.StringOutput `pulumi:"entityName"`
+	EntityName pulumi.StringPtrOutput `pulumi:"entityName"`
 	// The type of entity. Valid values are `client-id`, `user`, `ip`.
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
 }
@@ -62,9 +62,6 @@ func NewQuota(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EntityName == nil {
-		return nil, errors.New("invalid value for required argument 'EntityName'")
-	}
 	if args.EntityType == nil {
 		return nil, errors.New("invalid value for required argument 'EntityType'")
 	}
@@ -116,7 +113,7 @@ type quotaArgs struct {
 	// A map of string k/v attributes.
 	Config map[string]string `pulumi:"config"`
 	// The name of the entity to target.
-	EntityName string `pulumi:"entityName"`
+	EntityName *string `pulumi:"entityName"`
 	// The type of entity. Valid values are `client-id`, `user`, `ip`.
 	EntityType string `pulumi:"entityType"`
 }
@@ -126,7 +123,7 @@ type QuotaArgs struct {
 	// A map of string k/v attributes.
 	Config pulumi.StringMapInput
 	// The name of the entity to target.
-	EntityName pulumi.StringInput
+	EntityName pulumi.StringPtrInput
 	// The type of entity. Valid values are `client-id`, `user`, `ip`.
 	EntityType pulumi.StringInput
 }
@@ -224,8 +221,8 @@ func (o QuotaOutput) Config() pulumi.StringMapOutput {
 }
 
 // The name of the entity to target.
-func (o QuotaOutput) EntityName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Quota) pulumi.StringOutput { return v.EntityName }).(pulumi.StringOutput)
+func (o QuotaOutput) EntityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Quota) pulumi.StringPtrOutput { return v.EntityName }).(pulumi.StringPtrOutput)
 }
 
 // The type of entity. Valid values are `client-id`, `user`, `ip`.
