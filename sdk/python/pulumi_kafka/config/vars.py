@@ -114,6 +114,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('saslAwsCredsDebug')
 
     @property
+    def sasl_aws_external_id(self) -> Optional[str]:
+        """
+        External ID of the AWS IAM role to assume
+        """
+        return __config__.get('saslAwsExternalId')
+
+    @property
     def sasl_aws_profile(self) -> Optional[str]:
         """
         AWS profile name to use
@@ -140,6 +147,13 @@ class _ExportableConfig(types.ModuleType):
         The AWS secret key.
         """
         return __config__.get('saslAwsSecretKey')
+
+    @property
+    def sasl_aws_shared_config_files(self) -> Optional[str]:
+        """
+        List of paths to AWS shared config files.
+        """
+        return __config__.get('saslAwsSharedConfigFiles')
 
     @property
     def sasl_aws_token(self) -> Optional[str]:

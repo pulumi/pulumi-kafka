@@ -33,10 +33,12 @@ class ProviderArgs:
                  sasl_aws_container_authorization_token_file: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[builtins.bool]] = None,
+                 sasl_aws_external_id: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_role_arn: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_secret_key: Optional[pulumi.Input[builtins.str]] = None,
+                 sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_aws_token: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_password: Optional[pulumi.Input[builtins.str]] = None,
@@ -61,10 +63,12 @@ class ProviderArgs:
         :param pulumi.Input[builtins.str] sasl_aws_container_authorization_token_file: Path to a file containing the AWS pod identity authorization token
         :param pulumi.Input[builtins.str] sasl_aws_container_credentials_full_uri: URI to retrieve AWS credentials from
         :param pulumi.Input[builtins.bool] sasl_aws_creds_debug: Set this to true to turn AWS credentials debug.
+        :param pulumi.Input[builtins.str] sasl_aws_external_id: External ID of the AWS IAM role to assume
         :param pulumi.Input[builtins.str] sasl_aws_profile: AWS profile name to use
         :param pulumi.Input[builtins.str] sasl_aws_region: AWS region where MSK is deployed.
         :param pulumi.Input[builtins.str] sasl_aws_role_arn: Arn of an AWS IAM role to assume
         :param pulumi.Input[builtins.str] sasl_aws_secret_key: The AWS secret key.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sasl_aws_shared_config_files: List of paths to AWS shared config files.
         :param pulumi.Input[builtins.str] sasl_aws_token: The AWS session token. Only required if you are using temporary security credentials.
         :param pulumi.Input[builtins.str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         :param pulumi.Input[builtins.str] sasl_password: Password for SASL authentication.
@@ -108,6 +112,8 @@ class ProviderArgs:
             pulumi.set(__self__, "sasl_aws_container_credentials_full_uri", sasl_aws_container_credentials_full_uri)
         if sasl_aws_creds_debug is not None:
             pulumi.set(__self__, "sasl_aws_creds_debug", sasl_aws_creds_debug)
+        if sasl_aws_external_id is not None:
+            pulumi.set(__self__, "sasl_aws_external_id", sasl_aws_external_id)
         if sasl_aws_profile is not None:
             pulumi.set(__self__, "sasl_aws_profile", sasl_aws_profile)
         if sasl_aws_region is not None:
@@ -116,6 +122,8 @@ class ProviderArgs:
             pulumi.set(__self__, "sasl_aws_role_arn", sasl_aws_role_arn)
         if sasl_aws_secret_key is not None:
             pulumi.set(__self__, "sasl_aws_secret_key", sasl_aws_secret_key)
+        if sasl_aws_shared_config_files is not None:
+            pulumi.set(__self__, "sasl_aws_shared_config_files", sasl_aws_shared_config_files)
         if sasl_aws_token is not None:
             pulumi.set(__self__, "sasl_aws_token", sasl_aws_token)
         if sasl_mechanism is None:
@@ -300,6 +308,18 @@ class ProviderArgs:
         pulumi.set(self, "sasl_aws_creds_debug", value)
 
     @property
+    @pulumi.getter(name="saslAwsExternalId")
+    def sasl_aws_external_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        External ID of the AWS IAM role to assume
+        """
+        return pulumi.get(self, "sasl_aws_external_id")
+
+    @sasl_aws_external_id.setter
+    def sasl_aws_external_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "sasl_aws_external_id", value)
+
+    @property
     @pulumi.getter(name="saslAwsProfile")
     def sasl_aws_profile(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -346,6 +366,18 @@ class ProviderArgs:
     @sasl_aws_secret_key.setter
     def sasl_aws_secret_key(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "sasl_aws_secret_key", value)
+
+    @property
+    @pulumi.getter(name="saslAwsSharedConfigFiles")
+    def sasl_aws_shared_config_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        List of paths to AWS shared config files.
+        """
+        return pulumi.get(self, "sasl_aws_shared_config_files")
+
+    @sasl_aws_shared_config_files.setter
+    def sasl_aws_shared_config_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "sasl_aws_shared_config_files", value)
 
     @property
     @pulumi.getter(name="saslAwsToken")
@@ -463,10 +495,12 @@ class Provider(pulumi.ProviderResource):
                  sasl_aws_container_authorization_token_file: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[builtins.bool]] = None,
+                 sasl_aws_external_id: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_role_arn: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_secret_key: Optional[pulumi.Input[builtins.str]] = None,
+                 sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_aws_token: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_password: Optional[pulumi.Input[builtins.str]] = None,
@@ -498,10 +532,12 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[builtins.str] sasl_aws_container_authorization_token_file: Path to a file containing the AWS pod identity authorization token
         :param pulumi.Input[builtins.str] sasl_aws_container_credentials_full_uri: URI to retrieve AWS credentials from
         :param pulumi.Input[builtins.bool] sasl_aws_creds_debug: Set this to true to turn AWS credentials debug.
+        :param pulumi.Input[builtins.str] sasl_aws_external_id: External ID of the AWS IAM role to assume
         :param pulumi.Input[builtins.str] sasl_aws_profile: AWS profile name to use
         :param pulumi.Input[builtins.str] sasl_aws_region: AWS region where MSK is deployed.
         :param pulumi.Input[builtins.str] sasl_aws_role_arn: Arn of an AWS IAM role to assume
         :param pulumi.Input[builtins.str] sasl_aws_secret_key: The AWS secret key.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sasl_aws_shared_config_files: List of paths to AWS shared config files.
         :param pulumi.Input[builtins.str] sasl_aws_token: The AWS session token. Only required if you are using temporary security credentials.
         :param pulumi.Input[builtins.str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         :param pulumi.Input[builtins.str] sasl_password: Password for SASL authentication.
@@ -551,10 +587,12 @@ class Provider(pulumi.ProviderResource):
                  sasl_aws_container_authorization_token_file: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_creds_debug: Optional[pulumi.Input[builtins.bool]] = None,
+                 sasl_aws_external_id: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_profile: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_region: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_role_arn: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_aws_secret_key: Optional[pulumi.Input[builtins.str]] = None,
+                 sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_aws_token: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_password: Optional[pulumi.Input[builtins.str]] = None,
@@ -587,10 +625,12 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["sasl_aws_container_authorization_token_file"] = sasl_aws_container_authorization_token_file
             __props__.__dict__["sasl_aws_container_credentials_full_uri"] = sasl_aws_container_credentials_full_uri
             __props__.__dict__["sasl_aws_creds_debug"] = pulumi.Output.from_input(sasl_aws_creds_debug).apply(pulumi.runtime.to_json) if sasl_aws_creds_debug is not None else None
+            __props__.__dict__["sasl_aws_external_id"] = sasl_aws_external_id
             __props__.__dict__["sasl_aws_profile"] = sasl_aws_profile
             __props__.__dict__["sasl_aws_region"] = sasl_aws_region
             __props__.__dict__["sasl_aws_role_arn"] = sasl_aws_role_arn
             __props__.__dict__["sasl_aws_secret_key"] = sasl_aws_secret_key
+            __props__.__dict__["sasl_aws_shared_config_files"] = pulumi.Output.from_input(sasl_aws_shared_config_files).apply(pulumi.runtime.to_json) if sasl_aws_shared_config_files is not None else None
             __props__.__dict__["sasl_aws_token"] = sasl_aws_token
             if sasl_mechanism is None:
                 sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
@@ -702,6 +742,14 @@ class Provider(pulumi.ProviderResource):
         URI to retrieve AWS credentials from
         """
         return pulumi.get(self, "sasl_aws_container_credentials_full_uri")
+
+    @property
+    @pulumi.getter(name="saslAwsExternalId")
+    def sasl_aws_external_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        External ID of the AWS IAM role to assume
+        """
+        return pulumi.get(self, "sasl_aws_external_id")
 
     @property
     @pulumi.getter(name="saslAwsProfile")

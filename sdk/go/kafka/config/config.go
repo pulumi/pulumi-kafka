@@ -83,6 +83,11 @@ func GetSaslAwsCredsDebug(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "kafka:saslAwsCredsDebug")
 }
 
+// External ID of the AWS IAM role to assume
+func GetSaslAwsExternalId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsExternalId")
+}
+
 // AWS profile name to use
 func GetSaslAwsProfile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:saslAwsProfile")
@@ -101,6 +106,11 @@ func GetSaslAwsRoleArn(ctx *pulumi.Context) string {
 // The AWS secret key.
 func GetSaslAwsSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:saslAwsSecretKey")
+}
+
+// List of paths to AWS shared config files.
+func GetSaslAwsSharedConfigFiles(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslAwsSharedConfigFiles")
 }
 
 // The AWS session token. Only required if you are using temporary security credentials.

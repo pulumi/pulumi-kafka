@@ -36,15 +36,15 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the entity to target.
      * 
      */
-    @Import(name="entityName", required=true)
-    private Output<String> entityName;
+    @Import(name="entityName")
+    private @Nullable Output<String> entityName;
 
     /**
      * @return The name of the entity to target.
      * 
      */
-    public Output<String> entityName() {
-        return this.entityName;
+    public Optional<Output<String>> entityName() {
+        return Optional.ofNullable(this.entityName);
     }
 
     /**
@@ -115,7 +115,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder entityName(Output<String> entityName) {
+        public Builder entityName(@Nullable Output<String> entityName) {
             $.entityName = entityName;
             return this;
         }
@@ -152,9 +152,6 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public QuotaArgs build() {
-            if ($.entityName == null) {
-                throw new MissingRequiredPropertyException("QuotaArgs", "entityName");
-            }
             if ($.entityType == null) {
                 throw new MissingRequiredPropertyException("QuotaArgs", "entityType");
             }

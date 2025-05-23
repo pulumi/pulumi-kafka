@@ -77,6 +77,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly saslAwsContainerCredentialsFullUri!: pulumi.Output<string | undefined>;
     /**
+     * External ID of the AWS IAM role to assume
+     */
+    public readonly saslAwsExternalId!: pulumi.Output<string | undefined>;
+    /**
      * AWS profile name to use
      */
     public readonly saslAwsProfile!: pulumi.Output<string | undefined>;
@@ -140,10 +144,12 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["saslAwsContainerAuthorizationTokenFile"] = args ? args.saslAwsContainerAuthorizationTokenFile : undefined;
             resourceInputs["saslAwsContainerCredentialsFullUri"] = args ? args.saslAwsContainerCredentialsFullUri : undefined;
             resourceInputs["saslAwsCredsDebug"] = pulumi.output(args ? args.saslAwsCredsDebug : undefined).apply(JSON.stringify);
+            resourceInputs["saslAwsExternalId"] = args ? args.saslAwsExternalId : undefined;
             resourceInputs["saslAwsProfile"] = args ? args.saslAwsProfile : undefined;
             resourceInputs["saslAwsRegion"] = args ? args.saslAwsRegion : undefined;
             resourceInputs["saslAwsRoleArn"] = args ? args.saslAwsRoleArn : undefined;
             resourceInputs["saslAwsSecretKey"] = args ? args.saslAwsSecretKey : undefined;
+            resourceInputs["saslAwsSharedConfigFiles"] = pulumi.output(args ? args.saslAwsSharedConfigFiles : undefined).apply(JSON.stringify);
             resourceInputs["saslAwsToken"] = args ? args.saslAwsToken : undefined;
             resourceInputs["saslMechanism"] = (args ? args.saslMechanism : undefined) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
             resourceInputs["saslPassword"] = args ? args.saslPassword : undefined;
@@ -231,6 +237,10 @@ export interface ProviderArgs {
      */
     saslAwsCredsDebug?: pulumi.Input<boolean>;
     /**
+     * External ID of the AWS IAM role to assume
+     */
+    saslAwsExternalId?: pulumi.Input<string>;
+    /**
      * AWS profile name to use
      */
     saslAwsProfile?: pulumi.Input<string>;
@@ -246,6 +256,10 @@ export interface ProviderArgs {
      * The AWS secret key.
      */
     saslAwsSecretKey?: pulumi.Input<string>;
+    /**
+     * List of paths to AWS shared config files.
+     */
+    saslAwsSharedConfigFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The AWS session token. Only required if you are using temporary security credentials.
      */

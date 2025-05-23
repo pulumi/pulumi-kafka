@@ -86,6 +86,12 @@ namespace Pulumi.Kafka
         public Output<string?> SaslAwsContainerCredentialsFullUri { get; private set; } = null!;
 
         /// <summary>
+        /// External ID of the AWS IAM role to assume
+        /// </summary>
+        [Output("saslAwsExternalId")]
+        public Output<string?> SaslAwsExternalId { get; private set; } = null!;
+
+        /// <summary>
         /// AWS profile name to use
         /// </summary>
         [Output("saslAwsProfile")]
@@ -259,6 +265,12 @@ namespace Pulumi.Kafka
         public Input<bool>? SaslAwsCredsDebug { get; set; }
 
         /// <summary>
+        /// External ID of the AWS IAM role to assume
+        /// </summary>
+        [Input("saslAwsExternalId")]
+        public Input<string>? SaslAwsExternalId { get; set; }
+
+        /// <summary>
         /// AWS profile name to use
         /// </summary>
         [Input("saslAwsProfile")]
@@ -281,6 +293,18 @@ namespace Pulumi.Kafka
         /// </summary>
         [Input("saslAwsSecretKey")]
         public Input<string>? SaslAwsSecretKey { get; set; }
+
+        [Input("saslAwsSharedConfigFiles", json: true)]
+        private InputList<string>? _saslAwsSharedConfigFiles;
+
+        /// <summary>
+        /// List of paths to AWS shared config files.
+        /// </summary>
+        public InputList<string> SaslAwsSharedConfigFiles
+        {
+            get => _saslAwsSharedConfigFiles ?? (_saslAwsSharedConfigFiles = new InputList<string>());
+            set => _saslAwsSharedConfigFiles = value;
+        }
 
         /// <summary>
         /// The AWS session token. Only required if you are using temporary security credentials.

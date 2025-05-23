@@ -20,31 +20,20 @@ __all__ = ['QuotaArgs', 'Quota']
 @pulumi.input_type
 class QuotaArgs:
     def __init__(__self__, *,
-                 entity_name: pulumi.Input[builtins.str],
                  entity_type: pulumi.Input[builtins.str],
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
+                 entity_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Quota resource.
-        :param pulumi.Input[builtins.str] entity_name: The name of the entity to target.
         :param pulumi.Input[builtins.str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
+        :param pulumi.Input[builtins.str] entity_name: The name of the entity to target.
         """
-        pulumi.set(__self__, "entity_name", entity_name)
         pulumi.set(__self__, "entity_type", entity_type)
         if config is not None:
             pulumi.set(__self__, "config", config)
-
-    @property
-    @pulumi.getter(name="entityName")
-    def entity_name(self) -> pulumi.Input[builtins.str]:
-        """
-        The name of the entity to target.
-        """
-        return pulumi.get(self, "entity_name")
-
-    @entity_name.setter
-    def entity_name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "entity_name", value)
+        if entity_name is not None:
+            pulumi.set(__self__, "entity_name", entity_name)
 
     @property
     @pulumi.getter(name="entityType")
@@ -69,6 +58,18 @@ class QuotaArgs:
     @config.setter
     def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="entityName")
+    def entity_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the entity to target.
+        """
+        return pulumi.get(self, "entity_name")
+
+    @entity_name.setter
+    def entity_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "entity_name", value)
 
 
 @pulumi.input_type
@@ -213,8 +214,6 @@ class Quota(pulumi.CustomResource):
             __props__ = QuotaArgs.__new__(QuotaArgs)
 
             __props__.__dict__["config"] = config
-            if entity_name is None and not opts.urn:
-                raise TypeError("Missing required property 'entity_name'")
             __props__.__dict__["entity_name"] = entity_name
             if entity_type is None and not opts.urn:
                 raise TypeError("Missing required property 'entity_type'")
@@ -262,7 +261,7 @@ class Quota(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="entityName")
-    def entity_name(self) -> pulumi.Output[builtins.str]:
+    def entity_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The name of the entity to target.
         """

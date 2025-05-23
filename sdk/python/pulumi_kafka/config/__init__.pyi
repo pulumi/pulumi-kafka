@@ -81,6 +81,11 @@ saslAwsCredsDebug: Optional[bool]
 Set this to true to turn AWS credentials debug.
 """
 
+saslAwsExternalId: Optional[str]
+"""
+External ID of the AWS IAM role to assume
+"""
+
 saslAwsProfile: Optional[str]
 """
 AWS profile name to use
@@ -99,6 +104,11 @@ Arn of an AWS IAM role to assume
 saslAwsSecretKey: Optional[str]
 """
 The AWS secret key.
+"""
+
+saslAwsSharedConfigFiles: Optional[str]
+"""
+List of paths to AWS shared config files.
 """
 
 saslAwsToken: Optional[str]

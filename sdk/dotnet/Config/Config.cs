@@ -163,6 +163,16 @@ namespace Pulumi.Kafka
             set => _saslAwsCredsDebug.Set(value);
         }
 
+        private static readonly __Value<string?> _saslAwsExternalId = new __Value<string?>(() => __config.Get("saslAwsExternalId"));
+        /// <summary>
+        /// External ID of the AWS IAM role to assume
+        /// </summary>
+        public static string? SaslAwsExternalId
+        {
+            get => _saslAwsExternalId.Get();
+            set => _saslAwsExternalId.Set(value);
+        }
+
         private static readonly __Value<string?> _saslAwsProfile = new __Value<string?>(() => __config.Get("saslAwsProfile"));
         /// <summary>
         /// AWS profile name to use
@@ -201,6 +211,16 @@ namespace Pulumi.Kafka
         {
             get => _saslAwsSecretKey.Get();
             set => _saslAwsSecretKey.Set(value);
+        }
+
+        private static readonly __Value<ImmutableArray<string>> _saslAwsSharedConfigFiles = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("saslAwsSharedConfigFiles"));
+        /// <summary>
+        /// List of paths to AWS shared config files.
+        /// </summary>
+        public static ImmutableArray<string> SaslAwsSharedConfigFiles
+        {
+            get => _saslAwsSharedConfigFiles.Get();
+            set => _saslAwsSharedConfigFiles.Set(value);
         }
 
         private static readonly __Value<string?> _saslAwsToken = new __Value<string?>(() => __config.Get("saslAwsToken"));
