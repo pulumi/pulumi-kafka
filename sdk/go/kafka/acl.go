@@ -12,73 +12,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A resource for managing Kafka ACLs.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kafka.NewAcl(ctx, "test", &kafka.AclArgs{
-//				AclResourceName:   pulumi.String("syslog"),
-//				AclResourceType:   pulumi.String("Topic"),
-//				AclPrincipal:      pulumi.String("User:Alice"),
-//				AclHost:           pulumi.String("*"),
-//				AclOperation:      pulumi.String("Write"),
-//				AclPermissionType: pulumi.String("Deny"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// # ACLs can be imported using the following pattern
-//
-// ```sh
-// $ pulumi import kafka:index/acl:Acl test "acl_principal|acl_host|acl_operation|acl_permission_type|resource_type|resource_name|resource_pattern_type_filter"
-// ```
-// e.g.
-//
-// ```sh
-// $ pulumi import kafka:index/acl:Acl test "User:Alice|*|Write|Deny|Topic|syslog|Prefixed"
-// ```
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
-	AclHost pulumi.StringOutput `pulumi:"aclHost"`
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-	AclOperation pulumi.StringOutput `pulumi:"aclOperation"`
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
+	AclHost           pulumi.StringOutput `pulumi:"aclHost"`
+	AclOperation      pulumi.StringOutput `pulumi:"aclOperation"`
 	AclPermissionType pulumi.StringOutput `pulumi:"aclPermissionType"`
-	// Principal that is being allowed or denied.
-	AclPrincipal pulumi.StringOutput `pulumi:"aclPrincipal"`
-	// The name of the resource.
-	AclResourceName pulumi.StringOutput `pulumi:"aclResourceName"`
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-	AclResourceType pulumi.StringOutput `pulumi:"aclResourceType"`
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
+	AclPrincipal      pulumi.StringOutput `pulumi:"aclPrincipal"`
+	// The name of the resource
+	AclResourceName           pulumi.StringOutput    `pulumi:"aclResourceName"`
+	AclResourceType           pulumi.StringOutput    `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter pulumi.StringPtrOutput `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -130,48 +73,24 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
-	AclHost *string `pulumi:"aclHost"`
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-	AclOperation *string `pulumi:"aclOperation"`
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
+	AclHost           *string `pulumi:"aclHost"`
+	AclOperation      *string `pulumi:"aclOperation"`
 	AclPermissionType *string `pulumi:"aclPermissionType"`
-	// Principal that is being allowed or denied.
-	AclPrincipal *string `pulumi:"aclPrincipal"`
-	// The name of the resource.
-	AclResourceName *string `pulumi:"aclResourceName"`
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-	AclResourceType *string `pulumi:"aclResourceType"`
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
+	AclPrincipal      *string `pulumi:"aclPrincipal"`
+	// The name of the resource
+	AclResourceName           *string `pulumi:"aclResourceName"`
+	AclResourceType           *string `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
 type AclState struct {
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
-	AclHost pulumi.StringPtrInput
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-	AclOperation pulumi.StringPtrInput
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
+	AclHost           pulumi.StringPtrInput
+	AclOperation      pulumi.StringPtrInput
 	AclPermissionType pulumi.StringPtrInput
-	// Principal that is being allowed or denied.
-	AclPrincipal pulumi.StringPtrInput
-	// The name of the resource.
-	AclResourceName pulumi.StringPtrInput
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-	AclResourceType pulumi.StringPtrInput
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
+	AclPrincipal      pulumi.StringPtrInput
+	// The name of the resource
+	AclResourceName           pulumi.StringPtrInput
+	AclResourceType           pulumi.StringPtrInput
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
@@ -180,49 +99,25 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
-	AclHost string `pulumi:"aclHost"`
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-	AclOperation string `pulumi:"aclOperation"`
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
+	AclHost           string `pulumi:"aclHost"`
+	AclOperation      string `pulumi:"aclOperation"`
 	AclPermissionType string `pulumi:"aclPermissionType"`
-	// Principal that is being allowed or denied.
-	AclPrincipal string `pulumi:"aclPrincipal"`
-	// The name of the resource.
-	AclResourceName string `pulumi:"aclResourceName"`
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-	AclResourceType string `pulumi:"aclResourceType"`
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
+	AclPrincipal      string `pulumi:"aclPrincipal"`
+	// The name of the resource
+	AclResourceName           string  `pulumi:"aclResourceName"`
+	AclResourceType           string  `pulumi:"aclResourceType"`
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// Host from which principal listed in `aclPrincipal`
-	// will have access.
-	AclHost pulumi.StringInput
-	// Operation that is being allowed or denied. Valid
-	// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-	// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-	AclOperation pulumi.StringInput
-	// Type of permission. Valid values are `Unknown`,
-	// `Any`, `Allow`, `Deny`.
+	AclHost           pulumi.StringInput
+	AclOperation      pulumi.StringInput
 	AclPermissionType pulumi.StringInput
-	// Principal that is being allowed or denied.
-	AclPrincipal pulumi.StringInput
-	// The name of the resource.
-	AclResourceName pulumi.StringInput
-	// The type of resource. Valid values are `Unknown`,
-	// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-	AclResourceType pulumi.StringInput
-	// The pattern filter. Valid values
-	// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
+	AclPrincipal      pulumi.StringInput
+	// The name of the resource
+	AclResourceName           pulumi.StringInput
+	AclResourceType           pulumi.StringInput
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
@@ -313,43 +208,31 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
-// Host from which principal listed in `aclPrincipal`
-// will have access.
 func (o AclOutput) AclHost() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclHost }).(pulumi.StringOutput)
 }
 
-// Operation that is being allowed or denied. Valid
-// values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-// `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
 func (o AclOutput) AclOperation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclOperation }).(pulumi.StringOutput)
 }
 
-// Type of permission. Valid values are `Unknown`,
-// `Any`, `Allow`, `Deny`.
 func (o AclOutput) AclPermissionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclPermissionType }).(pulumi.StringOutput)
 }
 
-// Principal that is being allowed or denied.
 func (o AclOutput) AclPrincipal() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclPrincipal }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o AclOutput) AclResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclResourceName }).(pulumi.StringOutput)
 }
 
-// The type of resource. Valid values are `Unknown`,
-// `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
 func (o AclOutput) AclResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclResourceType }).(pulumi.StringOutput)
 }
 
-// The pattern filter. Valid values
-// are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
 func (o AclOutput) ResourcePatternTypeFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringPtrOutput { return v.ResourcePatternTypeFilter }).(pulumi.StringPtrOutput)
 }

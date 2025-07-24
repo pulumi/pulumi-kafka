@@ -25,9 +25,9 @@ class QuotaArgs:
                  entity_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Quota resource.
-        :param pulumi.Input[builtins.str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
-        :param pulumi.Input[builtins.str] entity_name: The name of the entity to target.
+        :param pulumi.Input[builtins.str] entity_type: The type of the entity (client-id, user, ip)
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v properties.
+        :param pulumi.Input[builtins.str] entity_name: The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
         """
         pulumi.set(__self__, "entity_type", entity_type)
         if config is not None:
@@ -39,7 +39,7 @@ class QuotaArgs:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[builtins.str]:
         """
-        The type of entity. Valid values are `client-id`, `user`, `ip`.
+        The type of the entity (client-id, user, ip)
         """
         return pulumi.get(self, "entity_type")
 
@@ -51,7 +51,7 @@ class QuotaArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        A map of string k/v attributes.
+        A map of string k/v properties.
         """
         return pulumi.get(self, "config")
 
@@ -63,7 +63,7 @@ class QuotaArgs:
     @pulumi.getter(name="entityName")
     def entity_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the entity to target.
+        The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
         """
         return pulumi.get(self, "entity_name")
 
@@ -80,9 +80,9 @@ class _QuotaState:
                  entity_type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Quota resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
-        :param pulumi.Input[builtins.str] entity_name: The name of the entity to target.
-        :param pulumi.Input[builtins.str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v properties.
+        :param pulumi.Input[builtins.str] entity_name: The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+        :param pulumi.Input[builtins.str] entity_type: The type of the entity (client-id, user, ip)
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -95,7 +95,7 @@ class _QuotaState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        A map of string k/v attributes.
+        A map of string k/v properties.
         """
         return pulumi.get(self, "config")
 
@@ -107,7 +107,7 @@ class _QuotaState:
     @pulumi.getter(name="entityName")
     def entity_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the entity to target.
+        The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
         """
         return pulumi.get(self, "entity_name")
 
@@ -119,7 +119,7 @@ class _QuotaState:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The type of entity. Valid values are `client-id`, `user`, `ip`.
+        The type of the entity (client-id, user, ip)
         """
         return pulumi.get(self, "entity_type")
 
@@ -139,28 +139,12 @@ class Quota(pulumi.CustomResource):
                  entity_type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        A resource for managing Kafka quotas.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_kafka as kafka
-
-        quota = kafka.Quota("quota",
-            entity_name="app_consumer",
-            entity_type="client-id",
-            config={
-                "consumer_byte_rate": "5000000",
-                "producer_byte_rate": "2500000",
-            })
-        ```
-
+        Create a Quota resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
-        :param pulumi.Input[builtins.str] entity_name: The name of the entity to target.
-        :param pulumi.Input[builtins.str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v properties.
+        :param pulumi.Input[builtins.str] entity_name: The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+        :param pulumi.Input[builtins.str] entity_type: The type of the entity (client-id, user, ip)
         """
         ...
     @overload
@@ -169,23 +153,7 @@ class Quota(pulumi.CustomResource):
                  args: QuotaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A resource for managing Kafka quotas.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_kafka as kafka
-
-        quota = kafka.Quota("quota",
-            entity_name="app_consumer",
-            entity_type="client-id",
-            config={
-                "consumer_byte_rate": "5000000",
-                "producer_byte_rate": "2500000",
-            })
-        ```
-
+        Create a Quota resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param QuotaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -238,9 +206,9 @@ class Quota(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
-        :param pulumi.Input[builtins.str] entity_name: The name of the entity to target.
-        :param pulumi.Input[builtins.str] entity_type: The type of entity. Valid values are `client-id`, `user`, `ip`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v properties.
+        :param pulumi.Input[builtins.str] entity_name: The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+        :param pulumi.Input[builtins.str] entity_type: The type of the entity (client-id, user, ip)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -255,7 +223,7 @@ class Quota(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional[Mapping[str, builtins.str]]]:
         """
-        A map of string k/v attributes.
+        A map of string k/v properties.
         """
         return pulumi.get(self, "config")
 
@@ -263,7 +231,7 @@ class Quota(pulumi.CustomResource):
     @pulumi.getter(name="entityName")
     def entity_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The name of the entity to target.
+        The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
         """
         return pulumi.get(self, "entity_name")
 
@@ -271,7 +239,7 @@ class Quota(pulumi.CustomResource):
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Output[builtins.str]:
         """
-        The type of entity. Valid values are `client-id`, `user`, `ip`.
+        The type of the entity (client-id, user, ip)
         """
         return pulumi.get(self, "entity_type")
 

@@ -41,6 +41,7 @@ class ProviderArgs:
                  sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_aws_token: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[builtins.str]] = None,
+                 sasl_oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_password: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_token_url: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_username: Optional[pulumi.Input[builtins.str]] = None,
@@ -71,6 +72,7 @@ class ProviderArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sasl_aws_shared_config_files: List of paths to AWS shared config files.
         :param pulumi.Input[builtins.str] sasl_aws_token: The AWS session token. Only required if you are using temporary security credentials.
         :param pulumi.Input[builtins.str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sasl_oauth_scopes: OAuth scopes to request when using the oauthbearer mechanism
         :param pulumi.Input[builtins.str] sasl_password: Password for SASL authentication.
         :param pulumi.Input[builtins.str] sasl_token_url: The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
         :param pulumi.Input[builtins.str] sasl_username: Username for SASL authentication.
@@ -130,6 +132,8 @@ class ProviderArgs:
             sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
         if sasl_mechanism is not None:
             pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
+        if sasl_oauth_scopes is not None:
+            pulumi.set(__self__, "sasl_oauth_scopes", sasl_oauth_scopes)
         if sasl_password is not None:
             pulumi.set(__self__, "sasl_password", sasl_password)
         if sasl_token_url is not None:
@@ -404,6 +408,18 @@ class ProviderArgs:
         pulumi.set(self, "sasl_mechanism", value)
 
     @property
+    @pulumi.getter(name="saslOauthScopes")
+    def sasl_oauth_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        OAuth scopes to request when using the oauthbearer mechanism
+        """
+        return pulumi.get(self, "sasl_oauth_scopes")
+
+    @sasl_oauth_scopes.setter
+    def sasl_oauth_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "sasl_oauth_scopes", value)
+
+    @property
     @pulumi.getter(name="saslPassword")
     def sasl_password(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -503,6 +519,7 @@ class Provider(pulumi.ProviderResource):
                  sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_aws_token: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[builtins.str]] = None,
+                 sasl_oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_password: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_token_url: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_username: Optional[pulumi.Input[builtins.str]] = None,
@@ -540,6 +557,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sasl_aws_shared_config_files: List of paths to AWS shared config files.
         :param pulumi.Input[builtins.str] sasl_aws_token: The AWS session token. Only required if you are using temporary security credentials.
         :param pulumi.Input[builtins.str] sasl_mechanism: SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] sasl_oauth_scopes: OAuth scopes to request when using the oauthbearer mechanism
         :param pulumi.Input[builtins.str] sasl_password: Password for SASL authentication.
         :param pulumi.Input[builtins.str] sasl_token_url: The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
         :param pulumi.Input[builtins.str] sasl_username: Username for SASL authentication.
@@ -595,6 +613,7 @@ class Provider(pulumi.ProviderResource):
                  sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_aws_token: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_mechanism: Optional[pulumi.Input[builtins.str]] = None,
+                 sasl_oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  sasl_password: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_token_url: Optional[pulumi.Input[builtins.str]] = None,
                  sasl_username: Optional[pulumi.Input[builtins.str]] = None,
@@ -635,6 +654,7 @@ class Provider(pulumi.ProviderResource):
             if sasl_mechanism is None:
                 sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
             __props__.__dict__["sasl_mechanism"] = sasl_mechanism
+            __props__.__dict__["sasl_oauth_scopes"] = pulumi.Output.from_input(sasl_oauth_scopes).apply(pulumi.runtime.to_json) if sasl_oauth_scopes is not None else None
             __props__.__dict__["sasl_password"] = sasl_password
             __props__.__dict__["sasl_token_url"] = sasl_token_url
             __props__.__dict__["sasl_username"] = sasl_username

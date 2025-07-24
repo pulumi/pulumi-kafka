@@ -243,6 +243,16 @@ namespace Pulumi.Kafka
             set => _saslMechanism.Set(value);
         }
 
+        private static readonly __Value<ImmutableArray<string>> _saslOauthScopes = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("saslOauthScopes"));
+        /// <summary>
+        /// OAuth scopes to request when using the oauthbearer mechanism
+        /// </summary>
+        public static ImmutableArray<string> SaslOauthScopes
+        {
+            get => _saslOauthScopes.Get();
+            set => _saslOauthScopes.Set(value);
+        }
+
         private static readonly __Value<string?> _saslPassword = new __Value<string?>(() => __config.Get("saslPassword"));
         /// <summary>
         /// Password for SASL authentication.

@@ -240,6 +240,17 @@ Object.defineProperty(exports, "saslMechanism", {
 });
 
 /**
+ * OAuth scopes to request when using the oauthbearer mechanism
+ */
+export declare const saslOauthScopes: string[] | undefined;
+Object.defineProperty(exports, "saslOauthScopes", {
+    get() {
+        return __config.getObject<string[]>("saslOauthScopes");
+    },
+    enumerable: true,
+});
+
+/**
  * Password for SASL authentication.
  */
 export declare const saslPassword: string | undefined;

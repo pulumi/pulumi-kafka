@@ -163,6 +163,13 @@ public final class Config {
         return Codegen.stringProp("saslMechanism").config(config).env("KAFKA_SASL_MECHANISM").def("plain").get();
     }
 /**
+ * OAuth scopes to request when using the oauthbearer mechanism
+ * 
+ */
+    public Optional<List<String>> saslOauthScopes() {
+        return Codegen.objectProp("saslOauthScopes", TypeShape.<List<String>>builder(List.class).addParameter(String.class).build()).config(config).get();
+    }
+/**
  * Password for SASL authentication.
  * 
  */

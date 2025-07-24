@@ -318,6 +318,18 @@ namespace Pulumi.Kafka
         [Input("saslMechanism")]
         public Input<string>? SaslMechanism { get; set; }
 
+        [Input("saslOauthScopes", json: true)]
+        private InputList<string>? _saslOauthScopes;
+
+        /// <summary>
+        /// OAuth scopes to request when using the oauthbearer mechanism
+        /// </summary>
+        public InputList<string> SaslOauthScopes
+        {
+            get => _saslOauthScopes ?? (_saslOauthScopes = new InputList<string>());
+            set => _saslOauthScopes = value;
+        }
+
         /// <summary>
         /// Password for SASL authentication.
         /// </summary>

@@ -154,6 +154,8 @@ type providerArgs struct {
 	SaslAwsToken *string `pulumi:"saslAwsToken"`
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism *string `pulumi:"saslMechanism"`
+	// OAuth scopes to request when using the oauthbearer mechanism
+	SaslOauthScopes []string `pulumi:"saslOauthScopes"`
 	// Password for SASL authentication.
 	SaslPassword *string `pulumi:"saslPassword"`
 	// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
@@ -219,6 +221,8 @@ type ProviderArgs struct {
 	SaslAwsToken pulumi.StringPtrInput
 	// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 	SaslMechanism pulumi.StringPtrInput
+	// OAuth scopes to request when using the oauthbearer mechanism
+	SaslOauthScopes pulumi.StringArrayInput
 	// Password for SASL authentication.
 	SaslPassword pulumi.StringPtrInput
 	// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer

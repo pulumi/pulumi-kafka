@@ -9,50 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Kafka
 {
-    /// <summary>
-    /// A resource for managing Kafka quotas.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Kafka = Pulumi.Kafka;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var quota = new Kafka.Quota("quota", new()
-    ///     {
-    ///         EntityName = "app_consumer",
-    ///         EntityType = "client-id",
-    ///         Config = 
-    ///         {
-    ///             { "consumer_byte_rate", "5000000" },
-    ///             { "producer_byte_rate", "2500000" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [KafkaResourceType("kafka:index/quota:Quota")]
     public partial class Quota : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A map of string k/v attributes.
+        /// A map of string k/v properties.
         /// </summary>
         [Output("config")]
         public Output<ImmutableDictionary<string, string>?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the entity to target.
+        /// The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
         /// </summary>
         [Output("entityName")]
         public Output<string?> EntityName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of entity. Valid values are `client-id`, `user`, `ip`.
+        /// The type of the entity (client-id, user, ip)
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
@@ -107,7 +80,7 @@ namespace Pulumi.Kafka
         private InputMap<string>? _config;
 
         /// <summary>
-        /// A map of string k/v attributes.
+        /// A map of string k/v properties.
         /// </summary>
         public InputMap<string> Config
         {
@@ -116,13 +89,13 @@ namespace Pulumi.Kafka
         }
 
         /// <summary>
-        /// The name of the entity to target.
+        /// The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
         /// </summary>
         [Input("entityName")]
         public Input<string>? EntityName { get; set; }
 
         /// <summary>
-        /// The type of entity. Valid values are `client-id`, `user`, `ip`.
+        /// The type of the entity (client-id, user, ip)
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -139,7 +112,7 @@ namespace Pulumi.Kafka
         private InputMap<string>? _config;
 
         /// <summary>
-        /// A map of string k/v attributes.
+        /// A map of string k/v properties.
         /// </summary>
         public InputMap<string> Config
         {
@@ -148,13 +121,13 @@ namespace Pulumi.Kafka
         }
 
         /// <summary>
-        /// The name of the entity to target.
+        /// The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
         /// </summary>
         [Input("entityName")]
         public Input<string>? EntityName { get; set; }
 
         /// <summary>
-        /// The type of entity. Valid values are `client-id`, `user`, `ip`.
+        /// The type of the entity (client-id, user, ip)
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }
