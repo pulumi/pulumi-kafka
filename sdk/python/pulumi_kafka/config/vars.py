@@ -170,6 +170,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('saslMechanism') or (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
 
     @property
+    def sasl_oauth_scopes(self) -> Optional[str]:
+        """
+        OAuth scopes to request when using the oauthbearer mechanism
+        """
+        return __config__.get('saslOauthScopes')
+
+    @property
     def sasl_password(self) -> Optional[str]:
         """
         Password for SASL authentication.

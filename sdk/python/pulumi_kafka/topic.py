@@ -26,8 +26,8 @@ class TopicArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
-        :param pulumi.Input[builtins.int] partitions: The number of partitions the topic should have.
-        :param pulumi.Input[builtins.int] replication_factor: The number of replicas the topic should have.
+        :param pulumi.Input[builtins.int] partitions: Number of partitions.
+        :param pulumi.Input[builtins.int] replication_factor: Number of replicas.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[builtins.str] name: The name of the topic.
         """
@@ -42,7 +42,7 @@ class TopicArgs:
     @pulumi.getter
     def partitions(self) -> pulumi.Input[builtins.int]:
         """
-        The number of partitions the topic should have.
+        Number of partitions.
         """
         return pulumi.get(self, "partitions")
 
@@ -54,7 +54,7 @@ class TopicArgs:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> pulumi.Input[builtins.int]:
         """
-        The number of replicas the topic should have.
+        Number of replicas.
         """
         return pulumi.get(self, "replication_factor")
 
@@ -98,8 +98,8 @@ class _TopicState:
         Input properties used for looking up and filtering Topic resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[builtins.str] name: The name of the topic.
-        :param pulumi.Input[builtins.int] partitions: The number of partitions the topic should have.
-        :param pulumi.Input[builtins.int] replication_factor: The number of replicas the topic should have.
+        :param pulumi.Input[builtins.int] partitions: Number of partitions.
+        :param pulumi.Input[builtins.int] replication_factor: Number of replicas.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -138,7 +138,7 @@ class _TopicState:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The number of partitions the topic should have.
+        Number of partitions.
         """
         return pulumi.get(self, "partitions")
 
@@ -150,7 +150,7 @@ class _TopicState:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The number of replicas the topic should have.
+        Number of replicas.
         """
         return pulumi.get(self, "replication_factor")
 
@@ -171,38 +171,13 @@ class Topic(pulumi.CustomResource):
                  replication_factor: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
-        A resource for managing Kafka topics. Increases partition count without destroying the topic.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_kafka as kafka
-
-        logs = kafka.Topic("logs",
-            name="systemd_logs",
-            replication_factor=2,
-            partitions=100,
-            config={
-                "segment.ms": "20000",
-                "cleanup.policy": "compact",
-            })
-        ```
-
-        ## Import
-
-        Topics can be imported using their ARN, e.g.
-
-        ```sh
-        $ pulumi import kafka:index/topic:Topic logs systemd_logs
-        ```
-
+        Create a Topic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[builtins.str] name: The name of the topic.
-        :param pulumi.Input[builtins.int] partitions: The number of partitions the topic should have.
-        :param pulumi.Input[builtins.int] replication_factor: The number of replicas the topic should have.
+        :param pulumi.Input[builtins.int] partitions: Number of partitions.
+        :param pulumi.Input[builtins.int] replication_factor: Number of replicas.
         """
         ...
     @overload
@@ -211,32 +186,7 @@ class Topic(pulumi.CustomResource):
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A resource for managing Kafka topics. Increases partition count without destroying the topic.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_kafka as kafka
-
-        logs = kafka.Topic("logs",
-            name="systemd_logs",
-            replication_factor=2,
-            partitions=100,
-            config={
-                "segment.ms": "20000",
-                "cleanup.policy": "compact",
-            })
-        ```
-
-        ## Import
-
-        Topics can be imported using their ARN, e.g.
-
-        ```sh
-        $ pulumi import kafka:index/topic:Topic logs systemd_logs
-        ```
-
+        Create a Topic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -296,8 +246,8 @@ class Topic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[builtins.str] name: The name of the topic.
-        :param pulumi.Input[builtins.int] partitions: The number of partitions the topic should have.
-        :param pulumi.Input[builtins.int] replication_factor: The number of replicas the topic should have.
+        :param pulumi.Input[builtins.int] partitions: Number of partitions.
+        :param pulumi.Input[builtins.int] replication_factor: Number of replicas.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -329,7 +279,7 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter
     def partitions(self) -> pulumi.Output[builtins.int]:
         """
-        The number of partitions the topic should have.
+        Number of partitions.
         """
         return pulumi.get(self, "partitions")
 
@@ -337,7 +287,7 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> pulumi.Output[builtins.int]:
         """
-        The number of replicas the topic should have.
+        Number of replicas.
         """
         return pulumi.get(self, "replication_factor")
 

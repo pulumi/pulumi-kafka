@@ -152,6 +152,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["saslAwsSharedConfigFiles"] = pulumi.output(args ? args.saslAwsSharedConfigFiles : undefined).apply(JSON.stringify);
             resourceInputs["saslAwsToken"] = args ? args.saslAwsToken : undefined;
             resourceInputs["saslMechanism"] = (args ? args.saslMechanism : undefined) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
+            resourceInputs["saslOauthScopes"] = pulumi.output(args ? args.saslOauthScopes : undefined).apply(JSON.stringify);
             resourceInputs["saslPassword"] = args ? args.saslPassword : undefined;
             resourceInputs["saslTokenUrl"] = args ? args.saslTokenUrl : undefined;
             resourceInputs["saslUsername"] = args ? args.saslUsername : undefined;
@@ -268,6 +269,10 @@ export interface ProviderArgs {
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */
     saslMechanism?: pulumi.Input<string>;
+    /**
+     * OAuth scopes to request when using the oauthbearer mechanism
+     */
+    saslOauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Password for SASL authentication.
      */

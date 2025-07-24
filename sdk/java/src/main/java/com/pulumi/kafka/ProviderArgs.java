@@ -362,6 +362,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * OAuth scopes to request when using the oauthbearer mechanism
+     * 
+     */
+    @Import(name="saslOauthScopes", json=true)
+    private @Nullable Output<List<String>> saslOauthScopes;
+
+    /**
+     * @return OAuth scopes to request when using the oauthbearer mechanism
+     * 
+     */
+    public Optional<Output<List<String>>> saslOauthScopes() {
+        return Optional.ofNullable(this.saslOauthScopes);
+    }
+
+    /**
      * Password for SASL authentication.
      * 
      */
@@ -475,6 +490,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.saslAwsSharedConfigFiles = $.saslAwsSharedConfigFiles;
         this.saslAwsToken = $.saslAwsToken;
         this.saslMechanism = $.saslMechanism;
+        this.saslOauthScopes = $.saslOauthScopes;
         this.saslPassword = $.saslPassword;
         this.saslTokenUrl = $.saslTokenUrl;
         this.saslUsername = $.saslUsername;
@@ -986,6 +1002,37 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder saslMechanism(String saslMechanism) {
             return saslMechanism(Output.of(saslMechanism));
+        }
+
+        /**
+         * @param saslOauthScopes OAuth scopes to request when using the oauthbearer mechanism
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthScopes(@Nullable Output<List<String>> saslOauthScopes) {
+            $.saslOauthScopes = saslOauthScopes;
+            return this;
+        }
+
+        /**
+         * @param saslOauthScopes OAuth scopes to request when using the oauthbearer mechanism
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthScopes(List<String> saslOauthScopes) {
+            return saslOauthScopes(Output.of(saslOauthScopes));
+        }
+
+        /**
+         * @param saslOauthScopes OAuth scopes to request when using the oauthbearer mechanism
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthScopes(String... saslOauthScopes) {
+            return saslOauthScopes(List.of(saslOauthScopes));
         }
 
         /**

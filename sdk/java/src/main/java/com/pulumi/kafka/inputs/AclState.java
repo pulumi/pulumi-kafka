@@ -15,119 +15,59 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
 
     public static final AclState Empty = new AclState();
 
-    /**
-     * Host from which principal listed in `acl_principal`
-     * will have access.
-     * 
-     */
     @Import(name="aclHost")
     private @Nullable Output<String> aclHost;
 
-    /**
-     * @return Host from which principal listed in `acl_principal`
-     * will have access.
-     * 
-     */
     public Optional<Output<String>> aclHost() {
         return Optional.ofNullable(this.aclHost);
     }
 
-    /**
-     * Operation that is being allowed or denied. Valid
-     * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-     * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-     * 
-     */
     @Import(name="aclOperation")
     private @Nullable Output<String> aclOperation;
 
-    /**
-     * @return Operation that is being allowed or denied. Valid
-     * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-     * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-     * 
-     */
     public Optional<Output<String>> aclOperation() {
         return Optional.ofNullable(this.aclOperation);
     }
 
-    /**
-     * Type of permission. Valid values are `Unknown`,
-     * `Any`, `Allow`, `Deny`.
-     * 
-     */
     @Import(name="aclPermissionType")
     private @Nullable Output<String> aclPermissionType;
 
-    /**
-     * @return Type of permission. Valid values are `Unknown`,
-     * `Any`, `Allow`, `Deny`.
-     * 
-     */
     public Optional<Output<String>> aclPermissionType() {
         return Optional.ofNullable(this.aclPermissionType);
     }
 
-    /**
-     * Principal that is being allowed or denied.
-     * 
-     */
     @Import(name="aclPrincipal")
     private @Nullable Output<String> aclPrincipal;
 
-    /**
-     * @return Principal that is being allowed or denied.
-     * 
-     */
     public Optional<Output<String>> aclPrincipal() {
         return Optional.ofNullable(this.aclPrincipal);
     }
 
     /**
-     * The name of the resource.
+     * The name of the resource
      * 
      */
     @Import(name="aclResourceName")
     private @Nullable Output<String> aclResourceName;
 
     /**
-     * @return The name of the resource.
+     * @return The name of the resource
      * 
      */
     public Optional<Output<String>> aclResourceName() {
         return Optional.ofNullable(this.aclResourceName);
     }
 
-    /**
-     * The type of resource. Valid values are `Unknown`,
-     * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-     * 
-     */
     @Import(name="aclResourceType")
     private @Nullable Output<String> aclResourceType;
 
-    /**
-     * @return The type of resource. Valid values are `Unknown`,
-     * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-     * 
-     */
     public Optional<Output<String>> aclResourceType() {
         return Optional.ofNullable(this.aclResourceType);
     }
 
-    /**
-     * The pattern filter. Valid values
-     * are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
-     * 
-     */
     @Import(name="resourcePatternTypeFilter")
     private @Nullable Output<String> resourcePatternTypeFilter;
 
-    /**
-     * @return The pattern filter. Valid values
-     * are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
-     * 
-     */
     public Optional<Output<String>> resourcePatternTypeFilter() {
         return Optional.ofNullable(this.resourcePatternTypeFilter);
     }
@@ -162,100 +102,44 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
             $ = new AclState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param aclHost Host from which principal listed in `acl_principal`
-         * will have access.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclHost(@Nullable Output<String> aclHost) {
             $.aclHost = aclHost;
             return this;
         }
 
-        /**
-         * @param aclHost Host from which principal listed in `acl_principal`
-         * will have access.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclHost(String aclHost) {
             return aclHost(Output.of(aclHost));
         }
 
-        /**
-         * @param aclOperation Operation that is being allowed or denied. Valid
-         * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-         * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclOperation(@Nullable Output<String> aclOperation) {
             $.aclOperation = aclOperation;
             return this;
         }
 
-        /**
-         * @param aclOperation Operation that is being allowed or denied. Valid
-         * values are `Unknown`, `Any`, `All`, `Read`, `Write`, `Create`, `Delete`, `Alter`,
-         * `Describe`, `ClusterAction`, `DescribeConfigs`, `AlterConfigs`, `IdempotentWrite`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclOperation(String aclOperation) {
             return aclOperation(Output.of(aclOperation));
         }
 
-        /**
-         * @param aclPermissionType Type of permission. Valid values are `Unknown`,
-         * `Any`, `Allow`, `Deny`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclPermissionType(@Nullable Output<String> aclPermissionType) {
             $.aclPermissionType = aclPermissionType;
             return this;
         }
 
-        /**
-         * @param aclPermissionType Type of permission. Valid values are `Unknown`,
-         * `Any`, `Allow`, `Deny`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclPermissionType(String aclPermissionType) {
             return aclPermissionType(Output.of(aclPermissionType));
         }
 
-        /**
-         * @param aclPrincipal Principal that is being allowed or denied.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclPrincipal(@Nullable Output<String> aclPrincipal) {
             $.aclPrincipal = aclPrincipal;
             return this;
         }
 
-        /**
-         * @param aclPrincipal Principal that is being allowed or denied.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclPrincipal(String aclPrincipal) {
             return aclPrincipal(Output.of(aclPrincipal));
         }
 
         /**
-         * @param aclResourceName The name of the resource.
+         * @param aclResourceName The name of the resource
          * 
          * @return builder
          * 
@@ -266,7 +150,7 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclResourceName The name of the resource.
+         * @param aclResourceName The name of the resource
          * 
          * @return builder
          * 
@@ -275,48 +159,20 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
             return aclResourceName(Output.of(aclResourceName));
         }
 
-        /**
-         * @param aclResourceType The type of resource. Valid values are `Unknown`,
-         * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclResourceType(@Nullable Output<String> aclResourceType) {
             $.aclResourceType = aclResourceType;
             return this;
         }
 
-        /**
-         * @param aclResourceType The type of resource. Valid values are `Unknown`,
-         * `Any`, `Topic`, `Group`, `Cluster`, `TransactionalID`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclResourceType(String aclResourceType) {
             return aclResourceType(Output.of(aclResourceType));
         }
 
-        /**
-         * @param resourcePatternTypeFilter The pattern filter. Valid values
-         * are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourcePatternTypeFilter(@Nullable Output<String> resourcePatternTypeFilter) {
             $.resourcePatternTypeFilter = resourcePatternTypeFilter;
             return this;
         }
 
-        /**
-         * @param resourcePatternTypeFilter The pattern filter. Valid values
-         * are `Prefixed`, `Any`, `Match`, `Literal`. Default `Literal`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourcePatternTypeFilter(String resourcePatternTypeFilter) {
             return resourcePatternTypeFilter(Output.of(resourcePatternTypeFilter));
         }

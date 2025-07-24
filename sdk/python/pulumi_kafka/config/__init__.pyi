@@ -121,6 +121,11 @@ saslMechanism: str
 SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
 """
 
+saslOauthScopes: Optional[str]
+"""
+OAuth scopes to request when using the oauthbearer mechanism
+"""
+
 saslPassword: Optional[str]
 """
 Password for SASL authentication.

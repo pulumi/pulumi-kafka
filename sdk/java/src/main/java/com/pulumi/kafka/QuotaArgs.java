@@ -18,14 +18,14 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
     public static final QuotaArgs Empty = new QuotaArgs();
 
     /**
-     * A map of string k/v attributes.
+     * A map of string k/v properties.
      * 
      */
     @Import(name="config")
     private @Nullable Output<Map<String,String>> config;
 
     /**
-     * @return A map of string k/v attributes.
+     * @return A map of string k/v properties.
      * 
      */
     public Optional<Output<Map<String,String>>> config() {
@@ -33,14 +33,14 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the entity to target.
+     * The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
      * 
      */
     @Import(name="entityName")
     private @Nullable Output<String> entityName;
 
     /**
-     * @return The name of the entity to target.
+     * @return The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
      * 
      */
     public Optional<Output<String>> entityName() {
@@ -48,14 +48,14 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of entity. Valid values are `client-id`, `user`, `ip`.
+     * The type of the entity (client-id, user, ip)
      * 
      */
     @Import(name="entityType", required=true)
     private Output<String> entityType;
 
     /**
-     * @return The type of entity. Valid values are `client-id`, `user`, `ip`.
+     * @return The type of the entity (client-id, user, ip)
      * 
      */
     public Output<String> entityType() {
@@ -89,7 +89,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config A map of string k/v attributes.
+         * @param config A map of string k/v properties.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config A map of string k/v attributes.
+         * @param config A map of string k/v properties.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityName The name of the entity to target.
+         * @param entityName The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityName The name of the entity to target.
+         * @param entityName The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityType The type of entity. Valid values are `client-id`, `user`, `ip`.
+         * @param entityType The type of the entity (client-id, user, ip)
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityType The type of entity. Valid values are `client-id`, `user`, `ip`.
+         * @param entityType The type of the entity (client-id, user, ip)
          * 
          * @return builder
          * 

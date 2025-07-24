@@ -131,6 +131,11 @@ func GetSaslMechanism(ctx *pulumi.Context) string {
 	return value
 }
 
+// OAuth scopes to request when using the oauthbearer mechanism
+func GetSaslOauthScopes(ctx *pulumi.Context) string {
+	return config.Get(ctx, "kafka:saslOauthScopes")
+}
+
 // Password for SASL authentication.
 func GetSaslPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:saslPassword")

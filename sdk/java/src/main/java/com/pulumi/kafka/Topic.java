@@ -16,59 +16,6 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * A resource for managing Kafka topics. Increases partition count without destroying the topic.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.kafka.Topic;
- * import com.pulumi.kafka.TopicArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var logs = new Topic("logs", TopicArgs.builder()
- *             .name("systemd_logs")
- *             .replicationFactor(2)
- *             .partitions(100)
- *             .config(Map.ofEntries(
- *                 Map.entry("segment.ms", "20000"),
- *                 Map.entry("cleanup.policy", "compact")
- *             ))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * Topics can be imported using their ARN, e.g.
- * 
- * ```sh
- * $ pulumi import kafka:index/topic:Topic logs systemd_logs
- * ```
- * 
- */
 @ResourceType(type="kafka:index/topic:Topic")
 public class Topic extends com.pulumi.resources.CustomResource {
     /**
@@ -100,28 +47,28 @@ public class Topic extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The number of partitions the topic should have.
+     * Number of partitions.
      * 
      */
     @Export(name="partitions", refs={Integer.class}, tree="[0]")
     private Output<Integer> partitions;
 
     /**
-     * @return The number of partitions the topic should have.
+     * @return Number of partitions.
      * 
      */
     public Output<Integer> partitions() {
         return this.partitions;
     }
     /**
-     * The number of replicas the topic should have.
+     * Number of replicas.
      * 
      */
     @Export(name="replicationFactor", refs={Integer.class}, tree="[0]")
     private Output<Integer> replicationFactor;
 
     /**
-     * @return The number of replicas the topic should have.
+     * @return Number of replicas.
      * 
      */
     public Output<Integer> replicationFactor() {

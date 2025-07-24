@@ -15,89 +15,45 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * A resource for managing Kafka quotas.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.kafka.Quota;
- * import com.pulumi.kafka.QuotaArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var quota = new Quota("quota", QuotaArgs.builder()
- *             .entityName("app_consumer")
- *             .entityType("client-id")
- *             .config(Map.ofEntries(
- *                 Map.entry("consumer_byte_rate", "5000000"),
- *                 Map.entry("producer_byte_rate", "2500000")
- *             ))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- */
 @ResourceType(type="kafka:index/quota:Quota")
 public class Quota extends com.pulumi.resources.CustomResource {
     /**
-     * A map of string k/v attributes.
+     * A map of string k/v properties.
      * 
      */
     @Export(name="config", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> config;
 
     /**
-     * @return A map of string k/v attributes.
+     * @return A map of string k/v properties.
      * 
      */
     public Output<Optional<Map<String,String>>> config() {
         return Codegen.optional(this.config);
     }
     /**
-     * The name of the entity to target.
+     * The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
      * 
      */
     @Export(name="entityName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entityName;
 
     /**
-     * @return The name of the entity to target.
+     * @return The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
      * 
      */
     public Output<Optional<String>> entityName() {
         return Codegen.optional(this.entityName);
     }
     /**
-     * The type of entity. Valid values are `client-id`, `user`, `ip`.
+     * The type of the entity (client-id, user, ip)
      * 
      */
     @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**
-     * @return The type of entity. Valid values are `client-id`, `user`, `ip`.
+     * @return The type of the entity (client-id, user, ip)
      * 
      */
     public Output<String> entityType() {
