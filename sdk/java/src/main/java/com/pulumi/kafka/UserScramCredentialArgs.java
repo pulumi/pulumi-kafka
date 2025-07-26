@@ -18,18 +18,33 @@ public final class UserScramCredentialArgs extends com.pulumi.resources.Resource
     public static final UserScramCredentialArgs Empty = new UserScramCredentialArgs();
 
     /**
-     * The password of the credential
+     * The password of the credential (deprecated, use password_wo instead)
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
-     * @return The password of the credential
+     * @return The password of the credential (deprecated, use password_wo instead)
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * Version identifier for the write-only password to track changes
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<String> passwordWoVersion;
+
+    /**
+     * @return Version identifier for the write-only password to track changes
+     * 
+     */
+    public Optional<Output<String>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
 
     /**
@@ -81,6 +96,7 @@ public final class UserScramCredentialArgs extends com.pulumi.resources.Resource
 
     private UserScramCredentialArgs(UserScramCredentialArgs $) {
         this.password = $.password;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.scramIterations = $.scramIterations;
         this.scramMechanism = $.scramMechanism;
         this.username = $.username;
@@ -105,24 +121,45 @@ public final class UserScramCredentialArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param password The password of the credential
+         * @param password The password of the credential (deprecated, use password_wo instead)
          * 
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
         /**
-         * @param password The password of the credential
+         * @param password The password of the credential (deprecated, use password_wo instead)
          * 
          * @return builder
          * 
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWoVersion Version identifier for the write-only password to track changes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<String> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Version identifier for the write-only password to track changes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(String passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**
@@ -189,9 +226,6 @@ public final class UserScramCredentialArgs extends com.pulumi.resources.Resource
         }
 
         public UserScramCredentialArgs build() {
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("UserScramCredentialArgs", "password");
-            }
             if ($.scramMechanism == null) {
                 throw new MissingRequiredPropertyException("UserScramCredentialArgs", "scramMechanism");
             }

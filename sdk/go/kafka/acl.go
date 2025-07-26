@@ -12,6 +12,192 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `Acl` resource manages Apache Kafka Access Control Lists (ACLs). ACLs control access to Kafka resources like topics, consumer groups, and clusters by defining which principals (users or services) can perform specific operations on these resources.
+//
+// ## Example Usage
+//
+// ### Allow Producer Access to Topic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewAcl(ctx, "producer", &kafka.AclArgs{
+//				AclResourceName:   pulumi.String("orders"),
+//				AclResourceType:   pulumi.String("Topic"),
+//				AclPrincipal:      pulumi.String("User:producer-service"),
+//				AclHost:           pulumi.String("*"),
+//				AclOperation:      pulumi.String("Write"),
+//				AclPermissionType: pulumi.String("Allow"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Also grant describe permission for producers
+//			_, err = kafka.NewAcl(ctx, "producer_describe", &kafka.AclArgs{
+//				AclResourceName:   pulumi.String("orders"),
+//				AclResourceType:   pulumi.String("Topic"),
+//				AclPrincipal:      pulumi.String("User:producer-service"),
+//				AclHost:           pulumi.String("*"),
+//				AclOperation:      pulumi.String("Describe"),
+//				AclPermissionType: pulumi.String("Allow"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Allow Consumer Group Access
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Allow read access to topic
+//			_, err := kafka.NewAcl(ctx, "consumer_read", &kafka.AclArgs{
+//				AclResourceName:   pulumi.String("orders"),
+//				AclResourceType:   pulumi.String("Topic"),
+//				AclPrincipal:      pulumi.String("User:consumer-service"),
+//				AclHost:           pulumi.String("*"),
+//				AclOperation:      pulumi.String("Read"),
+//				AclPermissionType: pulumi.String("Allow"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Allow access to consumer group
+//			_, err = kafka.NewAcl(ctx, "consumer_group", &kafka.AclArgs{
+//				AclResourceName:   pulumi.String("order-processors"),
+//				AclResourceType:   pulumi.String("Group"),
+//				AclPrincipal:      pulumi.String("User:consumer-service"),
+//				AclHost:           pulumi.String("*"),
+//				AclOperation:      pulumi.String("Read"),
+//				AclPermissionType: pulumi.String("Allow"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Prefix-Based Access Control
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Grant access to all topics with prefix "logs-"
+//			_, err := kafka.NewAcl(ctx, "logs_access", &kafka.AclArgs{
+//				AclResourceName:           pulumi.String("logs-"),
+//				AclResourceType:           pulumi.String("Topic"),
+//				ResourcePatternTypeFilter: pulumi.String("Prefixed"),
+//				AclPrincipal:              pulumi.String("User:log-aggregator"),
+//				AclHost:                   pulumi.String("*"),
+//				AclOperation:              pulumi.String("Read"),
+//				AclPermissionType:         pulumi.String("Allow"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Admin User with Full Access
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Grant cluster-level admin access
+//			_, err := kafka.NewAcl(ctx, "admin_cluster", &kafka.AclArgs{
+//				AclResourceName:   pulumi.String("kafka-cluster"),
+//				AclResourceType:   pulumi.String("Cluster"),
+//				AclPrincipal:      pulumi.String("User:admin"),
+//				AclHost:           pulumi.String("*"),
+//				AclOperation:      pulumi.String("All"),
+//				AclPermissionType: pulumi.String("Allow"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Common ACL Patterns
+//
+// ### Producer ACLs
+// Producers typically need:
+// - `Write` and `Describe` on topics
+// - `Write` on `TransactionalID` (for transactional producers)
+// - `IdempotentWrite` on `Cluster` (for idempotent producers)
+//
+// ### Consumer ACLs
+// Consumers typically need:
+// - `Read` on topics
+// - `Read` on consumer groups
+// - `Describe` on topics (optional, for metadata)
+//
+// ### Admin ACLs
+// Administrators typically need:
+// - `All` on `Cluster`
+// - Or specific operations like `Alter`, `AlterConfigs`, `Create`, `Delete`
+//
+// > **Warning:** Be cautious with `Deny` ACLs as they take precedence over `Allow` ACLs. A deny rule will block access even if an allow rule exists.
+//
+// ## Import
+//
+// Kafka ACLs can be imported using a pipe-delimited string containing all ACL properties:
+//
+// Format: ${acl_principal}|${acl_host}|${acl_operation}|${acl_permission_type}|${resource_type}|${resource_name}|${resource_pattern_type_filter}
+//
+// ```sh
+// $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
+// ```
 type Acl struct {
 	pulumi.CustomResourceState
 

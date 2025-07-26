@@ -14,6 +14,227 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `kafka.Acl` resource manages Apache Kafka Access Control Lists (ACLs). ACLs control access to Kafka resources like topics, consumer groups, and clusters by defining which principals (users or services) can perform specific operations on these resources.
+ * 
+ * ## Example Usage
+ * 
+ * ### Allow Producer Access to Topic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Acl;
+ * import com.pulumi.kafka.AclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producer = new Acl("producer", AclArgs.builder()
+ *             .aclResourceName("orders")
+ *             .aclResourceType("Topic")
+ *             .aclPrincipal("User:producer-service")
+ *             .aclHost("*")
+ *             .aclOperation("Write")
+ *             .aclPermissionType("Allow")
+ *             .build());
+ * 
+ *         // Also grant describe permission for producers
+ *         var producerDescribe = new Acl("producerDescribe", AclArgs.builder()
+ *             .aclResourceName("orders")
+ *             .aclResourceType("Topic")
+ *             .aclPrincipal("User:producer-service")
+ *             .aclHost("*")
+ *             .aclOperation("Describe")
+ *             .aclPermissionType("Allow")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Allow Consumer Group Access
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Acl;
+ * import com.pulumi.kafka.AclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Allow read access to topic
+ *         var consumerRead = new Acl("consumerRead", AclArgs.builder()
+ *             .aclResourceName("orders")
+ *             .aclResourceType("Topic")
+ *             .aclPrincipal("User:consumer-service")
+ *             .aclHost("*")
+ *             .aclOperation("Read")
+ *             .aclPermissionType("Allow")
+ *             .build());
+ * 
+ *         // Allow access to consumer group
+ *         var consumerGroup = new Acl("consumerGroup", AclArgs.builder()
+ *             .aclResourceName("order-processors")
+ *             .aclResourceType("Group")
+ *             .aclPrincipal("User:consumer-service")
+ *             .aclHost("*")
+ *             .aclOperation("Read")
+ *             .aclPermissionType("Allow")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Prefix-Based Access Control
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Acl;
+ * import com.pulumi.kafka.AclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Grant access to all topics with prefix "logs-"
+ *         var logsAccess = new Acl("logsAccess", AclArgs.builder()
+ *             .aclResourceName("logs-")
+ *             .aclResourceType("Topic")
+ *             .resourcePatternTypeFilter("Prefixed")
+ *             .aclPrincipal("User:log-aggregator")
+ *             .aclHost("*")
+ *             .aclOperation("Read")
+ *             .aclPermissionType("Allow")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Admin User with Full Access
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Acl;
+ * import com.pulumi.kafka.AclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Grant cluster-level admin access
+ *         var adminCluster = new Acl("adminCluster", AclArgs.builder()
+ *             .aclResourceName("kafka-cluster")
+ *             .aclResourceType("Cluster")
+ *             .aclPrincipal("User:admin")
+ *             .aclHost("*")
+ *             .aclOperation("All")
+ *             .aclPermissionType("Allow")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Common ACL Patterns
+ * 
+ * ### Producer ACLs
+ * Producers typically need:
+ * - `Write` and `Describe` on topics
+ * - `Write` on `TransactionalID` (for transactional producers)
+ * - `IdempotentWrite` on `Cluster` (for idempotent producers)
+ * 
+ * ### Consumer ACLs
+ * Consumers typically need:
+ * - `Read` on topics
+ * - `Read` on consumer groups
+ * - `Describe` on topics (optional, for metadata)
+ * 
+ * ### Admin ACLs
+ * Administrators typically need:
+ * - `All` on `Cluster`
+ * - Or specific operations like `Alter`, `AlterConfigs`, `Create`, `Delete`
+ * 
+ * &gt; **Warning:** Be cautious with `Deny` ACLs as they take precedence over `Allow` ACLs. A deny rule will block access even if an allow rule exists.
+ * 
+ * ## Import
+ * 
+ * Kafka ACLs can be imported using a pipe-delimited string containing all ACL properties:
+ * 
+ * Format: ${acl_principal}|${acl_host}|${acl_operation}|${acl_permission_type}|${resource_type}|${resource_name}|${resource_pattern_type_filter}
+ * 
+ * ```sh
+ * $ pulumi import kafka:index/acl:Acl example &#39;User:producer|*|Write|Allow|Topic|orders|Literal&#39;
+ * ```
+ * 
+ */
 @ResourceType(type="kafka:index/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     @Export(name="aclHost", refs={String.class}, tree="[0]")

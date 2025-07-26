@@ -16,21 +16,45 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * SCRAM credentials can be imported using the format `username|scram_mechanism|password`:
+ * 
+ * ```sh
+ * $ pulumi import kafka:index/userScramCredential:UserScramCredential example &#39;my-user|SCRAM-SHA-256|my-password&#39;
+ * ```
+ * 
+ */
 @ResourceType(type="kafka:index/userScramCredential:UserScramCredential")
 public class UserScramCredential extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the credential
+     * The password of the credential (deprecated, use password_wo instead)
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
-    private Output<String> password;
+    private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the credential
+     * @return The password of the credential (deprecated, use password_wo instead)
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
+    }
+    /**
+     * Version identifier for the write-only password to track changes
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWoVersion;
+
+    /**
+     * @return Version identifier for the write-only password to track changes
+     * 
+     */
+    public Output<Optional<String>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
     }
     /**
      * The number of SCRAM iterations used when generating the credential

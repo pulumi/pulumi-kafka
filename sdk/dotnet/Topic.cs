@@ -9,6 +9,154 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Kafka
 {
+    /// <summary>
+    /// The `kafka.Topic` resource manages Apache Kafka topics, including their partition count, replication factor, and various configuration parameters. This resource supports non-destructive partition count increases.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Topic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Kafka.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         ReplicationFactor = 3,
+    ///         Partitions = 10,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Topic with Common Configurations
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var logs = new Kafka.Topic("logs", new()
+    ///     {
+    ///         Name = "application-logs",
+    ///         ReplicationFactor = 3,
+    ///         Partitions = 50,
+    ///         Config = 
+    ///         {
+    ///             { "retention.ms", "604800000" },
+    ///             { "segment.ms", "86400000" },
+    ///             { "cleanup.policy", "delete" },
+    ///             { "compression.type", "gzip" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Compacted Topic for Event Sourcing
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var events = new Kafka.Topic("events", new()
+    ///     {
+    ///         Name = "user-events",
+    ///         ReplicationFactor = 3,
+    ///         Partitions = 100,
+    ///         Config = 
+    ///         {
+    ///             { "cleanup.policy", "compact" },
+    ///             { "retention.ms", "-1" },
+    ///             { "min.compaction.lag.ms", "3600000" },
+    ///             { "delete.retention.ms", "86400000" },
+    ///             { "compression.type", "lz4" },
+    ///             { "segment.bytes", "1073741824" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### High-Throughput Topic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var metrics = new Kafka.Topic("metrics", new()
+    ///     {
+    ///         Name = "system-metrics",
+    ///         ReplicationFactor = 2,
+    ///         Partitions = 200,
+    ///         Config = 
+    ///         {
+    ///             { "retention.ms", "86400000" },
+    ///             { "segment.ms", "3600000" },
+    ///             { "compression.type", "lz4" },
+    ///             { "max.message.bytes", "1048576" },
+    ///             { "min.insync.replicas", "2" },
+    ///             { "unclean.leader.election.enable", "false" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Configuration Parameters
+    /// 
+    /// The `config` map supports all Kafka topic-level configurations. Common configurations include:
+    /// 
+    /// ### Retention Settings
+    /// - `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)
+    /// - `retention.bytes` - Maximum size of the log before deleting old segments. Default: -1 (no limit)
+    /// - `segment.ms` - Time after which a log segment should be rotated. Default: 604800000 (7 days)
+    /// - `segment.bytes` - Maximum size of a single log segment file. Default: 1073741824 (1GB)
+    /// 
+    /// ### Cleanup and Compaction
+    /// - `cleanup.policy` - Either "delete" or "compact" or both "compact,delete". Default: "delete"
+    /// - `min.compaction.lag.ms` - Minimum time a message will remain uncompacted. Default: 0
+    /// - `delete.retention.ms` - How long to retain delete tombstone markers for compacted topics. Default: 86400000 (1 day)
+    /// 
+    /// ### Compression
+    /// - `compression.type` - Compression codec: "uncompressed", "zstd", "lz4", "snappy", "gzip", "producer". Default: "producer"
+    /// 
+    /// ### Replication and Durability
+    /// - `min.insync.replicas` - Minimum number of replicas that must acknowledge a write. Default: 1
+    /// - `unclean.leader.election.enable` - Whether to allow replicas not in ISR to be elected leader. Default: false
+    /// 
+    /// ### Message Size
+    /// - `max.message.bytes` - Maximum size of a message. Default: 1048588 (~1MB)
+    /// - `message.timestamp.type` - Whether to use CreateTime or LogAppendTime. Default: "CreateTime"
+    /// 
+    /// For a complete list of configurations, refer to the [Kafka documentation](https://kafka.apache.org/documentation/#topicconfigs).
+    /// 
+    /// &gt; **Note:** Increasing the partition count is supported without recreating the topic. However, decreasing partitions requires topic recreation.
+    /// 
+    /// ## Import
+    /// 
+    /// Existing Kafka topics can be imported using the topic name:
+    /// 
+    /// ```sh
+    /// $ pulumi import kafka:index/topic:Topic example example-topic
+    /// ```
+    /// </summary>
     [KafkaResourceType("kafka:index/topic:Topic")]
     public partial class Topic : global::Pulumi.CustomResource
     {

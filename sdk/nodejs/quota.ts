@@ -4,6 +4,133 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `kafka.Quota` resource manages Kafka quotas, which are used to limit resource usage and prevent any single client from monopolizing broker resources. Quotas can be applied to clients, users, or IP addresses to control bandwidth and request rates.
+ *
+ * ## Example Usage
+ *
+ * ### Client ID Quota
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * // Limit a specific client's bandwidth
+ * const mobileApp = new kafka.Quota("mobile_app", {
+ *     entityName: "mobile-app-v1",
+ *     entityType: "client-id",
+ *     config: {
+ *         consumer_byte_rate: "5000000",
+ *         producer_byte_rate: "2500000",
+ *         request_percentage: "200",
+ *     },
+ * });
+ * ```
+ *
+ * ### User Quota
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * // Set quotas for a specific user
+ * const serviceAccount = new kafka.Quota("service_account", {
+ *     entityName: "payment-service",
+ *     entityType: "user",
+ *     config: {
+ *         consumer_byte_rate: "10000000",
+ *         producer_byte_rate: "10000000",
+ *         request_percentage: "400",
+ *     },
+ * });
+ * ```
+ *
+ * ### Default User Quota
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * // Set default quotas for all users (when entity_name is omitted)
+ * const defaultUser = new kafka.Quota("default_user", {
+ *     entityType: "user",
+ *     config: {
+ *         consumer_byte_rate: "2000000",
+ *         producer_byte_rate: "1000000",
+ *         request_percentage: "100",
+ *     },
+ * });
+ * ```
+ *
+ * ### IP Address Quota
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * // Rate limit connections from a specific IP
+ * const externalIp = new kafka.Quota("external_ip", {
+ *     entityName: "203.0.113.0",
+ *     entityType: "ip",
+ *     config: {
+ *         connection_creation_rate: "10",
+ *     },
+ * });
+ * ```
+ *
+ * ## Quota Configuration Options
+ *
+ * ### Bandwidth Quotas
+ * - `producerByteRate` - The maximum bytes per second that can be produced by the entity
+ * - `consumerByteRate` - The maximum bytes per second that can be consumed by the entity
+ *
+ * ### Request Rate Quotas
+ * - `requestPercentage` - The percentage of CPU time on each broker that the entity can use for requests. Values > 100% indicate multiple CPUs (e.g., 200% = 2 CPUs)
+ *
+ * ### Connection Quotas (IP-based only)
+ * - `connectionCreationRate` - The maximum rate of new connections per second from the IP address
+ *
+ * ## Quota Precedence
+ *
+ * When multiple quotas apply to a request, Kafka uses the most specific quota:
+ *
+ * 1. `/config/users/<user>/clients/<client-id>` (most specific)
+ * 2. `/config/users/<user>/clients/<default>`
+ * 3. `/config/users/<user>`
+ * 4. `/config/users/<default>/clients/<client-id>`
+ * 5. `/config/users/<default>/clients/<default>`
+ * 6. `/config/users/<default>` (least specific)
+ *
+ * ## Best Practices
+ *
+ * 1. **Start with Conservative Defaults**: Set reasonable default quotas for all users/clients and then create specific quotas for services that need higher limits.
+ *
+ * 2. **Monitor Quota Usage**: Use Kafka metrics to monitor quota utilization and adjust as needed. Look for throttling metrics to identify when quotas are being hit.
+ *
+ * 3. **Use Request Percentage Carefully**: The `requestPercentage` quota affects CPU usage. Values over 100% mean the client can use more than one CPU core.
+ *
+ * 4. **Plan for Growth**: Set quotas with some headroom to accommodate traffic growth, but not so high that a misbehaving client can impact the cluster.
+ *
+ * 5. **Different Quotas for Different Environments**: Use stricter quotas in development/staging environments compared to production.
+ *
+ * > **Note:** Quotas are applied immediately but may take a few seconds to propagate across all brokers.
+ *
+ * ## Import
+ *
+ * Kafka quotas can be imported using the entity type and name:
+ *
+ * For named entities
+ *
+ * ```sh
+ * $ pulumi import kafka:index/quota:Quota example client-id:my-client
+ * ```
+ *
+ * For default quotas (no entity name)
+ *
+ * ```sh
+ * $ pulumi import kafka:index/quota:Quota default_user user:
+ * ```
+ */
 export class Quota extends pulumi.CustomResource {
     /**
      * Get an existing Quota resource's state with the given name, ID, and optional extra

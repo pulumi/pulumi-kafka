@@ -12,6 +12,181 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `Topic` resource manages Apache Kafka topics, including their partition count, replication factor, and various configuration parameters. This resource supports non-destructive partition count increases.
+//
+// ## Example Usage
+//
+// ### Basic Topic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewTopic(ctx, "example", &kafka.TopicArgs{
+//				Name:              pulumi.String("example-topic"),
+//				ReplicationFactor: pulumi.Int(3),
+//				Partitions:        pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Topic with Common Configurations
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewTopic(ctx, "logs", &kafka.TopicArgs{
+//				Name:              pulumi.String("application-logs"),
+//				ReplicationFactor: pulumi.Int(3),
+//				Partitions:        pulumi.Int(50),
+//				Config: pulumi.StringMap{
+//					"retention.ms":     pulumi.String("604800000"),
+//					"segment.ms":       pulumi.String("86400000"),
+//					"cleanup.policy":   pulumi.String("delete"),
+//					"compression.type": pulumi.String("gzip"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Compacted Topic for Event Sourcing
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewTopic(ctx, "events", &kafka.TopicArgs{
+//				Name:              pulumi.String("user-events"),
+//				ReplicationFactor: pulumi.Int(3),
+//				Partitions:        pulumi.Int(100),
+//				Config: pulumi.StringMap{
+//					"cleanup.policy":        pulumi.String("compact"),
+//					"retention.ms":          pulumi.String("-1"),
+//					"min.compaction.lag.ms": pulumi.String("3600000"),
+//					"delete.retention.ms":   pulumi.String("86400000"),
+//					"compression.type":      pulumi.String("lz4"),
+//					"segment.bytes":         pulumi.String("1073741824"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### High-Throughput Topic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewTopic(ctx, "metrics", &kafka.TopicArgs{
+//				Name:              pulumi.String("system-metrics"),
+//				ReplicationFactor: pulumi.Int(2),
+//				Partitions:        pulumi.Int(200),
+//				Config: pulumi.StringMap{
+//					"retention.ms":                   pulumi.String("86400000"),
+//					"segment.ms":                     pulumi.String("3600000"),
+//					"compression.type":               pulumi.String("lz4"),
+//					"max.message.bytes":              pulumi.String("1048576"),
+//					"min.insync.replicas":            pulumi.String("2"),
+//					"unclean.leader.election.enable": pulumi.String("false"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Configuration Parameters
+//
+// The `config` map supports all Kafka topic-level configurations. Common configurations include:
+//
+// ### Retention Settings
+// - `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)
+// - `retention.bytes` - Maximum size of the log before deleting old segments. Default: -1 (no limit)
+// - `segment.ms` - Time after which a log segment should be rotated. Default: 604800000 (7 days)
+// - `segment.bytes` - Maximum size of a single log segment file. Default: 1073741824 (1GB)
+//
+// ### Cleanup and Compaction
+// - `cleanup.policy` - Either "delete" or "compact" or both "compact,delete". Default: "delete"
+// - `min.compaction.lag.ms` - Minimum time a message will remain uncompacted. Default: 0
+// - `delete.retention.ms` - How long to retain delete tombstone markers for compacted topics. Default: 86400000 (1 day)
+//
+// ### Compression
+// - `compression.type` - Compression codec: "uncompressed", "zstd", "lz4", "snappy", "gzip", "producer". Default: "producer"
+//
+// ### Replication and Durability
+// - `min.insync.replicas` - Minimum number of replicas that must acknowledge a write. Default: 1
+// - `unclean.leader.election.enable` - Whether to allow replicas not in ISR to be elected leader. Default: false
+//
+// ### Message Size
+// - `max.message.bytes` - Maximum size of a message. Default: 1048588 (~1MB)
+// - `message.timestamp.type` - Whether to use CreateTime or LogAppendTime. Default: "CreateTime"
+//
+// For a complete list of configurations, refer to the [Kafka documentation](https://kafka.apache.org/documentation/#topicconfigs).
+//
+// > **Note:** Increasing the partition count is supported without recreating the topic. However, decreasing partitions requires topic recreation.
+//
+// ## Import
+//
+// Existing Kafka topics can be imported using the topic name:
+//
+// ```sh
+// $ pulumi import kafka:index/topic:Topic example example-topic
+// ```
 type Topic struct {
 	pulumi.CustomResourceState
 

@@ -15,6 +15,228 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `kafka.Quota` resource manages Kafka quotas, which are used to limit resource usage and prevent any single client from monopolizing broker resources. Quotas can be applied to clients, users, or IP addresses to control bandwidth and request rates.
+ * 
+ * ## Example Usage
+ * 
+ * ### Client ID Quota
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Quota;
+ * import com.pulumi.kafka.QuotaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Limit a specific client's bandwidth
+ *         var mobileApp = new Quota("mobileApp", QuotaArgs.builder()
+ *             .entityName("mobile-app-v1")
+ *             .entityType("client-id")
+ *             .config(Map.ofEntries(
+ *                 Map.entry("consumer_byte_rate", "5000000"),
+ *                 Map.entry("producer_byte_rate", "2500000"),
+ *                 Map.entry("request_percentage", "200")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### User Quota
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Quota;
+ * import com.pulumi.kafka.QuotaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Set quotas for a specific user
+ *         var serviceAccount = new Quota("serviceAccount", QuotaArgs.builder()
+ *             .entityName("payment-service")
+ *             .entityType("user")
+ *             .config(Map.ofEntries(
+ *                 Map.entry("consumer_byte_rate", "10000000"),
+ *                 Map.entry("producer_byte_rate", "10000000"),
+ *                 Map.entry("request_percentage", "400")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Default User Quota
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Quota;
+ * import com.pulumi.kafka.QuotaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Set default quotas for all users (when entity_name is omitted)
+ *         var defaultUser = new Quota("defaultUser", QuotaArgs.builder()
+ *             .entityType("user")
+ *             .config(Map.ofEntries(
+ *                 Map.entry("consumer_byte_rate", "2000000"),
+ *                 Map.entry("producer_byte_rate", "1000000"),
+ *                 Map.entry("request_percentage", "100")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### IP Address Quota
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Quota;
+ * import com.pulumi.kafka.QuotaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Rate limit connections from a specific IP
+ *         var externalIp = new Quota("externalIp", QuotaArgs.builder()
+ *             .entityName("203.0.113.0")
+ *             .entityType("ip")
+ *             .config(Map.of("connection_creation_rate", "10"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Quota Configuration Options
+ * 
+ * ### Bandwidth Quotas
+ * - `producer_byte_rate` - The maximum bytes per second that can be produced by the entity
+ * - `consumer_byte_rate` - The maximum bytes per second that can be consumed by the entity
+ * 
+ * ### Request Rate Quotas
+ * - `request_percentage` - The percentage of CPU time on each broker that the entity can use for requests. Values &gt; 100% indicate multiple CPUs (e.g., 200% = 2 CPUs)
+ * 
+ * ### Connection Quotas (IP-based only)
+ * - `connection_creation_rate` - The maximum rate of new connections per second from the IP address
+ * 
+ * ## Quota Precedence
+ * 
+ * When multiple quotas apply to a request, Kafka uses the most specific quota:
+ * 
+ * 1. `/config/users/&lt;user&gt;/clients/&lt;client-id&gt;` (most specific)
+ * 2. `/config/users/&lt;user&gt;/clients/&lt;default&gt;`
+ * 3. `/config/users/&lt;user&gt;`
+ * 4. `/config/users/&lt;default&gt;/clients/&lt;client-id&gt;`
+ * 5. `/config/users/&lt;default&gt;/clients/&lt;default&gt;`
+ * 6. `/config/users/&lt;default&gt;` (least specific)
+ * 
+ * ## Best Practices
+ * 
+ * 1. **Start with Conservative Defaults**: Set reasonable default quotas for all users/clients and then create specific quotas for services that need higher limits.
+ * 
+ * 2. **Monitor Quota Usage**: Use Kafka metrics to monitor quota utilization and adjust as needed. Look for throttling metrics to identify when quotas are being hit.
+ * 
+ * 3. **Use Request Percentage Carefully**: The `request_percentage` quota affects CPU usage. Values over 100% mean the client can use more than one CPU core.
+ * 
+ * 4. **Plan for Growth**: Set quotas with some headroom to accommodate traffic growth, but not so high that a misbehaving client can impact the cluster.
+ * 
+ * 5. **Different Quotas for Different Environments**: Use stricter quotas in development/staging environments compared to production.
+ * 
+ * &gt; **Note:** Quotas are applied immediately but may take a few seconds to propagate across all brokers.
+ * 
+ * ## Import
+ * 
+ * Kafka quotas can be imported using the entity type and name:
+ * 
+ * For named entities
+ * 
+ * ```sh
+ * $ pulumi import kafka:index/quota:Quota example client-id:my-client
+ * ```
+ * 
+ * For default quotas (no entity name)
+ * 
+ * ```sh
+ * $ pulumi import kafka:index/quota:Quota default_user user:
+ * ```
+ * 
+ */
 @ResourceType(type="kafka:index/quota:Quota")
 public class Quota extends com.pulumi.resources.CustomResource {
     /**
