@@ -5,7 +5,7 @@ go 1.23.7
 toolchain go1.23.8
 
 require (
-	github.com/Mongey/terraform-provider-kafka v0.10.4
+	github.com/Mongey/terraform-provider-kafka v0.12.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.111.0
 )
 
