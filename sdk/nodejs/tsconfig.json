@@ -17,10 +17,14 @@
         "config/index.ts",
         "config/vars.ts",
         "getTopic.ts",
+        "getTopics.ts",
         "index.ts",
         "provider.ts",
         "quota.ts",
         "topic.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
         "userScramCredential.ts",
         "utilities.ts"
     ]

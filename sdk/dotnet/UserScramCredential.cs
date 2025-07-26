@@ -9,14 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Kafka
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// SCRAM credentials can be imported using the format `username|scram_mechanism|password`:
+    /// 
+    /// ```sh
+    /// $ pulumi import kafka:index/userScramCredential:UserScramCredential example 'my-user|SCRAM-SHA-256|my-password'
+    /// ```
+    /// </summary>
     [KafkaResourceType("kafka:index/userScramCredential:UserScramCredential")]
     public partial class UserScramCredential : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The password of the credential
+        /// The password of the credential (deprecated, use password_wo instead)
         /// </summary>
         [Output("password")]
-        public Output<string> Password { get; private set; } = null!;
+        public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// Version identifier for the write-only password to track changes
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<string?> PasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The number of SCRAM iterations used when generating the credential
@@ -86,11 +101,11 @@ namespace Pulumi.Kafka
 
     public sealed class UserScramCredentialArgs : global::Pulumi.ResourceArgs
     {
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the credential
+        /// The password of the credential (deprecated, use password_wo instead)
         /// </summary>
         public Input<string>? Password
         {
@@ -101,6 +116,12 @@ namespace Pulumi.Kafka
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Version identifier for the write-only password to track changes
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<string>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The number of SCRAM iterations used when generating the credential
@@ -132,7 +153,7 @@ namespace Pulumi.Kafka
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the credential
+        /// The password of the credential (deprecated, use password_wo instead)
         /// </summary>
         public Input<string>? Password
         {
@@ -143,6 +164,12 @@ namespace Pulumi.Kafka
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// Version identifier for the write-only password to track changes
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<string>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The number of SCRAM iterations used when generating the credential

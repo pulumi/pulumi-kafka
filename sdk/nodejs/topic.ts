@@ -4,6 +4,123 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `kafka.Topic` resource manages Apache Kafka topics, including their partition count, replication factor, and various configuration parameters. This resource supports non-destructive partition count increases.
+ *
+ * ## Example Usage
+ *
+ * ### Basic Topic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const example = new kafka.Topic("example", {
+ *     name: "example-topic",
+ *     replicationFactor: 3,
+ *     partitions: 10,
+ * });
+ * ```
+ *
+ * ### Topic with Common Configurations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const logs = new kafka.Topic("logs", {
+ *     name: "application-logs",
+ *     replicationFactor: 3,
+ *     partitions: 50,
+ *     config: {
+ *         "retention.ms": "604800000",
+ *         "segment.ms": "86400000",
+ *         "cleanup.policy": "delete",
+ *         "compression.type": "gzip",
+ *     },
+ * });
+ * ```
+ *
+ * ### Compacted Topic for Event Sourcing
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const events = new kafka.Topic("events", {
+ *     name: "user-events",
+ *     replicationFactor: 3,
+ *     partitions: 100,
+ *     config: {
+ *         "cleanup.policy": "compact",
+ *         "retention.ms": "-1",
+ *         "min.compaction.lag.ms": "3600000",
+ *         "delete.retention.ms": "86400000",
+ *         "compression.type": "lz4",
+ *         "segment.bytes": "1073741824",
+ *     },
+ * });
+ * ```
+ *
+ * ### High-Throughput Topic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const metrics = new kafka.Topic("metrics", {
+ *     name: "system-metrics",
+ *     replicationFactor: 2,
+ *     partitions: 200,
+ *     config: {
+ *         "retention.ms": "86400000",
+ *         "segment.ms": "3600000",
+ *         "compression.type": "lz4",
+ *         "max.message.bytes": "1048576",
+ *         "min.insync.replicas": "2",
+ *         "unclean.leader.election.enable": "false",
+ *     },
+ * });
+ * ```
+ *
+ * ## Configuration Parameters
+ *
+ * The `config` map supports all Kafka topic-level configurations. Common configurations include:
+ *
+ * ### Retention Settings
+ * - `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)
+ * - `retention.bytes` - Maximum size of the log before deleting old segments. Default: -1 (no limit)
+ * - `segment.ms` - Time after which a log segment should be rotated. Default: 604800000 (7 days)
+ * - `segment.bytes` - Maximum size of a single log segment file. Default: 1073741824 (1GB)
+ *
+ * ### Cleanup and Compaction
+ * - `cleanup.policy` - Either "delete" or "compact" or both "compact,delete". Default: "delete"
+ * - `min.compaction.lag.ms` - Minimum time a message will remain uncompacted. Default: 0
+ * - `delete.retention.ms` - How long to retain delete tombstone markers for compacted topics. Default: 86400000 (1 day)
+ *
+ * ### Compression
+ * - `compression.type` - Compression codec: "uncompressed", "zstd", "lz4", "snappy", "gzip", "producer". Default: "producer"
+ *
+ * ### Replication and Durability
+ * - `min.insync.replicas` - Minimum number of replicas that must acknowledge a write. Default: 1
+ * - `unclean.leader.election.enable` - Whether to allow replicas not in ISR to be elected leader. Default: false
+ *
+ * ### Message Size
+ * - `max.message.bytes` - Maximum size of a message. Default: 1048588 (~1MB)
+ * - `message.timestamp.type` - Whether to use CreateTime or LogAppendTime. Default: "CreateTime"
+ *
+ * For a complete list of configurations, refer to the [Kafka documentation](https://kafka.apache.org/documentation/#topicconfigs).
+ *
+ * > **Note:** Increasing the partition count is supported without recreating the topic. However, decreasing partitions requires topic recreation.
+ *
+ * ## Import
+ *
+ * Existing Kafka topics can be imported using the topic name:
+ *
+ * ```sh
+ * $ pulumi import kafka:index/topic:Topic example example-topic
+ * ```
+ */
 export class Topic extends pulumi.CustomResource {
     /**
      * Get an existing Topic resource's state with the given name, ID, and optional extra

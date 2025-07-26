@@ -12,6 +12,8 @@ import com.pulumi.kafka.Utilities;
 import com.pulumi.kafka.inputs.GetTopicArgs;
 import com.pulumi.kafka.inputs.GetTopicPlainArgs;
 import com.pulumi.kafka.outputs.GetTopicResult;
+import com.pulumi.kafka.outputs.GetTopicsResult;
+import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class KafkaFunctions {
@@ -29,5 +31,26 @@ public final class KafkaFunctions {
     }
     public static CompletableFuture<GetTopicResult> getTopicPlain(GetTopicPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("kafka:index:getTopic", TypeShape.of(GetTopicResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetTopicsResult> getTopics() {
+        return getTopics(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetTopicsResult> getTopicsPlain() {
+        return getTopicsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetTopicsResult> getTopics(InvokeArgs args) {
+        return getTopics(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetTopicsResult> getTopicsPlain(InvokeArgs args) {
+        return getTopicsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetTopicsResult> getTopics(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("kafka:index:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetTopicsResult> getTopics(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("kafka:index:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetTopicsResult> getTopicsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("kafka:index:getTopics", TypeShape.of(GetTopicsResult.class), args, Utilities.withVersion(options));
     }
 }

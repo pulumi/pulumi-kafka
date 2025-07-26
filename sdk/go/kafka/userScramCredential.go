@@ -12,11 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// SCRAM credentials can be imported using the format `username|scram_mechanism|password`:
+//
+// ```sh
+// $ pulumi import kafka:index/userScramCredential:UserScramCredential example 'my-user|SCRAM-SHA-256|my-password'
+// ```
 type UserScramCredential struct {
 	pulumi.CustomResourceState
 
-	// The password of the credential
-	Password pulumi.StringOutput `pulumi:"password"`
+	// The password of the credential (deprecated, use passwordWo instead)
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// Version identifier for the write-only password to track changes
+	PasswordWoVersion pulumi.StringPtrOutput `pulumi:"passwordWoVersion"`
 	// The number of SCRAM iterations used when generating the credential
 	ScramIterations pulumi.IntPtrOutput `pulumi:"scramIterations"`
 	// The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
@@ -32,9 +41,6 @@ func NewUserScramCredential(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Password == nil {
-		return nil, errors.New("invalid value for required argument 'Password'")
-	}
 	if args.ScramMechanism == nil {
 		return nil, errors.New("invalid value for required argument 'ScramMechanism'")
 	}
@@ -42,7 +48,7 @@ func NewUserScramCredential(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	if args.Password != nil {
-		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
@@ -71,8 +77,10 @@ func GetUserScramCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserScramCredential resources.
 type userScramCredentialState struct {
-	// The password of the credential
+	// The password of the credential (deprecated, use passwordWo instead)
 	Password *string `pulumi:"password"`
+	// Version identifier for the write-only password to track changes
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The number of SCRAM iterations used when generating the credential
 	ScramIterations *int `pulumi:"scramIterations"`
 	// The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
@@ -82,8 +90,10 @@ type userScramCredentialState struct {
 }
 
 type UserScramCredentialState struct {
-	// The password of the credential
+	// The password of the credential (deprecated, use passwordWo instead)
 	Password pulumi.StringPtrInput
+	// Version identifier for the write-only password to track changes
+	PasswordWoVersion pulumi.StringPtrInput
 	// The number of SCRAM iterations used when generating the credential
 	ScramIterations pulumi.IntPtrInput
 	// The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
@@ -97,8 +107,10 @@ func (UserScramCredentialState) ElementType() reflect.Type {
 }
 
 type userScramCredentialArgs struct {
-	// The password of the credential
-	Password string `pulumi:"password"`
+	// The password of the credential (deprecated, use passwordWo instead)
+	Password *string `pulumi:"password"`
+	// Version identifier for the write-only password to track changes
+	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The number of SCRAM iterations used when generating the credential
 	ScramIterations *int `pulumi:"scramIterations"`
 	// The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
@@ -109,8 +121,10 @@ type userScramCredentialArgs struct {
 
 // The set of arguments for constructing a UserScramCredential resource.
 type UserScramCredentialArgs struct {
-	// The password of the credential
-	Password pulumi.StringInput
+	// The password of the credential (deprecated, use passwordWo instead)
+	Password pulumi.StringPtrInput
+	// Version identifier for the write-only password to track changes
+	PasswordWoVersion pulumi.StringPtrInput
 	// The number of SCRAM iterations used when generating the credential
 	ScramIterations pulumi.IntPtrInput
 	// The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
@@ -206,9 +220,14 @@ func (o UserScramCredentialOutput) ToUserScramCredentialOutputWithContext(ctx co
 	return o
 }
 
-// The password of the credential
-func (o UserScramCredentialOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v *UserScramCredential) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+// The password of the credential (deprecated, use passwordWo instead)
+func (o UserScramCredentialOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserScramCredential) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Version identifier for the write-only password to track changes
+func (o UserScramCredentialOutput) PasswordWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserScramCredential) pulumi.StringPtrOutput { return v.PasswordWoVersion }).(pulumi.StringPtrOutput)
 }
 
 // The number of SCRAM iterations used when generating the credential

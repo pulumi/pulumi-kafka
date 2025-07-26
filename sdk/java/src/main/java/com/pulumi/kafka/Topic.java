@@ -16,6 +16,220 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The `kafka.Topic` resource manages Apache Kafka topics, including their partition count, replication factor, and various configuration parameters. This resource supports non-destructive partition count increases.
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Topic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Topic;
+ * import com.pulumi.kafka.TopicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .replicationFactor(3)
+ *             .partitions(10)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Topic with Common Configurations
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Topic;
+ * import com.pulumi.kafka.TopicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var logs = new Topic("logs", TopicArgs.builder()
+ *             .name("application-logs")
+ *             .replicationFactor(3)
+ *             .partitions(50)
+ *             .config(Map.ofEntries(
+ *                 Map.entry("retention.ms", "604800000"),
+ *                 Map.entry("segment.ms", "86400000"),
+ *                 Map.entry("cleanup.policy", "delete"),
+ *                 Map.entry("compression.type", "gzip")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Compacted Topic for Event Sourcing
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Topic;
+ * import com.pulumi.kafka.TopicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var events = new Topic("events", TopicArgs.builder()
+ *             .name("user-events")
+ *             .replicationFactor(3)
+ *             .partitions(100)
+ *             .config(Map.ofEntries(
+ *                 Map.entry("cleanup.policy", "compact"),
+ *                 Map.entry("retention.ms", "-1"),
+ *                 Map.entry("min.compaction.lag.ms", "3600000"),
+ *                 Map.entry("delete.retention.ms", "86400000"),
+ *                 Map.entry("compression.type", "lz4"),
+ *                 Map.entry("segment.bytes", "1073741824")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### High-Throughput Topic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Topic;
+ * import com.pulumi.kafka.TopicArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var metrics = new Topic("metrics", TopicArgs.builder()
+ *             .name("system-metrics")
+ *             .replicationFactor(2)
+ *             .partitions(200)
+ *             .config(Map.ofEntries(
+ *                 Map.entry("retention.ms", "86400000"),
+ *                 Map.entry("segment.ms", "3600000"),
+ *                 Map.entry("compression.type", "lz4"),
+ *                 Map.entry("max.message.bytes", "1048576"),
+ *                 Map.entry("min.insync.replicas", "2"),
+ *                 Map.entry("unclean.leader.election.enable", "false")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Configuration Parameters
+ * 
+ * The `config` map supports all Kafka topic-level configurations. Common configurations include:
+ * 
+ * ### Retention Settings
+ * - `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)
+ * - `retention.bytes` - Maximum size of the log before deleting old segments. Default: -1 (no limit)
+ * - `segment.ms` - Time after which a log segment should be rotated. Default: 604800000 (7 days)
+ * - `segment.bytes` - Maximum size of a single log segment file. Default: 1073741824 (1GB)
+ * 
+ * ### Cleanup and Compaction
+ * - `cleanup.policy` - Either &#34;delete&#34; or &#34;compact&#34; or both &#34;compact,delete&#34;. Default: &#34;delete&#34;
+ * - `min.compaction.lag.ms` - Minimum time a message will remain uncompacted. Default: 0
+ * - `delete.retention.ms` - How long to retain delete tombstone markers for compacted topics. Default: 86400000 (1 day)
+ * 
+ * ### Compression
+ * - `compression.type` - Compression codec: &#34;uncompressed&#34;, &#34;zstd&#34;, &#34;lz4&#34;, &#34;snappy&#34;, &#34;gzip&#34;, &#34;producer&#34;. Default: &#34;producer&#34;
+ * 
+ * ### Replication and Durability
+ * - `min.insync.replicas` - Minimum number of replicas that must acknowledge a write. Default: 1
+ * - `unclean.leader.election.enable` - Whether to allow replicas not in ISR to be elected leader. Default: false
+ * 
+ * ### Message Size
+ * - `max.message.bytes` - Maximum size of a message. Default: 1048588 (~1MB)
+ * - `message.timestamp.type` - Whether to use CreateTime or LogAppendTime. Default: &#34;CreateTime&#34;
+ * 
+ * For a complete list of configurations, refer to the [Kafka documentation](https://kafka.apache.org/documentation/#topicconfigs).
+ * 
+ * &gt; **Note:** Increasing the partition count is supported without recreating the topic. However, decreasing partitions requires topic recreation.
+ * 
+ * ## Import
+ * 
+ * Existing Kafka topics can be imported using the topic name:
+ * 
+ * ```sh
+ * $ pulumi import kafka:index/topic:Topic example example-topic
+ * ```
+ * 
+ */
 @ResourceType(type="kafka:index/topic:Topic")
 public class Topic extends com.pulumi.resources.CustomResource {
     /**

@@ -8,10 +8,12 @@ import typing
 # Export this package's modules as members:
 from .acl import *
 from .get_topic import *
+from .get_topics import *
 from .provider import *
 from .quota import *
 from .topic import *
 from .user_scram_credential import *
+from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:

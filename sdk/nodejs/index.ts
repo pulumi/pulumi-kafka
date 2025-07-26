@@ -15,6 +15,11 @@ export const getTopic: typeof import("./getTopic").getTopic = null as any;
 export const getTopicOutput: typeof import("./getTopic").getTopicOutput = null as any;
 utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
 
+export { GetTopicsResult } from "./getTopics";
+export const getTopics: typeof import("./getTopics").getTopics = null as any;
+export const getTopicsOutput: typeof import("./getTopics").getTopicsOutput = null as any;
+utilities.lazyLoad(exports, ["getTopics","getTopicsOutput"], () => require("./getTopics"));
+
 export * from "./provider";
 import { Provider } from "./provider";
 
@@ -36,9 +41,11 @@ utilities.lazyLoad(exports, ["UserScramCredential"], () => require("./userScramC
 
 // Export sub-modules:
 import * as config from "./config";
+import * as types from "./types";
 
 export {
     config,
+    types,
 };
 
 const _module = {

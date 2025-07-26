@@ -19,34 +19,27 @@ __all__ = ['UserScramCredentialArgs', 'UserScramCredential']
 @pulumi.input_type
 class UserScramCredentialArgs:
     def __init__(__self__, *,
-                 password: pulumi.Input[_builtins.str],
                  scram_mechanism: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  scram_iterations: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a UserScramCredential resource.
-        :param pulumi.Input[_builtins.str] password: The password of the credential
         :param pulumi.Input[_builtins.str] scram_mechanism: The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
         :param pulumi.Input[_builtins.str] username: The name of the credential
+        :param pulumi.Input[_builtins.str] password: The password of the credential (deprecated, use password_wo instead)
+        :param pulumi.Input[_builtins.str] password_wo_version: Version identifier for the write-only password to track changes
         :param pulumi.Input[_builtins.int] scram_iterations: The number of SCRAM iterations used when generating the credential
         """
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "scram_mechanism", scram_mechanism)
         pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if scram_iterations is not None:
             pulumi.set(__self__, "scram_iterations", scram_iterations)
-
-    @_builtins.property
-    @pulumi.getter
-    def password(self) -> pulumi.Input[_builtins.str]:
-        """
-        The password of the credential
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="scramMechanism")
@@ -73,6 +66,30 @@ class UserScramCredentialArgs:
         pulumi.set(self, "username", value)
 
     @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password of the credential (deprecated, use password_wo instead)
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Version identifier for the write-only password to track changes
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="scramIterations")
     def scram_iterations(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -89,18 +106,22 @@ class UserScramCredentialArgs:
 class _UserScramCredentialState:
     def __init__(__self__, *,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  scram_iterations: Optional[pulumi.Input[_builtins.int]] = None,
                  scram_mechanism: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserScramCredential resources.
-        :param pulumi.Input[_builtins.str] password: The password of the credential
+        :param pulumi.Input[_builtins.str] password: The password of the credential (deprecated, use password_wo instead)
+        :param pulumi.Input[_builtins.str] password_wo_version: Version identifier for the write-only password to track changes
         :param pulumi.Input[_builtins.int] scram_iterations: The number of SCRAM iterations used when generating the credential
         :param pulumi.Input[_builtins.str] scram_mechanism: The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
         :param pulumi.Input[_builtins.str] username: The name of the credential
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if scram_iterations is not None:
             pulumi.set(__self__, "scram_iterations", scram_iterations)
         if scram_mechanism is not None:
@@ -112,13 +133,25 @@ class _UserScramCredentialState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the credential
+        The password of the credential (deprecated, use password_wo instead)
         """
         return pulumi.get(self, "password")
 
     @password.setter
     def password(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Version identifier for the write-only password to track changes
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="scramIterations")
@@ -164,15 +197,24 @@ class UserScramCredential(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  scram_iterations: Optional[pulumi.Input[_builtins.int]] = None,
                  scram_mechanism: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a UserScramCredential resource with the given unique name, props, and options.
+        ## Import
+
+        SCRAM credentials can be imported using the format `username|scram_mechanism|password`:
+
+        ```sh
+        $ pulumi import kafka:index/userScramCredential:UserScramCredential example 'my-user|SCRAM-SHA-256|my-password'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the credential
+        :param pulumi.Input[_builtins.str] password: The password of the credential (deprecated, use password_wo instead)
+        :param pulumi.Input[_builtins.str] password_wo_version: Version identifier for the write-only password to track changes
         :param pulumi.Input[_builtins.int] scram_iterations: The number of SCRAM iterations used when generating the credential
         :param pulumi.Input[_builtins.str] scram_mechanism: The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
         :param pulumi.Input[_builtins.str] username: The name of the credential
@@ -184,7 +226,14 @@ class UserScramCredential(pulumi.CustomResource):
                  args: UserScramCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a UserScramCredential resource with the given unique name, props, and options.
+        ## Import
+
+        SCRAM credentials can be imported using the format `username|scram_mechanism|password`:
+
+        ```sh
+        $ pulumi import kafka:index/userScramCredential:UserScramCredential example 'my-user|SCRAM-SHA-256|my-password'
+        ```
+
         :param str resource_name: The name of the resource.
         :param UserScramCredentialArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -201,6 +250,7 @@ class UserScramCredential(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
                  scram_iterations: Optional[pulumi.Input[_builtins.int]] = None,
                  scram_mechanism: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
@@ -213,9 +263,8 @@ class UserScramCredential(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UserScramCredentialArgs.__new__(UserScramCredentialArgs)
 
-            if password is None and not opts.urn:
-                raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["scram_iterations"] = scram_iterations
             if scram_mechanism is None and not opts.urn:
                 raise TypeError("Missing required property 'scram_mechanism'")
@@ -236,6 +285,7 @@ class UserScramCredential(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
+            password_wo_version: Optional[pulumi.Input[_builtins.str]] = None,
             scram_iterations: Optional[pulumi.Input[_builtins.int]] = None,
             scram_mechanism: Optional[pulumi.Input[_builtins.str]] = None,
             username: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserScramCredential':
@@ -246,7 +296,8 @@ class UserScramCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the credential
+        :param pulumi.Input[_builtins.str] password: The password of the credential (deprecated, use password_wo instead)
+        :param pulumi.Input[_builtins.str] password_wo_version: Version identifier for the write-only password to track changes
         :param pulumi.Input[_builtins.int] scram_iterations: The number of SCRAM iterations used when generating the credential
         :param pulumi.Input[_builtins.str] scram_mechanism: The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
         :param pulumi.Input[_builtins.str] username: The name of the credential
@@ -256,6 +307,7 @@ class UserScramCredential(pulumi.CustomResource):
         __props__ = _UserScramCredentialState.__new__(_UserScramCredentialState)
 
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["scram_iterations"] = scram_iterations
         __props__.__dict__["scram_mechanism"] = scram_mechanism
         __props__.__dict__["username"] = username
@@ -263,11 +315,19 @@ class UserScramCredential(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> pulumi.Output[_builtins.str]:
+    def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The password of the credential
+        The password of the credential (deprecated, use password_wo instead)
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Version identifier for the write-only password to track changes
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="scramIterations")

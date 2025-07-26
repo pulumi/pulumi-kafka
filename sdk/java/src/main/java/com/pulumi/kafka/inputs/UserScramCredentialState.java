@@ -17,18 +17,33 @@ public final class UserScramCredentialState extends com.pulumi.resources.Resourc
     public static final UserScramCredentialState Empty = new UserScramCredentialState();
 
     /**
-     * The password of the credential
+     * The password of the credential (deprecated, use password_wo instead)
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the credential
+     * @return The password of the credential (deprecated, use password_wo instead)
      * 
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * Version identifier for the write-only password to track changes
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<String> passwordWoVersion;
+
+    /**
+     * @return Version identifier for the write-only password to track changes
+     * 
+     */
+    public Optional<Output<String>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
 
     /**
@@ -80,6 +95,7 @@ public final class UserScramCredentialState extends com.pulumi.resources.Resourc
 
     private UserScramCredentialState(UserScramCredentialState $) {
         this.password = $.password;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.scramIterations = $.scramIterations;
         this.scramMechanism = $.scramMechanism;
         this.username = $.username;
@@ -104,7 +120,7 @@ public final class UserScramCredentialState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password The password of the credential
+         * @param password The password of the credential (deprecated, use password_wo instead)
          * 
          * @return builder
          * 
@@ -115,13 +131,34 @@ public final class UserScramCredentialState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password The password of the credential
+         * @param password The password of the credential (deprecated, use password_wo instead)
          * 
          * @return builder
          * 
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWoVersion Version identifier for the write-only password to track changes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<String> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Version identifier for the write-only password to track changes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(String passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**

@@ -170,7 +170,118 @@ class Topic(pulumi.CustomResource):
                  replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Create a Topic resource with the given unique name, props, and options.
+        The `Topic` resource manages Apache Kafka topics, including their partition count, replication factor, and various configuration parameters. This resource supports non-destructive partition count increases.
+
+        ## Example Usage
+
+        ### Basic Topic
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        example = kafka.Topic("example",
+            name="example-topic",
+            replication_factor=3,
+            partitions=10)
+        ```
+
+        ### Topic with Common Configurations
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        logs = kafka.Topic("logs",
+            name="application-logs",
+            replication_factor=3,
+            partitions=50,
+            config={
+                "retention.ms": "604800000",
+                "segment.ms": "86400000",
+                "cleanup.policy": "delete",
+                "compression.type": "gzip",
+            })
+        ```
+
+        ### Compacted Topic for Event Sourcing
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        events = kafka.Topic("events",
+            name="user-events",
+            replication_factor=3,
+            partitions=100,
+            config={
+                "cleanup.policy": "compact",
+                "retention.ms": "-1",
+                "min.compaction.lag.ms": "3600000",
+                "delete.retention.ms": "86400000",
+                "compression.type": "lz4",
+                "segment.bytes": "1073741824",
+            })
+        ```
+
+        ### High-Throughput Topic
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        metrics = kafka.Topic("metrics",
+            name="system-metrics",
+            replication_factor=2,
+            partitions=200,
+            config={
+                "retention.ms": "86400000",
+                "segment.ms": "3600000",
+                "compression.type": "lz4",
+                "max.message.bytes": "1048576",
+                "min.insync.replicas": "2",
+                "unclean.leader.election.enable": "false",
+            })
+        ```
+
+        ## Configuration Parameters
+
+        The `config` map supports all Kafka topic-level configurations. Common configurations include:
+
+        ### Retention Settings
+        - `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)
+        - `retention.bytes` - Maximum size of the log before deleting old segments. Default: -1 (no limit)
+        - `segment.ms` - Time after which a log segment should be rotated. Default: 604800000 (7 days)
+        - `segment.bytes` - Maximum size of a single log segment file. Default: 1073741824 (1GB)
+
+        ### Cleanup and Compaction
+        - `cleanup.policy` - Either "delete" or "compact" or both "compact,delete". Default: "delete"
+        - `min.compaction.lag.ms` - Minimum time a message will remain uncompacted. Default: 0
+        - `delete.retention.ms` - How long to retain delete tombstone markers for compacted topics. Default: 86400000 (1 day)
+
+        ### Compression
+        - `compression.type` - Compression codec: "uncompressed", "zstd", "lz4", "snappy", "gzip", "producer". Default: "producer"
+
+        ### Replication and Durability
+        - `min.insync.replicas` - Minimum number of replicas that must acknowledge a write. Default: 1
+        - `unclean.leader.election.enable` - Whether to allow replicas not in ISR to be elected leader. Default: false
+
+        ### Message Size
+        - `max.message.bytes` - Maximum size of a message. Default: 1048588 (~1MB)
+        - `message.timestamp.type` - Whether to use CreateTime or LogAppendTime. Default: "CreateTime"
+
+        For a complete list of configurations, refer to the [Kafka documentation](https://kafka.apache.org/documentation/#topicconfigs).
+
+        > **Note:** Increasing the partition count is supported without recreating the topic. However, decreasing partitions requires topic recreation.
+
+        ## Import
+
+        Existing Kafka topics can be imported using the topic name:
+
+        ```sh
+        $ pulumi import kafka:index/topic:Topic example example-topic
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v attributes.
@@ -185,7 +296,118 @@ class Topic(pulumi.CustomResource):
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Topic resource with the given unique name, props, and options.
+        The `Topic` resource manages Apache Kafka topics, including their partition count, replication factor, and various configuration parameters. This resource supports non-destructive partition count increases.
+
+        ## Example Usage
+
+        ### Basic Topic
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        example = kafka.Topic("example",
+            name="example-topic",
+            replication_factor=3,
+            partitions=10)
+        ```
+
+        ### Topic with Common Configurations
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        logs = kafka.Topic("logs",
+            name="application-logs",
+            replication_factor=3,
+            partitions=50,
+            config={
+                "retention.ms": "604800000",
+                "segment.ms": "86400000",
+                "cleanup.policy": "delete",
+                "compression.type": "gzip",
+            })
+        ```
+
+        ### Compacted Topic for Event Sourcing
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        events = kafka.Topic("events",
+            name="user-events",
+            replication_factor=3,
+            partitions=100,
+            config={
+                "cleanup.policy": "compact",
+                "retention.ms": "-1",
+                "min.compaction.lag.ms": "3600000",
+                "delete.retention.ms": "86400000",
+                "compression.type": "lz4",
+                "segment.bytes": "1073741824",
+            })
+        ```
+
+        ### High-Throughput Topic
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        metrics = kafka.Topic("metrics",
+            name="system-metrics",
+            replication_factor=2,
+            partitions=200,
+            config={
+                "retention.ms": "86400000",
+                "segment.ms": "3600000",
+                "compression.type": "lz4",
+                "max.message.bytes": "1048576",
+                "min.insync.replicas": "2",
+                "unclean.leader.election.enable": "false",
+            })
+        ```
+
+        ## Configuration Parameters
+
+        The `config` map supports all Kafka topic-level configurations. Common configurations include:
+
+        ### Retention Settings
+        - `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)
+        - `retention.bytes` - Maximum size of the log before deleting old segments. Default: -1 (no limit)
+        - `segment.ms` - Time after which a log segment should be rotated. Default: 604800000 (7 days)
+        - `segment.bytes` - Maximum size of a single log segment file. Default: 1073741824 (1GB)
+
+        ### Cleanup and Compaction
+        - `cleanup.policy` - Either "delete" or "compact" or both "compact,delete". Default: "delete"
+        - `min.compaction.lag.ms` - Minimum time a message will remain uncompacted. Default: 0
+        - `delete.retention.ms` - How long to retain delete tombstone markers for compacted topics. Default: 86400000 (1 day)
+
+        ### Compression
+        - `compression.type` - Compression codec: "uncompressed", "zstd", "lz4", "snappy", "gzip", "producer". Default: "producer"
+
+        ### Replication and Durability
+        - `min.insync.replicas` - Minimum number of replicas that must acknowledge a write. Default: 1
+        - `unclean.leader.election.enable` - Whether to allow replicas not in ISR to be elected leader. Default: false
+
+        ### Message Size
+        - `max.message.bytes` - Maximum size of a message. Default: 1048588 (~1MB)
+        - `message.timestamp.type` - Whether to use CreateTime or LogAppendTime. Default: "CreateTime"
+
+        For a complete list of configurations, refer to the [Kafka documentation](https://kafka.apache.org/documentation/#topicconfigs).
+
+        > **Note:** Increasing the partition count is supported without recreating the topic. However, decreasing partitions requires topic recreation.
+
+        ## Import
+
+        Existing Kafka topics can be imported using the topic name:
+
+        ```sh
+        $ pulumi import kafka:index/topic:Topic example example-topic
+        ```
+
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

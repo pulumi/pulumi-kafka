@@ -12,6 +12,191 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `Quota` resource manages Kafka quotas, which are used to limit resource usage and prevent any single client from monopolizing broker resources. Quotas can be applied to clients, users, or IP addresses to control bandwidth and request rates.
+//
+// ## Example Usage
+//
+// ### Client ID Quota
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Limit a specific client's bandwidth
+//			_, err := kafka.NewQuota(ctx, "mobile_app", &kafka.QuotaArgs{
+//				EntityName: pulumi.String("mobile-app-v1"),
+//				EntityType: pulumi.String("client-id"),
+//				Config: pulumi.StringMap{
+//					"consumer_byte_rate": pulumi.String("5000000"),
+//					"producer_byte_rate": pulumi.String("2500000"),
+//					"request_percentage": pulumi.String("200"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### User Quota
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Set quotas for a specific user
+//			_, err := kafka.NewQuota(ctx, "service_account", &kafka.QuotaArgs{
+//				EntityName: pulumi.String("payment-service"),
+//				EntityType: pulumi.String("user"),
+//				Config: pulumi.StringMap{
+//					"consumer_byte_rate": pulumi.String("10000000"),
+//					"producer_byte_rate": pulumi.String("10000000"),
+//					"request_percentage": pulumi.String("400"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Default User Quota
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Set default quotas for all users (when entity_name is omitted)
+//			_, err := kafka.NewQuota(ctx, "default_user", &kafka.QuotaArgs{
+//				EntityType: pulumi.String("user"),
+//				Config: pulumi.StringMap{
+//					"consumer_byte_rate": pulumi.String("2000000"),
+//					"producer_byte_rate": pulumi.String("1000000"),
+//					"request_percentage": pulumi.String("100"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### IP Address Quota
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Rate limit connections from a specific IP
+//			_, err := kafka.NewQuota(ctx, "external_ip", &kafka.QuotaArgs{
+//				EntityName: pulumi.String("203.0.113.0"),
+//				EntityType: pulumi.String("ip"),
+//				Config: pulumi.StringMap{
+//					"connection_creation_rate": pulumi.String("10"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Quota Configuration Options
+//
+// ### Bandwidth Quotas
+// - `producerByteRate` - The maximum bytes per second that can be produced by the entity
+// - `consumerByteRate` - The maximum bytes per second that can be consumed by the entity
+//
+// ### Request Rate Quotas
+// - `requestPercentage` - The percentage of CPU time on each broker that the entity can use for requests. Values > 100% indicate multiple CPUs (e.g., 200% = 2 CPUs)
+//
+// ### Connection Quotas (IP-based only)
+// - `connectionCreationRate` - The maximum rate of new connections per second from the IP address
+//
+// ## Quota Precedence
+//
+// When multiple quotas apply to a request, Kafka uses the most specific quota:
+//
+// 1. `/config/users/<user>/clients/<client-id>` (most specific)
+// 2. `/config/users/<user>/clients/<default>`
+// 3. `/config/users/<user>`
+// 4. `/config/users/<default>/clients/<client-id>`
+// 5. `/config/users/<default>/clients/<default>`
+// 6. `/config/users/<default>` (least specific)
+//
+// ## Best Practices
+//
+// 1. **Start with Conservative Defaults**: Set reasonable default quotas for all users/clients and then create specific quotas for services that need higher limits.
+//
+// 2. **Monitor Quota Usage**: Use Kafka metrics to monitor quota utilization and adjust as needed. Look for throttling metrics to identify when quotas are being hit.
+//
+// 3. **Use Request Percentage Carefully**: The `requestPercentage` quota affects CPU usage. Values over 100% mean the client can use more than one CPU core.
+//
+// 4. **Plan for Growth**: Set quotas with some headroom to accommodate traffic growth, but not so high that a misbehaving client can impact the cluster.
+//
+// 5. **Different Quotas for Different Environments**: Use stricter quotas in development/staging environments compared to production.
+//
+// > **Note:** Quotas are applied immediately but may take a few seconds to propagate across all brokers.
+//
+// ## Import
+//
+// Kafka quotas can be imported using the entity type and name:
+//
+// # For named entities
+//
+// ```sh
+// $ pulumi import kafka:index/quota:Quota example client-id:my-client
+// ```
+//
+// For default quotas (no entity name)
+//
+// ```sh
+// $ pulumi import kafka:index/quota:Quota default_user user:
+// ```
 type Quota struct {
 	pulumi.CustomResourceState
 

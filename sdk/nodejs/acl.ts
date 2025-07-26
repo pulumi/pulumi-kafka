@@ -4,6 +4,128 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `kafka.Acl` resource manages Apache Kafka Access Control Lists (ACLs). ACLs control access to Kafka resources like topics, consumer groups, and clusters by defining which principals (users or services) can perform specific operations on these resources.
+ *
+ * ## Example Usage
+ *
+ * ### Allow Producer Access to Topic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const producer = new kafka.Acl("producer", {
+ *     aclResourceName: "orders",
+ *     aclResourceType: "Topic",
+ *     aclPrincipal: "User:producer-service",
+ *     aclHost: "*",
+ *     aclOperation: "Write",
+ *     aclPermissionType: "Allow",
+ * });
+ * // Also grant describe permission for producers
+ * const producerDescribe = new kafka.Acl("producer_describe", {
+ *     aclResourceName: "orders",
+ *     aclResourceType: "Topic",
+ *     aclPrincipal: "User:producer-service",
+ *     aclHost: "*",
+ *     aclOperation: "Describe",
+ *     aclPermissionType: "Allow",
+ * });
+ * ```
+ *
+ * ### Allow Consumer Group Access
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * // Allow read access to topic
+ * const consumerRead = new kafka.Acl("consumer_read", {
+ *     aclResourceName: "orders",
+ *     aclResourceType: "Topic",
+ *     aclPrincipal: "User:consumer-service",
+ *     aclHost: "*",
+ *     aclOperation: "Read",
+ *     aclPermissionType: "Allow",
+ * });
+ * // Allow access to consumer group
+ * const consumerGroup = new kafka.Acl("consumer_group", {
+ *     aclResourceName: "order-processors",
+ *     aclResourceType: "Group",
+ *     aclPrincipal: "User:consumer-service",
+ *     aclHost: "*",
+ *     aclOperation: "Read",
+ *     aclPermissionType: "Allow",
+ * });
+ * ```
+ *
+ * ### Prefix-Based Access Control
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * // Grant access to all topics with prefix "logs-"
+ * const logsAccess = new kafka.Acl("logs_access", {
+ *     aclResourceName: "logs-",
+ *     aclResourceType: "Topic",
+ *     resourcePatternTypeFilter: "Prefixed",
+ *     aclPrincipal: "User:log-aggregator",
+ *     aclHost: "*",
+ *     aclOperation: "Read",
+ *     aclPermissionType: "Allow",
+ * });
+ * ```
+ *
+ * ### Admin User with Full Access
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * // Grant cluster-level admin access
+ * const adminCluster = new kafka.Acl("admin_cluster", {
+ *     aclResourceName: "kafka-cluster",
+ *     aclResourceType: "Cluster",
+ *     aclPrincipal: "User:admin",
+ *     aclHost: "*",
+ *     aclOperation: "All",
+ *     aclPermissionType: "Allow",
+ * });
+ * ```
+ *
+ * ## Common ACL Patterns
+ *
+ * ### Producer ACLs
+ * Producers typically need:
+ * - `Write` and `Describe` on topics
+ * - `Write` on `TransactionalID` (for transactional producers)
+ * - `IdempotentWrite` on `Cluster` (for idempotent producers)
+ *
+ * ### Consumer ACLs
+ * Consumers typically need:
+ * - `Read` on topics
+ * - `Read` on consumer groups
+ * - `Describe` on topics (optional, for metadata)
+ *
+ * ### Admin ACLs
+ * Administrators typically need:
+ * - `All` on `Cluster`
+ * - Or specific operations like `Alter`, `AlterConfigs`, `Create`, `Delete`
+ *
+ * > **Warning:** Be cautious with `Deny` ACLs as they take precedence over `Allow` ACLs. A deny rule will block access even if an allow rule exists.
+ *
+ * ## Import
+ *
+ * Kafka ACLs can be imported using a pipe-delimited string containing all ACL properties:
+ *
+ * Format: ${acl_principal}|${acl_host}|${acl_operation}|${acl_permission_type}|${resource_type}|${resource_name}|${resource_pattern_type_filter}
+ *
+ * ```sh
+ * $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
+ * ```
+ */
 export class Acl extends pulumi.CustomResource {
     /**
      * Get an existing Acl resource's state with the given name, ID, and optional extra

@@ -9,6 +9,160 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Kafka
 {
+    /// <summary>
+    /// The `kafka.Acl` resource manages Apache Kafka Access Control Lists (ACLs). ACLs control access to Kafka resources like topics, consumer groups, and clusters by defining which principals (users or services) can perform specific operations on these resources.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Allow Producer Access to Topic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producer = new Kafka.Acl("producer", new()
+    ///     {
+    ///         AclResourceName = "orders",
+    ///         AclResourceType = "Topic",
+    ///         AclPrincipal = "User:producer-service",
+    ///         AclHost = "*",
+    ///         AclOperation = "Write",
+    ///         AclPermissionType = "Allow",
+    ///     });
+    /// 
+    ///     // Also grant describe permission for producers
+    ///     var producerDescribe = new Kafka.Acl("producer_describe", new()
+    ///     {
+    ///         AclResourceName = "orders",
+    ///         AclResourceType = "Topic",
+    ///         AclPrincipal = "User:producer-service",
+    ///         AclHost = "*",
+    ///         AclOperation = "Describe",
+    ///         AclPermissionType = "Allow",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Allow Consumer Group Access
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Allow read access to topic
+    ///     var consumerRead = new Kafka.Acl("consumer_read", new()
+    ///     {
+    ///         AclResourceName = "orders",
+    ///         AclResourceType = "Topic",
+    ///         AclPrincipal = "User:consumer-service",
+    ///         AclHost = "*",
+    ///         AclOperation = "Read",
+    ///         AclPermissionType = "Allow",
+    ///     });
+    /// 
+    ///     // Allow access to consumer group
+    ///     var consumerGroup = new Kafka.Acl("consumer_group", new()
+    ///     {
+    ///         AclResourceName = "order-processors",
+    ///         AclResourceType = "Group",
+    ///         AclPrincipal = "User:consumer-service",
+    ///         AclHost = "*",
+    ///         AclOperation = "Read",
+    ///         AclPermissionType = "Allow",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Prefix-Based Access Control
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Grant access to all topics with prefix "logs-"
+    ///     var logsAccess = new Kafka.Acl("logs_access", new()
+    ///     {
+    ///         AclResourceName = "logs-",
+    ///         AclResourceType = "Topic",
+    ///         ResourcePatternTypeFilter = "Prefixed",
+    ///         AclPrincipal = "User:log-aggregator",
+    ///         AclHost = "*",
+    ///         AclOperation = "Read",
+    ///         AclPermissionType = "Allow",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Admin User with Full Access
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Grant cluster-level admin access
+    ///     var adminCluster = new Kafka.Acl("admin_cluster", new()
+    ///     {
+    ///         AclResourceName = "kafka-cluster",
+    ///         AclResourceType = "Cluster",
+    ///         AclPrincipal = "User:admin",
+    ///         AclHost = "*",
+    ///         AclOperation = "All",
+    ///         AclPermissionType = "Allow",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Common ACL Patterns
+    /// 
+    /// ### Producer ACLs
+    /// Producers typically need:
+    /// - `Write` and `Describe` on topics
+    /// - `Write` on `TransactionalID` (for transactional producers)
+    /// - `IdempotentWrite` on `Cluster` (for idempotent producers)
+    /// 
+    /// ### Consumer ACLs
+    /// Consumers typically need:
+    /// - `Read` on topics
+    /// - `Read` on consumer groups
+    /// - `Describe` on topics (optional, for metadata)
+    /// 
+    /// ### Admin ACLs
+    /// Administrators typically need:
+    /// - `All` on `Cluster`
+    /// - Or specific operations like `Alter`, `AlterConfigs`, `Create`, `Delete`
+    /// 
+    /// &gt; **Warning:** Be cautious with `Deny` ACLs as they take precedence over `Allow` ACLs. A deny rule will block access even if an allow rule exists.
+    /// 
+    /// ## Import
+    /// 
+    /// Kafka ACLs can be imported using a pipe-delimited string containing all ACL properties:
+    /// 
+    /// Format: ${acl_principal}|${acl_host}|${acl_operation}|${acl_permission_type}|${resource_type}|${resource_name}|${resource_pattern_type_filter}
+    /// 
+    /// ```sh
+    /// $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
+    /// ```
+    /// </summary>
     [KafkaResourceType("kafka:index/acl:Acl")]
     public partial class Acl : global::Pulumi.CustomResource
     {

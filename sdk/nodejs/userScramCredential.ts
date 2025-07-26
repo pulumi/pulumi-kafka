@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * SCRAM credentials can be imported using the format `username|scram_mechanism|password`:
+ *
+ * ```sh
+ * $ pulumi import kafka:index/userScramCredential:UserScramCredential example 'my-user|SCRAM-SHA-256|my-password'
+ * ```
+ */
 export class UserScramCredential extends pulumi.CustomResource {
     /**
      * Get an existing UserScramCredential resource's state with the given name, ID, and optional extra
@@ -33,9 +42,13 @@ export class UserScramCredential extends pulumi.CustomResource {
     }
 
     /**
-     * The password of the credential
+     * The password of the credential (deprecated, use passwordWo instead)
      */
-    public readonly password!: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string | undefined>;
+    /**
+     * Version identifier for the write-only password to track changes
+     */
+    public readonly passwordWoVersion!: pulumi.Output<string | undefined>;
     /**
      * The number of SCRAM iterations used when generating the credential
      */
@@ -63,14 +76,12 @@ export class UserScramCredential extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as UserScramCredentialState | undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["passwordWoVersion"] = state ? state.passwordWoVersion : undefined;
             resourceInputs["scramIterations"] = state ? state.scramIterations : undefined;
             resourceInputs["scramMechanism"] = state ? state.scramMechanism : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as UserScramCredentialArgs | undefined;
-            if ((!args || args.password === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'password'");
-            }
             if ((!args || args.scramMechanism === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scramMechanism'");
             }
@@ -78,6 +89,7 @@ export class UserScramCredential extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWoVersion"] = args ? args.passwordWoVersion : undefined;
             resourceInputs["scramIterations"] = args ? args.scramIterations : undefined;
             resourceInputs["scramMechanism"] = args ? args.scramMechanism : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
@@ -94,9 +106,13 @@ export class UserScramCredential extends pulumi.CustomResource {
  */
 export interface UserScramCredentialState {
     /**
-     * The password of the credential
+     * The password of the credential (deprecated, use passwordWo instead)
      */
     password?: pulumi.Input<string>;
+    /**
+     * Version identifier for the write-only password to track changes
+     */
+    passwordWoVersion?: pulumi.Input<string>;
     /**
      * The number of SCRAM iterations used when generating the credential
      */
@@ -116,9 +132,13 @@ export interface UserScramCredentialState {
  */
 export interface UserScramCredentialArgs {
     /**
-     * The password of the credential
+     * The password of the credential (deprecated, use passwordWo instead)
      */
-    password: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    /**
+     * Version identifier for the write-only password to track changes
+     */
+    passwordWoVersion?: pulumi.Input<string>;
     /**
      * The number of SCRAM iterations used when generating the credential
      */

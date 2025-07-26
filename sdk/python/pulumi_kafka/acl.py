@@ -217,7 +217,121 @@ class Acl(pulumi.CustomResource):
                  resource_pattern_type_filter: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a Acl resource with the given unique name, props, and options.
+        The `Acl` resource manages Apache Kafka Access Control Lists (ACLs). ACLs control access to Kafka resources like topics, consumer groups, and clusters by defining which principals (users or services) can perform specific operations on these resources.
+
+        ## Example Usage
+
+        ### Allow Producer Access to Topic
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        producer = kafka.Acl("producer",
+            acl_resource_name="orders",
+            acl_resource_type="Topic",
+            acl_principal="User:producer-service",
+            acl_host="*",
+            acl_operation="Write",
+            acl_permission_type="Allow")
+        # Also grant describe permission for producers
+        producer_describe = kafka.Acl("producer_describe",
+            acl_resource_name="orders",
+            acl_resource_type="Topic",
+            acl_principal="User:producer-service",
+            acl_host="*",
+            acl_operation="Describe",
+            acl_permission_type="Allow")
+        ```
+
+        ### Allow Consumer Group Access
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        # Allow read access to topic
+        consumer_read = kafka.Acl("consumer_read",
+            acl_resource_name="orders",
+            acl_resource_type="Topic",
+            acl_principal="User:consumer-service",
+            acl_host="*",
+            acl_operation="Read",
+            acl_permission_type="Allow")
+        # Allow access to consumer group
+        consumer_group = kafka.Acl("consumer_group",
+            acl_resource_name="order-processors",
+            acl_resource_type="Group",
+            acl_principal="User:consumer-service",
+            acl_host="*",
+            acl_operation="Read",
+            acl_permission_type="Allow")
+        ```
+
+        ### Prefix-Based Access Control
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        # Grant access to all topics with prefix "logs-"
+        logs_access = kafka.Acl("logs_access",
+            acl_resource_name="logs-",
+            acl_resource_type="Topic",
+            resource_pattern_type_filter="Prefixed",
+            acl_principal="User:log-aggregator",
+            acl_host="*",
+            acl_operation="Read",
+            acl_permission_type="Allow")
+        ```
+
+        ### Admin User with Full Access
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        # Grant cluster-level admin access
+        admin_cluster = kafka.Acl("admin_cluster",
+            acl_resource_name="kafka-cluster",
+            acl_resource_type="Cluster",
+            acl_principal="User:admin",
+            acl_host="*",
+            acl_operation="All",
+            acl_permission_type="Allow")
+        ```
+
+        ## Common ACL Patterns
+
+        ### Producer ACLs
+        Producers typically need:
+        - `Write` and `Describe` on topics
+        - `Write` on `TransactionalID` (for transactional producers)
+        - `IdempotentWrite` on `Cluster` (for idempotent producers)
+
+        ### Consumer ACLs
+        Consumers typically need:
+        - `Read` on topics
+        - `Read` on consumer groups
+        - `Describe` on topics (optional, for metadata)
+
+        ### Admin ACLs
+        Administrators typically need:
+        - `All` on `Cluster`
+        - Or specific operations like `Alter`, `AlterConfigs`, `Create`, `Delete`
+
+        > **Warning:** Be cautious with `Deny` ACLs as they take precedence over `Allow` ACLs. A deny rule will block access even if an allow rule exists.
+
+        ## Import
+
+        Kafka ACLs can be imported using a pipe-delimited string containing all ACL properties:
+
+        Format: ${acl_principal}|${acl_host}|${acl_operation}|${acl_permission_type}|${resource_type}|${resource_name}|${resource_pattern_type_filter}
+
+        ```sh
+        $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
@@ -229,7 +343,121 @@ class Acl(pulumi.CustomResource):
                  args: AclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Acl resource with the given unique name, props, and options.
+        The `Acl` resource manages Apache Kafka Access Control Lists (ACLs). ACLs control access to Kafka resources like topics, consumer groups, and clusters by defining which principals (users or services) can perform specific operations on these resources.
+
+        ## Example Usage
+
+        ### Allow Producer Access to Topic
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        producer = kafka.Acl("producer",
+            acl_resource_name="orders",
+            acl_resource_type="Topic",
+            acl_principal="User:producer-service",
+            acl_host="*",
+            acl_operation="Write",
+            acl_permission_type="Allow")
+        # Also grant describe permission for producers
+        producer_describe = kafka.Acl("producer_describe",
+            acl_resource_name="orders",
+            acl_resource_type="Topic",
+            acl_principal="User:producer-service",
+            acl_host="*",
+            acl_operation="Describe",
+            acl_permission_type="Allow")
+        ```
+
+        ### Allow Consumer Group Access
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        # Allow read access to topic
+        consumer_read = kafka.Acl("consumer_read",
+            acl_resource_name="orders",
+            acl_resource_type="Topic",
+            acl_principal="User:consumer-service",
+            acl_host="*",
+            acl_operation="Read",
+            acl_permission_type="Allow")
+        # Allow access to consumer group
+        consumer_group = kafka.Acl("consumer_group",
+            acl_resource_name="order-processors",
+            acl_resource_type="Group",
+            acl_principal="User:consumer-service",
+            acl_host="*",
+            acl_operation="Read",
+            acl_permission_type="Allow")
+        ```
+
+        ### Prefix-Based Access Control
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        # Grant access to all topics with prefix "logs-"
+        logs_access = kafka.Acl("logs_access",
+            acl_resource_name="logs-",
+            acl_resource_type="Topic",
+            resource_pattern_type_filter="Prefixed",
+            acl_principal="User:log-aggregator",
+            acl_host="*",
+            acl_operation="Read",
+            acl_permission_type="Allow")
+        ```
+
+        ### Admin User with Full Access
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        # Grant cluster-level admin access
+        admin_cluster = kafka.Acl("admin_cluster",
+            acl_resource_name="kafka-cluster",
+            acl_resource_type="Cluster",
+            acl_principal="User:admin",
+            acl_host="*",
+            acl_operation="All",
+            acl_permission_type="Allow")
+        ```
+
+        ## Common ACL Patterns
+
+        ### Producer ACLs
+        Producers typically need:
+        - `Write` and `Describe` on topics
+        - `Write` on `TransactionalID` (for transactional producers)
+        - `IdempotentWrite` on `Cluster` (for idempotent producers)
+
+        ### Consumer ACLs
+        Consumers typically need:
+        - `Read` on topics
+        - `Read` on consumer groups
+        - `Describe` on topics (optional, for metadata)
+
+        ### Admin ACLs
+        Administrators typically need:
+        - `All` on `Cluster`
+        - Or specific operations like `Alter`, `AlterConfigs`, `Create`, `Delete`
+
+        > **Warning:** Be cautious with `Deny` ACLs as they take precedence over `Allow` ACLs. A deny rule will block access even if an allow rule exists.
+
+        ## Import
+
+        Kafka ACLs can be imported using a pipe-delimited string containing all ACL properties:
+
+        Format: ${acl_principal}|${acl_host}|${acl_operation}|${acl_permission_type}|${resource_type}|${resource_name}|${resource_pattern_type_filter}
+
+        ```sh
+        $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
+        ```
+
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
