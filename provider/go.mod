@@ -1,11 +1,11 @@
 module github.com/pulumi/pulumi-kafka/provider/v3
 
-go 1.23.7
+go 1.24
 
-toolchain go1.23.8
+toolchain go1.24.5
 
 require (
-	github.com/Mongey/terraform-provider-kafka v0.12.0
+	github.com/Mongey/terraform-provider-kafka v0.12.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.111.0
 )
 
