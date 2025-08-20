@@ -939,7 +939,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:kafka"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:kafka/terraformConfig",
