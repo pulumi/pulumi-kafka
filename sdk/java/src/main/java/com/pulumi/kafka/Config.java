@@ -71,8 +71,7 @@ public final class Config {
         return Codegen.stringProp("clientKeyPassphrase").config(config).get();
     }
 /**
- * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
- * versions. Default is 2.7.0.
+ * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
  * 
  */
     public Optional<String> kafkaVersion() {

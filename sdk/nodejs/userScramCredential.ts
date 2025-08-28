@@ -44,23 +44,23 @@ export class UserScramCredential extends pulumi.CustomResource {
     /**
      * The password of the credential (deprecated, use passwordWo instead)
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Version identifier for the write-only password to track changes
      */
-    public readonly passwordWoVersion!: pulumi.Output<string | undefined>;
+    declare public readonly passwordWoVersion: pulumi.Output<string | undefined>;
     /**
      * The number of SCRAM iterations used when generating the credential
      */
-    public readonly scramIterations!: pulumi.Output<number | undefined>;
+    declare public readonly scramIterations: pulumi.Output<number | undefined>;
     /**
      * The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
      */
-    public readonly scramMechanism!: pulumi.Output<string>;
+    declare public readonly scramMechanism: pulumi.Output<string>;
     /**
      * The name of the credential
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a UserScramCredential resource with the given unique name, arguments, and options.
@@ -75,24 +75,24 @@ export class UserScramCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserScramCredentialState | undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordWoVersion"] = state ? state.passwordWoVersion : undefined;
-            resourceInputs["scramIterations"] = state ? state.scramIterations : undefined;
-            resourceInputs["scramMechanism"] = state ? state.scramMechanism : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
+            resourceInputs["scramIterations"] = state?.scramIterations;
+            resourceInputs["scramMechanism"] = state?.scramMechanism;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as UserScramCredentialArgs | undefined;
-            if ((!args || args.scramMechanism === undefined) && !opts.urn) {
+            if (args?.scramMechanism === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scramMechanism'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["passwordWoVersion"] = args ? args.passwordWoVersion : undefined;
-            resourceInputs["scramIterations"] = args ? args.scramIterations : undefined;
-            resourceInputs["scramMechanism"] = args ? args.scramMechanism : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
+            resourceInputs["scramIterations"] = args?.scramIterations;
+            resourceInputs["scramMechanism"] = args?.scramMechanism;
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

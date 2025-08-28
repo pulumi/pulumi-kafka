@@ -152,19 +152,19 @@ export class Topic extends pulumi.CustomResource {
     /**
      * A map of string k/v attributes.
      */
-    public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly config: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the topic.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Number of partitions.
      */
-    public readonly partitions!: pulumi.Output<number>;
+    declare public readonly partitions: pulumi.Output<number>;
     /**
      * Number of replicas.
      */
-    public readonly replicationFactor!: pulumi.Output<number>;
+    declare public readonly replicationFactor: pulumi.Output<number>;
 
     /**
      * Create a Topic resource with the given unique name, arguments, and options.
@@ -179,22 +179,22 @@ export class Topic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["partitions"] = state ? state.partitions : undefined;
-            resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["partitions"] = state?.partitions;
+            resourceInputs["replicationFactor"] = state?.replicationFactor;
         } else {
             const args = argsOrState as TopicArgs | undefined;
-            if ((!args || args.partitions === undefined) && !opts.urn) {
+            if (args?.partitions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'partitions'");
             }
-            if ((!args || args.replicationFactor === undefined) && !opts.urn) {
+            if (args?.replicationFactor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicationFactor'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["partitions"] = args ? args.partitions : undefined;
-            resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["partitions"] = args?.partitions;
+            resourceInputs["replicationFactor"] = args?.replicationFactor;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);

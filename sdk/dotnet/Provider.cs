@@ -61,8 +61,7 @@ namespace Pulumi.Kafka
         public Output<string?> ClientKeyPassphrase { get; private set; } = null!;
 
         /// <summary>
-        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-        /// versions. Default is 2.7.0.
+        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         /// </summary>
         [Output("kafkaVersion")]
         public Output<string?> KafkaVersion { get; private set; } = null!;
@@ -234,8 +233,7 @@ namespace Pulumi.Kafka
         public Input<string>? ClientKeyPassphrase { get; set; }
 
         /// <summary>
-        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-        /// versions. Default is 2.7.0.
+        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         /// </summary>
         [Input("kafkaVersion")]
         public Input<string>? KafkaVersion { get; set; }
