@@ -52,93 +52,93 @@
                 "items": {
                     "type": "string"
                 },
-                "description": "A list of kafka brokers\n"
+                "description": "A list of kafka brokers"
             },
             "caCert": {
                 "type": "string",
-                "description": "CA certificate file to validate the server's certificate.\n"
+                "description": "CA certificate file to validate the server's certificate."
             },
             "caCertFile": {
                 "type": "string",
-                "description": "Path to a CA certificate file to validate the server's certificate.\n",
+                "description": "Path to a CA certificate file to validate the server's certificate.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead."
             },
             "clientCert": {
                 "type": "string",
-                "description": "The client certificate.\n"
+                "description": "The client certificate."
             },
             "clientCertFile": {
                 "type": "string",
-                "description": "Path to a file containing the client certificate.\n",
+                "description": "Path to a file containing the client certificate.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead."
             },
             "clientKey": {
                 "type": "string",
-                "description": "The private key that the certificate was issued for.\n"
+                "description": "The private key that the certificate was issued for."
             },
             "clientKeyFile": {
                 "type": "string",
-                "description": "Path to a file containing the private key that the certificate was issued for.\n",
+                "description": "Path to a file containing the private key that the certificate was issued for.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_key` instead."
             },
             "clientKeyPassphrase": {
                 "type": "string",
-                "description": "The passphrase for the private key that the certificate was issued for.\n"
+                "description": "The passphrase for the private key that the certificate was issued for."
             },
             "kafkaVersion": {
                 "type": "string",
-                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
+                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0."
             },
             "saslAwsAccessKey": {
                 "type": "string",
-                "description": "The AWS access key.\n"
+                "description": "The AWS access key."
             },
             "saslAwsContainerAuthorizationTokenFile": {
                 "type": "string",
-                "description": "Path to a file containing the AWS pod identity authorization token\n"
+                "description": "Path to a file containing the AWS pod identity authorization token"
             },
             "saslAwsContainerCredentialsFullUri": {
                 "type": "string",
-                "description": "URI to retrieve AWS credentials from\n"
+                "description": "URI to retrieve AWS credentials from"
             },
             "saslAwsCredsDebug": {
                 "type": "boolean",
-                "description": "Set this to true to turn AWS credentials debug.\n"
+                "description": "Set this to true to turn AWS credentials debug."
             },
             "saslAwsExternalId": {
                 "type": "string",
-                "description": "External ID of the AWS IAM role to assume\n"
+                "description": "External ID of the AWS IAM role to assume"
             },
             "saslAwsProfile": {
                 "type": "string",
-                "description": "AWS profile name to use\n"
+                "description": "AWS profile name to use"
             },
             "saslAwsRegion": {
                 "type": "string",
-                "description": "AWS region where MSK is deployed.\n"
+                "description": "AWS region where MSK is deployed."
             },
             "saslAwsRoleArn": {
                 "type": "string",
-                "description": "Arn of an AWS IAM role to assume\n"
+                "description": "Arn of an AWS IAM role to assume"
             },
             "saslAwsSecretKey": {
                 "type": "string",
-                "description": "The AWS secret key.\n"
+                "description": "The AWS secret key."
             },
             "saslAwsSharedConfigFiles": {
                 "type": "array",
                 "items": {
                     "type": "string"
                 },
-                "description": "List of paths to AWS shared config files.\n"
+                "description": "List of paths to AWS shared config files."
             },
             "saslAwsToken": {
                 "type": "string",
-                "description": "The AWS session token. Only required if you are using temporary security credentials.\n"
+                "description": "The AWS session token. Only required if you are using temporary security credentials."
             },
             "saslMechanism": {
                 "type": "string",
-                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam\n",
+                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam",
                 "default": "plain",
                 "defaultInfo": {
                     "environment": [
@@ -151,23 +151,23 @@
                 "items": {
                     "type": "string"
                 },
-                "description": "OAuth scopes to request when using the oauthbearer mechanism\n"
+                "description": "OAuth scopes to request when using the oauthbearer mechanism"
             },
             "saslPassword": {
                 "type": "string",
-                "description": "Password for SASL authentication.\n"
+                "description": "Password for SASL authentication."
             },
             "saslTokenUrl": {
                 "type": "string",
-                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer\n"
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer"
             },
             "saslUsername": {
                 "type": "string",
-                "description": "Username for SASL authentication.\n"
+                "description": "Username for SASL authentication."
             },
             "skipTlsVerify": {
                 "type": "boolean",
-                "description": "Set this to true only if the target Kafka server is an insecure development instance.\n",
+                "description": "Set this to true only if the target Kafka server is an insecure development instance.",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -177,11 +177,11 @@
             },
             "timeout": {
                 "type": "integer",
-                "description": "Timeout in seconds\n"
+                "description": "Timeout in seconds"
             },
             "tlsEnabled": {
                 "type": "boolean",
-                "description": "Enable communication with the Kafka Cluster over TLS.\n",
+                "description": "Enable communication with the Kafka Cluster over TLS.",
                 "default": true,
                 "defaultInfo": {
                     "environment": [
@@ -239,124 +239,124 @@
                 "items": {
                     "type": "string"
                 },
-                "description": "A list of kafka brokers\n"
+                "description": "A list of kafka brokers"
             },
             "caCert": {
                 "type": "string",
-                "description": "CA certificate file to validate the server's certificate.\n"
+                "description": "CA certificate file to validate the server's certificate."
             },
             "caCertFile": {
                 "type": "string",
-                "description": "Path to a CA certificate file to validate the server's certificate.\n",
+                "description": "Path to a CA certificate file to validate the server's certificate.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead."
             },
             "clientCert": {
                 "type": "string",
-                "description": "The client certificate.\n"
+                "description": "The client certificate."
             },
             "clientCertFile": {
                 "type": "string",
-                "description": "Path to a file containing the client certificate.\n",
+                "description": "Path to a file containing the client certificate.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead."
             },
             "clientKey": {
                 "type": "string",
-                "description": "The private key that the certificate was issued for.\n"
+                "description": "The private key that the certificate was issued for."
             },
             "clientKeyFile": {
                 "type": "string",
-                "description": "Path to a file containing the private key that the certificate was issued for.\n",
+                "description": "Path to a file containing the private key that the certificate was issued for.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_key` instead."
             },
             "clientKeyPassphrase": {
                 "type": "string",
-                "description": "The passphrase for the private key that the certificate was issued for.\n"
+                "description": "The passphrase for the private key that the certificate was issued for."
             },
             "kafkaVersion": {
                 "type": "string",
-                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
+                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0."
             },
             "saslAwsAccessKey": {
                 "type": "string",
-                "description": "The AWS access key.\n"
+                "description": "The AWS access key."
             },
             "saslAwsContainerAuthorizationTokenFile": {
                 "type": "string",
-                "description": "Path to a file containing the AWS pod identity authorization token\n"
+                "description": "Path to a file containing the AWS pod identity authorization token"
             },
             "saslAwsContainerCredentialsFullUri": {
                 "type": "string",
-                "description": "URI to retrieve AWS credentials from\n"
+                "description": "URI to retrieve AWS credentials from"
             },
             "saslAwsCredsDebug": {
                 "type": "boolean",
-                "description": "Set this to true to turn AWS credentials debug.\n"
+                "description": "Set this to true to turn AWS credentials debug."
             },
             "saslAwsExternalId": {
                 "type": "string",
-                "description": "External ID of the AWS IAM role to assume\n"
+                "description": "External ID of the AWS IAM role to assume"
             },
             "saslAwsProfile": {
                 "type": "string",
-                "description": "AWS profile name to use\n"
+                "description": "AWS profile name to use"
             },
             "saslAwsRegion": {
                 "type": "string",
-                "description": "AWS region where MSK is deployed.\n"
+                "description": "AWS region where MSK is deployed."
             },
             "saslAwsRoleArn": {
                 "type": "string",
-                "description": "Arn of an AWS IAM role to assume\n"
+                "description": "Arn of an AWS IAM role to assume"
             },
             "saslAwsSecretKey": {
                 "type": "string",
-                "description": "The AWS secret key.\n"
+                "description": "The AWS secret key."
             },
             "saslAwsSharedConfigFiles": {
                 "type": "array",
                 "items": {
                     "type": "string"
                 },
-                "description": "List of paths to AWS shared config files.\n"
+                "description": "List of paths to AWS shared config files."
             },
             "saslAwsToken": {
                 "type": "string",
-                "description": "The AWS session token. Only required if you are using temporary security credentials.\n"
+                "description": "The AWS session token. Only required if you are using temporary security credentials."
             },
             "saslMechanism": {
                 "type": "string",
-                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam\n"
+                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam"
             },
             "saslOauthScopes": {
                 "type": "array",
                 "items": {
                     "type": "string"
                 },
-                "description": "OAuth scopes to request when using the oauthbearer mechanism\n"
+                "description": "OAuth scopes to request when using the oauthbearer mechanism"
             },
             "saslPassword": {
                 "type": "string",
-                "description": "Password for SASL authentication.\n"
+                "description": "Password for SASL authentication."
             },
             "saslTokenUrl": {
                 "type": "string",
-                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer\n"
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer"
             },
             "saslUsername": {
                 "type": "string",
-                "description": "Username for SASL authentication.\n"
+                "description": "Username for SASL authentication."
             },
             "skipTlsVerify": {
                 "type": "boolean",
-                "description": "Set this to true only if the target Kafka server is an insecure development instance.\n"
+                "description": "Set this to true only if the target Kafka server is an insecure development instance."
             },
             "timeout": {
                 "type": "integer",
-                "description": "Timeout in seconds\n"
+                "description": "Timeout in seconds"
             },
             "tlsEnabled": {
                 "type": "boolean",
-                "description": "Enable communication with the Kafka Cluster over TLS.\n"
+                "description": "Enable communication with the Kafka Cluster over TLS."
             }
         },
         "required": [
@@ -368,93 +368,93 @@
                 "items": {
                     "type": "string"
                 },
-                "description": "A list of kafka brokers\n"
+                "description": "A list of kafka brokers"
             },
             "caCert": {
                 "type": "string",
-                "description": "CA certificate file to validate the server's certificate.\n"
+                "description": "CA certificate file to validate the server's certificate."
             },
             "caCertFile": {
                 "type": "string",
-                "description": "Path to a CA certificate file to validate the server's certificate.\n",
+                "description": "Path to a CA certificate file to validate the server's certificate.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead."
             },
             "clientCert": {
                 "type": "string",
-                "description": "The client certificate.\n"
+                "description": "The client certificate."
             },
             "clientCertFile": {
                 "type": "string",
-                "description": "Path to a file containing the client certificate.\n",
+                "description": "Path to a file containing the client certificate.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead."
             },
             "clientKey": {
                 "type": "string",
-                "description": "The private key that the certificate was issued for.\n"
+                "description": "The private key that the certificate was issued for."
             },
             "clientKeyFile": {
                 "type": "string",
-                "description": "Path to a file containing the private key that the certificate was issued for.\n",
+                "description": "Path to a file containing the private key that the certificate was issued for.",
                 "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use `client_key` instead."
             },
             "clientKeyPassphrase": {
                 "type": "string",
-                "description": "The passphrase for the private key that the certificate was issued for.\n"
+                "description": "The passphrase for the private key that the certificate was issued for."
             },
             "kafkaVersion": {
                 "type": "string",
-                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older\nversions. Default is 2.7.0.\n"
+                "description": "The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0."
             },
             "saslAwsAccessKey": {
                 "type": "string",
-                "description": "The AWS access key.\n"
+                "description": "The AWS access key."
             },
             "saslAwsContainerAuthorizationTokenFile": {
                 "type": "string",
-                "description": "Path to a file containing the AWS pod identity authorization token\n"
+                "description": "Path to a file containing the AWS pod identity authorization token"
             },
             "saslAwsContainerCredentialsFullUri": {
                 "type": "string",
-                "description": "URI to retrieve AWS credentials from\n"
+                "description": "URI to retrieve AWS credentials from"
             },
             "saslAwsCredsDebug": {
                 "type": "boolean",
-                "description": "Set this to true to turn AWS credentials debug.\n"
+                "description": "Set this to true to turn AWS credentials debug."
             },
             "saslAwsExternalId": {
                 "type": "string",
-                "description": "External ID of the AWS IAM role to assume\n"
+                "description": "External ID of the AWS IAM role to assume"
             },
             "saslAwsProfile": {
                 "type": "string",
-                "description": "AWS profile name to use\n"
+                "description": "AWS profile name to use"
             },
             "saslAwsRegion": {
                 "type": "string",
-                "description": "AWS region where MSK is deployed.\n"
+                "description": "AWS region where MSK is deployed."
             },
             "saslAwsRoleArn": {
                 "type": "string",
-                "description": "Arn of an AWS IAM role to assume\n"
+                "description": "Arn of an AWS IAM role to assume"
             },
             "saslAwsSecretKey": {
                 "type": "string",
-                "description": "The AWS secret key.\n"
+                "description": "The AWS secret key."
             },
             "saslAwsSharedConfigFiles": {
                 "type": "array",
                 "items": {
                     "type": "string"
                 },
-                "description": "List of paths to AWS shared config files.\n"
+                "description": "List of paths to AWS shared config files."
             },
             "saslAwsToken": {
                 "type": "string",
-                "description": "The AWS session token. Only required if you are using temporary security credentials.\n"
+                "description": "The AWS session token. Only required if you are using temporary security credentials."
             },
             "saslMechanism": {
                 "type": "string",
-                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam\n",
+                "description": "SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam",
                 "default": "plain",
                 "defaultInfo": {
                     "environment": [
@@ -467,23 +467,23 @@
                 "items": {
                     "type": "string"
                 },
-                "description": "OAuth scopes to request when using the oauthbearer mechanism\n"
+                "description": "OAuth scopes to request when using the oauthbearer mechanism"
             },
             "saslPassword": {
                 "type": "string",
-                "description": "Password for SASL authentication.\n"
+                "description": "Password for SASL authentication."
             },
             "saslTokenUrl": {
                 "type": "string",
-                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer\n"
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer"
             },
             "saslUsername": {
                 "type": "string",
-                "description": "Username for SASL authentication.\n"
+                "description": "Username for SASL authentication."
             },
             "skipTlsVerify": {
                 "type": "boolean",
-                "description": "Set this to true only if the target Kafka server is an insecure development instance.\n",
+                "description": "Set this to true only if the target Kafka server is an insecure development instance.",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -493,11 +493,11 @@
             },
             "timeout": {
                 "type": "integer",
-                "description": "Timeout in seconds\n"
+                "description": "Timeout in seconds"
             },
             "tlsEnabled": {
                 "type": "boolean",
-                "description": "Enable communication with the Kafka Cluster over TLS.\n",
+                "description": "Enable communication with the Kafka Cluster over TLS.",
                 "default": true,
                 "defaultInfo": {
                     "environment": [
@@ -779,16 +779,16 @@
             "properties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the credential (deprecated, use password_wo instead)\n",
+                    "description": "The password of the credential (deprecated, use password_wo instead)",
                     "secret": true
                 },
                 "passwordWoVersion": {
                     "type": "string",
-                    "description": "Version identifier for the write-only password to track changes\n"
+                    "description": "Version identifier for the write-only password to track changes"
                 },
                 "scramIterations": {
                     "type": "integer",
-                    "description": "The number of SCRAM iterations used when generating the credential\n"
+                    "description": "The number of SCRAM iterations used when generating the credential"
                 },
                 "scramMechanism": {
                     "type": "string",
@@ -806,16 +806,16 @@
             "inputProperties": {
                 "password": {
                     "type": "string",
-                    "description": "The password of the credential (deprecated, use password_wo instead)\n",
+                    "description": "The password of the credential (deprecated, use password_wo instead)",
                     "secret": true
                 },
                 "passwordWoVersion": {
                     "type": "string",
-                    "description": "Version identifier for the write-only password to track changes\n"
+                    "description": "Version identifier for the write-only password to track changes"
                 },
                 "scramIterations": {
                     "type": "integer",
-                    "description": "The number of SCRAM iterations used when generating the credential\n"
+                    "description": "The number of SCRAM iterations used when generating the credential"
                 },
                 "scramMechanism": {
                     "type": "string",
@@ -837,16 +837,16 @@
                 "properties": {
                     "password": {
                         "type": "string",
-                        "description": "The password of the credential (deprecated, use password_wo instead)\n",
+                        "description": "The password of the credential (deprecated, use password_wo instead)",
                         "secret": true
                     },
                     "passwordWoVersion": {
                         "type": "string",
-                        "description": "Version identifier for the write-only password to track changes\n"
+                        "description": "Version identifier for the write-only password to track changes"
                     },
                     "scramIterations": {
                         "type": "integer",
-                        "description": "The number of SCRAM iterations used when generating the credential\n"
+                        "description": "The number of SCRAM iterations used when generating the credential"
                     },
                     "scramMechanism": {
                         "type": "string",
@@ -887,7 +887,7 @@
                         "type": "object"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -915,7 +915,7 @@
                 "description": "A collection of values returned by getTopics.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "lists": {
