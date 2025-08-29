@@ -79,8 +79,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def kafka_version(self) -> Optional[str]:
         """
-        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-        versions. Default is 2.7.0.
+        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         """
         return __config__.get('kafkaVersion')
 

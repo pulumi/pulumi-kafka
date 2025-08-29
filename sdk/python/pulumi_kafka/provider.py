@@ -57,8 +57,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] client_key: The private key that the certificate was issued for.
         :param pulumi.Input[_builtins.str] client_key_file: Path to a file containing the private key that the certificate was issued for.
         :param pulumi.Input[_builtins.str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
-        :param pulumi.Input[_builtins.str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-               versions. Default is 2.7.0.
+        :param pulumi.Input[_builtins.str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         :param pulumi.Input[_builtins.str] sasl_aws_access_key: The AWS access key.
         :param pulumi.Input[_builtins.str] sasl_aws_container_authorization_token_file: Path to a file containing the AWS pod identity authorization token
         :param pulumi.Input[_builtins.str] sasl_aws_container_credentials_full_uri: URI to retrieve AWS credentials from
@@ -253,8 +252,7 @@ class ProviderArgs:
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-        versions. Default is 2.7.0.
+        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -542,8 +540,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] client_key: The private key that the certificate was issued for.
         :param pulumi.Input[_builtins.str] client_key_file: Path to a file containing the private key that the certificate was issued for.
         :param pulumi.Input[_builtins.str] client_key_passphrase: The passphrase for the private key that the certificate was issued for.
-        :param pulumi.Input[_builtins.str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-               versions. Default is 2.7.0.
+        :param pulumi.Input[_builtins.str] kafka_version: The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         :param pulumi.Input[_builtins.str] sasl_aws_access_key: The AWS access key.
         :param pulumi.Input[_builtins.str] sasl_aws_container_authorization_token_file: Path to a file containing the AWS pod identity authorization token
         :param pulumi.Input[_builtins.str] sasl_aws_container_credentials_full_uri: URI to retrieve AWS credentials from
@@ -733,8 +730,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-        versions. Default is 2.7.0.
+        The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         """
         return pulumi.get(self, "kafka_version")
 

@@ -39,8 +39,7 @@ type Provider struct {
 	ClientKeyFile pulumi.StringPtrOutput `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrOutput `pulumi:"clientKeyPassphrase"`
-	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-	// versions. Default is 2.7.0.
+	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
 	KafkaVersion pulumi.StringPtrOutput `pulumi:"kafkaVersion"`
 	// The AWS access key.
 	SaslAwsAccessKey pulumi.StringPtrOutput `pulumi:"saslAwsAccessKey"`
@@ -127,8 +126,7 @@ type providerArgs struct {
 	ClientKeyFile *string `pulumi:"clientKeyFile"`
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase *string `pulumi:"clientKeyPassphrase"`
-	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-	// versions. Default is 2.7.0.
+	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
 	// The AWS access key.
 	SaslAwsAccessKey *string `pulumi:"saslAwsAccessKey"`
@@ -194,8 +192,7 @@ type ProviderArgs struct {
 	ClientKeyFile pulumi.StringPtrInput
 	// The passphrase for the private key that the certificate was issued for.
 	ClientKeyPassphrase pulumi.StringPtrInput
-	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-	// versions. Default is 2.7.0.
+	// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
 	KafkaVersion pulumi.StringPtrInput
 	// The AWS access key.
 	SaslAwsAccessKey pulumi.StringPtrInput
@@ -338,8 +335,7 @@ func (o ProviderOutput) ClientKeyPassphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientKeyPassphrase }).(pulumi.StringPtrOutput)
 }
 
-// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-// versions. Default is 2.7.0.
+// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
 func (o ProviderOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }

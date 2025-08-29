@@ -57,8 +57,7 @@ func GetClientKeyPassphrase(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:clientKeyPassphrase")
 }
 
-// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-// versions. Default is 2.7.0.
+// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
 func GetKafkaVersion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "kafka:kafkaVersion")
 }

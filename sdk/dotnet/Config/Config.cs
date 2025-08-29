@@ -114,8 +114,7 @@ namespace Pulumi.Kafka
 
         private static readonly __Value<string?> _kafkaVersion = new __Value<string?>(() => __config.Get("kafkaVersion"));
         /// <summary>
-        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-        /// versions. Default is 2.7.0.
+        /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         /// </summary>
         public static string? KafkaVersion
         {

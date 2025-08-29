@@ -56,8 +56,7 @@ The passphrase for the private key that the certificate was issued for.
 
 kafkaVersion: Optional[str]
 """
-The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-versions. Default is 2.7.0.
+The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
 """
 
 saslAwsAccessKey: Optional[str]
