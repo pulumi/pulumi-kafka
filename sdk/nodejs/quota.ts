@@ -162,15 +162,15 @@ export class Quota extends pulumi.CustomResource {
     /**
      * A map of string k/v properties.
      */
-    public readonly config!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly config: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
      */
-    public readonly entityName!: pulumi.Output<string | undefined>;
+    declare public readonly entityName: pulumi.Output<string | undefined>;
     /**
      * The type of the entity (client-id, user, ip)
      */
-    public readonly entityType!: pulumi.Output<string>;
+    declare public readonly entityType: pulumi.Output<string>;
 
     /**
      * Create a Quota resource with the given unique name, arguments, and options.
@@ -185,17 +185,17 @@ export class Quota extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["entityName"] = state ? state.entityName : undefined;
-            resourceInputs["entityType"] = state ? state.entityType : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["entityName"] = state?.entityName;
+            resourceInputs["entityType"] = state?.entityType;
         } else {
             const args = argsOrState as QuotaArgs | undefined;
-            if ((!args || args.entityType === undefined) && !opts.urn) {
+            if (args?.entityType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entityType'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["entityName"] = args ? args.entityName : undefined;
-            resourceInputs["entityType"] = args ? args.entityType : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["entityName"] = args?.entityName;
+            resourceInputs["entityType"] = args?.entityType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Quota.__pulumiType, name, resourceInputs, opts);

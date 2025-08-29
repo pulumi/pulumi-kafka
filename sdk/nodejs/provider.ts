@@ -28,94 +28,93 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * CA certificate file to validate the server's certificate.
      */
-    public readonly caCert!: pulumi.Output<string | undefined>;
+    declare public readonly caCert: pulumi.Output<string | undefined>;
     /**
      * Path to a CA certificate file to validate the server's certificate.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
      */
-    public readonly caCertFile!: pulumi.Output<string | undefined>;
+    declare public readonly caCertFile: pulumi.Output<string | undefined>;
     /**
      * The client certificate.
      */
-    public readonly clientCert!: pulumi.Output<string | undefined>;
+    declare public readonly clientCert: pulumi.Output<string | undefined>;
     /**
      * Path to a file containing the client certificate.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
      */
-    public readonly clientCertFile!: pulumi.Output<string | undefined>;
+    declare public readonly clientCertFile: pulumi.Output<string | undefined>;
     /**
      * The private key that the certificate was issued for.
      */
-    public readonly clientKey!: pulumi.Output<string | undefined>;
+    declare public readonly clientKey: pulumi.Output<string | undefined>;
     /**
      * Path to a file containing the private key that the certificate was issued for.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
      */
-    public readonly clientKeyFile!: pulumi.Output<string | undefined>;
+    declare public readonly clientKeyFile: pulumi.Output<string | undefined>;
     /**
      * The passphrase for the private key that the certificate was issued for.
      */
-    public readonly clientKeyPassphrase!: pulumi.Output<string | undefined>;
+    declare public readonly clientKeyPassphrase: pulumi.Output<string | undefined>;
     /**
-     * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-     * versions. Default is 2.7.0.
+     * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
      */
-    public readonly kafkaVersion!: pulumi.Output<string | undefined>;
+    declare public readonly kafkaVersion: pulumi.Output<string | undefined>;
     /**
      * The AWS access key.
      */
-    public readonly saslAwsAccessKey!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsAccessKey: pulumi.Output<string | undefined>;
     /**
      * Path to a file containing the AWS pod identity authorization token
      */
-    public readonly saslAwsContainerAuthorizationTokenFile!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsContainerAuthorizationTokenFile: pulumi.Output<string | undefined>;
     /**
      * URI to retrieve AWS credentials from
      */
-    public readonly saslAwsContainerCredentialsFullUri!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsContainerCredentialsFullUri: pulumi.Output<string | undefined>;
     /**
      * External ID of the AWS IAM role to assume
      */
-    public readonly saslAwsExternalId!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsExternalId: pulumi.Output<string | undefined>;
     /**
      * AWS profile name to use
      */
-    public readonly saslAwsProfile!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsProfile: pulumi.Output<string | undefined>;
     /**
      * AWS region where MSK is deployed.
      */
-    public readonly saslAwsRegion!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsRegion: pulumi.Output<string | undefined>;
     /**
      * Arn of an AWS IAM role to assume
      */
-    public readonly saslAwsRoleArn!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsRoleArn: pulumi.Output<string | undefined>;
     /**
      * The AWS secret key.
      */
-    public readonly saslAwsSecretKey!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsSecretKey: pulumi.Output<string | undefined>;
     /**
      * The AWS session token. Only required if you are using temporary security credentials.
      */
-    public readonly saslAwsToken!: pulumi.Output<string | undefined>;
+    declare public readonly saslAwsToken: pulumi.Output<string | undefined>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */
-    public readonly saslMechanism!: pulumi.Output<string | undefined>;
+    declare public readonly saslMechanism: pulumi.Output<string | undefined>;
     /**
      * Password for SASL authentication.
      */
-    public readonly saslPassword!: pulumi.Output<string | undefined>;
+    declare public readonly saslPassword: pulumi.Output<string | undefined>;
     /**
      * The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
      */
-    public readonly saslTokenUrl!: pulumi.Output<string | undefined>;
+    declare public readonly saslTokenUrl: pulumi.Output<string | undefined>;
     /**
      * Username for SASL authentication.
      */
-    public readonly saslUsername!: pulumi.Output<string | undefined>;
+    declare public readonly saslUsername: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -128,37 +127,37 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.bootstrapServers === undefined) && !opts.urn) {
+            if (args?.bootstrapServers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bootstrapServers'");
             }
-            resourceInputs["bootstrapServers"] = pulumi.output(args ? args.bootstrapServers : undefined).apply(JSON.stringify);
-            resourceInputs["caCert"] = args ? args.caCert : undefined;
-            resourceInputs["caCertFile"] = args ? args.caCertFile : undefined;
-            resourceInputs["clientCert"] = args ? args.clientCert : undefined;
-            resourceInputs["clientCertFile"] = args ? args.clientCertFile : undefined;
-            resourceInputs["clientKey"] = args ? args.clientKey : undefined;
-            resourceInputs["clientKeyFile"] = args ? args.clientKeyFile : undefined;
-            resourceInputs["clientKeyPassphrase"] = args ? args.clientKeyPassphrase : undefined;
-            resourceInputs["kafkaVersion"] = args ? args.kafkaVersion : undefined;
-            resourceInputs["saslAwsAccessKey"] = args ? args.saslAwsAccessKey : undefined;
-            resourceInputs["saslAwsContainerAuthorizationTokenFile"] = args ? args.saslAwsContainerAuthorizationTokenFile : undefined;
-            resourceInputs["saslAwsContainerCredentialsFullUri"] = args ? args.saslAwsContainerCredentialsFullUri : undefined;
-            resourceInputs["saslAwsCredsDebug"] = pulumi.output(args ? args.saslAwsCredsDebug : undefined).apply(JSON.stringify);
-            resourceInputs["saslAwsExternalId"] = args ? args.saslAwsExternalId : undefined;
-            resourceInputs["saslAwsProfile"] = args ? args.saslAwsProfile : undefined;
-            resourceInputs["saslAwsRegion"] = args ? args.saslAwsRegion : undefined;
-            resourceInputs["saslAwsRoleArn"] = args ? args.saslAwsRoleArn : undefined;
-            resourceInputs["saslAwsSecretKey"] = args ? args.saslAwsSecretKey : undefined;
-            resourceInputs["saslAwsSharedConfigFiles"] = pulumi.output(args ? args.saslAwsSharedConfigFiles : undefined).apply(JSON.stringify);
-            resourceInputs["saslAwsToken"] = args ? args.saslAwsToken : undefined;
-            resourceInputs["saslMechanism"] = (args ? args.saslMechanism : undefined) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
-            resourceInputs["saslOauthScopes"] = pulumi.output(args ? args.saslOauthScopes : undefined).apply(JSON.stringify);
-            resourceInputs["saslPassword"] = args ? args.saslPassword : undefined;
-            resourceInputs["saslTokenUrl"] = args ? args.saslTokenUrl : undefined;
-            resourceInputs["saslUsername"] = args ? args.saslUsername : undefined;
-            resourceInputs["skipTlsVerify"] = pulumi.output((args ? args.skipTlsVerify : undefined) ?? (utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false)).apply(JSON.stringify);
-            resourceInputs["timeout"] = pulumi.output(args ? args.timeout : undefined).apply(JSON.stringify);
-            resourceInputs["tlsEnabled"] = pulumi.output((args ? args.tlsEnabled : undefined) ?? (utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true)).apply(JSON.stringify);
+            resourceInputs["bootstrapServers"] = pulumi.output(args?.bootstrapServers).apply(JSON.stringify);
+            resourceInputs["caCert"] = args?.caCert;
+            resourceInputs["caCertFile"] = args?.caCertFile;
+            resourceInputs["clientCert"] = args?.clientCert;
+            resourceInputs["clientCertFile"] = args?.clientCertFile;
+            resourceInputs["clientKey"] = args?.clientKey;
+            resourceInputs["clientKeyFile"] = args?.clientKeyFile;
+            resourceInputs["clientKeyPassphrase"] = args?.clientKeyPassphrase;
+            resourceInputs["kafkaVersion"] = args?.kafkaVersion;
+            resourceInputs["saslAwsAccessKey"] = args?.saslAwsAccessKey;
+            resourceInputs["saslAwsContainerAuthorizationTokenFile"] = args?.saslAwsContainerAuthorizationTokenFile;
+            resourceInputs["saslAwsContainerCredentialsFullUri"] = args?.saslAwsContainerCredentialsFullUri;
+            resourceInputs["saslAwsCredsDebug"] = pulumi.output(args?.saslAwsCredsDebug).apply(JSON.stringify);
+            resourceInputs["saslAwsExternalId"] = args?.saslAwsExternalId;
+            resourceInputs["saslAwsProfile"] = args?.saslAwsProfile;
+            resourceInputs["saslAwsRegion"] = args?.saslAwsRegion;
+            resourceInputs["saslAwsRoleArn"] = args?.saslAwsRoleArn;
+            resourceInputs["saslAwsSecretKey"] = args?.saslAwsSecretKey;
+            resourceInputs["saslAwsSharedConfigFiles"] = pulumi.output(args?.saslAwsSharedConfigFiles).apply(JSON.stringify);
+            resourceInputs["saslAwsToken"] = args?.saslAwsToken;
+            resourceInputs["saslMechanism"] = (args?.saslMechanism) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
+            resourceInputs["saslOauthScopes"] = pulumi.output(args?.saslOauthScopes).apply(JSON.stringify);
+            resourceInputs["saslPassword"] = args?.saslPassword;
+            resourceInputs["saslTokenUrl"] = args?.saslTokenUrl;
+            resourceInputs["saslUsername"] = args?.saslUsername;
+            resourceInputs["skipTlsVerify"] = pulumi.output((args?.skipTlsVerify) ?? (utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false)).apply(JSON.stringify);
+            resourceInputs["timeout"] = pulumi.output(args?.timeout).apply(JSON.stringify);
+            resourceInputs["tlsEnabled"] = pulumi.output((args?.tlsEnabled) ?? (utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true)).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -217,8 +216,7 @@ export interface ProviderArgs {
      */
     clientKeyPassphrase?: pulumi.Input<string>;
     /**
-     * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older
-     * versions. Default is 2.7.0.
+     * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
