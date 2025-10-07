@@ -17,14 +17,14 @@ public final class UserScramCredentialState extends com.pulumi.resources.Resourc
     public static final UserScramCredentialState Empty = new UserScramCredentialState();
 
     /**
-     * The password of the credential (deprecated, use password_wo instead)
+     * The password of the credential (deprecated, use passwordWo instead)
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the credential (deprecated, use password_wo instead)
+     * @return The password of the credential (deprecated, use passwordWo instead)
      * 
      */
     public Optional<Output<String>> password() {
@@ -120,7 +120,7 @@ public final class UserScramCredentialState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password The password of the credential (deprecated, use password_wo instead)
+         * @param password The password of the credential (deprecated, use passwordWo instead)
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class UserScramCredentialState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password The password of the credential (deprecated, use password_wo instead)
+         * @param password The password of the credential (deprecated, use passwordWo instead)
          * 
          * @return builder
          * 

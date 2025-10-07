@@ -29,14 +29,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="kafka:index/userScramCredential:UserScramCredential")
 public class UserScramCredential extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the credential (deprecated, use password_wo instead)
+     * The password of the credential (deprecated, use passwordWo instead)
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the credential (deprecated, use password_wo instead)
+     * @return The password of the credential (deprecated, use passwordWo instead)
      * 
      */
     public Output<Optional<String>> password() {
