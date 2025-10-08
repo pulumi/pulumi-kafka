@@ -40,10 +40,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Path to a CA certificate file to validate the server&#39;s certificate.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `caCert` instead. */
     @Export(name="caCertFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caCertFile;
 
@@ -72,10 +72,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Path to a file containing the client certificate.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead. */
     @Export(name="clientCertFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertFile;
 
@@ -104,10 +104,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Path to a file containing the private key that the certificate was issued for.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_key` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead. */
     @Export(name="clientKeyFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKeyFile;
 

@@ -54,10 +54,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * Path to a CA certificate file to validate the server&#39;s certificate.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `caCert` instead. */
     @Import(name="caCertFile")
     private @Nullable Output<String> caCertFile;
 
@@ -65,10 +65,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * @return Path to a CA certificate file to validate the server&#39;s certificate.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `caCert` instead. */
     public Optional<Output<String>> caCertFile() {
         return Optional.ofNullable(this.caCertFile);
     }
@@ -92,10 +92,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * Path to a file containing the client certificate.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead. */
     @Import(name="clientCertFile")
     private @Nullable Output<String> clientCertFile;
 
@@ -103,10 +103,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * @return Path to a file containing the client certificate.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead. */
     public Optional<Output<String>> clientCertFile() {
         return Optional.ofNullable(this.clientCertFile);
     }
@@ -130,10 +130,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * Path to a file containing the private key that the certificate was issued for.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_key` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead. */
     @Import(name="clientKeyFile")
     private @Nullable Output<String> clientKeyFile;
 
@@ -141,10 +141,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * @return Path to a file containing the private key that the certificate was issued for.
      * 
      * @deprecated
-     * This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+     * This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
      * 
      */
-    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_key` instead. */
+    @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead. */
     public Optional<Output<String>> clientKeyFile() {
         return Optional.ofNullable(this.clientKeyFile);
     }
@@ -573,10 +573,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+         * This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
          * 
          */
-        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead. */
+        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `caCert` instead. */
         public Builder caCertFile(@Nullable Output<String> caCertFile) {
             $.caCertFile = caCertFile;
             return this;
@@ -588,10 +588,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.
+         * This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
          * 
          */
-        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead. */
+        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `caCert` instead. */
         public Builder caCertFile(String caCertFile) {
             return caCertFile(Output.of(caCertFile));
         }
@@ -623,10 +623,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+         * This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
          * 
          */
-        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead. */
+        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead. */
         public Builder clientCertFile(@Nullable Output<String> clientCertFile) {
             $.clientCertFile = clientCertFile;
             return this;
@@ -638,10 +638,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.
+         * This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
          * 
          */
-        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead. */
+        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead. */
         public Builder clientCertFile(String clientCertFile) {
             return clientCertFile(Output.of(clientCertFile));
         }
@@ -673,10 +673,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+         * This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
          * 
          */
-        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_key` instead. */
+        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead. */
         public Builder clientKeyFile(@Nullable Output<String> clientKeyFile) {
             $.clientKeyFile = clientKeyFile;
             return this;
@@ -688,10 +688,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.
+         * This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
          * 
          */
-        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `client_key` instead. */
+        @Deprecated /* This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead. */
         public Builder clientKeyFile(String clientKeyFile) {
             return clientKeyFile(Output.of(clientKeyFile));
         }
