@@ -22,7 +22,7 @@ namespace Pulumi.Kafka
     public partial class UserScramCredential : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The password of the credential (deprecated, use password_wo instead)
+        /// The password of the credential (deprecated, use PasswordWo instead)
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Kafka
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the credential (deprecated, use password_wo instead)
+        /// The password of the credential (deprecated, use PasswordWo instead)
         /// </summary>
         public Input<string>? Password
         {
@@ -153,7 +153,7 @@ namespace Pulumi.Kafka
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the credential (deprecated, use password_wo instead)
+        /// The password of the credential (deprecated, use PasswordWo instead)
         /// </summary>
         public Input<string>? Password
         {
