@@ -118,14 +118,14 @@ namespace Pulumi.Kafka
     /// ## Quota Configuration Options
     /// 
     /// ### Bandwidth Quotas
-    /// - `producer_byte_rate` - The maximum bytes per second that can be produced by the entity
-    /// - `consumer_byte_rate` - The maximum bytes per second that can be consumed by the entity
+    /// - `ProducerByteRate` - The maximum bytes per second that can be produced by the entity
+    /// - `ConsumerByteRate` - The maximum bytes per second that can be consumed by the entity
     /// 
     /// ### Request Rate Quotas
-    /// - `request_percentage` - The percentage of CPU time on each broker that the entity can use for requests. Values &gt; 100% indicate multiple CPUs (e.g., 200% = 2 CPUs)
+    /// - `RequestPercentage` - The percentage of CPU time on each broker that the entity can use for requests. Values &gt; 100% indicate multiple CPUs (e.g., 200% = 2 CPUs)
     /// 
     /// ### Connection Quotas (IP-based only)
-    /// - `connection_creation_rate` - The maximum rate of new connections per second from the IP address
+    /// - `ConnectionCreationRate` - The maximum rate of new connections per second from the IP address
     /// 
     /// ## Quota Precedence
     /// 
@@ -144,7 +144,7 @@ namespace Pulumi.Kafka
     /// 
     /// 2. **Monitor Quota Usage**: Use Kafka metrics to monitor quota utilization and adjust as needed. Look for throttling metrics to identify when quotas are being hit.
     /// 
-    /// 3. **Use Request Percentage Carefully**: The `request_percentage` quota affects CPU usage. Values over 100% mean the client can use more than one CPU core.
+    /// 3. **Use Request Percentage Carefully**: The `RequestPercentage` quota affects CPU usage. Values over 100% mean the client can use more than one CPU core.
     /// 
     /// 4. **Plan for Growth**: Set quotas with some headroom to accommodate traffic growth, but not so high that a misbehaving client can impact the cluster.
     /// 
@@ -178,7 +178,7 @@ namespace Pulumi.Kafka
         public Output<ImmutableDictionary<string, string>?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+        /// The name of the entity (if EntityName is not provided, it will create entity-default Kafka quota)
         /// </summary>
         [Output("entityName")]
         public Output<string?> EntityName { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.Kafka
         }
 
         /// <summary>
-        /// The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+        /// The name of the entity (if EntityName is not provided, it will create entity-default Kafka quota)
         /// </summary>
         [Input("entityName")]
         public Input<string>? EntityName { get; set; }
@@ -280,7 +280,7 @@ namespace Pulumi.Kafka
         }
 
         /// <summary>
-        /// The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+        /// The name of the entity (if EntityName is not provided, it will create entity-default Kafka quota)
         /// </summary>
         [Input("entityName")]
         public Input<string>? EntityName { get; set; }
