@@ -178,14 +178,14 @@ import javax.annotation.Nullable;
  * ## Quota Configuration Options
  * 
  * ### Bandwidth Quotas
- * - `producer_byte_rate` - The maximum bytes per second that can be produced by the entity
- * - `consumer_byte_rate` - The maximum bytes per second that can be consumed by the entity
+ * - `producerByteRate` - The maximum bytes per second that can be produced by the entity
+ * - `consumerByteRate` - The maximum bytes per second that can be consumed by the entity
  * 
  * ### Request Rate Quotas
- * - `request_percentage` - The percentage of CPU time on each broker that the entity can use for requests. Values &gt; 100% indicate multiple CPUs (e.g., 200% = 2 CPUs)
+ * - `requestPercentage` - The percentage of CPU time on each broker that the entity can use for requests. Values &gt; 100% indicate multiple CPUs (e.g., 200% = 2 CPUs)
  * 
  * ### Connection Quotas (IP-based only)
- * - `connection_creation_rate` - The maximum rate of new connections per second from the IP address
+ * - `connectionCreationRate` - The maximum rate of new connections per second from the IP address
  * 
  * ## Quota Precedence
  * 
@@ -204,7 +204,7 @@ import javax.annotation.Nullable;
  * 
  * 2. **Monitor Quota Usage**: Use Kafka metrics to monitor quota utilization and adjust as needed. Look for throttling metrics to identify when quotas are being hit.
  * 
- * 3. **Use Request Percentage Carefully**: The `request_percentage` quota affects CPU usage. Values over 100% mean the client can use more than one CPU core.
+ * 3. **Use Request Percentage Carefully**: The `requestPercentage` quota affects CPU usage. Values over 100% mean the client can use more than one CPU core.
  * 
  * 4. **Plan for Growth**: Set quotas with some headroom to accommodate traffic growth, but not so high that a misbehaving client can impact the cluster.
  * 
@@ -246,14 +246,14 @@ public class Quota extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.config);
     }
     /**
-     * The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+     * The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
      * 
      */
     @Export(name="entityName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entityName;
 
     /**
-     * @return The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+     * @return The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
      * 
      */
     public Output<Optional<String>> entityName() {
