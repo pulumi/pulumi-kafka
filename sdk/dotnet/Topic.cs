@@ -121,7 +121,7 @@ namespace Pulumi.Kafka
     /// 
     /// ## Configuration Parameters
     /// 
-    /// The `config` map supports all Kafka topic-level configurations. Common configurations include:
+    /// The `Config` map supports all Kafka topic-level configurations. Common configurations include:
     /// 
     /// ### Retention Settings
     /// - `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)

@@ -33,14 +33,14 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+     * The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
      * 
      */
     @Import(name="entityName")
     private @Nullable Output<String> entityName;
 
     /**
-     * @return The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+     * @return The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
      * 
      */
     public Optional<Output<String>> entityName() {
@@ -110,7 +110,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityName The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+         * @param entityName The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityName The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
+         * @param entityName The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
          * 
          * @return builder
          * 
