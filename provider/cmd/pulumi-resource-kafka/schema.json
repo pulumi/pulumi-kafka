@@ -782,6 +782,11 @@
                     "description": "The password of the credential (deprecated, use\u003cspan pulumi-lang-nodejs=\" passwordWo \" pulumi-lang-dotnet=\" PasswordWo \" pulumi-lang-go=\" passwordWo \" pulumi-lang-python=\" password_wo \" pulumi-lang-yaml=\" passwordWo \" pulumi-lang-java=\" passwordWo \"\u003e password_wo \u003c/span\u003einstead)",
                     "secret": true
                 },
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe write-only password of the credential",
+                    "secret": true
+                },
                 "passwordWoVersion": {
                     "type": "string",
                     "description": "Version identifier for the write-only password to track changes"
@@ -807,6 +812,11 @@
                 "password": {
                     "type": "string",
                     "description": "The password of the credential (deprecated, use\u003cspan pulumi-lang-nodejs=\" passwordWo \" pulumi-lang-dotnet=\" PasswordWo \" pulumi-lang-go=\" passwordWo \" pulumi-lang-python=\" password_wo \" pulumi-lang-yaml=\" passwordWo \" pulumi-lang-java=\" passwordWo \"\u003e password_wo \u003c/span\u003einstead)",
+                    "secret": true
+                },
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe write-only password of the credential",
                     "secret": true
                 },
                 "passwordWoVersion": {
@@ -838,6 +848,11 @@
                     "password": {
                         "type": "string",
                         "description": "The password of the credential (deprecated, use\u003cspan pulumi-lang-nodejs=\" passwordWo \" pulumi-lang-dotnet=\" PasswordWo \" pulumi-lang-go=\" passwordWo \" pulumi-lang-python=\" password_wo \" pulumi-lang-yaml=\" passwordWo \" pulumi-lang-java=\" passwordWo \"\u003e password_wo \u003c/span\u003einstead)",
+                        "secret": true
+                    },
+                    "passwordWo": {
+                        "type": "string",
+                        "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe write-only password of the credential",
                         "secret": true
                     },
                     "passwordWoVersion": {
