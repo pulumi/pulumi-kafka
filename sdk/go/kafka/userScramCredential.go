@@ -24,6 +24,9 @@ type UserScramCredential struct {
 
 	// The password of the credential (deprecated, use passwordWo instead)
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the credential
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
 	// Version identifier for the write-only password to track changes
 	PasswordWoVersion pulumi.StringPtrOutput `pulumi:"passwordWoVersion"`
 	// The number of SCRAM iterations used when generating the credential
@@ -50,8 +53,12 @@ func NewUserScramCredential(ctx *pulumi.Context,
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -79,6 +86,9 @@ func GetUserScramCredential(ctx *pulumi.Context,
 type userScramCredentialState struct {
 	// The password of the credential (deprecated, use passwordWo instead)
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the credential
+	PasswordWo *string `pulumi:"passwordWo"`
 	// Version identifier for the write-only password to track changes
 	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The number of SCRAM iterations used when generating the credential
@@ -92,6 +102,9 @@ type userScramCredentialState struct {
 type UserScramCredentialState struct {
 	// The password of the credential (deprecated, use passwordWo instead)
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the credential
+	PasswordWo pulumi.StringPtrInput
 	// Version identifier for the write-only password to track changes
 	PasswordWoVersion pulumi.StringPtrInput
 	// The number of SCRAM iterations used when generating the credential
@@ -109,6 +122,9 @@ func (UserScramCredentialState) ElementType() reflect.Type {
 type userScramCredentialArgs struct {
 	// The password of the credential (deprecated, use passwordWo instead)
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the credential
+	PasswordWo *string `pulumi:"passwordWo"`
 	// Version identifier for the write-only password to track changes
 	PasswordWoVersion *string `pulumi:"passwordWoVersion"`
 	// The number of SCRAM iterations used when generating the credential
@@ -123,6 +139,9 @@ type userScramCredentialArgs struct {
 type UserScramCredentialArgs struct {
 	// The password of the credential (deprecated, use passwordWo instead)
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The write-only password of the credential
+	PasswordWo pulumi.StringPtrInput
 	// Version identifier for the write-only password to track changes
 	PasswordWoVersion pulumi.StringPtrInput
 	// The number of SCRAM iterations used when generating the credential
@@ -223,6 +242,12 @@ func (o UserScramCredentialOutput) ToUserScramCredentialOutputWithContext(ctx co
 // The password of the credential (deprecated, use passwordWo instead)
 func (o UserScramCredentialOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserScramCredential) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The write-only password of the credential
+func (o UserScramCredentialOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserScramCredential) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
 // Version identifier for the write-only password to track changes

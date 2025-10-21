@@ -46,6 +46,11 @@ export class UserScramCredential extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the credential
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
      * Version identifier for the write-only password to track changes
      */
     declare public readonly passwordWoVersion: pulumi.Output<string | undefined>;
@@ -76,6 +81,7 @@ export class UserScramCredential extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as UserScramCredentialState | undefined;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
             resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["scramIterations"] = state?.scramIterations;
             resourceInputs["scramMechanism"] = state?.scramMechanism;
@@ -89,13 +95,14 @@ export class UserScramCredential extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["scramIterations"] = args?.scramIterations;
             resourceInputs["scramMechanism"] = args?.scramMechanism;
             resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(UserScramCredential.__pulumiType, name, resourceInputs, opts);
     }
@@ -109,6 +116,11 @@ export interface UserScramCredentialState {
      * The password of the credential (deprecated, use passwordWo instead)
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the credential
+     */
+    passwordWo?: pulumi.Input<string>;
     /**
      * Version identifier for the write-only password to track changes
      */
@@ -135,6 +147,11 @@ export interface UserScramCredentialArgs {
      * The password of the credential (deprecated, use passwordWo instead)
      */
     password?: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the credential
+     */
+    passwordWo?: pulumi.Input<string>;
     /**
      * Version identifier for the write-only password to track changes
      */
