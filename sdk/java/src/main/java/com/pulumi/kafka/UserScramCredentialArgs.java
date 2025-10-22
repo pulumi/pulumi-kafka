@@ -33,6 +33,23 @@ public final class UserScramCredentialArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the credential
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only password of the credential
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
      * Version identifier for the write-only password to track changes
      * 
      */
@@ -96,6 +113,7 @@ public final class UserScramCredentialArgs extends com.pulumi.resources.Resource
 
     private UserScramCredentialArgs(UserScramCredentialArgs $) {
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
         this.passwordWoVersion = $.passwordWoVersion;
         this.scramIterations = $.scramIterations;
         this.scramMechanism = $.scramMechanism;
@@ -139,6 +157,29 @@ public final class UserScramCredentialArgs extends com.pulumi.resources.Resource
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the credential
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The write-only password of the credential
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
         }
 
         /**
