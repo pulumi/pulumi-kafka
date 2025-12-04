@@ -48,10 +48,12 @@ config:
         value: true
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -72,10 +74,12 @@ config:
         value: true
 
 ```
+
 ```python
 import pulumi
 
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -96,6 +100,7 @@ config:
         value: true
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -106,6 +111,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -126,6 +132,7 @@ config:
         value: true
 
 ```
+
 ```go
 package main
 
@@ -139,6 +146,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -159,9 +167,11 @@ config:
         value: true
 
 ```
+
 ```yaml
 {}
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -182,6 +192,7 @@ config:
         value: true
 
 ```
+
 ```java
 package generated_program;
 
@@ -204,6 +215,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ### SASL/PLAIN Authentication
@@ -312,6 +324,7 @@ config:
         value: true
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as vault from "@pulumi/vault";
@@ -322,6 +335,7 @@ const creds = vault.aws.getAccessCredentials({
     role: "kafka-access-role",
 });
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -346,6 +360,7 @@ config:
         value: true
 
 ```
+
 ```python
 import pulumi
 import pulumi_vault as vault
@@ -354,6 +369,7 @@ creds = vault.aws.get_access_credentials(backend="aws",
     type="sts",
     role="kafka-access-role")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -378,6 +394,7 @@ config:
         value: true
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -396,6 +413,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -420,6 +438,7 @@ config:
         value: true
 
 ```
+
 ```go
 package main
 
@@ -442,6 +461,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -466,6 +486,7 @@ config:
         value: true
 
 ```
+
 ```yaml
 variables:
   creds:
@@ -476,6 +497,7 @@ variables:
         type: sts
         role: kafka-access-role
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -500,6 +522,7 @@ config:
         value: true
 
 ```
+
 ```java
 package generated_program;
 
@@ -530,6 +553,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ### OAuth2 Authentication
