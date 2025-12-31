@@ -326,7 +326,14 @@ config:
 ```
 
 ```typescript
-Example currently unavailable in this language
+import * as pulumi from "@pulumi/pulumi";
+import * as vault from "@pulumi/vault";
+
+const creds = vault.aws.getAccessCredentials({
+    backend: "aws",
+    type: "sts",
+    role: "kafka-access-role",
+});
 ```
 
 {{% /choosable %}}
@@ -355,7 +362,12 @@ config:
 ```
 
 ```python
-Example currently unavailable in this language
+import pulumi
+import pulumi_vault as vault
+
+creds = vault.aws.get_access_credentials(backend="aws",
+    type="sts",
+    role="kafka-access-role")
 ```
 
 {{% /choosable %}}
@@ -384,7 +396,22 @@ config:
 ```
 
 ```csharp
-Example currently unavailable in this language
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
+using Vault = Pulumi.Vault;
+
+return await Deployment.RunAsync(() =>
+{
+    var creds = Vault.Aws.GetAccessCredentials.Invoke(new()
+    {
+        Backend = "aws",
+        Type = "sts",
+        Role = "kafka-access-role",
+    });
+
+});
+
 ```
 
 {{% /choosable %}}
@@ -413,7 +440,26 @@ config:
 ```
 
 ```go
-Example currently unavailable in this language
+package main
+
+import (
+	"github.com/pulumi/pulumi-vault/sdk/v7/go/vault/aws"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		_, err := aws.GetAccessCredentials(ctx, &aws.GetAccessCredentialsArgs{
+			Backend: "aws",
+			Type:    pulumi.StringRef("sts"),
+			Role:    "kafka-access-role",
+		}, nil)
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+}
 ```
 
 {{% /choosable %}}
@@ -442,7 +488,14 @@ config:
 ```
 
 ```yaml
-Example currently unavailable in this language
+variables:
+  creds:
+    fn::invoke:
+      function: vault:aws:getAccessCredentials
+      arguments:
+        backend: aws
+        type: sts
+        role: kafka-access-role
 ```
 
 {{% /choosable %}}
@@ -471,7 +524,34 @@ config:
 ```
 
 ```java
-Example currently unavailable in this language
+package generated_program;
+
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import com.pulumi.vault.aws.AwsFunctions;
+import com.pulumi.vault.aws.inputs.GetAccessCredentialsArgs;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+        final var creds = AwsFunctions.getAccessCredentials(GetAccessCredentialsArgs.builder()
+            .backend("aws")
+            .type("sts")
+            .role("kafka-access-role")
+            .build());
+
+    }
+}
 ```
 
 {{% /choosable %}}
