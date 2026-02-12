@@ -12,6 +12,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The `UserScramCredential` resource manages SCRAM (Salted Challenge Response Authentication Mechanism) credentials for Kafka users. SCRAM provides a secure way to authenticate clients using username/password combinations without transmitting passwords in plain text.
+//
+// ## Example Usage
+//
+// ### Basic SCRAM-SHA-256 User
+//
+// ### SCRAM-SHA-512 User with Custom Iterations
+//
+// ### Multiple Users with Random Passwords
+//
+// ### Integration with ACLs
+//
+// ## SCRAM Mechanisms
+//
+// ### SCRAM-SHA-256
+// - Provides good security with reasonable performance
+// - Recommended for most use cases
+// - Default iterations: 4096
+//
+// ### SCRAM-SHA-512
+// - Provides stronger security at a slight performance cost
+// - Recommended for high-security environments
+// - Default iterations: 4096
+//
+// ## Client Configuration
+//
+// After creating SCRAM credentials, configure your Kafka clients:
+//
+// ### Java Client Configuration
+//
+// ### Python Client (kafka-python)
+//
+// ## Best Practices
+//
+// 1. **Use Strong Passwords**: Generate random passwords of sufficient length (32+ characters recommended)
+// 2. **Choose Appropriate Iterations**: Higher iterations provide better security but impact authentication performance
+// 3. **Prefer SCRAM-SHA-512**: For production environments with sensitive data
+// 4. **Secure Password Storage**: Use Terraform variables, environment variables, or secret management systems
+// 5. **Regular Rotation**: Implement a password rotation policy for production environments
+// 6. **Combine with TLS**: Always use SCRAM with TLS encryption (SASL_SSL) in production
+//
+// > **Warning:** The password is stored in Terraform state. Ensure your state backend is encrypted and access is restricted.
+//
 // ## Import
 //
 // SCRAM credentials can be imported using the format `username|scram_mechanism|password`:
@@ -19,6 +62,8 @@ import (
 // ```sh
 // $ pulumi import kafka:index/userScramCredential:UserScramCredential example 'my-user|SCRAM-SHA-256|my-password'
 // ```
+//
+// > **Note:** The password must be provided during import as it cannot be read from Kafka.
 type UserScramCredential struct {
 	pulumi.CustomResourceState
 

@@ -125,6 +125,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
  * ```
+ *
+ * > **Note:** Use quotes around the import string to prevent shell expansion of the `*` character.
  */
 export class Acl extends pulumi.CustomResource {
     /**

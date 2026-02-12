@@ -332,6 +332,8 @@ class Acl(pulumi.CustomResource):
         $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
         ```
 
+        > **Note:** Use quotes around the import string to prevent shell expansion of the `*` character.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
@@ -457,6 +459,8 @@ class Acl(pulumi.CustomResource):
         ```sh
         $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
         ```
+
+        > **Note:** Use quotes around the import string to prevent shell expansion of the `*` character.
 
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.
