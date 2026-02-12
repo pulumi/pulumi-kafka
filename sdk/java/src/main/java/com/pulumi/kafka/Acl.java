@@ -226,6 +226,8 @@ import javax.annotation.Nullable;
  * $ pulumi import kafka:index/acl:Acl example &#39;User:producer|*|Write|Allow|Topic|orders|Literal&#39;
  * ```
  * 
+ * &gt; **Note:** Use quotes around the import string to prevent shell expansion of the `*` character.
+ * 
  */
 @ResourceType(type="kafka:index/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {

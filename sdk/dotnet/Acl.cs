@@ -162,6 +162,8 @@ namespace Pulumi.Kafka
     /// ```sh
     /// $ pulumi import kafka:index/acl:Acl example 'User:producer|*|Write|Allow|Topic|orders|Literal'
     /// ```
+    /// 
+    /// &gt; **Note:** Use quotes around the import string to prevent shell expansion of the `*` character.
     /// </summary>
     [KafkaResourceType("kafka:index/acl:Acl")]
     public partial class Acl : global::Pulumi.CustomResource
