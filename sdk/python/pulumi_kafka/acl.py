@@ -28,6 +28,7 @@ class AclArgs:
                  resource_pattern_type_filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Acl resource.
+
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
         """
         pulumi.set(__self__, "acl_host", acl_host)
@@ -118,6 +119,7 @@ class _AclState:
                  resource_pattern_type_filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
+
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
         """
         if acl_host is not None:
@@ -334,6 +336,7 @@ class Acl(pulumi.CustomResource):
 
         > **Note:** Use quotes around the import string to prevent shell expansion of the `*` character.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
@@ -461,6 +464,7 @@ class Acl(pulumi.CustomResource):
         ```
 
         > **Note:** Use quotes around the import string to prevent shell expansion of the `*` character.
+
 
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.

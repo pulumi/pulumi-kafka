@@ -25,6 +25,7 @@ class TopicArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Topic resource.
+
         :param pulumi.Input[_builtins.int] partitions: Number of partitions.
         :param pulumi.Input[_builtins.int] replication_factor: Number of replicas.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v attributes.
@@ -95,6 +96,7 @@ class _TopicState:
                  replication_factor: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[_builtins.str] name: The name of the topic.
         :param pulumi.Input[_builtins.int] partitions: Number of partitions.
@@ -282,6 +284,7 @@ class Topic(pulumi.CustomResource):
         $ pulumi import kafka:index/topic:Topic example example-topic
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v attributes.
@@ -407,6 +410,7 @@ class Topic(pulumi.CustomResource):
         ```sh
         $ pulumi import kafka:index/topic:Topic example example-topic
         ```
+
 
         :param str resource_name: The name of the resource.
         :param TopicArgs args: The arguments to use to populate this resource's properties.

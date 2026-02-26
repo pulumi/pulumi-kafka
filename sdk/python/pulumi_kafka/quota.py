@@ -24,6 +24,7 @@ class QuotaArgs:
                  entity_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Quota resource.
+
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity (client-id, user, ip)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v properties.
         :param pulumi.Input[_builtins.str] entity_name: The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
@@ -79,6 +80,7 @@ class _QuotaState:
                  entity_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Quota resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v properties.
         :param pulumi.Input[_builtins.str] entity_name: The name of the entity (if entity_name is not provided, it will create entity-default Kafka quota)
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity (client-id, user, ip)
@@ -260,6 +262,7 @@ class Quota(pulumi.CustomResource):
         $ pulumi import kafka:index/quota:Quota default_user user:
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v properties.
@@ -394,6 +397,7 @@ class Quota(pulumi.CustomResource):
         ```sh
         $ pulumi import kafka:index/quota:Quota default_user user:
         ```
+
 
         :param str resource_name: The name of the resource.
         :param QuotaArgs args: The arguments to use to populate this resource's properties.

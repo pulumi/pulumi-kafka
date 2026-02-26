@@ -49,6 +49,7 @@ class ProviderArgs:
                  tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bootstrap_servers: A list of kafka brokers
         :param pulumi.Input[_builtins.str] ca_cert: CA certificate file to validate the server's certificate.
         :param pulumi.Input[_builtins.str] ca_cert_file: Path to a CA certificate file to validate the server's certificate.
@@ -530,6 +531,7 @@ class Provider(pulumi.ProviderResource):
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bootstrap_servers: A list of kafka brokers
@@ -572,6 +574,7 @@ class Provider(pulumi.ProviderResource):
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
         [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
 
         :param str resource_name: The name of the resource.
         :param ProviderArgs args: The arguments to use to populate this resource's properties.
