@@ -27,6 +27,7 @@ class UserScramCredentialArgs:
                  scram_iterations: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a UserScramCredential resource.
+
         :param pulumi.Input[_builtins.str] scram_mechanism: The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
         :param pulumi.Input[_builtins.str] username: The name of the credential
         :param pulumi.Input[_builtins.str] password: The password of the credential (deprecated, use password_wo instead)
@@ -131,6 +132,7 @@ class _UserScramCredentialState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserScramCredential resources.
+
         :param pulumi.Input[_builtins.str] password: The password of the credential (deprecated, use password_wo instead)
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The write-only password of the credential
@@ -304,6 +306,7 @@ class UserScramCredential(pulumi.CustomResource):
 
         > **Note:** The password must be provided during import as it cannot be read from Kafka.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the credential (deprecated, use password_wo instead)
@@ -384,6 +387,7 @@ class UserScramCredential(pulumi.CustomResource):
         ```
 
         > **Note:** The password must be provided during import as it cannot be read from Kafka.
+
 
         :param str resource_name: The name of the resource.
         :param UserScramCredentialArgs args: The arguments to use to populate this resource's properties.
