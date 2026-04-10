@@ -25,7 +25,7 @@ namespace Pulumi.Kafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Limit a specific client's bandwidth
-    ///     var mobileApp = new Kafka.Quota("mobile_app", new()
+    ///     var mobileApp = new Kafka.Index.Quota("mobile_app", new()
     ///     {
     ///         EntityName = "mobile-app-v1",
     ///         EntityType = "client-id",
@@ -51,7 +51,7 @@ namespace Pulumi.Kafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Set quotas for a specific user
-    ///     var serviceAccount = new Kafka.Quota("service_account", new()
+    ///     var serviceAccount = new Kafka.Index.Quota("service_account", new()
     ///     {
     ///         EntityName = "payment-service",
     ///         EntityType = "user",
@@ -77,7 +77,7 @@ namespace Pulumi.Kafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Set default quotas for all users (when entity_name is omitted)
-    ///     var defaultUser = new Kafka.Quota("default_user", new()
+    ///     var defaultUser = new Kafka.Index.Quota("default_user", new()
     ///     {
     ///         EntityType = "user",
     ///         Config = 
@@ -102,7 +102,7 @@ namespace Pulumi.Kafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Rate limit connections from a specific IP
-    ///     var externalIp = new Kafka.Quota("external_ip", new()
+    ///     var externalIp = new Kafka.Index.Quota("external_ip", new()
     ///     {
     ///         EntityName = "203.0.113.0",
     ///         EntityType = "ip",
