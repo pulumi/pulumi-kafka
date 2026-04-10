@@ -24,7 +24,7 @@ namespace Pulumi.Kafka
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var producer = new Kafka.Acl("producer", new()
+    ///     var producer = new Kafka.Index.Acl("producer", new()
     ///     {
     ///         AclResourceName = "orders",
     ///         AclResourceType = "Topic",
@@ -35,7 +35,7 @@ namespace Pulumi.Kafka
     ///     });
     /// 
     ///     // Also grant describe permission for producers
-    ///     var producerDescribe = new Kafka.Acl("producer_describe", new()
+    ///     var producerDescribe = new Kafka.Index.Acl("producer_describe", new()
     ///     {
     ///         AclResourceName = "orders",
     ///         AclResourceType = "Topic",
@@ -59,7 +59,7 @@ namespace Pulumi.Kafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Allow read access to topic
-    ///     var consumerRead = new Kafka.Acl("consumer_read", new()
+    ///     var consumerRead = new Kafka.Index.Acl("consumer_read", new()
     ///     {
     ///         AclResourceName = "orders",
     ///         AclResourceType = "Topic",
@@ -70,7 +70,7 @@ namespace Pulumi.Kafka
     ///     });
     /// 
     ///     // Allow access to consumer group
-    ///     var consumerGroup = new Kafka.Acl("consumer_group", new()
+    ///     var consumerGroup = new Kafka.Index.Acl("consumer_group", new()
     ///     {
     ///         AclResourceName = "order-processors",
     ///         AclResourceType = "Group",
@@ -94,7 +94,7 @@ namespace Pulumi.Kafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Grant access to all topics with prefix "logs-"
-    ///     var logsAccess = new Kafka.Acl("logs_access", new()
+    ///     var logsAccess = new Kafka.Index.Acl("logs_access", new()
     ///     {
     ///         AclResourceName = "logs-",
     ///         AclResourceType = "Topic",
@@ -119,7 +119,7 @@ namespace Pulumi.Kafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Grant cluster-level admin access
-    ///     var adminCluster = new Kafka.Acl("admin_cluster", new()
+    ///     var adminCluster = new Kafka.Index.Acl("admin_cluster", new()
     ///     {
     ///         AclResourceName = "kafka-cluster",
     ///         AclResourceType = "Cluster",

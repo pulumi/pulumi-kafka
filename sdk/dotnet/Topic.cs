@@ -24,7 +24,7 @@ namespace Pulumi.Kafka
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Kafka.Topic("example", new()
+    ///     var example = new Kafka.Index.Topic("example", new()
     ///     {
     ///         Name = "example-topic",
     ///         ReplicationFactor = 3,
@@ -44,7 +44,7 @@ namespace Pulumi.Kafka
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var logs = new Kafka.Topic("logs", new()
+    ///     var logs = new Kafka.Index.Topic("logs", new()
     ///     {
     ///         Name = "application-logs",
     ///         ReplicationFactor = 3,
@@ -71,7 +71,7 @@ namespace Pulumi.Kafka
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var events = new Kafka.Topic("events", new()
+    ///     var events = new Kafka.Index.Topic("events", new()
     ///     {
     ///         Name = "user-events",
     ///         ReplicationFactor = 3,
@@ -100,7 +100,7 @@ namespace Pulumi.Kafka
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var metrics = new Kafka.Topic("metrics", new()
+    ///     var metrics = new Kafka.Index.Topic("metrics", new()
     ///     {
     ///         Name = "system-metrics",
     ///         ReplicationFactor = 2,
