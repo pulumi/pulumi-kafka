@@ -4,7 +4,7 @@ go 1.25.8
 
 require (
 	github.com/Mongey/terraform-provider-kafka v0.13.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.128.0
 )
 
 require (
