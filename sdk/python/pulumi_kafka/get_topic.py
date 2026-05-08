@@ -101,7 +101,7 @@ def get_topic(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         partitions=pulumi.get(__ret__, 'partitions'),
         replication_factor=pulumi.get(__ret__, 'replication_factor'))
-def get_topic_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_topic_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTopicResult]:
     """
     Use this data source to access information about an existing resource.

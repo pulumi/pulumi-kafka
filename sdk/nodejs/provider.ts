@@ -184,117 +184,117 @@ export interface ProviderArgs {
     /**
      * CA certificate file to validate the server's certificate.
      */
-    caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string | undefined>;
     /**
      * Path to a CA certificate file to validate the server's certificate.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `caCert` instead.
      */
-    caCertFile?: pulumi.Input<string>;
+    caCertFile?: pulumi.Input<string | undefined>;
     /**
      * The client certificate.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * Path to a file containing the client certificate.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `clientCert` instead.
      */
-    clientCertFile?: pulumi.Input<string>;
+    clientCertFile?: pulumi.Input<string | undefined>;
     /**
      * The private key that the certificate was issued for.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * Path to a file containing the private key that the certificate was issued for.
      *
      * @deprecated This parameter is now deprecated and will be removed in a later release, please use `clientKey` instead.
      */
-    clientKeyFile?: pulumi.Input<string>;
+    clientKeyFile?: pulumi.Input<string | undefined>;
     /**
      * The passphrase for the private key that the certificate was issued for.
      */
-    clientKeyPassphrase?: pulumi.Input<string>;
+    clientKeyPassphrase?: pulumi.Input<string | undefined>;
     /**
      * The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
      */
-    kafkaVersion?: pulumi.Input<string>;
+    kafkaVersion?: pulumi.Input<string | undefined>;
     /**
      * The AWS access key.
      */
-    saslAwsAccessKey?: pulumi.Input<string>;
+    saslAwsAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Path to a file containing the AWS pod identity authorization token
      */
-    saslAwsContainerAuthorizationTokenFile?: pulumi.Input<string>;
+    saslAwsContainerAuthorizationTokenFile?: pulumi.Input<string | undefined>;
     /**
      * URI to retrieve AWS credentials from
      */
-    saslAwsContainerCredentialsFullUri?: pulumi.Input<string>;
+    saslAwsContainerCredentialsFullUri?: pulumi.Input<string | undefined>;
     /**
      * Set this to true to turn AWS credentials debug.
      */
-    saslAwsCredsDebug?: pulumi.Input<boolean>;
+    saslAwsCredsDebug?: pulumi.Input<boolean | undefined>;
     /**
      * External ID of the AWS IAM role to assume
      */
-    saslAwsExternalId?: pulumi.Input<string>;
+    saslAwsExternalId?: pulumi.Input<string | undefined>;
     /**
      * AWS profile name to use
      */
-    saslAwsProfile?: pulumi.Input<string>;
+    saslAwsProfile?: pulumi.Input<string | undefined>;
     /**
      * AWS region where MSK is deployed.
      */
-    saslAwsRegion?: pulumi.Input<string>;
+    saslAwsRegion?: pulumi.Input<string | undefined>;
     /**
      * Arn of an AWS IAM role to assume
      */
-    saslAwsRoleArn?: pulumi.Input<string>;
+    saslAwsRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The AWS secret key.
      */
-    saslAwsSecretKey?: pulumi.Input<string>;
+    saslAwsSecretKey?: pulumi.Input<string | undefined>;
     /**
      * List of paths to AWS shared config files.
      */
-    saslAwsSharedConfigFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    saslAwsSharedConfigFiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The AWS session token. Only required if you are using temporary security credentials.
      */
-    saslAwsToken?: pulumi.Input<string>;
+    saslAwsToken?: pulumi.Input<string | undefined>;
     /**
      * SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
      */
-    saslMechanism?: pulumi.Input<string>;
+    saslMechanism?: pulumi.Input<string | undefined>;
     /**
      * OAuth scopes to request when using the oauthbearer mechanism
      */
-    saslOauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    saslOauthScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Password for SASL authentication.
      */
-    saslPassword?: pulumi.Input<string>;
+    saslPassword?: pulumi.Input<string | undefined>;
     /**
      * The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
      */
-    saslTokenUrl?: pulumi.Input<string>;
+    saslTokenUrl?: pulumi.Input<string | undefined>;
     /**
      * Username for SASL authentication.
      */
-    saslUsername?: pulumi.Input<string>;
+    saslUsername?: pulumi.Input<string | undefined>;
     /**
      * Set this to true only if the target Kafka server is an insecure development instance.
      */
-    skipTlsVerify?: pulumi.Input<boolean>;
+    skipTlsVerify?: pulumi.Input<boolean | undefined>;
     /**
      * Timeout in seconds
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Enable communication with the Kafka Cluster over TLS.
      */
-    tlsEnabled?: pulumi.Input<boolean>;
+    tlsEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 export namespace Provider {

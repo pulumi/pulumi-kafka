@@ -209,15 +209,15 @@ export interface QuotaState {
     /**
      * A map of string k/v properties.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
      */
-    entityName?: pulumi.Input<string>;
+    entityName?: pulumi.Input<string | undefined>;
     /**
      * The type of the entity (client-id, user, ip)
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -227,11 +227,11 @@ export interface QuotaArgs {
     /**
      * A map of string k/v properties.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the entity (if entityName is not provided, it will create entity-default Kafka quota)
      */
-    entityName?: pulumi.Input<string>;
+    entityName?: pulumi.Input<string | undefined>;
     /**
      * The type of the entity (client-id, user, ip)
      */

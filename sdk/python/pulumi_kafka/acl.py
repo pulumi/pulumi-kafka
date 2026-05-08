@@ -25,7 +25,7 @@ class AclArgs:
                  acl_principal: pulumi.Input[_builtins.str],
                  acl_resource_name: pulumi.Input[_builtins.str],
                  acl_resource_type: pulumi.Input[_builtins.str],
-                 resource_pattern_type_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_pattern_type_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Acl resource.
 
@@ -99,24 +99,24 @@ class AclArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourcePatternTypeFilter")
-    def resource_pattern_type_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pattern_type_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_pattern_type_filter")
 
     @resource_pattern_type_filter.setter
-    def resource_pattern_type_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pattern_type_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pattern_type_filter", value)
 
 
 @pulumi.input_type
 class _AclState:
     def __init__(__self__, *,
-                 acl_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_principal: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pattern_type_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_principal: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pattern_type_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
 
@@ -139,68 +139,68 @@ class _AclState:
 
     @_builtins.property
     @pulumi.getter(name="aclHost")
-    def acl_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_host")
 
     @acl_host.setter
-    def acl_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_host", value)
 
     @_builtins.property
     @pulumi.getter(name="aclOperation")
-    def acl_operation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_operation(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_operation")
 
     @acl_operation.setter
-    def acl_operation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_operation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_operation", value)
 
     @_builtins.property
     @pulumi.getter(name="aclPermissionType")
-    def acl_permission_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_permission_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_permission_type")
 
     @acl_permission_type.setter
-    def acl_permission_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_permission_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_permission_type", value)
 
     @_builtins.property
     @pulumi.getter(name="aclPrincipal")
-    def acl_principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_principal")
 
     @acl_principal.setter
-    def acl_principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_principal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_principal", value)
 
     @_builtins.property
     @pulumi.getter(name="aclResourceName")
-    def acl_resource_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "acl_resource_name")
 
     @acl_resource_name.setter
-    def acl_resource_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_resource_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_resource_name", value)
 
     @_builtins.property
     @pulumi.getter(name="aclResourceType")
-    def acl_resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_resource_type")
 
     @acl_resource_type.setter
-    def acl_resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePatternTypeFilter")
-    def resource_pattern_type_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pattern_type_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_pattern_type_filter")
 
     @resource_pattern_type_filter.setter
-    def resource_pattern_type_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pattern_type_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pattern_type_filter", value)
 
 
@@ -210,13 +210,13 @@ class Acl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_principal: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pattern_type_filter: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_principal: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pattern_type_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `Acl` resource manages Apache Kafka Access Control Lists (ACLs). ACLs control access to Kafka resources like topics, consumer groups, and clusters by defining which principals (users or services) can perform specific operations on these resources.
@@ -481,13 +481,13 @@ class Acl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_principal: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pattern_type_filter: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_principal: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pattern_type_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -526,13 +526,13 @@ class Acl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_host: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_operation: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_permission_type: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_principal: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_resource_name: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_pattern_type_filter: Optional[pulumi.Input[_builtins.str]] = None) -> 'Acl':
+            acl_host: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_operation: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_principal: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pattern_type_filter: pulumi.Input[Optional[_builtins.str]] = None) -> 'Acl':
         """
         Get an existing Acl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
