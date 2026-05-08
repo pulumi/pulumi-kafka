@@ -160,28 +160,28 @@ export interface UserScramCredentialState {
     /**
      * The password of the credential (deprecated, use passwordWo instead)
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The write-only password of the credential
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version identifier for the write-only password to track changes
      */
-    passwordWoVersion?: pulumi.Input<string>;
+    passwordWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The number of SCRAM iterations used when generating the credential
      */
-    scramIterations?: pulumi.Input<number>;
+    scramIterations?: pulumi.Input<number | undefined>;
     /**
      * The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
      */
-    scramMechanism?: pulumi.Input<string>;
+    scramMechanism?: pulumi.Input<string | undefined>;
     /**
      * The name of the credential
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,20 +191,20 @@ export interface UserScramCredentialArgs {
     /**
      * The password of the credential (deprecated, use passwordWo instead)
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The write-only password of the credential
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version identifier for the write-only password to track changes
      */
-    passwordWoVersion?: pulumi.Input<string>;
+    passwordWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The number of SCRAM iterations used when generating the credential
      */
-    scramIterations?: pulumi.Input<number>;
+    scramIterations?: pulumi.Input<number | undefined>;
     /**
      * The SCRAM mechanism used to generate the credential (SCRAM-SHA-256, SCRAM-SHA-512)
      */

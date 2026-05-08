@@ -224,16 +224,16 @@ export class Acl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Acl resources.
  */
 export interface AclState {
-    aclHost?: pulumi.Input<string>;
-    aclOperation?: pulumi.Input<string>;
-    aclPermissionType?: pulumi.Input<string>;
-    aclPrincipal?: pulumi.Input<string>;
+    aclHost?: pulumi.Input<string | undefined>;
+    aclOperation?: pulumi.Input<string | undefined>;
+    aclPermissionType?: pulumi.Input<string | undefined>;
+    aclPrincipal?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    aclResourceName?: pulumi.Input<string>;
-    aclResourceType?: pulumi.Input<string>;
-    resourcePatternTypeFilter?: pulumi.Input<string>;
+    aclResourceName?: pulumi.Input<string | undefined>;
+    aclResourceType?: pulumi.Input<string | undefined>;
+    resourcePatternTypeFilter?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -249,5 +249,5 @@ export interface AclArgs {
      */
     aclResourceName: pulumi.Input<string>;
     aclResourceType: pulumi.Input<string>;
-    resourcePatternTypeFilter?: pulumi.Input<string>;
+    resourcePatternTypeFilter?: pulumi.Input<string | undefined>;
 }

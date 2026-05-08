@@ -20,33 +20,33 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  bootstrap_servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_container_authorization_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_creds_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sasl_aws_external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sasl_aws_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_mechanism: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sasl_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_token_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_tls_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_container_authorization_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_container_credentials_full_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_creds_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sasl_aws_external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_shared_config_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sasl_aws_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_mechanism: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_oauth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sasl_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_tls_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -164,329 +164,329 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate file to validate the server's certificate.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertFile")
     @_utilities.deprecated("""This parameter is now deprecated and will be removed in a later release, please use `ca_cert` instead.""")
-    def ca_cert_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a CA certificate file to validate the server's certificate.
         """
         return pulumi.get(self, "ca_cert_file")
 
     @ca_cert_file.setter
-    def ca_cert_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert_file", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client certificate.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertFile")
     @_utilities.deprecated("""This parameter is now deprecated and will be removed in a later release, please use `client_cert` instead.""")
-    def client_cert_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a file containing the client certificate.
         """
         return pulumi.get(self, "client_cert_file")
 
     @client_cert_file.setter
-    def client_cert_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert_file", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key that the certificate was issued for.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKeyFile")
     @_utilities.deprecated("""This parameter is now deprecated and will be removed in a later release, please use `client_key` instead.""")
-    def client_key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a file containing the private key that the certificate was issued for.
         """
         return pulumi.get(self, "client_key_file")
 
     @client_key_file.setter
-    def client_key_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key_file", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKeyPassphrase")
-    def client_key_passphrase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key_passphrase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The passphrase for the private key that the certificate was issued for.
         """
         return pulumi.get(self, "client_key_passphrase")
 
     @client_key_passphrase.setter
-    def client_key_passphrase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key_passphrase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key_passphrase", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaVersion")
-    def kafka_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kafka_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
         """
         return pulumi.get(self, "kafka_version")
 
     @kafka_version.setter
-    def kafka_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kafka_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kafka_version", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsAccessKey")
-    def sasl_aws_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS access key.
         """
         return pulumi.get(self, "sasl_aws_access_key")
 
     @sasl_aws_access_key.setter
-    def sasl_aws_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsContainerAuthorizationTokenFile")
-    def sasl_aws_container_authorization_token_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_container_authorization_token_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a file containing the AWS pod identity authorization token
         """
         return pulumi.get(self, "sasl_aws_container_authorization_token_file")
 
     @sasl_aws_container_authorization_token_file.setter
-    def sasl_aws_container_authorization_token_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_container_authorization_token_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_container_authorization_token_file", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsContainerCredentialsFullUri")
-    def sasl_aws_container_credentials_full_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_container_credentials_full_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI to retrieve AWS credentials from
         """
         return pulumi.get(self, "sasl_aws_container_credentials_full_uri")
 
     @sasl_aws_container_credentials_full_uri.setter
-    def sasl_aws_container_credentials_full_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_container_credentials_full_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_container_credentials_full_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsCredsDebug")
-    def sasl_aws_creds_debug(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sasl_aws_creds_debug(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set this to true to turn AWS credentials debug.
         """
         return pulumi.get(self, "sasl_aws_creds_debug")
 
     @sasl_aws_creds_debug.setter
-    def sasl_aws_creds_debug(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sasl_aws_creds_debug(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sasl_aws_creds_debug", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsExternalId")
-    def sasl_aws_external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         External ID of the AWS IAM role to assume
         """
         return pulumi.get(self, "sasl_aws_external_id")
 
     @sasl_aws_external_id.setter
-    def sasl_aws_external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_external_id", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsProfile")
-    def sasl_aws_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS profile name to use
         """
         return pulumi.get(self, "sasl_aws_profile")
 
     @sasl_aws_profile.setter
-    def sasl_aws_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsRegion")
-    def sasl_aws_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS region where MSK is deployed.
         """
         return pulumi.get(self, "sasl_aws_region")
 
     @sasl_aws_region.setter
-    def sasl_aws_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_region", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsRoleArn")
-    def sasl_aws_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arn of an AWS IAM role to assume
         """
         return pulumi.get(self, "sasl_aws_role_arn")
 
     @sasl_aws_role_arn.setter
-    def sasl_aws_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsSecretKey")
-    def sasl_aws_secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS secret key.
         """
         return pulumi.get(self, "sasl_aws_secret_key")
 
     @sasl_aws_secret_key.setter
-    def sasl_aws_secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_secret_key", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsSharedConfigFiles")
-    def sasl_aws_shared_config_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sasl_aws_shared_config_files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of paths to AWS shared config files.
         """
         return pulumi.get(self, "sasl_aws_shared_config_files")
 
     @sasl_aws_shared_config_files.setter
-    def sasl_aws_shared_config_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sasl_aws_shared_config_files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sasl_aws_shared_config_files", value)
 
     @_builtins.property
     @pulumi.getter(name="saslAwsToken")
-    def sasl_aws_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_aws_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS session token. Only required if you are using temporary security credentials.
         """
         return pulumi.get(self, "sasl_aws_token")
 
     @sasl_aws_token.setter
-    def sasl_aws_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_aws_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_aws_token", value)
 
     @_builtins.property
     @pulumi.getter(name="saslMechanism")
-    def sasl_mechanism(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_mechanism(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
         """
         return pulumi.get(self, "sasl_mechanism")
 
     @sasl_mechanism.setter
-    def sasl_mechanism(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_mechanism(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_mechanism", value)
 
     @_builtins.property
     @pulumi.getter(name="saslOauthScopes")
-    def sasl_oauth_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sasl_oauth_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         OAuth scopes to request when using the oauthbearer mechanism
         """
         return pulumi.get(self, "sasl_oauth_scopes")
 
     @sasl_oauth_scopes.setter
-    def sasl_oauth_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sasl_oauth_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sasl_oauth_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="saslPassword")
-    def sasl_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for SASL authentication.
         """
         return pulumi.get(self, "sasl_password")
 
     @sasl_password.setter
-    def sasl_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_password", value)
 
     @_builtins.property
     @pulumi.getter(name="saslTokenUrl")
-    def sasl_token_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_token_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
         """
         return pulumi.get(self, "sasl_token_url")
 
     @sasl_token_url.setter
-    def sasl_token_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_token_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_token_url", value)
 
     @_builtins.property
     @pulumi.getter(name="saslUsername")
-    def sasl_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for SASL authentication.
         """
         return pulumi.get(self, "sasl_username")
 
     @sasl_username.setter
-    def sasl_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_username", value)
 
     @_builtins.property
     @pulumi.getter(name="skipTlsVerify")
-    def skip_tls_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_tls_verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set this to true only if the target Kafka server is an insecure development instance.
         """
         return pulumi.get(self, "skip_tls_verify")
 
     @skip_tls_verify.setter
-    def skip_tls_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_tls_verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_tls_verify", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout in seconds
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsEnabled")
-    def tls_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable communication with the Kafka Cluster over TLS.
         """
         return pulumi.get(self, "tls_enabled")
 
     @tls_enabled.setter
-    def tls_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_enabled", value)
 
 
@@ -496,34 +496,34 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootstrap_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_container_authorization_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_creds_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sasl_aws_external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sasl_aws_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_mechanism: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sasl_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_token_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_tls_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bootstrap_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_container_authorization_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_container_credentials_full_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_creds_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sasl_aws_external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_shared_config_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sasl_aws_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_mechanism: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_oauth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sasl_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_tls_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The provider type for the kafka package. By default, resources use package-wide configuration
@@ -591,34 +591,34 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootstrap_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_container_authorization_token_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_container_credentials_full_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_creds_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sasl_aws_external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_aws_shared_config_files: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sasl_aws_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_mechanism: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sasl_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_token_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_tls_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bootstrap_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_passphrase: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_container_authorization_token_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_container_credentials_full_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_creds_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sasl_aws_external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_aws_shared_config_files: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sasl_aws_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_mechanism: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_oauth_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sasl_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_token_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_tls_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

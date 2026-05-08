@@ -208,19 +208,19 @@ export interface TopicState {
     /**
      * A map of string k/v attributes.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the topic.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Number of partitions.
      */
-    partitions?: pulumi.Input<number>;
+    partitions?: pulumi.Input<number | undefined>;
     /**
      * Number of replicas.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -230,11 +230,11 @@ export interface TopicArgs {
     /**
      * A map of string k/v attributes.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the topic.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Number of partitions.
      */
