@@ -28,7 +28,7 @@ The Kafka provider is used to interact with [Apache Kafka](https://kafka.apache.
 ## Example Usage
 ### Basic Configuration with TLS
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -217,6 +217,12 @@ public class App {
 ```
 
 {{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+Example currently unavailable in this language
+```
+
+{{% /choosable %}}
 {{< /chooser >}}
 ### SASL/PLAIN Authentication
 
@@ -300,7 +306,7 @@ config:
 ```
 ### AWS MSK with IAM Authentication (Using Static Credentials)
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -552,6 +558,25 @@ public class App {
 
     }
 }
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    vault = {
+      source = "pulumi/vault"
+    }
+  }
+}
+
+data "vault_aws_getaccesscredentials" "creds" {
+  backend = "aws"
+  type    = "sts"
+  role    = "kafka-access-role"
+}
+
 ```
 
 {{% /choosable %}}
