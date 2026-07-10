@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-kafka"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing Kafka."
+                description = $/A Pulumi package for creating and managing Kafka./$
 
                 url = "https://github.com/pulumi/pulumi-kafka"
 

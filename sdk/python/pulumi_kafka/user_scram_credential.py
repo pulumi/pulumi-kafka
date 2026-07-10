@@ -306,7 +306,6 @@ class UserScramCredential(pulumi.CustomResource):
 
         > **Note:** The password must be provided during import as it cannot be read from Kafka.
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the credential (deprecated, use password_wo instead)
@@ -387,7 +386,6 @@ class UserScramCredential(pulumi.CustomResource):
         ```
 
         > **Note:** The password must be provided during import as it cannot be read from Kafka.
-
 
         :param str resource_name: The name of the resource.
         :param UserScramCredentialArgs args: The arguments to use to populate this resource's properties.
