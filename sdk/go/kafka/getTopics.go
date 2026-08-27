@@ -30,10 +30,8 @@ type GetTopicsResult struct {
 }
 
 func GetTopicsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetTopicsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetTopicsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("kafka:index:getTopics", nil, GetTopicsResultOutput{}, options).(GetTopicsResultOutput), nil
-	}).(GetTopicsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("kafka:index:getTopics", nil, GetTopicsResultOutput{}, options).(GetTopicsResultOutput)
 }
 
 // A collection of values returned by getTopics.
