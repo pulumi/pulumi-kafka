@@ -335,7 +335,7 @@ config:
 import * as pulumi from "@pulumi/pulumi";
 import * as vault from "@pulumi/vault";
 
-const creds = vault.AwsAccessCredentials({
+const creds = vault.aws.getAccessCredentials({
     backend: "aws",
     type: "sts",
     role: "kafka-access-role",
@@ -371,7 +371,7 @@ config:
 import pulumi
 import pulumi_vault as vault
 
-creds = vault.aws_access_credentials(backend="aws",
+creds = vault.aws.get_access_credentials(backend="aws",
     type="sts",
     role="kafka-access-role")
 ```
@@ -409,7 +409,7 @@ using Vault = Pulumi.Vault;
 
 return await Deployment.RunAsync(() =>
 {
-    var creds = Vault.AwsAccessCredentials.Invoke(new()
+    var creds = Vault.Aws.GetAccessCredentials.Invoke(new()
     {
         Backend = "aws",
         Type = "sts",
@@ -449,16 +449,16 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-vault/sdk/go/vault"
+	"github.com/pulumi/pulumi-vault/sdk/v7/go/vault/aws"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		_, err := vault.AwsAccessCredentials(ctx, map[string]string{
-			"backend": "aws",
-			"type":    "sts",
-			"role":    "kafka-access-role",
+		_, err := aws.GetAccessCredentials(ctx, &aws.GetAccessCredentialsArgs{
+			Backend: "aws",
+			Type:    pulumi.StringRef("sts"),
+			Role:    "kafka-access-role",
 		}, nil)
 		if err != nil {
 			return err
@@ -497,7 +497,7 @@ config:
 variables:
   creds:
     fn::invoke:
-      function: vault:AwsAccessCredentials
+      function: vault:aws:getAccessCredentials
       arguments:
         backend: aws
         type: sts
@@ -535,7 +535,8 @@ package generated_program;
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.vault.VaultFunctions;
+import com.pulumi.vault.aws.AwsFunctions;
+import com.pulumi.vault.aws.inputs.GetAccessCredentialsArgs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -549,11 +550,11 @@ public class App {
     }
 
     public static void stack(Context ctx) {
-        final var creds = VaultFunctions.AwsAccessCredentials(Map.ofEntries(
-            Map.entry("backend", "aws"),
-            Map.entry("type", "sts"),
-            Map.entry("role", "kafka-access-role")
-        ));
+        final var creds = AwsFunctions.getAccessCredentials(GetAccessCredentialsArgs.builder()
+            .backend("aws")
+            .type("sts")
+            .role("kafka-access-role")
+            .build());
 
     }
 }
@@ -562,7 +563,15 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-data "vault_awsaccesscredentials" "creds" {
+pulumi {
+  required_providers {
+    vault = {
+      source = "pulumi/vault"
+    }
+  }
+}
+
+data "vault_aws_getaccesscredentials" "creds" {
   backend = "aws"
   type    = "sts"
   role    = "kafka-access-role"
