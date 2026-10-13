@@ -563,7 +563,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     vault = {
       source = "pulumi/vault"
@@ -571,7 +571,7 @@ pulumi {
   }
 }
 
-data "vault_aws_getaccesscredentials" "creds" {
+data "vault_aws_access_credentials" "creds" {
   backend = "aws"
   type    = "sts"
   role    = "kafka-access-role"
