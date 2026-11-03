@@ -65,9 +65,17 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.aclResourceType);
     }
 
+    /**
+     * How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+     * 
+     */
     @Import(name="resourcePatternTypeFilter")
     private @Nullable Output<String> resourcePatternTypeFilter;
 
+    /**
+     * @return How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+     * 
+     */
     public Optional<Output<String>> resourcePatternTypeFilter() {
         return Optional.ofNullable(this.resourcePatternTypeFilter);
     }
@@ -168,11 +176,23 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
             return aclResourceType(Output.of(aclResourceType));
         }
 
+        /**
+         * @param resourcePatternTypeFilter How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourcePatternTypeFilter(@Nullable Output<String> resourcePatternTypeFilter) {
             $.resourcePatternTypeFilter = resourcePatternTypeFilter;
             return this;
         }
 
+        /**
+         * @param resourcePatternTypeFilter How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourcePatternTypeFilter(String resourcePatternTypeFilter) {
             return resourcePatternTypeFilter(Output.of(resourcePatternTypeFilter));
         }

@@ -27,7 +27,7 @@ class TopicArgs:
         The set of arguments for constructing a Topic resource.
 
         :param pulumi.Input[_builtins.int] partitions: Number of partitions.
-        :param pulumi.Input[_builtins.int] replication_factor: Number of replicas.
+        :param pulumi.Input[_builtins.int] replication_factor: Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[_builtins.str] name: The name of the topic.
         """
@@ -54,7 +54,7 @@ class TopicArgs:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> pulumi.Input[_builtins.int]:
         """
-        Number of replicas.
+        Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         """
         return pulumi.get(self, "replication_factor")
 
@@ -100,7 +100,7 @@ class _TopicState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[_builtins.str] name: The name of the topic.
         :param pulumi.Input[_builtins.int] partitions: Number of partitions.
-        :param pulumi.Input[_builtins.int] replication_factor: Number of replicas.
+        :param pulumi.Input[_builtins.int] replication_factor: Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -151,7 +151,7 @@ class _TopicState:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of replicas.
+        Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         """
         return pulumi.get(self, "replication_factor")
 
@@ -246,6 +246,21 @@ class Topic(pulumi.CustomResource):
             })
         ```
 
+        ### Topic with Confluent placement constraints
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        confluent = kafka.Topic("confluent",
+            name="confluent",
+            replication_factor=-1,
+            partitions=10,
+            config={
+                "confluent.placement.constraints": "{\\"version\\": 1, \\"replicas\\":[{\\"count\\": 1, \\"constraints\\": {\\"rack\\": \\"rack-1\\"}}], \\"observers\\":[{\\"count\\": 1, \\"constraints\\": {\\"rack\\": \\"rack-2\\"}}]}",
+            })
+        ```
+
         ## Configuration Parameters
 
         The `config` map supports all Kafka topic-level configurations. Common configurations include:
@@ -290,7 +305,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[_builtins.str] name: The name of the topic.
         :param pulumi.Input[_builtins.int] partitions: Number of partitions.
-        :param pulumi.Input[_builtins.int] replication_factor: Number of replicas.
+        :param pulumi.Input[_builtins.int] replication_factor: Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         """
         ...
     @overload
@@ -370,6 +385,21 @@ class Topic(pulumi.CustomResource):
                 "max.message.bytes": "1048576",
                 "min.insync.replicas": "2",
                 "unclean.leader.election.enable": "false",
+            })
+        ```
+
+        ### Topic with Confluent placement constraints
+
+        ```python
+        import pulumi
+        import pulumi_kafka as kafka
+
+        confluent = kafka.Topic("confluent",
+            name="confluent",
+            replication_factor=-1,
+            partitions=10,
+            config={
+                "confluent.placement.constraints": "{\\"version\\": 1, \\"replicas\\":[{\\"count\\": 1, \\"constraints\\": {\\"rack\\": \\"rack-1\\"}}], \\"observers\\":[{\\"count\\": 1, \\"constraints\\": {\\"rack\\": \\"rack-2\\"}}]}",
             })
         ```
 
@@ -472,7 +502,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config: A map of string k/v attributes.
         :param pulumi.Input[_builtins.str] name: The name of the topic.
         :param pulumi.Input[_builtins.int] partitions: Number of partitions.
-        :param pulumi.Input[_builtins.int] replication_factor: Number of replicas.
+        :param pulumi.Input[_builtins.int] replication_factor: Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -512,7 +542,7 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of replicas.
+        Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         """
         return pulumi.get(self, "replication_factor")
 

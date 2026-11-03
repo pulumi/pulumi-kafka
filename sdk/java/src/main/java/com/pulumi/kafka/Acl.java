@@ -275,9 +275,17 @@ public class Acl extends com.pulumi.resources.CustomResource {
     public Output<String> aclResourceType() {
         return this.aclResourceType;
     }
+    /**
+     * How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+     * 
+     */
     @Export(name="resourcePatternTypeFilter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourcePatternTypeFilter;
 
+    /**
+     * @return How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+     * 
+     */
     public Output<Optional<String>> resourcePatternTypeFilter() {
         return Codegen.optional(this.resourcePatternTypeFilter);
     }

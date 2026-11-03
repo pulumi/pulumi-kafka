@@ -183,6 +183,42 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Topic with Confluent placement constraints
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.kafka.Topic;
+ * import com.pulumi.kafka.TopicArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var confluent = new Topic("confluent", TopicArgs.builder()
+ *             .name("confluent")
+ *             .replicationFactor(-1)
+ *             .partitions(10)
+ *             .config(Map.of("confluent.placement.constraints", "{\"version\": 1, \"replicas\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-1\"}}], \"observers\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-2\"}}]}"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Configuration Parameters
  * 
  * The `config` map supports all Kafka topic-level configurations. Common configurations include:
@@ -267,14 +303,14 @@ public class Topic extends com.pulumi.resources.CustomResource {
         return this.partitions;
     }
     /**
-     * Number of replicas.
+     * Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
      * 
      */
     @Export(name="replicationFactor", refs={Integer.class}, tree="[0]")
     private Output<Integer> replicationFactor;
 
     /**
-     * @return Number of replicas.
+     * @return Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
      * 
      */
     public Output<Integer> replicationFactor() {

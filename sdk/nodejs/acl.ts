@@ -165,6 +165,9 @@ export class Acl extends pulumi.CustomResource {
      */
     declare public readonly aclResourceName: pulumi.Output<string>;
     declare public readonly aclResourceType: pulumi.Output<string>;
+    /**
+     * How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+     */
     declare public readonly resourcePatternTypeFilter: pulumi.Output<string | undefined>;
 
     /**
@@ -233,6 +236,9 @@ export interface AclState {
      */
     aclResourceName?: pulumi.Input<string | undefined>;
     aclResourceType?: pulumi.Input<string | undefined>;
+    /**
+     * How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+     */
     resourcePatternTypeFilter?: pulumi.Input<string | undefined>;
 }
 
@@ -249,5 +255,8 @@ export interface AclArgs {
      */
     aclResourceName: pulumi.Input<string>;
     aclResourceType: pulumi.Input<string>;
+    /**
+     * How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+     */
     resourcePatternTypeFilter?: pulumi.Input<string | undefined>;
 }

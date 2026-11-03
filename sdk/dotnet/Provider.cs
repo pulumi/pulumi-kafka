@@ -162,6 +162,19 @@ namespace Pulumi.Kafka
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "clientKey",
+                    "clientKeyFile",
+                    "clientKeyPassphrase",
+                    "saslAwsAccessKey",
+                    "saslAwsContainerCredentialsFullUri",
+                    "saslAwsExternalId",
+                    "saslAwsSecretKey",
+                    "saslAwsToken",
+                    "saslPassword",
+                    "saslTokenUrl",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -214,23 +227,54 @@ namespace Pulumi.Kafka
         [Input("clientCertFile")]
         public Input<string>? ClientCertFile { get; set; }
 
+        [Input("clientKey")]
+        private Input<string>? _clientKey;
+
         /// <summary>
         /// The private key that the certificate was issued for.
         /// </summary>
-        [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientKeyFile")]
+        private Input<string>? _clientKeyFile;
 
         /// <summary>
         /// Path to a file containing the private key that the certificate was issued for.
         /// </summary>
-        [Input("clientKeyFile")]
-        public Input<string>? ClientKeyFile { get; set; }
+        [Obsolete(@"This parameter is now deprecated and will be removed in a later release, please use `ClientKey` instead.")]
+        public Input<string>? ClientKeyFile
+        {
+            get => _clientKeyFile;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKeyFile = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("clientKeyPassphrase")]
+        private Input<string>? _clientKeyPassphrase;
 
         /// <summary>
         /// The passphrase for the private key that the certificate was issued for.
         /// </summary>
-        [Input("clientKeyPassphrase")]
-        public Input<string>? ClientKeyPassphrase { get; set; }
+        public Input<string>? ClientKeyPassphrase
+        {
+            get => _clientKeyPassphrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKeyPassphrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The version of Kafka protocol to use in `$MAJOR.$MINOR.$PATCH` format. Some features may not be available on older versions. Default is 2.7.0.
@@ -238,11 +282,21 @@ namespace Pulumi.Kafka
         [Input("kafkaVersion")]
         public Input<string>? KafkaVersion { get; set; }
 
+        [Input("saslAwsAccessKey")]
+        private Input<string>? _saslAwsAccessKey;
+
         /// <summary>
         /// The AWS access key.
         /// </summary>
-        [Input("saslAwsAccessKey")]
-        public Input<string>? SaslAwsAccessKey { get; set; }
+        public Input<string>? SaslAwsAccessKey
+        {
+            get => _saslAwsAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _saslAwsAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Path to a file containing the AWS pod identity authorization token
@@ -250,11 +304,21 @@ namespace Pulumi.Kafka
         [Input("saslAwsContainerAuthorizationTokenFile")]
         public Input<string>? SaslAwsContainerAuthorizationTokenFile { get; set; }
 
+        [Input("saslAwsContainerCredentialsFullUri")]
+        private Input<string>? _saslAwsContainerCredentialsFullUri;
+
         /// <summary>
         /// URI to retrieve AWS credentials from
         /// </summary>
-        [Input("saslAwsContainerCredentialsFullUri")]
-        public Input<string>? SaslAwsContainerCredentialsFullUri { get; set; }
+        public Input<string>? SaslAwsContainerCredentialsFullUri
+        {
+            get => _saslAwsContainerCredentialsFullUri;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _saslAwsContainerCredentialsFullUri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Set this to true to turn AWS credentials debug.
@@ -262,11 +326,21 @@ namespace Pulumi.Kafka
         [Input("saslAwsCredsDebug", json: true)]
         public Input<bool>? SaslAwsCredsDebug { get; set; }
 
+        [Input("saslAwsExternalId")]
+        private Input<string>? _saslAwsExternalId;
+
         /// <summary>
         /// External ID of the AWS IAM role to assume
         /// </summary>
-        [Input("saslAwsExternalId")]
-        public Input<string>? SaslAwsExternalId { get; set; }
+        public Input<string>? SaslAwsExternalId
+        {
+            get => _saslAwsExternalId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _saslAwsExternalId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// AWS profile name to use
@@ -286,11 +360,21 @@ namespace Pulumi.Kafka
         [Input("saslAwsRoleArn")]
         public Input<string>? SaslAwsRoleArn { get; set; }
 
+        [Input("saslAwsSecretKey")]
+        private Input<string>? _saslAwsSecretKey;
+
         /// <summary>
         /// The AWS secret key.
         /// </summary>
-        [Input("saslAwsSecretKey")]
-        public Input<string>? SaslAwsSecretKey { get; set; }
+        public Input<string>? SaslAwsSecretKey
+        {
+            get => _saslAwsSecretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _saslAwsSecretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("saslAwsSharedConfigFiles", json: true)]
         private InputList<string>? _saslAwsSharedConfigFiles;
@@ -304,11 +388,21 @@ namespace Pulumi.Kafka
             set => _saslAwsSharedConfigFiles = value;
         }
 
+        [Input("saslAwsToken")]
+        private Input<string>? _saslAwsToken;
+
         /// <summary>
         /// The AWS session token. Only required if you are using temporary security credentials.
         /// </summary>
-        [Input("saslAwsToken")]
-        public Input<string>? SaslAwsToken { get; set; }
+        public Input<string>? SaslAwsToken
+        {
+            get => _saslAwsToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _saslAwsToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// SASL mechanism, can be plain, scram-sha512, scram-sha256, aws-iam
@@ -328,17 +422,37 @@ namespace Pulumi.Kafka
             set => _saslOauthScopes = value;
         }
 
+        [Input("saslPassword")]
+        private Input<string>? _saslPassword;
+
         /// <summary>
         /// Password for SASL authentication.
         /// </summary>
-        [Input("saslPassword")]
-        public Input<string>? SaslPassword { get; set; }
+        public Input<string>? SaslPassword
+        {
+            get => _saslPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _saslPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("saslTokenUrl")]
+        private Input<string>? _saslTokenUrl;
 
         /// <summary>
         /// The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer
         /// </summary>
-        [Input("saslTokenUrl")]
-        public Input<string>? SaslTokenUrl { get; set; }
+        public Input<string>? SaslTokenUrl
+        {
+            get => _saslTokenUrl;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _saslTokenUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Username for SASL authentication.

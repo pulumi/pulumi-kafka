@@ -189,6 +189,9 @@ namespace Pulumi.Kafka
         [Output("aclResourceType")]
         public Output<string> AclResourceType { get; private set; } = null!;
 
+        /// <summary>
+        /// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+        /// </summary>
         [Output("resourcePatternTypeFilter")]
         public Output<string?> ResourcePatternTypeFilter { get; private set; } = null!;
 
@@ -259,6 +262,9 @@ namespace Pulumi.Kafka
         [Input("aclResourceType", required: true)]
         public Input<string> AclResourceType { get; set; } = null!;
 
+        /// <summary>
+        /// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+        /// </summary>
         [Input("resourcePatternTypeFilter")]
         public Input<string>? ResourcePatternTypeFilter { get; set; }
 
@@ -291,6 +297,9 @@ namespace Pulumi.Kafka
         [Input("aclResourceType")]
         public Input<string>? AclResourceType { get; set; }
 
+        /// <summary>
+        /// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+        /// </summary>
         [Input("resourcePatternTypeFilter")]
         public Input<string>? ResourcePatternTypeFilter { get; set; }
 

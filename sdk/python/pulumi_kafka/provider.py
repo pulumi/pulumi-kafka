@@ -635,27 +635,27 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["ca_cert_file"] = ca_cert_file
             __props__.__dict__["client_cert"] = client_cert
             __props__.__dict__["client_cert_file"] = client_cert_file
-            __props__.__dict__["client_key"] = client_key
-            __props__.__dict__["client_key_file"] = client_key_file
-            __props__.__dict__["client_key_passphrase"] = client_key_passphrase
+            __props__.__dict__["client_key"] = None if client_key is None else pulumi.Output.secret(client_key)
+            __props__.__dict__["client_key_file"] = None if client_key_file is None else pulumi.Output.secret(client_key_file)
+            __props__.__dict__["client_key_passphrase"] = None if client_key_passphrase is None else pulumi.Output.secret(client_key_passphrase)
             __props__.__dict__["kafka_version"] = kafka_version
-            __props__.__dict__["sasl_aws_access_key"] = sasl_aws_access_key
+            __props__.__dict__["sasl_aws_access_key"] = None if sasl_aws_access_key is None else pulumi.Output.secret(sasl_aws_access_key)
             __props__.__dict__["sasl_aws_container_authorization_token_file"] = sasl_aws_container_authorization_token_file
-            __props__.__dict__["sasl_aws_container_credentials_full_uri"] = sasl_aws_container_credentials_full_uri
+            __props__.__dict__["sasl_aws_container_credentials_full_uri"] = None if sasl_aws_container_credentials_full_uri is None else pulumi.Output.secret(sasl_aws_container_credentials_full_uri)
             __props__.__dict__["sasl_aws_creds_debug"] = pulumi.Output.from_input(sasl_aws_creds_debug).apply(pulumi.runtime.to_json) if sasl_aws_creds_debug is not None else None
-            __props__.__dict__["sasl_aws_external_id"] = sasl_aws_external_id
+            __props__.__dict__["sasl_aws_external_id"] = None if sasl_aws_external_id is None else pulumi.Output.secret(sasl_aws_external_id)
             __props__.__dict__["sasl_aws_profile"] = sasl_aws_profile
             __props__.__dict__["sasl_aws_region"] = sasl_aws_region
             __props__.__dict__["sasl_aws_role_arn"] = sasl_aws_role_arn
-            __props__.__dict__["sasl_aws_secret_key"] = sasl_aws_secret_key
+            __props__.__dict__["sasl_aws_secret_key"] = None if sasl_aws_secret_key is None else pulumi.Output.secret(sasl_aws_secret_key)
             __props__.__dict__["sasl_aws_shared_config_files"] = pulumi.Output.from_input(sasl_aws_shared_config_files).apply(pulumi.runtime.to_json) if sasl_aws_shared_config_files is not None else None
-            __props__.__dict__["sasl_aws_token"] = sasl_aws_token
+            __props__.__dict__["sasl_aws_token"] = None if sasl_aws_token is None else pulumi.Output.secret(sasl_aws_token)
             if sasl_mechanism is None:
                 sasl_mechanism = (_utilities.get_env('KAFKA_SASL_MECHANISM') or 'plain')
             __props__.__dict__["sasl_mechanism"] = sasl_mechanism
             __props__.__dict__["sasl_oauth_scopes"] = pulumi.Output.from_input(sasl_oauth_scopes).apply(pulumi.runtime.to_json) if sasl_oauth_scopes is not None else None
-            __props__.__dict__["sasl_password"] = sasl_password
-            __props__.__dict__["sasl_token_url"] = sasl_token_url
+            __props__.__dict__["sasl_password"] = None if sasl_password is None else pulumi.Output.secret(sasl_password)
+            __props__.__dict__["sasl_token_url"] = None if sasl_token_url is None else pulumi.Output.secret(sasl_token_url)
             __props__.__dict__["sasl_username"] = sasl_username
             if skip_tls_verify is None:
                 skip_tls_verify = (_utilities.get_env_bool('KAFKA_SKIP_VERIFY') or False)
@@ -664,6 +664,8 @@ class Provider(pulumi.ProviderResource):
             if tls_enabled is None:
                 tls_enabled = (_utilities.get_env_bool('KAFKA_ENABLE_TLS') or True)
             __props__.__dict__["tls_enabled"] = pulumi.Output.from_input(tls_enabled).apply(pulumi.runtime.to_json) if tls_enabled is not None else None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientKey", "clientKeyFile", "clientKeyPassphrase", "saslAwsAccessKey", "saslAwsContainerCredentialsFullUri", "saslAwsExternalId", "saslAwsSecretKey", "saslAwsToken", "saslPassword", "saslTokenUrl"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'kafka',
             resource_name,

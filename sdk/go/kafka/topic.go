@@ -150,6 +150,37 @@ import (
 //
 // ```
 //
+// ### Topic with Confluent placement constraints
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := kafka.NewTopic(ctx, "confluent", &kafka.TopicArgs{
+//				Name:              pulumi.String("confluent"),
+//				ReplicationFactor: pulumi.Int(-1),
+//				Partitions:        pulumi.Int(10),
+//				Config: pulumi.StringMap{
+//					"confluent.placement.constraints": pulumi.String("{\"version\": 1, \"replicas\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-1\"}}], \"observers\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-2\"}}]}"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Configuration Parameters
 //
 // The `config` map supports all Kafka topic-level configurations. Common configurations include:
@@ -196,7 +227,7 @@ type Topic struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of partitions.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
-	// Number of replicas.
+	// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
 }
 
@@ -242,7 +273,7 @@ type topicState struct {
 	Name *string `pulumi:"name"`
 	// Number of partitions.
 	Partitions *int `pulumi:"partitions"`
-	// Number of replicas.
+	// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
 }
 
@@ -253,7 +284,7 @@ type TopicState struct {
 	Name pulumi.StringPtrInput
 	// Number of partitions.
 	Partitions pulumi.IntPtrInput
-	// Number of replicas.
+	// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
 	ReplicationFactor pulumi.IntPtrInput
 }
 
@@ -268,7 +299,7 @@ type topicArgs struct {
 	Name *string `pulumi:"name"`
 	// Number of partitions.
 	Partitions int `pulumi:"partitions"`
-	// Number of replicas.
+	// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
 	ReplicationFactor int `pulumi:"replicationFactor"`
 }
 
@@ -280,7 +311,7 @@ type TopicArgs struct {
 	Name pulumi.StringPtrInput
 	// Number of partitions.
 	Partitions pulumi.IntInput
-	// Number of replicas.
+	// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
 	ReplicationFactor pulumi.IntInput
 }
 
@@ -386,7 +417,7 @@ func (o TopicOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
 }
 
-// Number of replicas.
+// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
 func (o TopicOutput) ReplicationFactor() pulumi.IntOutput {
 	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.ReplicationFactor }).(pulumi.IntOutput)
 }
