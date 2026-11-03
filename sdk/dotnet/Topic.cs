@@ -119,6 +119,30 @@ namespace Pulumi.Kafka
     /// });
     /// ```
     /// 
+    /// ### Topic with Confluent placement constraints
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Kafka = Pulumi.Kafka;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var confluent = new Kafka.Topic("confluent", new()
+    ///     {
+    ///         Name = "confluent",
+    ///         ReplicationFactor = -1,
+    ///         Partitions = 10,
+    ///         Config = 
+    ///         {
+    ///             { "confluent.placement.constraints", "{\"version\": 1, \"replicas\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-1\"}}], \"observers\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-2\"}}]}" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Configuration Parameters
     /// 
     /// The `Config` map supports all Kafka topic-level configurations. Common configurations include:
@@ -179,7 +203,7 @@ namespace Pulumi.Kafka
         public Output<int> Partitions { get; private set; } = null!;
 
         /// <summary>
-        /// Number of replicas.
+        /// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         /// </summary>
         [Output("replicationFactor")]
         public Output<int> ReplicationFactor { get; private set; } = null!;
@@ -255,7 +279,7 @@ namespace Pulumi.Kafka
         public Input<int> Partitions { get; set; } = null!;
 
         /// <summary>
-        /// Number of replicas.
+        /// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         /// </summary>
         [Input("replicationFactor", required: true)]
         public Input<int> ReplicationFactor { get; set; } = null!;
@@ -293,7 +317,7 @@ namespace Pulumi.Kafka
         public Input<int>? Partitions { get; set; }
 
         /// <summary>
-        /// Number of replicas.
+        /// Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }

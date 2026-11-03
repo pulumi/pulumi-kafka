@@ -135,31 +135,33 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["caCertFile"] = args?.caCertFile;
             resourceInputs["clientCert"] = args?.clientCert;
             resourceInputs["clientCertFile"] = args?.clientCertFile;
-            resourceInputs["clientKey"] = args?.clientKey;
-            resourceInputs["clientKeyFile"] = args?.clientKeyFile;
-            resourceInputs["clientKeyPassphrase"] = args?.clientKeyPassphrase;
+            resourceInputs["clientKey"] = args?.clientKey ? pulumi.secret(args.clientKey) : undefined;
+            resourceInputs["clientKeyFile"] = args?.clientKeyFile ? pulumi.secret(args.clientKeyFile) : undefined;
+            resourceInputs["clientKeyPassphrase"] = args?.clientKeyPassphrase ? pulumi.secret(args.clientKeyPassphrase) : undefined;
             resourceInputs["kafkaVersion"] = args?.kafkaVersion;
-            resourceInputs["saslAwsAccessKey"] = args?.saslAwsAccessKey;
+            resourceInputs["saslAwsAccessKey"] = args?.saslAwsAccessKey ? pulumi.secret(args.saslAwsAccessKey) : undefined;
             resourceInputs["saslAwsContainerAuthorizationTokenFile"] = args?.saslAwsContainerAuthorizationTokenFile;
-            resourceInputs["saslAwsContainerCredentialsFullUri"] = args?.saslAwsContainerCredentialsFullUri;
+            resourceInputs["saslAwsContainerCredentialsFullUri"] = args?.saslAwsContainerCredentialsFullUri ? pulumi.secret(args.saslAwsContainerCredentialsFullUri) : undefined;
             resourceInputs["saslAwsCredsDebug"] = pulumi.output(args?.saslAwsCredsDebug).apply(JSON.stringify);
-            resourceInputs["saslAwsExternalId"] = args?.saslAwsExternalId;
+            resourceInputs["saslAwsExternalId"] = args?.saslAwsExternalId ? pulumi.secret(args.saslAwsExternalId) : undefined;
             resourceInputs["saslAwsProfile"] = args?.saslAwsProfile;
             resourceInputs["saslAwsRegion"] = args?.saslAwsRegion;
             resourceInputs["saslAwsRoleArn"] = args?.saslAwsRoleArn;
-            resourceInputs["saslAwsSecretKey"] = args?.saslAwsSecretKey;
+            resourceInputs["saslAwsSecretKey"] = args?.saslAwsSecretKey ? pulumi.secret(args.saslAwsSecretKey) : undefined;
             resourceInputs["saslAwsSharedConfigFiles"] = pulumi.output(args?.saslAwsSharedConfigFiles).apply(JSON.stringify);
-            resourceInputs["saslAwsToken"] = args?.saslAwsToken;
+            resourceInputs["saslAwsToken"] = args?.saslAwsToken ? pulumi.secret(args.saslAwsToken) : undefined;
             resourceInputs["saslMechanism"] = (args?.saslMechanism) ?? (utilities.getEnv("KAFKA_SASL_MECHANISM") || "plain");
             resourceInputs["saslOauthScopes"] = pulumi.output(args?.saslOauthScopes).apply(JSON.stringify);
-            resourceInputs["saslPassword"] = args?.saslPassword;
-            resourceInputs["saslTokenUrl"] = args?.saslTokenUrl;
+            resourceInputs["saslPassword"] = args?.saslPassword ? pulumi.secret(args.saslPassword) : undefined;
+            resourceInputs["saslTokenUrl"] = args?.saslTokenUrl ? pulumi.secret(args.saslTokenUrl) : undefined;
             resourceInputs["saslUsername"] = args?.saslUsername;
             resourceInputs["skipTlsVerify"] = pulumi.output((args?.skipTlsVerify) ?? (utilities.getEnvBoolean("KAFKA_SKIP_VERIFY") || false)).apply(JSON.stringify);
             resourceInputs["timeout"] = pulumi.output(args?.timeout).apply(JSON.stringify);
             resourceInputs["tlsEnabled"] = pulumi.output((args?.tlsEnabled) ?? (utilities.getEnvBoolean("KAFKA_ENABLE_TLS") || true)).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientKey", "clientKeyFile", "clientKeyPassphrase", "saslAwsAccessKey", "saslAwsContainerCredentialsFullUri", "saslAwsExternalId", "saslAwsSecretKey", "saslAwsToken", "saslPassword", "saslTokenUrl"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 

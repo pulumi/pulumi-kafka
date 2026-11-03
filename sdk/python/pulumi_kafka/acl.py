@@ -30,6 +30,7 @@ class AclArgs:
         The set of arguments for constructing a Acl resource.
 
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
+        :param pulumi.Input[_builtins.str] resource_pattern_type_filter: How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
         """
         pulumi.set(__self__, "acl_host", acl_host)
         pulumi.set(__self__, "acl_operation", acl_operation)
@@ -100,6 +101,9 @@ class AclArgs:
     @_builtins.property
     @pulumi.getter(name="resourcePatternTypeFilter")
     def resource_pattern_type_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+        """
         return pulumi.get(self, "resource_pattern_type_filter")
 
     @resource_pattern_type_filter.setter
@@ -121,6 +125,7 @@ class _AclState:
         Input properties used for looking up and filtering Acl resources.
 
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
+        :param pulumi.Input[_builtins.str] resource_pattern_type_filter: How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
         """
         if acl_host is not None:
             pulumi.set(__self__, "acl_host", acl_host)
@@ -197,6 +202,9 @@ class _AclState:
     @_builtins.property
     @pulumi.getter(name="resourcePatternTypeFilter")
     def resource_pattern_type_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+        """
         return pulumi.get(self, "resource_pattern_type_filter")
 
     @resource_pattern_type_filter.setter
@@ -340,6 +348,7 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
+        :param pulumi.Input[_builtins.str] resource_pattern_type_filter: How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
         """
         ...
     @overload
@@ -541,6 +550,7 @@ class Acl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_resource_name: The name of the resource
+        :param pulumi.Input[_builtins.str] resource_pattern_type_filter: How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -591,5 +601,8 @@ class Acl(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="resourcePatternTypeFilter")
     def resource_pattern_type_filter(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
+        """
         return pulumi.get(self, "resource_pattern_type_filter")
 

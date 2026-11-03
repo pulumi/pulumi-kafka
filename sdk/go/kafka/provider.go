@@ -94,6 +94,49 @@ func NewProvider(ctx *pulumi.Context,
 			args.TlsEnabled = pulumi.BoolPtr(d.(bool))
 		}
 	}
+	if args.ClientKey != nil {
+		args.ClientKey = pulumi.ToSecret(args.ClientKey).(pulumi.StringPtrInput)
+	}
+	if args.ClientKeyFile != nil {
+		args.ClientKeyFile = pulumi.ToSecret(args.ClientKeyFile).(pulumi.StringPtrInput)
+	}
+	if args.ClientKeyPassphrase != nil {
+		args.ClientKeyPassphrase = pulumi.ToSecret(args.ClientKeyPassphrase).(pulumi.StringPtrInput)
+	}
+	if args.SaslAwsAccessKey != nil {
+		args.SaslAwsAccessKey = pulumi.ToSecret(args.SaslAwsAccessKey).(pulumi.StringPtrInput)
+	}
+	if args.SaslAwsContainerCredentialsFullUri != nil {
+		args.SaslAwsContainerCredentialsFullUri = pulumi.ToSecret(args.SaslAwsContainerCredentialsFullUri).(pulumi.StringPtrInput)
+	}
+	if args.SaslAwsExternalId != nil {
+		args.SaslAwsExternalId = pulumi.ToSecret(args.SaslAwsExternalId).(pulumi.StringPtrInput)
+	}
+	if args.SaslAwsSecretKey != nil {
+		args.SaslAwsSecretKey = pulumi.ToSecret(args.SaslAwsSecretKey).(pulumi.StringPtrInput)
+	}
+	if args.SaslAwsToken != nil {
+		args.SaslAwsToken = pulumi.ToSecret(args.SaslAwsToken).(pulumi.StringPtrInput)
+	}
+	if args.SaslPassword != nil {
+		args.SaslPassword = pulumi.ToSecret(args.SaslPassword).(pulumi.StringPtrInput)
+	}
+	if args.SaslTokenUrl != nil {
+		args.SaslTokenUrl = pulumi.ToSecret(args.SaslTokenUrl).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientKey",
+		"clientKeyFile",
+		"clientKeyPassphrase",
+		"saslAwsAccessKey",
+		"saslAwsContainerCredentialsFullUri",
+		"saslAwsExternalId",
+		"saslAwsSecretKey",
+		"saslAwsToken",
+		"saslPassword",
+		"saslTokenUrl",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:kafka", name, args, &resource, opts...)

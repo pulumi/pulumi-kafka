@@ -208,8 +208,9 @@ type Acl struct {
 	AclPermissionType pulumi.StringOutput `pulumi:"aclPermissionType"`
 	AclPrincipal      pulumi.StringOutput `pulumi:"aclPrincipal"`
 	// The name of the resource
-	AclResourceName           pulumi.StringOutput    `pulumi:"aclResourceName"`
-	AclResourceType           pulumi.StringOutput    `pulumi:"aclResourceType"`
+	AclResourceName pulumi.StringOutput `pulumi:"aclResourceName"`
+	AclResourceType pulumi.StringOutput `pulumi:"aclResourceType"`
+	// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
 	ResourcePatternTypeFilter pulumi.StringPtrOutput `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -266,8 +267,9 @@ type aclState struct {
 	AclPermissionType *string `pulumi:"aclPermissionType"`
 	AclPrincipal      *string `pulumi:"aclPrincipal"`
 	// The name of the resource
-	AclResourceName           *string `pulumi:"aclResourceName"`
-	AclResourceType           *string `pulumi:"aclResourceType"`
+	AclResourceName *string `pulumi:"aclResourceName"`
+	AclResourceType *string `pulumi:"aclResourceType"`
+	// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -277,8 +279,9 @@ type AclState struct {
 	AclPermissionType pulumi.StringPtrInput
 	AclPrincipal      pulumi.StringPtrInput
 	// The name of the resource
-	AclResourceName           pulumi.StringPtrInput
-	AclResourceType           pulumi.StringPtrInput
+	AclResourceName pulumi.StringPtrInput
+	AclResourceType pulumi.StringPtrInput
+	// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
@@ -292,8 +295,9 @@ type aclArgs struct {
 	AclPermissionType string `pulumi:"aclPermissionType"`
 	AclPrincipal      string `pulumi:"aclPrincipal"`
 	// The name of the resource
-	AclResourceName           string  `pulumi:"aclResourceName"`
-	AclResourceType           string  `pulumi:"aclResourceType"`
+	AclResourceName string `pulumi:"aclResourceName"`
+	AclResourceType string `pulumi:"aclResourceType"`
+	// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
 	ResourcePatternTypeFilter *string `pulumi:"resourcePatternTypeFilter"`
 }
 
@@ -304,8 +308,9 @@ type AclArgs struct {
 	AclPermissionType pulumi.StringInput
 	AclPrincipal      pulumi.StringInput
 	// The name of the resource
-	AclResourceName           pulumi.StringInput
-	AclResourceType           pulumi.StringInput
+	AclResourceName pulumi.StringInput
+	AclResourceType pulumi.StringInput
+	// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
 	ResourcePatternTypeFilter pulumi.StringPtrInput
 }
 
@@ -421,6 +426,7 @@ func (o AclOutput) AclResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclResourceType }).(pulumi.StringOutput)
 }
 
+// How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).
 func (o AclOutput) ResourcePatternTypeFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringPtrOutput { return v.ResourcePatternTypeFilter }).(pulumi.StringPtrOutput)
 }

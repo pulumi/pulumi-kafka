@@ -63,14 +63,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of replicas.
+     * Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
      * 
      */
     @Import(name="replicationFactor")
     private @Nullable Output<Integer> replicationFactor;
 
     /**
-     * @return Number of replicas.
+     * @return Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
      * 
      */
     public Optional<Output<Integer>> replicationFactor() {
@@ -168,7 +168,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationFactor Number of replicas.
+         * @param replicationFactor Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationFactor Number of replicas.
+         * @param replicationFactor Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
          * 
          * @return builder
          * 

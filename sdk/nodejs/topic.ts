@@ -83,6 +83,22 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Topic with Confluent placement constraints
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as kafka from "@pulumi/kafka";
+ *
+ * const confluent = new kafka.Topic("confluent", {
+ *     name: "confluent",
+ *     replicationFactor: -1,
+ *     partitions: 10,
+ *     config: {
+ *         "confluent.placement.constraints": "{\"version\": 1, \"replicas\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-1\"}}], \"observers\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-2\"}}]}",
+ *     },
+ * });
+ * ```
+ *
  * ## Configuration Parameters
  *
  * The `config` map supports all Kafka topic-level configurations. Common configurations include:
@@ -162,7 +178,7 @@ export class Topic extends pulumi.CustomResource {
      */
     declare public readonly partitions: pulumi.Output<number>;
     /**
-     * Number of replicas.
+     * Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
      */
     declare public readonly replicationFactor: pulumi.Output<number>;
 
@@ -218,7 +234,7 @@ export interface TopicState {
      */
     partitions?: pulumi.Input<number | undefined>;
     /**
-     * Number of replicas.
+     * Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
      */
     replicationFactor?: pulumi.Input<number | undefined>;
 }
@@ -240,7 +256,7 @@ export interface TopicArgs {
      */
     partitions: pulumi.Input<number>;
     /**
-     * Number of replicas.
+     * Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.
      */
     replicationFactor: pulumi.Input<number>;
 }
