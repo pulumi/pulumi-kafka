@@ -1,9 +1,9 @@
 module github.com/pulumi/pulumi-kafka/provider/v3
 
-go 1.26.10
+go 1.27.3
 
 require (
-	github.com/Mongey/terraform-provider-kafka v0.13.1
+	github.com/Mongey/terraform-provider-kafka v0.13.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.142.0
 )
 
@@ -20,7 +20,7 @@ require (
 	github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp v1.35.0 // indirect
 	github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric v0.59.0 // indirect
 	github.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping v0.59.0 // indirect
-	github.com/IBM/sarama v1.46.1 // indirect
+	github.com/IBM/sarama v1.60.1 // indirect
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/Masterminds/semver/v3 v3.2.0 // indirect
@@ -51,7 +51,7 @@ require (
 	github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect
 	github.com/bgentry/speakeasy v0.1.0 // indirect
 	github.com/blang/semver v3.5.1+incompatible // indirect
-	github.com/bmatcuk/doublestar/v4 v4.8.1 // indirect
+	github.com/bmatcuk/doublestar/v4 v4.10.0 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/charmbracelet/bubbles v1.0.0 // indirect
@@ -70,8 +70,6 @@ require (
 	github.com/deckarep/golang-set/v2 v2.9.0 // indirect
 	github.com/djherbis/times v1.6.0 // indirect
 	github.com/eapache/go-resiliency v1.7.0 // indirect
-	github.com/eapache/go-xerial-snappy v0.0.0-20230731223053-c322873962e3 // indirect
-	github.com/eapache/queue v1.1.0 // indirect
 	github.com/ebitengine/purego v0.10.2 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
@@ -90,7 +88,6 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/glog v1.2.5 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
-	github.com/golang/snappy v1.0.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-tpm v0.9.8 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
@@ -129,7 +126,7 @@ require (
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kevinburke/ssh_config v1.6.0 // indirect
-	github.com/klauspost/compress v1.18.7 // indirect
+	github.com/klauspost/compress v1.19.1 // indirect
 	github.com/lucasb-eyer/go-colorful v1.4.1 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
@@ -158,7 +155,7 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
-	github.com/pierrec/lz4/v4 v4.1.22 // indirect
+	github.com/pierrec/lz4/v4 v4.1.27 // indirect
 	github.com/pjbgf/sha1cd v0.7.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
@@ -229,7 +226,7 @@ require (
 	golang.org/x/crypto v0.58.0 // indirect
 	golang.org/x/exp v0.0.0-20261014143641-f0251eb4aa3e // indirect
 	golang.org/x/mod v0.42.0 // indirect
-	golang.org/x/net v0.61.0 // indirect
+	golang.org/x/net v0.62.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
 	golang.org/x/sync v0.24.0 // indirect
 	golang.org/x/sys v0.49.0 // indirect

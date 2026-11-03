@@ -74,16 +74,19 @@
             },
             "clientKey": {
                 "type": "string",
-                "description": "The private key that the certificate was issued for."
+                "description": "The private key that the certificate was issued for.",
+                "secret": true
             },
             "clientKeyFile": {
                 "type": "string",
                 "description": "Path to a file containing the private key that the certificate was issued for.",
-                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use \u003cspan pulumi-lang-nodejs=\"`clientKey`\" pulumi-lang-dotnet=\"`ClientKey`\" pulumi-lang-go=\"`clientKey`\" pulumi-lang-python=\"`client_key`\" pulumi-lang-yaml=\"`clientKey`\" pulumi-lang-java=\"`clientKey`\" pulumi-lang-hcl=\"`client_key`\"\u003e`clientKey`\u003c/span\u003e instead."
+                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use \u003cspan pulumi-lang-nodejs=\"`clientKey`\" pulumi-lang-dotnet=\"`ClientKey`\" pulumi-lang-go=\"`clientKey`\" pulumi-lang-python=\"`client_key`\" pulumi-lang-yaml=\"`clientKey`\" pulumi-lang-java=\"`clientKey`\" pulumi-lang-hcl=\"`client_key`\"\u003e`clientKey`\u003c/span\u003e instead.",
+                "secret": true
             },
             "clientKeyPassphrase": {
                 "type": "string",
-                "description": "The passphrase for the private key that the certificate was issued for."
+                "description": "The passphrase for the private key that the certificate was issued for.",
+                "secret": true
             },
             "kafkaVersion": {
                 "type": "string",
@@ -91,7 +94,8 @@
             },
             "saslAwsAccessKey": {
                 "type": "string",
-                "description": "The AWS access key."
+                "description": "The AWS access key.",
+                "secret": true
             },
             "saslAwsContainerAuthorizationTokenFile": {
                 "type": "string",
@@ -99,7 +103,8 @@
             },
             "saslAwsContainerCredentialsFullUri": {
                 "type": "string",
-                "description": "URI to retrieve AWS credentials from"
+                "description": "URI to retrieve AWS credentials from",
+                "secret": true
             },
             "saslAwsCredsDebug": {
                 "type": "boolean",
@@ -107,7 +112,8 @@
             },
             "saslAwsExternalId": {
                 "type": "string",
-                "description": "External ID of the AWS IAM role to assume"
+                "description": "External ID of the AWS IAM role to assume",
+                "secret": true
             },
             "saslAwsProfile": {
                 "type": "string",
@@ -123,7 +129,8 @@
             },
             "saslAwsSecretKey": {
                 "type": "string",
-                "description": "The AWS secret key."
+                "description": "The AWS secret key.",
+                "secret": true
             },
             "saslAwsSharedConfigFiles": {
                 "type": "array",
@@ -134,7 +141,8 @@
             },
             "saslAwsToken": {
                 "type": "string",
-                "description": "The AWS session token. Only required if you are using temporary security credentials."
+                "description": "The AWS session token. Only required if you are using temporary security credentials.",
+                "secret": true
             },
             "saslMechanism": {
                 "type": "string",
@@ -155,11 +163,13 @@
             },
             "saslPassword": {
                 "type": "string",
-                "description": "Password for SASL authentication."
+                "description": "Password for SASL authentication.",
+                "secret": true
             },
             "saslTokenUrl": {
                 "type": "string",
-                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer"
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer",
+                "secret": true
             },
             "saslUsername": {
                 "type": "string",
@@ -261,16 +271,19 @@
             },
             "clientKey": {
                 "type": "string",
-                "description": "The private key that the certificate was issued for."
+                "description": "The private key that the certificate was issued for.",
+                "secret": true
             },
             "clientKeyFile": {
                 "type": "string",
                 "description": "Path to a file containing the private key that the certificate was issued for.",
-                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use \u003cspan pulumi-lang-nodejs=\"`clientKey`\" pulumi-lang-dotnet=\"`ClientKey`\" pulumi-lang-go=\"`clientKey`\" pulumi-lang-python=\"`client_key`\" pulumi-lang-yaml=\"`clientKey`\" pulumi-lang-java=\"`clientKey`\" pulumi-lang-hcl=\"`client_key`\"\u003e`clientKey`\u003c/span\u003e instead."
+                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use \u003cspan pulumi-lang-nodejs=\"`clientKey`\" pulumi-lang-dotnet=\"`ClientKey`\" pulumi-lang-go=\"`clientKey`\" pulumi-lang-python=\"`client_key`\" pulumi-lang-yaml=\"`clientKey`\" pulumi-lang-java=\"`clientKey`\" pulumi-lang-hcl=\"`client_key`\"\u003e`clientKey`\u003c/span\u003e instead.",
+                "secret": true
             },
             "clientKeyPassphrase": {
                 "type": "string",
-                "description": "The passphrase for the private key that the certificate was issued for."
+                "description": "The passphrase for the private key that the certificate was issued for.",
+                "secret": true
             },
             "kafkaVersion": {
                 "type": "string",
@@ -278,7 +291,8 @@
             },
             "saslAwsAccessKey": {
                 "type": "string",
-                "description": "The AWS access key."
+                "description": "The AWS access key.",
+                "secret": true
             },
             "saslAwsContainerAuthorizationTokenFile": {
                 "type": "string",
@@ -286,7 +300,8 @@
             },
             "saslAwsContainerCredentialsFullUri": {
                 "type": "string",
-                "description": "URI to retrieve AWS credentials from"
+                "description": "URI to retrieve AWS credentials from",
+                "secret": true
             },
             "saslAwsCredsDebug": {
                 "type": "boolean",
@@ -294,7 +309,8 @@
             },
             "saslAwsExternalId": {
                 "type": "string",
-                "description": "External ID of the AWS IAM role to assume"
+                "description": "External ID of the AWS IAM role to assume",
+                "secret": true
             },
             "saslAwsProfile": {
                 "type": "string",
@@ -310,7 +326,8 @@
             },
             "saslAwsSecretKey": {
                 "type": "string",
-                "description": "The AWS secret key."
+                "description": "The AWS secret key.",
+                "secret": true
             },
             "saslAwsSharedConfigFiles": {
                 "type": "array",
@@ -321,7 +338,8 @@
             },
             "saslAwsToken": {
                 "type": "string",
-                "description": "The AWS session token. Only required if you are using temporary security credentials."
+                "description": "The AWS session token. Only required if you are using temporary security credentials.",
+                "secret": true
             },
             "saslMechanism": {
                 "type": "string",
@@ -336,11 +354,13 @@
             },
             "saslPassword": {
                 "type": "string",
-                "description": "Password for SASL authentication."
+                "description": "Password for SASL authentication.",
+                "secret": true
             },
             "saslTokenUrl": {
                 "type": "string",
-                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer"
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer",
+                "secret": true
             },
             "saslUsername": {
                 "type": "string",
@@ -390,16 +410,19 @@
             },
             "clientKey": {
                 "type": "string",
-                "description": "The private key that the certificate was issued for."
+                "description": "The private key that the certificate was issued for.",
+                "secret": true
             },
             "clientKeyFile": {
                 "type": "string",
                 "description": "Path to a file containing the private key that the certificate was issued for.",
-                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use \u003cspan pulumi-lang-nodejs=\"`clientKey`\" pulumi-lang-dotnet=\"`ClientKey`\" pulumi-lang-go=\"`clientKey`\" pulumi-lang-python=\"`client_key`\" pulumi-lang-yaml=\"`clientKey`\" pulumi-lang-java=\"`clientKey`\" pulumi-lang-hcl=\"`client_key`\"\u003e`clientKey`\u003c/span\u003e instead."
+                "deprecationMessage": "This parameter is now deprecated and will be removed in a later release, please use \u003cspan pulumi-lang-nodejs=\"`clientKey`\" pulumi-lang-dotnet=\"`ClientKey`\" pulumi-lang-go=\"`clientKey`\" pulumi-lang-python=\"`client_key`\" pulumi-lang-yaml=\"`clientKey`\" pulumi-lang-java=\"`clientKey`\" pulumi-lang-hcl=\"`client_key`\"\u003e`clientKey`\u003c/span\u003e instead.",
+                "secret": true
             },
             "clientKeyPassphrase": {
                 "type": "string",
-                "description": "The passphrase for the private key that the certificate was issued for."
+                "description": "The passphrase for the private key that the certificate was issued for.",
+                "secret": true
             },
             "kafkaVersion": {
                 "type": "string",
@@ -407,7 +430,8 @@
             },
             "saslAwsAccessKey": {
                 "type": "string",
-                "description": "The AWS access key."
+                "description": "The AWS access key.",
+                "secret": true
             },
             "saslAwsContainerAuthorizationTokenFile": {
                 "type": "string",
@@ -415,7 +439,8 @@
             },
             "saslAwsContainerCredentialsFullUri": {
                 "type": "string",
-                "description": "URI to retrieve AWS credentials from"
+                "description": "URI to retrieve AWS credentials from",
+                "secret": true
             },
             "saslAwsCredsDebug": {
                 "type": "boolean",
@@ -423,7 +448,8 @@
             },
             "saslAwsExternalId": {
                 "type": "string",
-                "description": "External ID of the AWS IAM role to assume"
+                "description": "External ID of the AWS IAM role to assume",
+                "secret": true
             },
             "saslAwsProfile": {
                 "type": "string",
@@ -439,7 +465,8 @@
             },
             "saslAwsSecretKey": {
                 "type": "string",
-                "description": "The AWS secret key."
+                "description": "The AWS secret key.",
+                "secret": true
             },
             "saslAwsSharedConfigFiles": {
                 "type": "array",
@@ -450,7 +477,8 @@
             },
             "saslAwsToken": {
                 "type": "string",
-                "description": "The AWS session token. Only required if you are using temporary security credentials."
+                "description": "The AWS session token. Only required if you are using temporary security credentials.",
+                "secret": true
             },
             "saslMechanism": {
                 "type": "string",
@@ -471,11 +499,13 @@
             },
             "saslPassword": {
                 "type": "string",
-                "description": "Password for SASL authentication."
+                "description": "Password for SASL authentication.",
+                "secret": true
             },
             "saslTokenUrl": {
                 "type": "string",
-                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer"
+                "description": "The url to retrieve oauth2 tokens from, when using sasl mechanism oauthbearer",
+                "secret": true
             },
             "saslUsername": {
                 "type": "string",
@@ -537,7 +567,8 @@
                     "type": "string"
                 },
                 "resourcePatternTypeFilter": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix)."
                 }
             },
             "required": [
@@ -576,6 +607,7 @@
                 },
                 "resourcePatternTypeFilter": {
                     "type": "string",
+                    "description": "How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).",
                     "willReplaceOnChanges": true
                 }
             },
@@ -617,6 +649,7 @@
                     },
                     "resourcePatternTypeFilter": {
                         "type": "string",
+                        "description": "How to match the resource name. Valid values: Literal (exact match) or Prefixed (match resources with the given prefix).",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -694,7 +727,7 @@
             }
         },
         "kafka:index/topic:Topic": {
-            "description": "The \u003cspan pulumi-lang-nodejs=\"`kafka.Topic`\" pulumi-lang-dotnet=\"`kafka.Topic`\" pulumi-lang-go=\"`Topic`\" pulumi-lang-python=\"`Topic`\" pulumi-lang-yaml=\"`kafka.Topic`\" pulumi-lang-java=\"`kafka.Topic`\" pulumi-lang-hcl=\"`kafka_topic`\"\u003e`kafka.Topic`\u003c/span\u003e resource manages Apache Kafka topics, including their partition count, replication factor, and various configuration parameters. This resource supports non-destructive partition count increases.\n\n## Example Usage\n\n### Basic Topic\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst example = new kafka.Topic(\"example\", {\n    name: \"example-topic\",\n    replicationFactor: 3,\n    partitions: 10,\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nexample = kafka.Topic(\"example\",\n    name=\"example-topic\",\n    replication_factor=3,\n    partitions=10)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Kafka.Topic(\"example\", new()\n    {\n        Name = \"example-topic\",\n        ReplicationFactor = 3,\n        Partitions = 10,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"example\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"example-topic\"),\n\t\t\tReplicationFactor: pulumi.Int(3),\n\t\t\tPartitions:        pulumi.Int(10),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"example\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"example-topic\"\n  replication_factor = 3\n  partitions         = 10\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Topic(\"example\", TopicArgs.builder()\n            .name(\"example-topic\")\n            .replicationFactor(3)\n            .partitions(10)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: kafka:Topic\n    properties:\n      name: example-topic\n      replicationFactor: 3\n      partitions: 10\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Topic with Common Configurations\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst logs = new kafka.Topic(\"logs\", {\n    name: \"application-logs\",\n    replicationFactor: 3,\n    partitions: 50,\n    config: {\n        \"retention.ms\": \"604800000\",\n        \"segment.ms\": \"86400000\",\n        \"cleanup.policy\": \"delete\",\n        \"compression.type\": \"gzip\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nlogs = kafka.Topic(\"logs\",\n    name=\"application-logs\",\n    replication_factor=3,\n    partitions=50,\n    config={\n        \"retention.ms\": \"604800000\",\n        \"segment.ms\": \"86400000\",\n        \"cleanup.policy\": \"delete\",\n        \"compression.type\": \"gzip\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var logs = new Kafka.Topic(\"logs\", new()\n    {\n        Name = \"application-logs\",\n        ReplicationFactor = 3,\n        Partitions = 50,\n        Config = \n        {\n            { \"retention.ms\", \"604800000\" },\n            { \"segment.ms\", \"86400000\" },\n            { \"cleanup.policy\", \"delete\" },\n            { \"compression.type\", \"gzip\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"logs\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"application-logs\"),\n\t\t\tReplicationFactor: pulumi.Int(3),\n\t\t\tPartitions:        pulumi.Int(50),\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"retention.ms\":     pulumi.String(\"604800000\"),\n\t\t\t\t\"segment.ms\":       pulumi.String(\"86400000\"),\n\t\t\t\t\"cleanup.policy\":   pulumi.String(\"delete\"),\n\t\t\t\t\"compression.type\": pulumi.String(\"gzip\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"logs\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"application-logs\"\n  replication_factor = 3\n  partitions         = 50\n  config = {\n    \"retention.ms\"     = \"604800000\"\n    \"segment.ms\"       = \"86400000\"\n    \"cleanup.policy\"   = \"delete\"\n    \"compression.type\" = \"gzip\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var logs = new Topic(\"logs\", TopicArgs.builder()\n            .name(\"application-logs\")\n            .replicationFactor(3)\n            .partitions(50)\n            .config(Map.ofEntries(\n                Map.entry(\"retention.ms\", \"604800000\"),\n                Map.entry(\"segment.ms\", \"86400000\"),\n                Map.entry(\"cleanup.policy\", \"delete\"),\n                Map.entry(\"compression.type\", \"gzip\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  logs:\n    type: kafka:Topic\n    properties:\n      name: application-logs\n      replicationFactor: 3\n      partitions: 50\n      config:\n        retention.ms: '604800000'\n        segment.ms: '86400000'\n        cleanup.policy: delete\n        compression.type: gzip\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Compacted Topic for Event Sourcing\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst events = new kafka.Topic(\"events\", {\n    name: \"user-events\",\n    replicationFactor: 3,\n    partitions: 100,\n    config: {\n        \"cleanup.policy\": \"compact\",\n        \"retention.ms\": \"-1\",\n        \"min.compaction.lag.ms\": \"3600000\",\n        \"delete.retention.ms\": \"86400000\",\n        \"compression.type\": \"lz4\",\n        \"segment.bytes\": \"1073741824\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nevents = kafka.Topic(\"events\",\n    name=\"user-events\",\n    replication_factor=3,\n    partitions=100,\n    config={\n        \"cleanup.policy\": \"compact\",\n        \"retention.ms\": \"-1\",\n        \"min.compaction.lag.ms\": \"3600000\",\n        \"delete.retention.ms\": \"86400000\",\n        \"compression.type\": \"lz4\",\n        \"segment.bytes\": \"1073741824\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var events = new Kafka.Topic(\"events\", new()\n    {\n        Name = \"user-events\",\n        ReplicationFactor = 3,\n        Partitions = 100,\n        Config = \n        {\n            { \"cleanup.policy\", \"compact\" },\n            { \"retention.ms\", \"-1\" },\n            { \"min.compaction.lag.ms\", \"3600000\" },\n            { \"delete.retention.ms\", \"86400000\" },\n            { \"compression.type\", \"lz4\" },\n            { \"segment.bytes\", \"1073741824\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"events\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"user-events\"),\n\t\t\tReplicationFactor: pulumi.Int(3),\n\t\t\tPartitions:        pulumi.Int(100),\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"cleanup.policy\":        pulumi.String(\"compact\"),\n\t\t\t\t\"retention.ms\":          pulumi.String(\"-1\"),\n\t\t\t\t\"min.compaction.lag.ms\": pulumi.String(\"3600000\"),\n\t\t\t\t\"delete.retention.ms\":   pulumi.String(\"86400000\"),\n\t\t\t\t\"compression.type\":      pulumi.String(\"lz4\"),\n\t\t\t\t\"segment.bytes\":         pulumi.String(\"1073741824\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"events\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"user-events\"\n  replication_factor = 3\n  partitions         = 100\n  config = {\n    \"cleanup.policy\"        = \"compact\"\n    \"retention.ms\"          = \"-1\"\n    \"min.compaction.lag.ms\" = \"3600000\"\n    \"delete.retention.ms\"   = \"86400000\"\n    \"compression.type\"      = \"lz4\"\n    \"segment.bytes\"         = \"1073741824\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var events = new Topic(\"events\", TopicArgs.builder()\n            .name(\"user-events\")\n            .replicationFactor(3)\n            .partitions(100)\n            .config(Map.ofEntries(\n                Map.entry(\"cleanup.policy\", \"compact\"),\n                Map.entry(\"retention.ms\", \"-1\"),\n                Map.entry(\"min.compaction.lag.ms\", \"3600000\"),\n                Map.entry(\"delete.retention.ms\", \"86400000\"),\n                Map.entry(\"compression.type\", \"lz4\"),\n                Map.entry(\"segment.bytes\", \"1073741824\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  events:\n    type: kafka:Topic\n    properties:\n      name: user-events\n      replicationFactor: 3\n      partitions: 100\n      config:\n        cleanup.policy: compact\n        retention.ms: '-1'\n        min.compaction.lag.ms: '3600000'\n        delete.retention.ms: '86400000'\n        compression.type: lz4\n        segment.bytes: '1073741824'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### High-Throughput Topic\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst metrics = new kafka.Topic(\"metrics\", {\n    name: \"system-metrics\",\n    replicationFactor: 2,\n    partitions: 200,\n    config: {\n        \"retention.ms\": \"86400000\",\n        \"segment.ms\": \"3600000\",\n        \"compression.type\": \"lz4\",\n        \"max.message.bytes\": \"1048576\",\n        \"min.insync.replicas\": \"2\",\n        \"unclean.leader.election.enable\": \"false\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nmetrics = kafka.Topic(\"metrics\",\n    name=\"system-metrics\",\n    replication_factor=2,\n    partitions=200,\n    config={\n        \"retention.ms\": \"86400000\",\n        \"segment.ms\": \"3600000\",\n        \"compression.type\": \"lz4\",\n        \"max.message.bytes\": \"1048576\",\n        \"min.insync.replicas\": \"2\",\n        \"unclean.leader.election.enable\": \"false\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var metrics = new Kafka.Topic(\"metrics\", new()\n    {\n        Name = \"system-metrics\",\n        ReplicationFactor = 2,\n        Partitions = 200,\n        Config = \n        {\n            { \"retention.ms\", \"86400000\" },\n            { \"segment.ms\", \"3600000\" },\n            { \"compression.type\", \"lz4\" },\n            { \"max.message.bytes\", \"1048576\" },\n            { \"min.insync.replicas\", \"2\" },\n            { \"unclean.leader.election.enable\", \"false\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"metrics\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"system-metrics\"),\n\t\t\tReplicationFactor: pulumi.Int(2),\n\t\t\tPartitions:        pulumi.Int(200),\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"retention.ms\":                   pulumi.String(\"86400000\"),\n\t\t\t\t\"segment.ms\":                     pulumi.String(\"3600000\"),\n\t\t\t\t\"compression.type\":               pulumi.String(\"lz4\"),\n\t\t\t\t\"max.message.bytes\":              pulumi.String(\"1048576\"),\n\t\t\t\t\"min.insync.replicas\":            pulumi.String(\"2\"),\n\t\t\t\t\"unclean.leader.election.enable\": pulumi.String(\"false\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"metrics\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"system-metrics\"\n  replication_factor = 2\n  partitions         = 200\n  config = {\n    \"retention.ms\"                   = \"86400000\"\n    \"segment.ms\"                     = \"3600000\"\n    \"compression.type\"               = \"lz4\"\n    \"max.message.bytes\"              = \"1048576\"\n    \"min.insync.replicas\"            = \"2\"\n    \"unclean.leader.election.enable\" = \"false\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var metrics = new Topic(\"metrics\", TopicArgs.builder()\n            .name(\"system-metrics\")\n            .replicationFactor(2)\n            .partitions(200)\n            .config(Map.ofEntries(\n                Map.entry(\"retention.ms\", \"86400000\"),\n                Map.entry(\"segment.ms\", \"3600000\"),\n                Map.entry(\"compression.type\", \"lz4\"),\n                Map.entry(\"max.message.bytes\", \"1048576\"),\n                Map.entry(\"min.insync.replicas\", \"2\"),\n                Map.entry(\"unclean.leader.election.enable\", \"false\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  metrics:\n    type: kafka:Topic\n    properties:\n      name: system-metrics\n      replicationFactor: 2\n      partitions: 200\n      config:\n        retention.ms: '86400000'\n        segment.ms: '3600000'\n        compression.type: lz4\n        max.message.bytes: '1048576'\n        min.insync.replicas: '2'\n        unclean.leader.election.enable: 'false'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Configuration Parameters\n\nThe \u003cspan pulumi-lang-nodejs=\"`config`\" pulumi-lang-dotnet=\"`Config`\" pulumi-lang-go=\"`config`\" pulumi-lang-python=\"`config`\" pulumi-lang-yaml=\"`config`\" pulumi-lang-java=\"`config`\" pulumi-lang-hcl=\"`config`\"\u003e`config`\u003c/span\u003e map supports all Kafka topic-level configurations. Common configurations include:\n\n### Retention Settings\n- `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)\n- `retention.bytes` - Maximum size of the log before deleting old segments. Default: -1 (no limit)\n- `segment.ms` - Time after which a log segment should be rotated. Default: 604800000 (7 days)\n- `segment.bytes` - Maximum size of a single log segment file. Default: 1073741824 (1GB)\n\n### Cleanup and Compaction\n- `cleanup.policy` - Either \"delete\" or \"compact\" or both \"compact,delete\". Default: \"delete\"\n- `min.compaction.lag.ms` - Minimum time a message will remain uncompacted. Default: 0\n- `delete.retention.ms` - How long to retain delete tombstone markers for compacted topics. Default: 86400000 (1 day)\n\n### Compression\n- `compression.type` - Compression codec: \"uncompressed\", \"zstd\", \"lz4\", \"snappy\", \"gzip\", \"producer\". Default: \"producer\"\n\n### Replication and Durability\n- `min.insync.replicas` - Minimum number of replicas that must acknowledge a write. Default: 1\n- `unclean.leader.election.enable` - Whether to allow replicas not in ISR to be elected leader. Default: false\n\n### Message Size\n- `max.message.bytes` - Maximum size of a message. Default: 1048588 (~1MB)\n- `message.timestamp.type` - Whether to use CreateTime or LogAppendTime. Default: \"CreateTime\"\n\nFor a complete list of configurations, refer to the [Kafka documentation](https://kafka.apache.org/documentation/#topicconfigs).\n\n\u003e **Note:** Increasing the partition count is supported without recreating the topic. However, decreasing partitions requires topic recreation.\n\n## Import\n\nExisting Kafka topics can be imported using the topic name:\n\n```sh\n$ pulumi import kafka:index/topic:Topic example example-topic\n```\n\n",
+            "description": "The \u003cspan pulumi-lang-nodejs=\"`kafka.Topic`\" pulumi-lang-dotnet=\"`kafka.Topic`\" pulumi-lang-go=\"`Topic`\" pulumi-lang-python=\"`Topic`\" pulumi-lang-yaml=\"`kafka.Topic`\" pulumi-lang-java=\"`kafka.Topic`\" pulumi-lang-hcl=\"`kafka_topic`\"\u003e`kafka.Topic`\u003c/span\u003e resource manages Apache Kafka topics, including their partition count, replication factor, and various configuration parameters. This resource supports non-destructive partition count increases.\n\n## Example Usage\n\n### Basic Topic\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst example = new kafka.Topic(\"example\", {\n    name: \"example-topic\",\n    replicationFactor: 3,\n    partitions: 10,\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nexample = kafka.Topic(\"example\",\n    name=\"example-topic\",\n    replication_factor=3,\n    partitions=10)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Kafka.Topic(\"example\", new()\n    {\n        Name = \"example-topic\",\n        ReplicationFactor = 3,\n        Partitions = 10,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"example\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"example-topic\"),\n\t\t\tReplicationFactor: pulumi.Int(3),\n\t\t\tPartitions:        pulumi.Int(10),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"example\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"example-topic\"\n  replication_factor = 3\n  partitions         = 10\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Topic(\"example\", TopicArgs.builder()\n            .name(\"example-topic\")\n            .replicationFactor(3)\n            .partitions(10)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: kafka:Topic\n    properties:\n      name: example-topic\n      replicationFactor: 3\n      partitions: 10\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Topic with Common Configurations\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst logs = new kafka.Topic(\"logs\", {\n    name: \"application-logs\",\n    replicationFactor: 3,\n    partitions: 50,\n    config: {\n        \"retention.ms\": \"604800000\",\n        \"segment.ms\": \"86400000\",\n        \"cleanup.policy\": \"delete\",\n        \"compression.type\": \"gzip\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nlogs = kafka.Topic(\"logs\",\n    name=\"application-logs\",\n    replication_factor=3,\n    partitions=50,\n    config={\n        \"retention.ms\": \"604800000\",\n        \"segment.ms\": \"86400000\",\n        \"cleanup.policy\": \"delete\",\n        \"compression.type\": \"gzip\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var logs = new Kafka.Topic(\"logs\", new()\n    {\n        Name = \"application-logs\",\n        ReplicationFactor = 3,\n        Partitions = 50,\n        Config = \n        {\n            { \"retention.ms\", \"604800000\" },\n            { \"segment.ms\", \"86400000\" },\n            { \"cleanup.policy\", \"delete\" },\n            { \"compression.type\", \"gzip\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"logs\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"application-logs\"),\n\t\t\tReplicationFactor: pulumi.Int(3),\n\t\t\tPartitions:        pulumi.Int(50),\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"retention.ms\":     pulumi.String(\"604800000\"),\n\t\t\t\t\"segment.ms\":       pulumi.String(\"86400000\"),\n\t\t\t\t\"cleanup.policy\":   pulumi.String(\"delete\"),\n\t\t\t\t\"compression.type\": pulumi.String(\"gzip\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"logs\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"application-logs\"\n  replication_factor = 3\n  partitions         = 50\n  config = {\n    \"retention.ms\"     = \"604800000\"\n    \"segment.ms\"       = \"86400000\"\n    \"cleanup.policy\"   = \"delete\"\n    \"compression.type\" = \"gzip\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var logs = new Topic(\"logs\", TopicArgs.builder()\n            .name(\"application-logs\")\n            .replicationFactor(3)\n            .partitions(50)\n            .config(Map.ofEntries(\n                Map.entry(\"retention.ms\", \"604800000\"),\n                Map.entry(\"segment.ms\", \"86400000\"),\n                Map.entry(\"cleanup.policy\", \"delete\"),\n                Map.entry(\"compression.type\", \"gzip\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  logs:\n    type: kafka:Topic\n    properties:\n      name: application-logs\n      replicationFactor: 3\n      partitions: 50\n      config:\n        retention.ms: '604800000'\n        segment.ms: '86400000'\n        cleanup.policy: delete\n        compression.type: gzip\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Compacted Topic for Event Sourcing\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst events = new kafka.Topic(\"events\", {\n    name: \"user-events\",\n    replicationFactor: 3,\n    partitions: 100,\n    config: {\n        \"cleanup.policy\": \"compact\",\n        \"retention.ms\": \"-1\",\n        \"min.compaction.lag.ms\": \"3600000\",\n        \"delete.retention.ms\": \"86400000\",\n        \"compression.type\": \"lz4\",\n        \"segment.bytes\": \"1073741824\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nevents = kafka.Topic(\"events\",\n    name=\"user-events\",\n    replication_factor=3,\n    partitions=100,\n    config={\n        \"cleanup.policy\": \"compact\",\n        \"retention.ms\": \"-1\",\n        \"min.compaction.lag.ms\": \"3600000\",\n        \"delete.retention.ms\": \"86400000\",\n        \"compression.type\": \"lz4\",\n        \"segment.bytes\": \"1073741824\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var events = new Kafka.Topic(\"events\", new()\n    {\n        Name = \"user-events\",\n        ReplicationFactor = 3,\n        Partitions = 100,\n        Config = \n        {\n            { \"cleanup.policy\", \"compact\" },\n            { \"retention.ms\", \"-1\" },\n            { \"min.compaction.lag.ms\", \"3600000\" },\n            { \"delete.retention.ms\", \"86400000\" },\n            { \"compression.type\", \"lz4\" },\n            { \"segment.bytes\", \"1073741824\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"events\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"user-events\"),\n\t\t\tReplicationFactor: pulumi.Int(3),\n\t\t\tPartitions:        pulumi.Int(100),\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"cleanup.policy\":        pulumi.String(\"compact\"),\n\t\t\t\t\"retention.ms\":          pulumi.String(\"-1\"),\n\t\t\t\t\"min.compaction.lag.ms\": pulumi.String(\"3600000\"),\n\t\t\t\t\"delete.retention.ms\":   pulumi.String(\"86400000\"),\n\t\t\t\t\"compression.type\":      pulumi.String(\"lz4\"),\n\t\t\t\t\"segment.bytes\":         pulumi.String(\"1073741824\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"events\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"user-events\"\n  replication_factor = 3\n  partitions         = 100\n  config = {\n    \"cleanup.policy\"        = \"compact\"\n    \"retention.ms\"          = \"-1\"\n    \"min.compaction.lag.ms\" = \"3600000\"\n    \"delete.retention.ms\"   = \"86400000\"\n    \"compression.type\"      = \"lz4\"\n    \"segment.bytes\"         = \"1073741824\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var events = new Topic(\"events\", TopicArgs.builder()\n            .name(\"user-events\")\n            .replicationFactor(3)\n            .partitions(100)\n            .config(Map.ofEntries(\n                Map.entry(\"cleanup.policy\", \"compact\"),\n                Map.entry(\"retention.ms\", \"-1\"),\n                Map.entry(\"min.compaction.lag.ms\", \"3600000\"),\n                Map.entry(\"delete.retention.ms\", \"86400000\"),\n                Map.entry(\"compression.type\", \"lz4\"),\n                Map.entry(\"segment.bytes\", \"1073741824\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  events:\n    type: kafka:Topic\n    properties:\n      name: user-events\n      replicationFactor: 3\n      partitions: 100\n      config:\n        cleanup.policy: compact\n        retention.ms: '-1'\n        min.compaction.lag.ms: '3600000'\n        delete.retention.ms: '86400000'\n        compression.type: lz4\n        segment.bytes: '1073741824'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### High-Throughput Topic\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst metrics = new kafka.Topic(\"metrics\", {\n    name: \"system-metrics\",\n    replicationFactor: 2,\n    partitions: 200,\n    config: {\n        \"retention.ms\": \"86400000\",\n        \"segment.ms\": \"3600000\",\n        \"compression.type\": \"lz4\",\n        \"max.message.bytes\": \"1048576\",\n        \"min.insync.replicas\": \"2\",\n        \"unclean.leader.election.enable\": \"false\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nmetrics = kafka.Topic(\"metrics\",\n    name=\"system-metrics\",\n    replication_factor=2,\n    partitions=200,\n    config={\n        \"retention.ms\": \"86400000\",\n        \"segment.ms\": \"3600000\",\n        \"compression.type\": \"lz4\",\n        \"max.message.bytes\": \"1048576\",\n        \"min.insync.replicas\": \"2\",\n        \"unclean.leader.election.enable\": \"false\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var metrics = new Kafka.Topic(\"metrics\", new()\n    {\n        Name = \"system-metrics\",\n        ReplicationFactor = 2,\n        Partitions = 200,\n        Config = \n        {\n            { \"retention.ms\", \"86400000\" },\n            { \"segment.ms\", \"3600000\" },\n            { \"compression.type\", \"lz4\" },\n            { \"max.message.bytes\", \"1048576\" },\n            { \"min.insync.replicas\", \"2\" },\n            { \"unclean.leader.election.enable\", \"false\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"metrics\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"system-metrics\"),\n\t\t\tReplicationFactor: pulumi.Int(2),\n\t\t\tPartitions:        pulumi.Int(200),\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"retention.ms\":                   pulumi.String(\"86400000\"),\n\t\t\t\t\"segment.ms\":                     pulumi.String(\"3600000\"),\n\t\t\t\t\"compression.type\":               pulumi.String(\"lz4\"),\n\t\t\t\t\"max.message.bytes\":              pulumi.String(\"1048576\"),\n\t\t\t\t\"min.insync.replicas\":            pulumi.String(\"2\"),\n\t\t\t\t\"unclean.leader.election.enable\": pulumi.String(\"false\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"metrics\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"system-metrics\"\n  replication_factor = 2\n  partitions         = 200\n  config = {\n    \"retention.ms\"                   = \"86400000\"\n    \"segment.ms\"                     = \"3600000\"\n    \"compression.type\"               = \"lz4\"\n    \"max.message.bytes\"              = \"1048576\"\n    \"min.insync.replicas\"            = \"2\"\n    \"unclean.leader.election.enable\" = \"false\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var metrics = new Topic(\"metrics\", TopicArgs.builder()\n            .name(\"system-metrics\")\n            .replicationFactor(2)\n            .partitions(200)\n            .config(Map.ofEntries(\n                Map.entry(\"retention.ms\", \"86400000\"),\n                Map.entry(\"segment.ms\", \"3600000\"),\n                Map.entry(\"compression.type\", \"lz4\"),\n                Map.entry(\"max.message.bytes\", \"1048576\"),\n                Map.entry(\"min.insync.replicas\", \"2\"),\n                Map.entry(\"unclean.leader.election.enable\", \"false\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  metrics:\n    type: kafka:Topic\n    properties:\n      name: system-metrics\n      replicationFactor: 2\n      partitions: 200\n      config:\n        retention.ms: '86400000'\n        segment.ms: '3600000'\n        compression.type: lz4\n        max.message.bytes: '1048576'\n        min.insync.replicas: '2'\n        unclean.leader.election.enable: 'false'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Topic with Confluent placement constraints\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as kafka from \"@pulumi/kafka\";\n\nconst confluent = new kafka.Topic(\"confluent\", {\n    name: \"confluent\",\n    replicationFactor: -1,\n    partitions: 10,\n    config: {\n        \"confluent.placement.constraints\": \"{\\\"version\\\": 1, \\\"replicas\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-1\\\"}}], \\\"observers\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-2\\\"}}]}\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_kafka as kafka\n\nconfluent = kafka.Topic(\"confluent\",\n    name=\"confluent\",\n    replication_factor=-1,\n    partitions=10,\n    config={\n        \"confluent.placement.constraints\": \"{\\\"version\\\": 1, \\\"replicas\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-1\\\"}}], \\\"observers\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-2\\\"}}]}\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Kafka = Pulumi.Kafka;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var confluent = new Kafka.Topic(\"confluent\", new()\n    {\n        Name = \"confluent\",\n        ReplicationFactor = -1,\n        Partitions = 10,\n        Config = \n        {\n            { \"confluent.placement.constraints\", \"{\\\"version\\\": 1, \\\"replicas\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-1\\\"}}], \\\"observers\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-2\\\"}}]}\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-kafka/sdk/v3/go/kafka\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := kafka.NewTopic(ctx, \"confluent\", \u0026kafka.TopicArgs{\n\t\t\tName:              pulumi.String(\"confluent\"),\n\t\t\tReplicationFactor: pulumi.Int(-1),\n\t\t\tPartitions:        pulumi.Int(10),\n\t\t\tConfig: pulumi.StringMap{\n\t\t\t\t\"confluent.placement.constraints\": pulumi.String(\"{\\\"version\\\": 1, \\\"replicas\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-1\\\"}}], \\\"observers\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-2\\\"}}]}\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    kafka = {\n      source = \"pulumi/kafka\"\n    }\n  }\n}\n\nresource \"kafka_topic\" \"confluent\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  name               = \"confluent\"\n  replication_factor = -1\n  partitions         = 10\n  config = {\n    \"confluent.placement.constraints\" = \"{\\\"version\\\": 1, \\\"replicas\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-1\\\"}}], \\\"observers\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-2\\\"}}]}\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.kafka.Topic;\nimport com.pulumi.kafka.TopicArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var confluent = new Topic(\"confluent\", TopicArgs.builder()\n            .name(\"confluent\")\n            .replicationFactor(-1)\n            .partitions(10)\n            .config(Map.of(\"confluent.placement.constraints\", \"{\\\"version\\\": 1, \\\"replicas\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-1\\\"}}], \\\"observers\\\":[{\\\"count\\\": 1, \\\"constraints\\\": {\\\"rack\\\": \\\"rack-2\\\"}}]}\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  confluent:\n    type: kafka:Topic\n    properties:\n      name: confluent\n      replicationFactor: -1\n      partitions: 10\n      config:\n        confluent.placement.constraints: '{\"version\": 1, \"replicas\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-1\"}}], \"observers\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-2\"}}]}'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Configuration Parameters\n\nThe \u003cspan pulumi-lang-nodejs=\"`config`\" pulumi-lang-dotnet=\"`Config`\" pulumi-lang-go=\"`config`\" pulumi-lang-python=\"`config`\" pulumi-lang-yaml=\"`config`\" pulumi-lang-java=\"`config`\" pulumi-lang-hcl=\"`config`\"\u003e`config`\u003c/span\u003e map supports all Kafka topic-level configurations. Common configurations include:\n\n### Retention Settings\n- `retention.ms` - How long to retain messages (in milliseconds). Default: 604800000 (7 days)\n- `retention.bytes` - Maximum size of the log before deleting old segments. Default: -1 (no limit)\n- `segment.ms` - Time after which a log segment should be rotated. Default: 604800000 (7 days)\n- `segment.bytes` - Maximum size of a single log segment file. Default: 1073741824 (1GB)\n\n### Cleanup and Compaction\n- `cleanup.policy` - Either \"delete\" or \"compact\" or both \"compact,delete\". Default: \"delete\"\n- `min.compaction.lag.ms` - Minimum time a message will remain uncompacted. Default: 0\n- `delete.retention.ms` - How long to retain delete tombstone markers for compacted topics. Default: 86400000 (1 day)\n\n### Compression\n- `compression.type` - Compression codec: \"uncompressed\", \"zstd\", \"lz4\", \"snappy\", \"gzip\", \"producer\". Default: \"producer\"\n\n### Replication and Durability\n- `min.insync.replicas` - Minimum number of replicas that must acknowledge a write. Default: 1\n- `unclean.leader.election.enable` - Whether to allow replicas not in ISR to be elected leader. Default: false\n\n### Message Size\n- `max.message.bytes` - Maximum size of a message. Default: 1048588 (~1MB)\n- `message.timestamp.type` - Whether to use CreateTime or LogAppendTime. Default: \"CreateTime\"\n\nFor a complete list of configurations, refer to the [Kafka documentation](https://kafka.apache.org/documentation/#topicconfigs).\n\n\u003e **Note:** Increasing the partition count is supported without recreating the topic. However, decreasing partitions requires topic recreation.\n\n## Import\n\nExisting Kafka topics can be imported using the topic name:\n\n```sh\n$ pulumi import kafka:index/topic:Topic example example-topic\n```\n\n",
             "properties": {
                 "config": {
                     "type": "object",
@@ -713,7 +746,7 @@
                 },
                 "replicationFactor": {
                     "type": "integer",
-                    "description": "Number of replicas.\n"
+                    "description": "Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.\n"
                 }
             },
             "required": [
@@ -740,7 +773,7 @@
                 },
                 "replicationFactor": {
                     "type": "integer",
-                    "description": "Number of replicas.\n"
+                    "description": "Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.\n"
                 }
             },
             "requiredInputs": [
@@ -768,7 +801,7 @@
                     },
                     "replicationFactor": {
                         "type": "integer",
-                        "description": "Number of replicas.\n"
+                        "description": "Number of replicas. If using Confluent Kafka and setting placement constraints, set this to `-1`.\n"
                     }
                 },
                 "type": "object"
