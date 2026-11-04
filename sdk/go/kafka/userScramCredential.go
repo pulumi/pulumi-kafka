@@ -164,6 +164,12 @@ func (UserScramCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userScramCredentialState)(nil)).Elem()
 }
 
+// UserScramCredentialExists checks whether an existing UserScramCredential resource with the given ID exists.
+func UserScramCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserScramCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("kafka:index/userScramCredential:UserScramCredential", id, state, "", opts...)
+}
+
 type userScramCredentialArgs struct {
 	// The password of the credential (deprecated, use passwordWo instead)
 	Password *string `pulumi:"password"`

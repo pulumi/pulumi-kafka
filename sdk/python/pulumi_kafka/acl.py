@@ -565,6 +565,26 @@ class Acl(pulumi.CustomResource):
         __props__.__dict__["resource_pattern_type_filter"] = resource_pattern_type_filter
         return Acl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_host: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_operation: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_principal: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_name: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pattern_type_filter: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclHost"] = acl_host
+        __props__["aclOperation"] = acl_operation
+        __props__["aclPermissionType"] = acl_permission_type
+        __props__["aclPrincipal"] = acl_principal
+        __props__["aclResourceName"] = acl_resource_name
+        __props__["aclResourceType"] = acl_resource_type
+        __props__["resourcePatternTypeFilter"] = resource_pattern_type_filter
+        return pulumi.runtime.exists_resource(None, 'kafka:index/acl:Acl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclHost")
     def acl_host(self) -> pulumi.Output[_builtins.str]:
