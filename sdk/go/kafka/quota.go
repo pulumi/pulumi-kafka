@@ -262,6 +262,12 @@ func (QuotaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaState)(nil)).Elem()
 }
 
+// QuotaExists checks whether an existing Quota resource with the given ID exists.
+func QuotaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("kafka:index/quota:Quota", id, state, "", opts...)
+}
+
 type quotaArgs struct {
 	// A map of string k/v properties.
 	Config map[string]string `pulumi:"config"`

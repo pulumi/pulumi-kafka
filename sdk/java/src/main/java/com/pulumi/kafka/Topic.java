@@ -201,21 +201,21 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var confluent = new Topic("confluent", TopicArgs.builder()
  *             .name("confluent")
  *             .replicationFactor(-1)
  *             .partitions(10)
- *             .config(Map.of("confluent.placement.constraints", "{\"version\": 1, \"replicas\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-1\"}}], \"observers\":[{\"count\": 1, \"constraints\": {\"rack\": \"rack-2\"}}]}"))
+ *             .config(Map.of("confluent.placement.constraints", "}{&#92;{@code "version}&#92;{@code ": 1, }&#92;{@code "replicas}&#92;{@code ":[}{&#92;{@code "count}&#92;{@code ": 1, }&#92;{@code "constraints}&#92;{@code ": }{&#92;{@code "rack}&#92;{@code ": }&#92;{@code "rack-1}&#92;{@code "}}}{@code ], }&#92;{@code "observers}&#92;{@code ":[}{&#92;{@code "count}&#92;{@code ": 1, }&#92;{@code "constraints}&#92;{@code ": }{&#92;{@code "rack}&#92;{@code ": }&#92;{@code "rack-2}&#92;{@code "}}}{@code ]}}{@code "))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

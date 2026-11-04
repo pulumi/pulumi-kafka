@@ -464,6 +464,18 @@ class Quota(pulumi.CustomResource):
         __props__.__dict__["entity_type"] = entity_type
         return Quota(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            entity_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["entityName"] = entity_name
+        __props__["entityType"] = entity_type
+        return pulumi.runtime.exists_resource(None, 'kafka:index/quota:Quota', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

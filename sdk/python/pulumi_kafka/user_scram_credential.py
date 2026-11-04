@@ -472,6 +472,24 @@ class UserScramCredential(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return UserScramCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
+            scram_iterations: pulumi.Input[Optional[_builtins.int]] = None,
+            scram_mechanism: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["password"] = password
+        __props__["passwordWo"] = password_wo
+        __props__["passwordWoVersion"] = password_wo_version
+        __props__["scramIterations"] = scram_iterations
+        __props__["scramMechanism"] = scram_mechanism
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'kafka:index/userScramCredential:UserScramCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
