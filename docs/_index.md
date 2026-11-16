@@ -18,13 +18,6 @@ The Kafka provider is available as a package in all Pulumi languages:
 ## Overview
 
 The Kafka provider is used to interact with [Apache Kafka](https://kafka.apache.org/) clusters. The provider allows you to manage Kafka topics, ACLs, quotas, and SCRAM credentials. It supports various authentication methods including TLS, SASL/PLAIN, SASL/SCRAM, AWS IAM, and OAuth.
-## Documentation
-
-- Quick Start Guide - Get started quickly with common scenarios
-- Authentication Guide - Detailed authentication configuration
-- AWS MSK Integration - Complete MSK setup guide
-- Migration Guide - Migrate between setups and versions
-- Troubleshooting Guide - Common issues and solutions
 ## Example Usage
 ### Basic Configuration with TLS
 

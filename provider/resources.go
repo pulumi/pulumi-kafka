@@ -27,6 +27,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 
 	"github.com/pulumi/pulumi-kafka/provider/v3/pkg/version"
@@ -61,6 +62,11 @@ func Provider() tfbridge.ProviderInfo {
 		Version:           version.Version,
 		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
 		TFProviderLicense: ref(tfbridge.MITLicenseType),
+		DocRules: &tfbridge.DocRuleInfo{
+			EditRules: func(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+				return append(defaults, skipDocumentationSection)
+			},
+		},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"sasl_mechanism": {
 				Default: &tfbridge.DefaultInfo{
@@ -156,6 +162,17 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 
 	return prov
+}
+
+// The overview's "Documentation" section links to upstream guides by Terraform-registry-relative paths.
+// Those guides aren't published to the Pulumi Registry, so the links can't resolve and the section is dropped.
+var skipDocumentationSection = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			return headerText == "Documentation"
+		})
+	},
 }
 
 var noDocs = &tfbridge.DocInfo{
